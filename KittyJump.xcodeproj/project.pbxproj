@@ -1,0 +1,531 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D7C5EAB41EEB5C21007DA71A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */; };
+		D7C5EAB61EEB5C21007DA71A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAB51EEB5C21007DA71A /* GameScene.sks */; };
+		D7C5EAB81EEB5C21007DA71A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAB71EEB5C21007DA71A /* Actions.sks */; };
+		D7C5EABA1EEB5C21007DA71A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAB91EEB5C21007DA71A /* GameScene.swift */; };
+		D7C5EABC1EEB5C21007DA71A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */; };
+		D7C5EABF1EEB5C21007DA71A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EABD1EEB5C21007DA71A /* Main.storyboard */; };
+		D7C5EAC11EEB5C21007DA71A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAC01EEB5C21007DA71A /* Assets.xcassets */; };
+		D7C5EAC41EEB5C21007DA71A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAC21EEB5C21007DA71A /* LaunchScreen.storyboard */; };
+		D7C5EACF1EEB5C21007DA71A /* KittyJumpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EACE1EEB5C21007DA71A /* KittyJumpTests.swift */; };
+		D7C5EADA1EEB638E007DA71A /* TrainTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAD91EEB638E007DA71A /* TrainTrack.swift */; };
+		D7C5EADC1EEB76D7007DA71A /* CommonSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EADB1EEB76D7007DA71A /* CommonSpriteNode.swift */; };
+		D7C5EADF1EEB9C67007DA71A /* railroad.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EADE1EEB9C67007DA71A /* railroad.png */; };
+		D7C5EAE11EEBF6E9007DA71A /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAE01EEBF6E9007DA71A /* grass.png */; };
+		D7C5EAE31EEBFB03007DA71A /* Grass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAE21EEBFB03007DA71A /* Grass.swift */; };
+		D7C5EAE61EEC07E5007DA71A /* LeftTrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAE51EEC07E5007DA71A /* LeftTrain.swift */; };
+		D7C5EAE81EEC0881007DA71A /* trainrightfacing.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAE71EEC0881007DA71A /* trainrightfacing.png */; };
+		D7C5EAEA1EEC0993007DA71A /* RightTrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAE91EEC0993007DA71A /* RightTrain.swift */; };
+		D7C5EAEC1EEC09E1007DA71A /* trainleftfacing.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAEB1EEC09E1007DA71A /* trainleftfacing.png */; };
+		D7C5EAEE1EEC0AC0007DA71A /* Kitty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAED1EEC0AC0007DA71A /* Kitty.swift */; };
+		D7C5EAF01EEC0AE1007DA71A /* kitty.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAEF1EEC0AE1007DA71A /* kitty.png */; };
+		D7C5EAF41EEE6F12007DA71A /* wagon.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAF31EEE6F12007DA71A /* wagon.png */; };
+		D7C5EAF61EEF3ACC007DA71A /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */; };
+		D7C5EAF81EEF435D007DA71A /* trainright.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAF71EEF435D007DA71A /* trainright.png */; };
+		D7C5EAFA1EF0F638007DA71A /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAF91EF0F638007DA71A /* Label.swift */; };
+		D7C5EAFF1EF24469007DA71A /* KCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAFE1EF24469007DA71A /* KCamera.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D7C5EACB1EEB5C21007DA71A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7C5EAA81EEB5C21007DA71A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7C5EAAF1EEB5C21007DA71A;
+			remoteInfo = KittyJump;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D7C5EAB01EEB5C21007DA71A /* KittyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KittyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D7C5EAB51EEB5C21007DA71A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		D7C5EAB71EEB5C21007DA71A /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		D7C5EAB91EEB5C21007DA71A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		D7C5EABE1EEB5C21007DA71A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D7C5EAC01EEB5C21007DA71A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D7C5EAC31EEB5C21007DA71A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D7C5EAC51EEB5C21007DA71A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7C5EACA1EEB5C21007DA71A /* KittyJumpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KittyJumpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7C5EACE1EEB5C21007DA71A /* KittyJumpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KittyJumpTests.swift; sourceTree = "<group>"; };
+		D7C5EAD01EEB5C21007DA71A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7C5EAD91EEB638E007DA71A /* TrainTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainTrack.swift; sourceTree = "<group>"; };
+		D7C5EADB1EEB76D7007DA71A /* CommonSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonSpriteNode.swift; sourceTree = "<group>"; };
+		D7C5EADE1EEB9C67007DA71A /* railroad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = railroad.png; sourceTree = "<group>"; };
+		D7C5EAE01EEBF6E9007DA71A /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
+		D7C5EAE21EEBFB03007DA71A /* Grass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grass.swift; sourceTree = "<group>"; };
+		D7C5EAE51EEC07E5007DA71A /* LeftTrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftTrain.swift; sourceTree = "<group>"; };
+		D7C5EAE71EEC0881007DA71A /* trainrightfacing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainrightfacing.png; sourceTree = "<group>"; };
+		D7C5EAE91EEC0993007DA71A /* RightTrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightTrain.swift; sourceTree = "<group>"; };
+		D7C5EAEB1EEC09E1007DA71A /* trainleftfacing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainleftfacing.png; sourceTree = "<group>"; };
+		D7C5EAED1EEC0AC0007DA71A /* Kitty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kitty.swift; sourceTree = "<group>"; };
+		D7C5EAEF1EEC0AE1007DA71A /* kitty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kitty.png; sourceTree = "<group>"; };
+		D7C5EAF31EEE6F12007DA71A /* wagon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wagon.png; sourceTree = "<group>"; };
+		D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		D7C5EAF71EEF435D007DA71A /* trainright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainright.png; sourceTree = "<group>"; };
+		D7C5EAF91EF0F638007DA71A /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		D7C5EAFE1EF24469007DA71A /* KCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCamera.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D7C5EAAD1EEB5C21007DA71A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7C5EAC71EEB5C21007DA71A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D7C5EAA71EEB5C21007DA71A = {
+			isa = PBXGroup;
+			children = (
+				D7C5EAB21EEB5C21007DA71A /* KittyJump */,
+				D7C5EACD1EEB5C21007DA71A /* KittyJumpTests */,
+				D7C5EAB11EEB5C21007DA71A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D7C5EAB11EEB5C21007DA71A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D7C5EAB01EEB5C21007DA71A /* KittyJump.app */,
+				D7C5EACA1EEB5C21007DA71A /* KittyJumpTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D7C5EAB21EEB5C21007DA71A /* KittyJump */ = {
+			isa = PBXGroup;
+			children = (
+				D7C5EADD1EEB9C3A007DA71A /* images */,
+				D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */,
+				D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */,
+				D7C5EAB51EEB5C21007DA71A /* GameScene.sks */,
+				D7C5EAB71EEB5C21007DA71A /* Actions.sks */,
+				D7C5EAB91EEB5C21007DA71A /* GameScene.swift */,
+				D7C5EAFB1EF0FA9E007DA71A /* SceneHelper */,
+				D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */,
+				D7C5EABD1EEB5C21007DA71A /* Main.storyboard */,
+				D7C5EAC01EEB5C21007DA71A /* Assets.xcassets */,
+				D7C5EAE41EEC058C007DA71A /* Sprites */,
+				D7C5EAC21EEB5C21007DA71A /* LaunchScreen.storyboard */,
+				D7C5EAC51EEB5C21007DA71A /* Info.plist */,
+			);
+			path = KittyJump;
+			sourceTree = "<group>";
+		};
+		D7C5EACD1EEB5C21007DA71A /* KittyJumpTests */ = {
+			isa = PBXGroup;
+			children = (
+				D7C5EACE1EEB5C21007DA71A /* KittyJumpTests.swift */,
+				D7C5EAD01EEB5C21007DA71A /* Info.plist */,
+			);
+			path = KittyJumpTests;
+			sourceTree = "<group>";
+		};
+		D7C5EADD1EEB9C3A007DA71A /* images */ = {
+			isa = PBXGroup;
+			children = (
+				D7C5EADE1EEB9C67007DA71A /* railroad.png */,
+				D7C5EAE01EEBF6E9007DA71A /* grass.png */,
+				D7C5EAE71EEC0881007DA71A /* trainrightfacing.png */,
+				D7C5EAF31EEE6F12007DA71A /* wagon.png */,
+				D7C5EAF71EEF435D007DA71A /* trainright.png */,
+				D7C5EAEB1EEC09E1007DA71A /* trainleftfacing.png */,
+				D7C5EAEF1EEC0AE1007DA71A /* kitty.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		D7C5EAE41EEC058C007DA71A /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				D7C5EADB1EEB76D7007DA71A /* CommonSpriteNode.swift */,
+				D7C5EAE21EEBFB03007DA71A /* Grass.swift */,
+				D7C5EAD91EEB638E007DA71A /* TrainTrack.swift */,
+				D7C5EAE51EEC07E5007DA71A /* LeftTrain.swift */,
+				D7C5EAE91EEC0993007DA71A /* RightTrain.swift */,
+				D7C5EAED1EEC0AC0007DA71A /* Kitty.swift */,
+			);
+			name = Sprites;
+			sourceTree = "<group>";
+		};
+		D7C5EAFB1EF0FA9E007DA71A /* SceneHelper */ = {
+			isa = PBXGroup;
+			children = (
+				D7C5EAF91EF0F638007DA71A /* Label.swift */,
+				D7C5EAFE1EF24469007DA71A /* KCamera.swift */,
+			);
+			name = SceneHelper;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D7C5EAAF1EEB5C21007DA71A /* KittyJump */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7C5EAD31EEB5C21007DA71A /* Build configuration list for PBXNativeTarget "KittyJump" */;
+			buildPhases = (
+				D7C5EAAC1EEB5C21007DA71A /* Sources */,
+				D7C5EAAD1EEB5C21007DA71A /* Frameworks */,
+				D7C5EAAE1EEB5C21007DA71A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KittyJump;
+			productName = KittyJump;
+			productReference = D7C5EAB01EEB5C21007DA71A /* KittyJump.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D7C5EAC91EEB5C21007DA71A /* KittyJumpTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7C5EAD61EEB5C21007DA71A /* Build configuration list for PBXNativeTarget "KittyJumpTests" */;
+			buildPhases = (
+				D7C5EAC61EEB5C21007DA71A /* Sources */,
+				D7C5EAC71EEB5C21007DA71A /* Frameworks */,
+				D7C5EAC81EEB5C21007DA71A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D7C5EACC1EEB5C21007DA71A /* PBXTargetDependency */,
+			);
+			name = KittyJumpTests;
+			productName = KittyJumpTests;
+			productReference = D7C5EACA1EEB5C21007DA71A /* KittyJumpTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D7C5EAA81EEB5C21007DA71A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Merlin Ahila";
+				TargetAttributes = {
+					D7C5EAAF1EEB5C21007DA71A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = S36L8PTJAV;
+						ProvisioningStyle = Automatic;
+					};
+					D7C5EAC91EEB5C21007DA71A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = S36L8PTJAV;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D7C5EAAF1EEB5C21007DA71A;
+					};
+				};
+			};
+			buildConfigurationList = D7C5EAAB1EEB5C21007DA71A /* Build configuration list for PBXProject "KittyJump" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D7C5EAA71EEB5C21007DA71A;
+			productRefGroup = D7C5EAB11EEB5C21007DA71A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D7C5EAAF1EEB5C21007DA71A /* KittyJump */,
+				D7C5EAC91EEB5C21007DA71A /* KittyJumpTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D7C5EAAE1EEB5C21007DA71A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7C5EAF41EEE6F12007DA71A /* wagon.png in Resources */,
+				D7C5EAF81EEF435D007DA71A /* trainright.png in Resources */,
+				D7C5EAE11EEBF6E9007DA71A /* grass.png in Resources */,
+				D7C5EAEC1EEC09E1007DA71A /* trainleftfacing.png in Resources */,
+				D7C5EABF1EEB5C21007DA71A /* Main.storyboard in Resources */,
+				D7C5EAF01EEC0AE1007DA71A /* kitty.png in Resources */,
+				D7C5EAB61EEB5C21007DA71A /* GameScene.sks in Resources */,
+				D7C5EAE81EEC0881007DA71A /* trainrightfacing.png in Resources */,
+				D7C5EAC11EEB5C21007DA71A /* Assets.xcassets in Resources */,
+				D7C5EADF1EEB9C67007DA71A /* railroad.png in Resources */,
+				D7C5EAC41EEB5C21007DA71A /* LaunchScreen.storyboard in Resources */,
+				D7C5EAB81EEB5C21007DA71A /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7C5EAC81EEB5C21007DA71A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D7C5EAAC1EEB5C21007DA71A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7C5EAFF1EF24469007DA71A /* KCamera.swift in Sources */,
+				D7C5EADC1EEB76D7007DA71A /* CommonSpriteNode.swift in Sources */,
+				D7C5EABA1EEB5C21007DA71A /* GameScene.swift in Sources */,
+				D7C5EAFA1EF0F638007DA71A /* Label.swift in Sources */,
+				D7C5EAE31EEBFB03007DA71A /* Grass.swift in Sources */,
+				D7C5EAE61EEC07E5007DA71A /* LeftTrain.swift in Sources */,
+				D7C5EABC1EEB5C21007DA71A /* GameViewController.swift in Sources */,
+				D7C5EADA1EEB638E007DA71A /* TrainTrack.swift in Sources */,
+				D7C5EAB41EEB5C21007DA71A /* AppDelegate.swift in Sources */,
+				D7C5EAEE1EEC0AC0007DA71A /* Kitty.swift in Sources */,
+				D7C5EAEA1EEC0993007DA71A /* RightTrain.swift in Sources */,
+				D7C5EAF61EEF3ACC007DA71A /* SessionManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7C5EAC61EEB5C21007DA71A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7C5EACF1EEB5C21007DA71A /* KittyJumpTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D7C5EACC1EEB5C21007DA71A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7C5EAAF1EEB5C21007DA71A /* KittyJump */;
+			targetProxy = D7C5EACB1EEB5C21007DA71A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D7C5EABD1EEB5C21007DA71A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7C5EABE1EEB5C21007DA71A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D7C5EAC21EEB5C21007DA71A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7C5EAC31EEB5C21007DA71A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D7C5EAD11EEB5C21007DA71A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D7C5EAD21EEB5C21007DA71A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D7C5EAD41EEB5C21007DA71A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = S36L8PTJAV;
+				INFOPLIST_FILE = KittyJump/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "rajeshpeter-gmail.com.KittyJump";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D7C5EAD51EEB5C21007DA71A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = S36L8PTJAV;
+				INFOPLIST_FILE = KittyJump/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "rajeshpeter-gmail.com.KittyJump";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		D7C5EAD71EEB5C21007DA71A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = S36L8PTJAV;
+				INFOPLIST_FILE = KittyJumpTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "rajeshpeter-gmail.com.KittyJumpTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KittyJump.app/KittyJump";
+			};
+			name = Debug;
+		};
+		D7C5EAD81EEB5C21007DA71A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = S36L8PTJAV;
+				INFOPLIST_FILE = KittyJumpTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "rajeshpeter-gmail.com.KittyJumpTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KittyJump.app/KittyJump";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D7C5EAAB1EEB5C21007DA71A /* Build configuration list for PBXProject "KittyJump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7C5EAD11EEB5C21007DA71A /* Debug */,
+				D7C5EAD21EEB5C21007DA71A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7C5EAD31EEB5C21007DA71A /* Build configuration list for PBXNativeTarget "KittyJump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7C5EAD41EEB5C21007DA71A /* Debug */,
+				D7C5EAD51EEB5C21007DA71A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7C5EAD61EEB5C21007DA71A /* Build configuration list for PBXNativeTarget "KittyJumpTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7C5EAD71EEB5C21007DA71A /* Debug */,
+				D7C5EAD81EEB5C21007DA71A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D7C5EAA81EEB5C21007DA71A /* Project object */;
+}
