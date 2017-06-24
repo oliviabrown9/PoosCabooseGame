@@ -17,7 +17,6 @@ class LeftTrain : SKSpriteNode{
         
         // super.init(texture : texture , color: UIColor.black, size: CGSize(width: 100, height: 45))
         super.init(texture : texture , color: UIColor.black, size: CGSize(width: 600, height: 90))
-        
         setup()
         
     }
@@ -60,7 +59,7 @@ class LeftTrain : SKSpriteNode{
         physicsBody!.collisionBitMask = category_kitty | category_track
         physicsBody!.contactTestBitMask = category_kitty
         
-        physicsBody!.usesPreciseCollisionDetection = true
+        physicsBody!.usesPreciseCollisionDetection = false
         physicsBody!.isDynamic = true
         physicsBody!.affectedByGravity = false
 

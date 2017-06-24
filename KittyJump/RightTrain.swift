@@ -45,8 +45,6 @@ class RightTrain : SKSpriteNode{
         
         let rightBigBox = SKPhysicsBody(rectangleOf :CGSize(width: 490, height: 90) , center:bCenterPoint )
         
-
-        
         physicsBody=SKPhysicsBody(bodies: [leftSmallBox,rightBigBox])
         
         
@@ -62,7 +60,6 @@ class RightTrain : SKSpriteNode{
         physicsBody!.isDynamic = true
         physicsBody!.affectedByGravity = false
 
-        
     }
     
 }

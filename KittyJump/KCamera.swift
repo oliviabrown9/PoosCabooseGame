@@ -16,17 +16,14 @@ class KCamera: SKCameraNode {
       func createCamera(kitty:Kitty ,frameMax:CGFloat )  {
         
          
-        let horizConstraint = SKConstraint.distance(SKRange(upperLimit: 0
-        ), to: kitty)
+        let horizConstraint = SKConstraint.distance(SKRange(upperLimit: 0), to: kitty)
         let vertConstraint = SKConstraint.distance(SKRange(upperLimit: 0), to: kitty)
         let leftConstraint = SKConstraint.positionX(SKRange(lowerLimit: 0))
         let bottomConstraint = SKConstraint.positionY(SKRange(lowerLimit: 0))
         let rightConstraint = SKConstraint.positionX(SKRange(upperLimit:0))
-        let topConstraint = SKConstraint.positionY(SKRange(upperLimit: (frameMax*10)))//tBD self.frame.maxY
-        
-        //
+        let topConstraint = SKConstraint.positionY(SKRange(upperLimit: (frameMax*100000)))
+
         constraints = [horizConstraint, vertConstraint, leftConstraint , bottomConstraint, rightConstraint,topConstraint]
-    
     }
     
 

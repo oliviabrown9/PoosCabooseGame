@@ -11,25 +11,43 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    var homeView = SKView()
+    var scene = GameScene()
+
+    @IBOutlet weak var startBackground: UIView!
+    
+    @IBAction func startGame(_ sender: Any) {
+        let startButton = sender as? UIButton
+        startButton?.isEnabled = false
+        startButton?.isHidden = true
+        startBackground?.isHidden = true
+        
+        scene.isStart = true
+        scene.scaleMode = .aspectFill
+        homeView.presentScene(scene)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let view = self.view as! SKView? {
+        startBackground.backgroundColor = UIColor(red:0.16, green:0.50, blue:0.73, alpha:0.7)
+        
+        homeView = self.view as! SKView
+        if homeView != nil {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
+            scene = GameScene(fileNamed: "GameScene")!
+            if scene != nil {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-                let transition = SKTransition.doorsCloseHorizontal(withDuration: 1)
-
+                
                 // Present the scene
-                view.presentScene(scene ,transition: transition)
+                scene.viewController = self
+                homeView.presentScene(scene)
             }
-            
-            view.ignoresSiblingOrder = true
+            homeView.ignoresSiblingOrder = true
         }
     }
-
+    
     override var shouldAutorotate: Bool {
         return true
     }
@@ -37,7 +55,8 @@ class GameViewController: UIViewController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
-        } else {
+        }
+        else {
             return .all
         }
     }

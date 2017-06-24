@@ -12,12 +12,17 @@ import Foundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    // MARK: postion variable
-    let trainYpostion:CGFloat    = -600.0
-    let trainDiffpostion:CGFloat = 185.0
+    var viewController: UIViewController?
+    
+    var pastScoreArray = [Int]()
+    
+    // MARK: Postion variable
+    var isStart = false
+    let trainYpostion: CGFloat = -600.0
+    let trainDiffpostion: CGFloat = 185.0
     var gamePaused = false
     
-    var scoreLabel :SKLabelNode!
+    var scoreLabel: SKLabelNode!
     
     enum kittyCurrentTrain {
         case LeftTrain
@@ -30,16 +35,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var kittyCurrentState  = kittyState.onTrain
     var kittyPostion = kittyCurrentTrain.RightTrain
-    // MARK: screen sprite variable
+    
+    // MARK: Screen sprite variable
     
     var kittyCamera = KCamera()
 
     var trainTrackArray = [TrainTrack] ()
     var grassArray = [Grass] ()
-
+    let deadline = Deadline()
+    var newDeadlinePosY:CGFloat = 0
     
     let leftTrain1 =  LeftTrain()
     let rightTrain1 = RightTrain()
+
+    var leftTrainArray = [LeftTrain]()
+    var newLeftTrainIndex = -1
+
+    var rightTrainArray = [RightTrain]()
+    var newRightTrainIndex = -1
+    
+    var beforeColorIndex = -1
+    
+    var newTrainPosY:CGFloat = -600.0
     
     let kitty = Kitty()
  
@@ -48,10 +65,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score: Int = 0 {
         didSet {
             scoreLabel.text = "\(score)"
-            if score ==  50 {
-                showStop(reason: "Game Won")
-            }
-            
         }
     }
     
@@ -62,15 +75,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // MARK: Init functions
-
+    override init() {
+        super.init()
+        isStart = false
+    }
+    
     override init(size: CGSize ) {
         super.init(size: size)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
+        
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -1)
 
         let borderBody = SKPhysicsBody(edgeLoopFrom:
@@ -82,30 +99,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         borderBody.friction = 0
         self.physicsBody = borderBody
         self.physicsBody?.categoryBitMask = category_border
+        
+        beforeColorIndex = [0, 1, 2].randomItem()
    
-        trackSetup()
-        grassSetup()
-
-        leftTrainSetup()
-        rightTrainSetup()
+        trackArraySetup()
+        grassArraySetup()
+        
+        newDeadlinePosY = trainYpostion  + trainDiffpostion + 160
+        deadlineSetup()
+        
+        setupFirstSixRightAndLeftTrains()
         createHud()
 
-        kitty.position.x  = rightTrain1.frame.minX + kitty.size.width / 2
-        kitty.position.y  = rightTrain1.frame.maxY
-
-        self.addChild(kitty)
- 
+        kitty.position.x  = rightTrainArray[0].frame.minX + kitty.size.width / 2
+        kitty.position.y  = rightTrainArray[0].frame.maxY
         
-        joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrain1.physicsBody! , bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrain1.frame.minX, y: self.rightTrain1.frame.midY))
+        self.addChild(kitty)
+        
+        joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody! , bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
         self.physicsWorld.add(joint1)
-
-
         
     }
-    // MARK:    functions to make actors move
-    
-    //track position setup
-
+    // MARK: Movement
     
     /* Called when a touch begins */
     
@@ -115,8 +130,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
        
         self.physicsWorld.remove(jointN)
         
-        trainBeforeJump.removeAllActions()
-        
         if let wagonPhysicBody = iWagon.physicsBody , let kittyPhysicBody = kitty.physicsBody {
             
             kitty.position.x  = iWagon.frame.minX + kitty.size.width / 2
@@ -125,8 +138,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             joint1 = SKPhysicsJointPin.joint(withBodyA: wagonPhysicBody , bodyB: kittyPhysicBody, anchor: CGPoint(x: iWagon.frame.minX, y: iWagon.frame.midY))
             self.physicsWorld.add(joint1)
             score = score + 1
-            kittyCurrentState =
- .onTrain
+            kittyCurrentState = .onTrain
             }
         }
     }
@@ -137,8 +149,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.physicsWorld.removeAllJoints()
         
-        trainBeforeJump?.removeAllActions()
-        
          if let wagonPhysicBody = iWagon.physicsBody , let kittyPhysicBody = kitty.physicsBody {
             
             kitty.position.x  = iWagon.frame.maxX - kitty.size.width / 2
@@ -147,41 +157,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             joint1 = SKPhysicsJointPin.joint(withBodyA: wagonPhysicBody , bodyB: kittyPhysicBody, anchor: CGPoint(x: iWagon.frame.midX, y: iWagon.frame.midY))
             self.physicsWorld.add(joint1)
             score = score + 1
-            kittyCurrentState =
-                .onTrain
+            kittyCurrentState = .onTrain
         }
     }
 
     // MARK:- Touches
 
-
     override func  touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-
-        for touch: UITouch in touches {
-            
-            let location = touch.location(in: self)
-            let node = self.atPoint(location)
- 
-             if let touchNode = node.name {
-                
-                switch touchNode {
-                case "Kitty":
-                    if kittyCurrentState == .onTrain{
-                        self.physicsWorld.removeAllJoints()
-                        kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
-                        kittyCurrentState = .onAir
-                    }
-                    
-                default:
-               
-                    break
-                    
-                }
-            }
-            
+        if kittyCurrentState == .onTrain{
+            self.physicsWorld.removeAllJoints()
+            kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
+            kittyCurrentState = .onAir
         }
-        
     }
     
     func locationDetectR(train:RightTrain, location:CGPoint) {
@@ -192,24 +179,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 showStop(reason : "Score 100!")
             }
             
-        }else{
+        }
+        else
+        {
             showStop(reason :"Game Over! ")
-            
         }
         
     }
+    
     func locationDetectL(train:LeftTrain, location:CGPoint) {
         
         if (location.x > (train.frame.maxX - 100)){
-            
             switchJointL(iWagon:train)
-        }else{
+        }
+        else {
             showStop(reason :"Game Over! ")
-            
         }
     }
     
-     // MARK:- Init  functions to build screen
+    // MARK: Init functions to build screen
    
     // MARK: HUD
     func createHud()  {
@@ -236,49 +224,50 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
 
         Label.createHighScore()
-        Label.highScoreLabel.position = CGPoint(x: self.frame.maxX - 50 , y: -25)
+        Label.highScoreLabel.position = CGPoint(x: self.frame.maxX - 30 , y: 90)
 
-          hud.addChild(Label.highScoreLabel)
+        hud.addChild(Label.highScoreLabel)
         
         
     }
-    // MARK: TrainTrack & Grass
-    
-    func trackSetup()  {
+    // MARK: Train Track & Grass
+    func trackArraySetup()  {
   
-        for i in 0...49 {
-            
+        for i in 0...4 {
             let trainTrack = TrainTrack()
             trainTrack.position = getTrainTrackPosition(row : i)
+            trainTrack.name = "Track" + String(i)
             self.addChild(trainTrack)
             trainTrackArray.append(trainTrack)
-            
-            if ( i > 4 ){
-                
-                trainTrack.alpha = 0
-            }
         }
     }
     
+    func newTrackSetup(index: Int, posY: CGFloat) {
+        let nodeName = "Track" + String(index)
+        self.enumerateChildNodes(withName: nodeName) {
+            node, stop in
+            node.removeFromParent();
+        }
+        
+        let trainTrack = trainTrackArray[index]
+        trainTrack.position.y = posY
+        trainTrack.name = nodeName
+        self.addChild(trainTrack)
+    }
+    
     func getTrainTrackPosition( row:Int) -> CGPoint{
-
         let x = self.frame.minX
         let y = trainYpostion  + trainDiffpostion * CGFloat(row)
         return CGPoint(x: x, y: y)
     }
     
-    func grassSetup()  {
+    func grassArraySetup()  {
         
-        for i in 0...49 {
+        for i in 0...4 {
             let grass = Grass()
             grass.position = getGrassPosition(row : i)
             self.addChild(grass)
             grassArray.append(grass)
-
-            if ( i > 4 ){
-                
-                grass.alpha = 0
-            }
         }
     }
     
@@ -289,47 +278,147 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return CGPoint(x: x, y: y)
     }
     
+    func deadlineSetup(){
+        deadline.position = getDeadlinePosition(posY: newDeadlinePosY)
+        self.addChild(deadline)
+    }
     
-    func leftTrainSetup()  {
-        
-        //second train from  down
-        leftTrain1.position = CGPoint(x: self.frame.maxX + leftTrain1.size.width/2 , y:trainTrackArray[1].position.y  + TrainTrack.getHeight())
-        leftTrain1.name = "leftTrain1"
-        self.addChild(leftTrain1)
-        
+    func getDeadlinePosition(posY: CGFloat) -> CGPoint{
+        let x = self.frame.minX
+        return CGPoint(x: x, y: posY)
     }
     
     func rightTrainSetup()  {
-        
         let  htrainWidth = rightTrain1.size.width
         let  trackHeight = TrainTrack.getHeight()
         
         rightTrain1.position = CGPoint(x: self.frame.minX + (htrainWidth-200) , y:trainTrackArray[0].position.y  + trackHeight )
         rightTrain1.name = "rightTrain1"
         self.addChild(rightTrain1)
+    }
+    
+    func leftTrainSetup()  {
         
+        // Second train from bottom
+        leftTrain1.position = CGPoint(x: self.frame.maxX + leftTrain1.size.width/2 , y:trainTrackArray[1].position.y + TrainTrack.getHeight())
+        leftTrain1.name = "leftTrain1"
+        self.addChild(leftTrain1)
+    }
+    
+    func setupFirstSixRightAndLeftTrains() {
+        let trackHeight = TrainTrack.getHeight()
+        
+        for i in 0..<3{
+            let rightTrain = RightTrain()
+            rightTrain.position = CGPoint(x:self.frame.minX + (rightTrain.size.width - 200), y: -1000)
+            
+            rightTrain.name = "right" + String(i)
+            var wagon = selectColorImage()
+            rightTrain.addChild(wagon)
+            
+            self.addChild(rightTrain)
+            rightTrainArray.append(rightTrain);
+
+            newTrainPosY += trainDiffpostion
+            
+            let leftTrain = LeftTrain()
+            leftTrain.position = CGPoint(x:self.frame.maxX + leftTrain.size.width/2,
+                                                             y:-1000)
+            leftTrain.name = "left" + String(i)
+            
+            wagon = selectColorImage(rightSide: false)
+            leftTrain.addChild(wagon)
+            
+            self.addChild(leftTrain)
+            leftTrainArray.append(leftTrain)
+            newTrainPosY += trainDiffpostion
+        }
+    }
+    
+    func selectColorImage(rightSide: Bool = true) -> SKSpriteNode{
+        // Get random one color except the color before
+        var restColorIndices = [Int]()
+        for i in 0...2 {
+            if i != beforeColorIndex {
+                restColorIndices.append(i)
+            }
+        }
+        beforeColorIndex = restColorIndices.randomItem()
+        
+        // Get color image
+        var wagon:SKSpriteNode
+        switch beforeColorIndex {
+        case 0:
+            wagon = SKSpriteNode(imageNamed:"o caboose")
+        case 1:
+            wagon = SKSpriteNode(imageNamed:"r caboose")
+        case 2:
+            wagon = SKSpriteNode(imageNamed:"y caboose")
+        default:
+            wagon = SKSpriteNode()
+        }
+        
+        // Locate imate at the specified point
+        let rightTrain = RightTrain()
+        let xPos = rightTrain.size.width/2
+        let yPos = rightTrain.size.height/2
+        let size = CGSize(width: 110, height: 45)
+        wagon.scale(to: size)
+        if rightSide{
+            wagon.anchorPoint = CGPoint(x:0, y:0)
+            wagon.position = CGPoint(x: -xPos, y: -yPos)
+        } else {
+            wagon.anchorPoint = CGPoint(x:1, y:0)
+            wagon.position = CGPoint(x: xPos, y: -yPos)
+        }
+        wagon.zPosition = 2
+        return wagon
     }
     
     // MARK:- Set the train on motion
-
     
     func moveRightWagon(irWagon:RightTrain, itrack:TrainTrack)  {
         
-        let yPostionC :CGFloat = itrack.position.y  + itrack.size.height + irWagon.size.height/2
+        let yPostionC :CGFloat = itrack.position.y + itrack.size.height + irWagon.size.height/2
         let path = CGMutablePath()
+        
+        if  irWagon.name == "rightTrain1"{
+            path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - 200, y: yPostionC))
+        }else{
+            path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - 300, y: yPostionC))
+        }
+        path.addLine(to: CGPoint(x: self.frame.size.width , y: yPostionC))
+        let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 10, upper: 11)))
+        
+        irWagon.run(followLine)
+    }
+    
+    func moveRightWagon2()  {
+        
+        // 20: height of track, 45: height of train
+        let yPostionC :CGFloat = CGFloat(newTrainPosY + 20 + 45)
+        let path = CGMutablePath()
+        
+        newRightTrainIndex += 1
+        if newRightTrainIndex > 2{
+            newRightTrainIndex %= 3
+        }
+        
+        let irWagon = rightTrainArray[newRightTrainIndex]
         
         if  irWagon.name == "rightTrain1"{
             path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - 200, y: yPostionC))
             
         }else{
             path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - 300, y: yPostionC))
-            
         }
         path.addLine(to: CGPoint(x: self.frame.size.width , y: yPostionC))
-        let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 10, upper: 11)))
         
-         irWagon.run (followLine)
+        let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 8, upper: 9)))
         
+        irWagon.run(SKAction.repeatForever(followLine))
+        
+        newTrainPosY += trainDiffpostion
     }
     
     func moveLeftTrain(ilTrain:LeftTrain, itrack:TrainTrack)  {
@@ -340,6 +429,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         path.addLine(to: CGPoint(x: -self.frame.size.width , y: yPostionC))
         let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 10, upper: 11)))
         ilTrain.run(followLine)
+        
+    }
+    
+    func moveLeftTrain2()  {
+        
+        // 20: height of track, 45: height of train
+        let yPostionC :CGFloat = CGFloat(newTrainPosY + 20 + 45)
+        
+        newLeftTrainIndex += 1
+        if newLeftTrainIndex > 2{
+            newLeftTrainIndex %= 3
+        }
+        
+        let ilTrain = leftTrainArray[newLeftTrainIndex]
+        
+        let path = CGMutablePath()
+        path.move(to: CGPoint(x: self.frame.maxX  + ilTrain.size.width/2 , y: yPostionC))
+        
+        path.addLine(to: CGPoint(x: -self.frame.size.width , y: yPostionC))
+        
+        let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 6, upper: 8)))
+        ilTrain.run(SKAction.repeatForever(followLine))
+        
+        newTrainPosY += trainDiffpostion
     }
     
     // MARK:- Contact Delegate  functions
@@ -351,7 +464,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
  
-
          if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
             firstBody = contact.bodyA
             secondBody = contact.bodyB
@@ -359,56 +471,78 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             firstBody = contact.bodyB
             secondBody = contact.bodyA
         }
-        
  
- 
-        if firstBody.categoryBitMask == category_kitty && secondBody.categoryBitMask == category_border {
-           // print("Kitty hit border. First contact has been made.")
+        if (firstBody.categoryBitMask == category_kitty && secondBody.categoryBitMask == category_border) || (firstBody.categoryBitMask == category_kitty && secondBody.categoryBitMask == category_deadline) {
             showStop(reason:"Game Over! ")
-            
         }
-        // handles  left train and creates a right train - first call
-        if kittyPostion ==  .RightTrain {
-            if firstBody.categoryBitMask == category_kitty   && secondBody.categoryBitMask == category_train{
+        // Handles left train & creates a right train - first call
+        if kittyPostion == .RightTrain {
+            
+            if firstBody.categoryBitMask == category_kitty && secondBody.categoryBitMask == category_train{
+                
                 if (contact.contactPoint.x > (secondBody.node!.frame.maxX - 100)){
-                    
-                    print ("success left")
                     switchJointL(iWagon:secondBody.node! as! LeftTrain)
-                    currentTrain += 1
-                    trainTrackArray[currentTrain].alpha=1
-                    grassArray[currentTrain].alpha=1
-                     moveRightWagon(irWagon: rightTrain1, itrack:trainTrackArray[ currentTrain ])
-                    kittyPostion = .LeftTrain
-                }else{
                     
+                    changeTrackAndGrassInNewLocation()
+                    
+                    moveRightWagon2()
+                    
+                    kittyPostion = .LeftTrain
+                    
+                    // Remove old deadline & add new deadline
+                    newDeadlinePosY += trainDiffpostion
+                    setNewDeadline()
+                }else{
                     print ("failure left")
                     showStop(reason :"Game Over! ")
                 }
             }
         }
-        // handles  right train and creates a left train - first call
-
+        
+        // Handles right train and creates a left train - first call
         if kittyPostion ==  .LeftTrain {
             if firstBody.categoryBitMask == category_kitty   && secondBody.categoryBitMask == category_wagon{
                 
                 if (contact.contactPoint.x < (secondBody.node!.frame.minX + 100)){
                     
-                    print ("success right")
                     switchJoint(iWagon:secondBody.node! as! RightTrain)
-                    currentTrain += 1
-                    trainTrackArray[currentTrain].alpha=1
-                    grassArray[currentTrain].alpha=1
-                    moveLeftTrain(ilTrain: leftTrain1, itrack: trainTrackArray[currentTrain])
+                    changeTrackAndGrassInNewLocation()
+        
+                    moveLeftTrain2()
+                    
                     kittyPostion = .RightTrain
-
+                    
+                    // Remove old deadline & add new deadline
+                    newDeadlinePosY += trainDiffpostion
+                    setNewDeadline()
                 }else{
                     
                     print ("failure right")
-                    showStop(reason :"Game Over! ")
-                    
+                    showStop(reason :"Game Over!")
                 }
             }
         }
+    }
+    
+    func setNewDeadline(){
+        self.enumerateChildNodes(withName: "Deadline") {
+            node, stop in
+            node.removeFromParent();
+        }
+        deadlineSetup()
+    }
+    
+    func changeTrackAndGrassInNewLocation(){
+        let lastTrain = currentTrain
+        currentTrain += 1
+        if currentTrain > 4{
+            currentTrain %= 5
+        }
+        
+        let newCurrentTrainPosY = trainTrackArray[lastTrain].position.y + trainDiffpostion
+        newTrackSetup(index: currentTrain, posY: newCurrentTrainPosY)
+        
+        grassArray[currentTrain].position.y = grassArray[lastTrain].position.y + trainDiffpostion
     }
     
     //MARK: - SKScene functions
@@ -417,17 +551,72 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         kittyCamera.position.y = -kitty.position.y
     }
     
-    override func didMove(to view: SKView) {
-        self.physicsWorld.contactDelegate = self
+    func updateNodesYPosition(){
+        let temp: CGFloat = 1000
+        var newYPos:CGFloat = 0
+        
+        // Track and grass
+        for i in 0...4 {
+            
+            // Track
+            newYPos = trainTrackArray[i].position.y - temp
+            newTrackSetup(index: i, posY: newYPos)
+            
+            // Grass
+            grassArray[i].position.y -= temp
+        }
+        // Deadline
+        newDeadlinePosY -= temp
+        setNewDeadline()
+        
+        // Left & right trains
+        updateAllTrainsCoordinate(temp: temp)
+    }
+    
+    func updateAllTrainsCoordinate(temp: CGFloat){
+        var rightTrainName: String = ""
+        var leftTrainName: String = ""
+        
+        for i in 0..<3{
+            // Train on right
+            rightTrainName = "right" + String(i)
+            self.enumerateChildNodes(withName: rightTrainName) {
+                node, stop in
+                node.removeFromParent();
+            }
+            
+            rightTrainArray[i].position.y -= temp
 
-        kittyCamera.kitty  = kitty
-        kittyCamera.createCamera(kitty: kitty, frameMax: self.frame.maxY)
-        addChild(kittyCamera)
-        self.camera = kittyCamera
-     
-        //code to move the first two train
-        moveRightWagon(irWagon: rightTrain1, itrack:trainTrackArray[0] )
-        moveLeftTrain(ilTrain: leftTrain1, itrack: trainTrackArray[1])
+            self.addChild(rightTrainArray[i])
+            
+            // Train on left
+            leftTrainName = "left" + String(i)
+            self.enumerateChildNodes(withName: leftTrainName) {
+                node, stop in
+                node.removeFromParent();
+            }
+            
+            leftTrainArray[i].position.y -= temp
+            self.addChild(leftTrainArray[i])
+            newTrainPosY -= temp
+        }
+    }
+    
+    override func didMove(to view: SKView) {
+        if isStart {
+            self.physicsWorld.contactDelegate = self
+            
+            kittyCamera.kitty  = kitty
+            kittyCamera.createCamera(kitty: kitty, frameMax: self.frame.maxY)
+            addChild(kittyCamera)
+            self.camera = kittyCamera
+            
+            // Move the first 6 trains
+        
+            newTrainPosY = trainYpostion
+            moveRightWagon2()
+            moveLeftTrain2()
+        }
     }
     
     func showStop(reason:String) {
@@ -435,36 +624,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if score >  SharingManager.sharedInstance.highScore {
             SharingManager.sharedInstance.highScore = score
         }
+        
+        SharingManager.sharedInstance.currentScore = score
+        
         self.gamePaused = true
-        let attributedString = NSAttributedString(string: reason + "Play again?", attributes: [
-            NSFontAttributeName : UIFont(name: "Copperplate", size: 25.0),
-            NSForegroundColorAttributeName : UIColor.init(red: 255, green: 0, blue: 0, alpha: 0.8)
-            ])
-        let alert = UIAlertController(title: "" , message:  "", preferredStyle: UIAlertControllerStyle.alert)
-            alert.setValue(attributedString, forKey: "attributedTitle")
 
-           alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default)  { _ in
-            self.isPaused = false
-
-            let transition = SKTransition.doorsCloseHorizontal(withDuration: 1)
-            if let scene = SKScene(fileNamed: "GameScene") {
-                
-                 scene.scaleMode = .aspectFill
-                self.view?.presentScene(scene,transition: transition)
-            }
-        })
-
-        self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
         self.physicsWorld.removeAllJoints()
         self.removeAllActions()
         self.isPaused = true
         
+        self.view!.window!.rootViewController!.performSegue(withIdentifier: "toGameOver", sender: self)
     }
     
     func randRange (lower: Int , upper: Int) -> Int {
         return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
     }
-
 }
 
+extension Array {
+    func randomItem() -> Element {
+        let index = Int(arc4random_uniform(UInt32(self.count)))
+        return self[index]
+    }
+}
 

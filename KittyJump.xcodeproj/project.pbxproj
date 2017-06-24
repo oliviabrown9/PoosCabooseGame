@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */; };
+		D131E5D51EF786830050A184 /* deadline.png in Resources */ = {isa = PBXBuildFile; fileRef = D131E5CA1EF786830050A184 /* deadline.png */; };
+		D131E5D61EF786830050A184 /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = D131E5CB1EF786830050A184 /* grass.png */; };
+		D131E5D71EF786830050A184 /* kitty.png in Resources */ = {isa = PBXBuildFile; fileRef = D131E5CC1EF786830050A184 /* kitty.png */; };
+		D131E5D81EF786830050A184 /* o caboose.png in Resources */ = {isa = PBXBuildFile; fileRef = D131E5CD1EF786830050A184 /* o caboose.png */; };
+		D131E5D91EF786830050A184 /* r caboose.png in Resources */ = {isa = PBXBuildFile; fileRef = D131E5CE1EF786830050A184 /* r caboose.png */; };
+		D131E5DA1EF786830050A184 /* railroad.png in Resources */ = {isa = PBXBuildFile; fileRef = D131E5CF1EF786830050A184 /* railroad.png */; };
+		D131E5DB1EF786830050A184 /* trainleftfacing.png in Resources */ = {isa = PBXBuildFile; fileRef = D131E5D01EF786830050A184 /* trainleftfacing.png */; };
+		D131E5DC1EF786830050A184 /* trainright.png in Resources */ = {isa = PBXBuildFile; fileRef = D131E5D11EF786830050A184 /* trainright.png */; };
+		D131E5DD1EF786830050A184 /* trainrightfacing.png in Resources */ = {isa = PBXBuildFile; fileRef = D131E5D21EF786830050A184 /* trainrightfacing.png */; };
+		D131E5DE1EF786830050A184 /* wagon.png in Resources */ = {isa = PBXBuildFile; fileRef = D131E5D31EF786830050A184 /* wagon.png */; };
+		D131E5DF1EF786830050A184 /* y caboose.png in Resources */ = {isa = PBXBuildFile; fileRef = D131E5D41EF786830050A184 /* y caboose.png */; };
+		D1C52BEF1EF5911200115764 /* Deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C52BEE1EF5911200115764 /* Deadline.swift */; };
 		D7C5EAB41EEB5C21007DA71A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */; };
 		D7C5EAB61EEB5C21007DA71A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAB51EEB5C21007DA71A /* GameScene.sks */; };
 		D7C5EAB81EEB5C21007DA71A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAB71EEB5C21007DA71A /* Actions.sks */; };
@@ -18,18 +31,11 @@
 		D7C5EACF1EEB5C21007DA71A /* KittyJumpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EACE1EEB5C21007DA71A /* KittyJumpTests.swift */; };
 		D7C5EADA1EEB638E007DA71A /* TrainTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAD91EEB638E007DA71A /* TrainTrack.swift */; };
 		D7C5EADC1EEB76D7007DA71A /* CommonSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EADB1EEB76D7007DA71A /* CommonSpriteNode.swift */; };
-		D7C5EADF1EEB9C67007DA71A /* railroad.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EADE1EEB9C67007DA71A /* railroad.png */; };
-		D7C5EAE11EEBF6E9007DA71A /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAE01EEBF6E9007DA71A /* grass.png */; };
 		D7C5EAE31EEBFB03007DA71A /* Grass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAE21EEBFB03007DA71A /* Grass.swift */; };
 		D7C5EAE61EEC07E5007DA71A /* LeftTrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAE51EEC07E5007DA71A /* LeftTrain.swift */; };
-		D7C5EAE81EEC0881007DA71A /* trainrightfacing.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAE71EEC0881007DA71A /* trainrightfacing.png */; };
 		D7C5EAEA1EEC0993007DA71A /* RightTrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAE91EEC0993007DA71A /* RightTrain.swift */; };
-		D7C5EAEC1EEC09E1007DA71A /* trainleftfacing.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAEB1EEC09E1007DA71A /* trainleftfacing.png */; };
 		D7C5EAEE1EEC0AC0007DA71A /* Kitty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAED1EEC0AC0007DA71A /* Kitty.swift */; };
-		D7C5EAF01EEC0AE1007DA71A /* kitty.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAEF1EEC0AE1007DA71A /* kitty.png */; };
-		D7C5EAF41EEE6F12007DA71A /* wagon.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAF31EEE6F12007DA71A /* wagon.png */; };
 		D7C5EAF61EEF3ACC007DA71A /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */; };
-		D7C5EAF81EEF435D007DA71A /* trainright.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C5EAF71EEF435D007DA71A /* trainright.png */; };
 		D7C5EAFA1EF0F638007DA71A /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAF91EF0F638007DA71A /* Label.swift */; };
 		D7C5EAFF1EF24469007DA71A /* KCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAFE1EF24469007DA71A /* KCamera.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +51,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		D131E5CA1EF786830050A184 /* deadline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deadline.png; path = images/deadline.png; sourceTree = "<group>"; };
+		D131E5CB1EF786830050A184 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass.png; path = images/grass.png; sourceTree = "<group>"; };
+		D131E5CC1EF786830050A184 /* kitty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kitty.png; path = images/kitty.png; sourceTree = "<group>"; };
+		D131E5CD1EF786830050A184 /* o caboose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "o caboose.png"; path = "images/o caboose.png"; sourceTree = "<group>"; };
+		D131E5CE1EF786830050A184 /* r caboose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "r caboose.png"; path = "images/r caboose.png"; sourceTree = "<group>"; };
+		D131E5CF1EF786830050A184 /* railroad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = railroad.png; path = images/railroad.png; sourceTree = "<group>"; };
+		D131E5D01EF786830050A184 /* trainleftfacing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trainleftfacing.png; path = images/trainleftfacing.png; sourceTree = "<group>"; };
+		D131E5D11EF786830050A184 /* trainright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trainright.png; path = images/trainright.png; sourceTree = "<group>"; };
+		D131E5D21EF786830050A184 /* trainrightfacing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trainrightfacing.png; path = images/trainrightfacing.png; sourceTree = "<group>"; };
+		D131E5D31EF786830050A184 /* wagon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wagon.png; path = images/wagon.png; sourceTree = "<group>"; };
+		D131E5D41EF786830050A184 /* y caboose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "y caboose.png"; path = "images/y caboose.png"; sourceTree = "<group>"; };
+		D1C52BEE1EF5911200115764 /* Deadline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deadline.swift; sourceTree = "<group>"; };
 		D7C5EAB01EEB5C21007DA71A /* KittyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KittyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7C5EAB51EEB5C21007DA71A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -60,18 +79,11 @@
 		D7C5EAD01EEB5C21007DA71A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7C5EAD91EEB638E007DA71A /* TrainTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainTrack.swift; sourceTree = "<group>"; };
 		D7C5EADB1EEB76D7007DA71A /* CommonSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonSpriteNode.swift; sourceTree = "<group>"; };
-		D7C5EADE1EEB9C67007DA71A /* railroad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = railroad.png; sourceTree = "<group>"; };
-		D7C5EAE01EEBF6E9007DA71A /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
 		D7C5EAE21EEBFB03007DA71A /* Grass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grass.swift; sourceTree = "<group>"; };
 		D7C5EAE51EEC07E5007DA71A /* LeftTrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftTrain.swift; sourceTree = "<group>"; };
-		D7C5EAE71EEC0881007DA71A /* trainrightfacing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainrightfacing.png; sourceTree = "<group>"; };
 		D7C5EAE91EEC0993007DA71A /* RightTrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightTrain.swift; sourceTree = "<group>"; };
-		D7C5EAEB1EEC09E1007DA71A /* trainleftfacing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainleftfacing.png; sourceTree = "<group>"; };
 		D7C5EAED1EEC0AC0007DA71A /* Kitty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kitty.swift; sourceTree = "<group>"; };
-		D7C5EAEF1EEC0AE1007DA71A /* kitty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kitty.png; sourceTree = "<group>"; };
-		D7C5EAF31EEE6F12007DA71A /* wagon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wagon.png; sourceTree = "<group>"; };
 		D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		D7C5EAF71EEF435D007DA71A /* trainright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainright.png; sourceTree = "<group>"; };
 		D7C5EAF91EF0F638007DA71A /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		D7C5EAFE1EF24469007DA71A /* KCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCamera.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +135,7 @@
 				D7C5EAB91EEB5C21007DA71A /* GameScene.swift */,
 				D7C5EAFB1EF0FA9E007DA71A /* SceneHelper */,
 				D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */,
+				75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */,
 				D7C5EABD1EEB5C21007DA71A /* Main.storyboard */,
 				D7C5EAC01EEB5C21007DA71A /* Assets.xcassets */,
 				D7C5EAE41EEC058C007DA71A /* Sprites */,
@@ -144,13 +157,17 @@
 		D7C5EADD1EEB9C3A007DA71A /* images */ = {
 			isa = PBXGroup;
 			children = (
-				D7C5EADE1EEB9C67007DA71A /* railroad.png */,
-				D7C5EAE01EEBF6E9007DA71A /* grass.png */,
-				D7C5EAE71EEC0881007DA71A /* trainrightfacing.png */,
-				D7C5EAF31EEE6F12007DA71A /* wagon.png */,
-				D7C5EAF71EEF435D007DA71A /* trainright.png */,
-				D7C5EAEB1EEC09E1007DA71A /* trainleftfacing.png */,
-				D7C5EAEF1EEC0AE1007DA71A /* kitty.png */,
+				D131E5CA1EF786830050A184 /* deadline.png */,
+				D131E5CB1EF786830050A184 /* grass.png */,
+				D131E5CC1EF786830050A184 /* kitty.png */,
+				D131E5CD1EF786830050A184 /* o caboose.png */,
+				D131E5CE1EF786830050A184 /* r caboose.png */,
+				D131E5CF1EF786830050A184 /* railroad.png */,
+				D131E5D01EF786830050A184 /* trainleftfacing.png */,
+				D131E5D11EF786830050A184 /* trainright.png */,
+				D131E5D21EF786830050A184 /* trainrightfacing.png */,
+				D131E5D31EF786830050A184 /* wagon.png */,
+				D131E5D41EF786830050A184 /* y caboose.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -164,6 +181,7 @@
 				D7C5EAE51EEC07E5007DA71A /* LeftTrain.swift */,
 				D7C5EAE91EEC0993007DA71A /* RightTrain.swift */,
 				D7C5EAED1EEC0AC0007DA71A /* Kitty.swift */,
+				D1C52BEE1EF5911200115764 /* Deadline.swift */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -227,7 +245,7 @@
 				TargetAttributes = {
 					D7C5EAAF1EEB5C21007DA71A = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = S36L8PTJAV;
+						DevelopmentTeam = 8GEKYYW3CQ;
 						ProvisioningStyle = Automatic;
 					};
 					D7C5EAC91EEB5C21007DA71A = {
@@ -262,17 +280,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7C5EAF41EEE6F12007DA71A /* wagon.png in Resources */,
-				D7C5EAF81EEF435D007DA71A /* trainright.png in Resources */,
-				D7C5EAE11EEBF6E9007DA71A /* grass.png in Resources */,
-				D7C5EAEC1EEC09E1007DA71A /* trainleftfacing.png in Resources */,
+				D131E5D61EF786830050A184 /* grass.png in Resources */,
+				D131E5D71EF786830050A184 /* kitty.png in Resources */,
+				D131E5DE1EF786830050A184 /* wagon.png in Resources */,
 				D7C5EABF1EEB5C21007DA71A /* Main.storyboard in Resources */,
-				D7C5EAF01EEC0AE1007DA71A /* kitty.png in Resources */,
+				D131E5DC1EF786830050A184 /* trainright.png in Resources */,
+				D131E5DF1EF786830050A184 /* y caboose.png in Resources */,
+				D131E5D81EF786830050A184 /* o caboose.png in Resources */,
+				D131E5D91EF786830050A184 /* r caboose.png in Resources */,
+				D131E5D51EF786830050A184 /* deadline.png in Resources */,
+				D131E5DD1EF786830050A184 /* trainrightfacing.png in Resources */,
 				D7C5EAB61EEB5C21007DA71A /* GameScene.sks in Resources */,
-				D7C5EAE81EEC0881007DA71A /* trainrightfacing.png in Resources */,
+				D131E5DB1EF786830050A184 /* trainleftfacing.png in Resources */,
 				D7C5EAC11EEB5C21007DA71A /* Assets.xcassets in Resources */,
-				D7C5EADF1EEB9C67007DA71A /* railroad.png in Resources */,
 				D7C5EAC41EEB5C21007DA71A /* LaunchScreen.storyboard in Resources */,
+				D131E5DA1EF786830050A184 /* railroad.png in Resources */,
 				D7C5EAB81EEB5C21007DA71A /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,12 +317,14 @@
 				D7C5EADC1EEB76D7007DA71A /* CommonSpriteNode.swift in Sources */,
 				D7C5EABA1EEB5C21007DA71A /* GameScene.swift in Sources */,
 				D7C5EAFA1EF0F638007DA71A /* Label.swift in Sources */,
+				75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */,
 				D7C5EAE31EEBFB03007DA71A /* Grass.swift in Sources */,
 				D7C5EAE61EEC07E5007DA71A /* LeftTrain.swift in Sources */,
 				D7C5EABC1EEB5C21007DA71A /* GameViewController.swift in Sources */,
 				D7C5EADA1EEB638E007DA71A /* TrainTrack.swift in Sources */,
 				D7C5EAB41EEB5C21007DA71A /* AppDelegate.swift in Sources */,
 				D7C5EAEE1EEC0AC0007DA71A /* Kitty.swift in Sources */,
+				D1C52BEF1EF5911200115764 /* Deadline.swift in Sources */,
 				D7C5EAEA1EEC0993007DA71A /* RightTrain.swift in Sources */,
 				D7C5EAF61EEF3ACC007DA71A /* SessionManager.swift in Sources */,
 			);
@@ -442,10 +466,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = S36L8PTJAV;
+				DEVELOPMENT_TEAM = 8GEKYYW3CQ;
 				INFOPLIST_FILE = KittyJump/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "rajeshpeter-gmail.com.KittyJump";
+				PRODUCT_BUNDLE_IDENTIFIER = la.flux.poosCaboose;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -456,10 +480,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = S36L8PTJAV;
+				DEVELOPMENT_TEAM = 8GEKYYW3CQ;
 				INFOPLIST_FILE = KittyJump/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "rajeshpeter-gmail.com.KittyJump";
+				PRODUCT_BUNDLE_IDENTIFIER = la.flux.poosCaboose;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

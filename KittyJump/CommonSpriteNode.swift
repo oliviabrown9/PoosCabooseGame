@@ -15,6 +15,8 @@ let   category_kitty:UInt32  = 0x1 << 4;
 let   category_wagon:UInt32  = 0x1 << 5;
 let   category_border:UInt32  = 0x1 << 6;
 let   category_train:UInt32  = 0x1 << 7;
+let   category_deadline:UInt32  = 0x1 << 8;
+
 
 
 
