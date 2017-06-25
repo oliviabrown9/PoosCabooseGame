@@ -16,6 +16,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var pastScoreArray = [Int]()
     
+    var trainBeforeJump: String?
+    
     // MARK: Postion variable
     var isStart = false
     let trainYpostion: CGFloat = -600.0
@@ -126,7 +128,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func switchJoint(iWagon :RightTrain )  {
         
-        if let trainBeforeJump  = joint1.bodyA.node , let jointN = joint1 {
+        if let jointN = joint1 {
        
         self.physicsWorld.remove(jointN)
         
@@ -144,8 +146,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func switchJointL(iWagon :LeftTrain )  {
-        
-        let trainBeforeJump  = joint1.bodyA.node
         
         self.physicsWorld.removeAllJoints()
         
@@ -306,7 +306,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupFirstSixRightAndLeftTrains() {
-        let trackHeight = TrainTrack.getHeight()
         
         for i in 0..<3{
             let rightTrain = RightTrain()

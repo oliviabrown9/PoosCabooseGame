@@ -51,7 +51,7 @@ class GameOverViewController: UIViewController {
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        let tappedImage = tapGestureRecognizer.view as! UIImageView
+//        let tappedImage = tapGestureRecognizer.view as! UIImageView
         
         // Segues to start screen - maybe a way to automatically start?
         performSegue(withIdentifier: "toGame", sender: self)
