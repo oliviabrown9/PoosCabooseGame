@@ -45,7 +45,6 @@ class GameViewController: UIViewController {
         homeView.presentScene(scene)
         homeView.ignoresSiblingOrder = true
     }
-    
     override var prefersStatusBarHidden: Bool {
         return true
     }

@@ -52,6 +52,7 @@ class GameOverViewController: UIViewController {
     }
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        
+        performSegue(withIdentifier: "toGame", sender: self)
     }
 }

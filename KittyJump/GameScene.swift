@@ -157,7 +157,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // MARK: Touches
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func  touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if kittyCurrentState == .onTrain{
             self.physicsWorld.removeAllJoints()
             kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
