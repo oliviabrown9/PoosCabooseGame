@@ -116,6 +116,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         kitty.position.x  = rightTrainArray[0].frame.minX + kitty.size.width / 2
         kitty.position.y  = rightTrainArray[0].frame.maxY
         
+        print("\(kitty.position.y)")
+        
         self.addChild(kitty)
         
         joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody! , bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
