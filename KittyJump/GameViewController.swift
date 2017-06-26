@@ -15,17 +15,24 @@ class GameViewController: UIViewController {
     var scene = GameScene()
     
     @IBOutlet weak var startBackground: UIView!
+    @IBOutlet weak var startButton: UIButton!
     
     @IBAction func startGame(_ sender: Any) {
-        let startButton = sender as? UIButton
+        genericStartGame()
+    }
+    
+    func genericStartGame () {
         startButton?.isEnabled = false
         startButton?.isHidden = true
         startBackground?.isHidden = true
         
-        scene.isStart = true
         scene.scaleMode = .aspectFill
+        scene.isStart = true
         homeView.presentScene(scene)
+        homeView.ignoresSiblingOrder = true
+        self.view.gestureRecognizers?.removeAll()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +51,10 @@ class GameViewController: UIViewController {
         scene.viewController = self
         homeView.presentScene(scene)
         homeView.ignoresSiblingOrder = true
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameViewController.genericStartGame))
+        
+        view.addGestureRecognizer(tap)
     }
     
     override var shouldAutorotate: Bool {

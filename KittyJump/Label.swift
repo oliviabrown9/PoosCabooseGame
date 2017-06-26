@@ -21,8 +21,8 @@ class Label: SKLabelNode {
    
         scoreLabel = SKLabelNode(fontNamed: "Avenir")
         scoreLabel.zPosition = 4
-         scoreLabel.fontSize=250
-        scoreLabel.fontColor=UIColor.white
+         scoreLabel.fontSize = 250
+        scoreLabel.fontColor = UIColor.white
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
     }
@@ -32,8 +32,8 @@ class Label: SKLabelNode {
         scoreLabelHelper = SKLabelNode(fontNamed: "Avenir")
         scoreLabelHelper.zPosition = 4
         scoreLabelHelper.text = "Current Score"
-        scoreLabelHelper.fontSize=30
-        scoreLabelHelper.fontColor=UIColor.white
+        scoreLabelHelper.fontSize = 30
+        scoreLabelHelper.fontColor = UIColor.white
         scoreLabelHelper.horizontalAlignmentMode = .center
         scoreLabelHelper.verticalAlignmentMode = .center
          
@@ -43,10 +43,10 @@ class Label: SKLabelNode {
         
         highScoreLabel = SKLabelNode(fontNamed: "Avenir")
         highScoreLabel.zPosition = 4
-        highScoreLabel.text = "High Score : \(SharingManager.sharedInstance.highScore)"
+        highScoreLabel.text = "High Score: \(SharingManager.sharedInstance.highScore)"
         highScoreLabel.fontSize = 30
         highScoreLabel.fontColor = UIColor.yellow
         highScoreLabel.horizontalAlignmentMode = .right
-        highScoreLabel.verticalAlignmentMode =  .center
+        highScoreLabel.verticalAlignmentMode = .center
     }
  }

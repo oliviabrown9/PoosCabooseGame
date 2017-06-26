@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "grass.png",
+      "filename" : "r caboose.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "grass-1.png",
       "scale" : "2x"
     },
     {

@@ -33,6 +33,7 @@ class GameOverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         startOver.isUserInteractionEnabled = true
         startOver.addGestureRecognizer(tapGestureRecognizer)
