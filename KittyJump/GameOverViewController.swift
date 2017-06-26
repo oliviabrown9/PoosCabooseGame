@@ -49,11 +49,9 @@ class GameOverViewController: UIViewController {
         nine.text = "\(lastNineScores[8])"
     }
     
-    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-//        let tappedImage = tapGestureRecognizer.view as! UIImageView
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         
-        // Segues to start screen - maybe a way to automatically start?
+        // Segues to start screen
         performSegue(withIdentifier: "toGame", sender: self)
         }
 }

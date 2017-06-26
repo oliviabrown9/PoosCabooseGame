@@ -14,7 +14,6 @@ class KCamera: SKCameraNode {
     public var kitty : SKSpriteNode!
 
       func createCamera(kitty:Kitty ,frameMax:CGFloat )  {
-        
          
         let horizConstraint = SKConstraint.distance(SKRange(upperLimit: 0), to: kitty)
         let vertConstraint = SKConstraint.distance(SKRange(upperLimit: 0), to: kitty)
@@ -25,6 +24,4 @@ class KCamera: SKCameraNode {
 
         constraints = [horizConstraint, vertConstraint, leftConstraint , bottomConstraint, rightConstraint,topConstraint]
     }
-    
-
 }

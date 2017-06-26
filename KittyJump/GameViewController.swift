@@ -34,10 +34,10 @@ class GameViewController: UIViewController {
         
         homeView = self.view as! SKView
         
-        // Load the SKScene from 'GameScene.sks'
+        // Load SKScene
         scene = GameScene(fileNamed: "GameScene")!
         
-        // Set the scale mode to scale to fit the window
+        // Set the scale mode to fit the window
         scene.scaleMode = .aspectFill
         
         // Present the scene

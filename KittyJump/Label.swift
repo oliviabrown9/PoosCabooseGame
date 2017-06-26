@@ -19,7 +19,7 @@ class Label: SKLabelNode {
     
     static func createScoreTitle()  {
    
-        scoreLabel = SKLabelNode(fontNamed: "Arial")
+        scoreLabel = SKLabelNode(fontNamed: "Avenir")
         scoreLabel.zPosition = 4
          scoreLabel.fontSize=250
         scoreLabel.fontColor=UIColor.white
@@ -29,7 +29,7 @@ class Label: SKLabelNode {
     
     static func createScoreHelper() {
         
-        scoreLabelHelper = SKLabelNode(fontNamed: "Arial")
+        scoreLabelHelper = SKLabelNode(fontNamed: "Avenir")
         scoreLabelHelper.zPosition = 4
         scoreLabelHelper.text = "Current Score"
         scoreLabelHelper.fontSize=30
