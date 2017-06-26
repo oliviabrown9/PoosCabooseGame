@@ -11,7 +11,7 @@ import SpriteKit
 import GameplayKit
 
 class GameOverViewController: UIViewController {
-
+    
     var homeView = SKView()
     var scene = GameScene()
     
@@ -28,7 +28,7 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var seven: UILabel!
     @IBOutlet weak var eight: UILabel!
     @IBOutlet weak var nine: UILabel!
-
+    
     @IBOutlet weak var startOver: UIImageView!
     
     override func viewDidLoad() {
@@ -38,6 +38,7 @@ class GameOverViewController: UIViewController {
         startOver.isUserInteractionEnabled = true
         startOver.addGestureRecognizer(tapGestureRecognizer)
         
+        // Setting text of labels to stored value
         mostRecentScore.text = "\(lastNineScores[0])"
         one.text = "\(lastNineScores[0])"
         two.text = "\(lastNineScores[1])"
@@ -51,8 +52,6 @@ class GameOverViewController: UIViewController {
     }
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        
-        // Segues to start screen
         performSegue(withIdentifier: "toGame", sender: self)
-        }
+    }
 }

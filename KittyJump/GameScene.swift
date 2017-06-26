@@ -251,7 +251,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func getTrainTrackPosition( row:Int) -> CGPoint {
         let x = self.frame.minX
-        let y = trainYpostion  + trainDiffpostion * CGFloat(row)
+        let y = trainYpostion + trainDiffpostion * CGFloat(row)
         return CGPoint(x: x, y: y)
     }
     
