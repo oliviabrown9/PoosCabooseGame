@@ -41,8 +41,6 @@
 		D7C5EAC01EEB5C21007DA71A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7C5EAC31EEB5C21007DA71A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7C5EAC51EEB5C21007DA71A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7C5EACE1EEB5C21007DA71A /* KittyJumpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KittyJumpTests.swift; sourceTree = "<group>"; };
-		D7C5EAD01EEB5C21007DA71A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7C5EAD91EEB638E007DA71A /* TrainTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainTrack.swift; sourceTree = "<group>"; };
 		D7C5EADB1EEB76D7007DA71A /* CommonSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonSpriteNode.swift; sourceTree = "<group>"; };
 		D7C5EAE21EEBFB03007DA71A /* Grass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grass.swift; sourceTree = "<group>"; };
@@ -69,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				D7C5EAB21EEB5C21007DA71A /* KittyJump */,
-				D7C5EACD1EEB5C21007DA71A /* KittyJumpTests */,
 				D7C5EAB11EEB5C21007DA71A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,15 +97,6 @@
 				D7C5EAC51EEB5C21007DA71A /* Info.plist */,
 			);
 			path = KittyJump;
-			sourceTree = "<group>";
-		};
-		D7C5EACD1EEB5C21007DA71A /* KittyJumpTests */ = {
-			isa = PBXGroup;
-			children = (
-				D7C5EACE1EEB5C21007DA71A /* KittyJumpTests.swift */,
-				D7C5EAD01EEB5C21007DA71A /* Info.plist */,
-			);
-			path = KittyJumpTests;
 			sourceTree = "<group>";
 		};
 		D7C5EAE41EEC058C007DA71A /* Sprites */ = {

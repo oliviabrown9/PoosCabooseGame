@@ -16,19 +16,16 @@ class Label: SKLabelNode {
     static var highScoreLabel = SKLabelNode()
     static var scoreLabelHelper = SKLabelNode()
     
-    
     static func createScoreTitle()  {
-   
         scoreLabel = SKLabelNode(fontNamed: "Avenir")
         scoreLabel.zPosition = 4
-         scoreLabel.fontSize = 250
+        scoreLabel.fontSize = 250
         scoreLabel.fontColor = UIColor.white
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
     }
     
     static func createScoreHelper() {
-        
         scoreLabelHelper = SKLabelNode(fontNamed: "Avenir")
         scoreLabelHelper.zPosition = 4
         scoreLabelHelper.text = "Current Score"
@@ -36,11 +33,9 @@ class Label: SKLabelNode {
         scoreLabelHelper.fontColor = UIColor.white
         scoreLabelHelper.horizontalAlignmentMode = .center
         scoreLabelHelper.verticalAlignmentMode = .center
-         
     }
     
     static func createHighScore()  {
-        
         highScoreLabel = SKLabelNode(fontNamed: "Avenir")
         highScoreLabel.zPosition = 4
         highScoreLabel.text = "High Score: \(SharingManager.sharedInstance.highScore)"
