@@ -52,6 +52,7 @@ class GameOverViewController: UIViewController {
     }
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        
         performSegue(withIdentifier: "toGame", sender: self)
     }
 }

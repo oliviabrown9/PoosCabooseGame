@@ -116,8 +116,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         kitty.position.x  = rightTrainArray[0].frame.minX + kitty.size.width / 2
         kitty.position.y  = rightTrainArray[0].frame.maxY
         
-        print("\(kitty.position.y)")
-        
         self.addChild(kitty)
         
         joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody! , bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
@@ -200,12 +198,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createHud()  {
         let hud = SKSpriteNode(color: UIColor.init(red: 0.1, green: 0.5, blue: 0.9, alpha: 0), size: CGSize(width: self.frame.width, height: trainDiffpostion * 2
         ))
-        hud.anchorPoint=CGPoint(x:0.5, y:0.5)
-        hud.position = CGPoint(x:0 , y:self.size.height/2  - hud.size.height/2)
-        hud.zPosition=4
+        hud.anchorPoint = CGPoint(x:0.5, y:0.5)
+        hud.position = CGPoint(x:0 , y:self.size.height/2 - hud.size.height/2)
+        hud.zPosition = 4
         scoreLabel = SKLabelNode(fontNamed: "Avenir")
         scoreLabel.zPosition = 1
-        scoreLabel.fontSize=250
+        scoreLabel.fontSize = 250
         scoreLabel.text = "0"
         
         scoreLabel.fontColor=UIColor.white
@@ -622,7 +620,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func showStop(reason:String) {
         
-        if score >  SharingManager.sharedInstance.highScore {
+        if score > SharingManager.sharedInstance.highScore {
             SharingManager.sharedInstance.highScore = score
         }
         

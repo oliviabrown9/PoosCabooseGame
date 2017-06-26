@@ -27,7 +27,6 @@ class GameViewController: UIViewController {
         homeView.presentScene(scene)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
