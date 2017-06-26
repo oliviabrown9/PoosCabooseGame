@@ -41,9 +41,9 @@ class Kitty : SKSpriteNode{
         physicsBody!.restitution = 0
         physicsBody!.pinned = false
 
-        physicsBody!.categoryBitMask = category_kitty
-        physicsBody!.contactTestBitMask =   category_border | categoryTrain | category_wagon | category_deadline
-        physicsBody!.collisionBitMask =  category_border  | categoryTrain | category_wagon | category_deadline
+        physicsBody!.categoryBitMask = categoryKitty
+        physicsBody!.contactTestBitMask =   categoryBorder | categoryTrain | categoryWagon | categoryDeadline
+        physicsBody!.collisionBitMask =  categoryBorder  | categoryTrain | categoryWagon | categoryDeadline
         physicsBody!.usesPreciseCollisionDetection = true
  
         physicsBody!.isDynamic = true

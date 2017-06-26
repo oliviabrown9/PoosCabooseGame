@@ -39,8 +39,8 @@ class TrainTrack : SKSpriteNode{
             physicsBody!.allowsRotation = false
             physicsBody!.linearDamping = 0
             physicsBody!.restitution = 0
-            physicsBody!.categoryBitMask = category_track
-            physicsBody!.collisionBitMask = categoryTrain | category_wagon
+            physicsBody!.categoryBitMask = categoryTrack
+            physicsBody!.collisionBitMask = categoryTrain | categoryWagon
             physicsBody!.usesPreciseCollisionDetection = true
             physicsBody!.isDynamic = false
             physicsBody!.affectedByGravity = false

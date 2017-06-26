@@ -93,14 +93,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -1)
         
         let borderBody = SKPhysicsBody(edgeLoopFrom:
-            CGRect(
-                x:self.frame.minX,
-                y:self.frame.minY,
-                width:self.frame.width,
-                height:self.frame.height * 10))
+            CGRect(x:self.frame.minX, y:self.frame.minY, width:self.frame.width, height:self.frame.height * 10))
         borderBody.friction = 0
         self.physicsBody = borderBody
-        self.physicsBody?.categoryBitMask = category_border
+        self.physicsBody?.categoryBitMask = categoryBorder
         
         beforeColorIndex = [0, 1, 2].randomItem()
         
@@ -125,7 +121,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: Movement
     
     // Called when a touch begins
-    func switchJoint(iWagon :RightTrain )  {
+    func switchJoint(iWagon: RightTrain )  {
         
         if let jointN = joint1 {
             
@@ -144,7 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func switchJointL(iWagon :LeftTrain )  {
+    func switchJointL(iWagon: LeftTrain ) {
         
         self.physicsWorld.removeAllJoints()
         
@@ -153,7 +149,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             kitty.position.x  = iWagon.frame.maxX - kitty.size.width / 2
             kitty.position.y  = iWagon.frame.maxY
             
-            joint1 = SKPhysicsJointPin.joint(withBodyA: wagonPhysicBody , bodyB: kittyPhysicBody, anchor: CGPoint(x: iWagon.frame.midX, y: iWagon.frame.midY))
+            joint1 = SKPhysicsJointPin.joint(withBodyA: wagonPhysicBody, bodyB: kittyPhysicBody, anchor: CGPoint(x: iWagon.frame.midX, y: iWagon.frame.midY))
             self.physicsWorld.add(joint1)
             score = score + 1
             kittyCurrentState = .onTrain
@@ -173,7 +169,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (location.x < (train.frame.minX + 100)) {
             
             switchJoint(iWagon:train)
-            if (train.name == "rightTrain3"){
+            if (train.name == "rightTrain3") {
                 showStop(reason : "GameOver!")
             }
         }
@@ -196,8 +192,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: HUD
     func createHud()  {
-        let hud = SKSpriteNode(color: UIColor.init(red: 0.1, green: 0.5, blue: 0.9, alpha: 0), size: CGSize(width: self.frame.width, height: trainDiffpostion * 2
-        ))
+        let hud = SKSpriteNode(color: UIColor.init(red: 0.1, green: 0.5, blue: 0.9, alpha: 0), size: CGSize(width: self.frame.width, height: trainDiffpostion * 2))
         hud.anchorPoint = CGPoint(x:0.5, y:0.5)
         hud.position = CGPoint(x:0 , y:self.size.height/2 - hud.size.height/2)
         hud.zPosition = 4
@@ -216,7 +211,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Label.createScoreHelper()
         Label.scoreLabelHelper.position = CGPoint(x: self.frame.midX, y: -(hud.size.height/2)+60)
         hud.addChild(Label.scoreLabelHelper)
-        
         
         Label.createHighScore()
         Label.highScoreLabel.position = CGPoint(x: self.frame.maxX - 30 , y: 90)
@@ -268,16 +262,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func getGrassPosition( row:Int) -> CGPoint{
         
         let x = self.frame.minX
-        let y = trainYpostion  + trainDiffpostion * CGFloat(row)  + TrainTrack.getHeight()
+        let y = trainYpostion + trainDiffpostion * CGFloat(row) + TrainTrack.getHeight()
         return CGPoint(x: x, y: y)
     }
     
-    func deadlineSetup(){
+    func deadlineSetup() {
         deadline.position = getDeadlinePosition(posY: newDeadlinePosY)
         self.addChild(deadline)
     }
     
-    func getDeadlinePosition(posY: CGFloat) -> CGPoint{
+    func getDeadlinePosition(posY: CGFloat) -> CGPoint {
         let x = self.frame.minX
         return CGPoint(x: x, y: posY)
     }
@@ -285,14 +279,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func rightTrainSetup() {
         let  htrainWidth = rightTrain1.size.width
         let  trackHeight = TrainTrack.getHeight()
-        
         rightTrain1.position = CGPoint(x: self.frame.minX + (htrainWidth-200) , y:trainTrackArray[0].position.y  + trackHeight )
         rightTrain1.name = "rightTrain1"
         self.addChild(rightTrain1)
     }
     
-    func leftTrainSetup()  {
-        
+    func leftTrainSetup() {
         leftTrain1.position = CGPoint(x: self.frame.maxX + leftTrain1.size.width/2 , y:trainTrackArray[1].position.y + TrainTrack.getHeight())
         leftTrain1.name = "leftTrain1"
         self.addChild(leftTrain1)
@@ -314,8 +306,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             newTrainPosY += trainDiffpostion
             
             let leftTrain = LeftTrain()
-            leftTrain.position = CGPoint(x:self.frame.maxX + leftTrain.size.width/2,
-                                         y:-1000)
+            leftTrain.position = CGPoint(x:self.frame.maxX + leftTrain.size.width/2, y:-1000)
             leftTrain.name = "left" + String(i)
             
             wagon = selectColorImage(rightSide: false)
@@ -335,6 +326,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 restColorIndices.append(i)
             }
         }
+        
         beforeColorIndex = restColorIndices.randomItem()
         
         // Get color image
@@ -356,7 +348,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let yPos = rightTrain.size.height/2
         let size = CGSize(width: 110, height: 45)
         wagon.scale(to: size)
-        if rightSide{
+        if rightSide {
             wagon.anchorPoint = CGPoint(x:0, y:0)
             wagon.position = CGPoint(x: -xPos, y: -yPos)
         } else {
@@ -369,17 +361,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: Set the train on motion
     
-    func moveRightWagon(irWagon:RightTrain, itrack:TrainTrack)  {
+    func moveRightWagon(irWagon:RightTrain, itrack:TrainTrack) {
         
         let yPostionC :CGFloat = itrack.position.y + itrack.size.height + irWagon.size.height/2
         let path = CGMutablePath()
         
-        if  irWagon.name == "rightTrain1"{
+        if  irWagon.name == "rightTrain1" {
             path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - 200, y: yPostionC))
         }
         else {
             path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - 300, y: yPostionC))
         }
+        
         path.addLine(to: CGPoint(x: self.frame.size.width , y: yPostionC))
         
         let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 10, upper: 11)))
@@ -470,14 +463,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
-        if (firstBody.categoryBitMask == category_kitty && secondBody.categoryBitMask == category_border) || (firstBody.categoryBitMask == category_kitty && secondBody.categoryBitMask == category_deadline) {
+        if (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryBorder) || (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryDeadline) {
             showStop(reason:"Game Over!")
         }
         
         // Handles left train & creates a right train (first call)
         if kittyPostion == .RightTrain {
             
-            if firstBody.categoryBitMask == category_kitty && secondBody.categoryBitMask == categoryTrain {
+            if firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryTrain {
                 
                 if (contact.contactPoint.x > (secondBody.node!.frame.maxX - 100)) {
                     switchJointL(iWagon:secondBody.node! as! LeftTrain)
@@ -500,7 +493,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Handles right train and creates a left train - first call
         if kittyPostion == .LeftTrain {
-            if firstBody.categoryBitMask == category_kitty && secondBody.categoryBitMask == category_wagon {
+            if firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryWagon {
                 
                 if (contact.contactPoint.x < (secondBody.node!.frame.minX + 100)) {
                     

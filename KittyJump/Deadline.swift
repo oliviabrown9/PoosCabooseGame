@@ -39,8 +39,8 @@ class Deadline : SKSpriteNode{
         physicsBody!.allowsRotation = false
         physicsBody!.linearDamping = 0
         physicsBody!.restitution = 0
-        physicsBody!.categoryBitMask = category_deadline
-        physicsBody!.collisionBitMask = category_kitty
+        physicsBody!.categoryBitMask = categoryDeadline
+        physicsBody!.collisionBitMask = categoryKitty
         physicsBody!.usesPreciseCollisionDetection = true
         physicsBody!.isDynamic = false
         physicsBody!.affectedByGravity = false

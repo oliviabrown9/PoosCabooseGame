@@ -56,8 +56,8 @@ class LeftTrain : SKSpriteNode{
         physicsBody!.restitution = 0
         physicsBody!.affectedByGravity = true
         physicsBody!.categoryBitMask = categoryTrain
-        physicsBody!.collisionBitMask = category_kitty | category_track
-        physicsBody!.contactTestBitMask = category_kitty
+        physicsBody!.collisionBitMask = categoryKitty | categoryTrack
+        physicsBody!.contactTestBitMask = categoryKitty
         
         physicsBody!.usesPreciseCollisionDetection = false
         physicsBody!.isDynamic = true

@@ -9,13 +9,12 @@
 import SpriteKit
 
 
-let   category_track:UInt32  = 0x1 << 1;
-let   category_trees:UInt32  = 0x1 << 3;
-let   category_kitty:UInt32  = 0x1 << 4;
-let   category_wagon:UInt32  = 0x1 << 5;
-let   category_border:UInt32  = 0x1 << 6;
+let   categoryTrack:UInt32  = 0x1 << 1;
+let   categoryKitty:UInt32  = 0x1 << 4;
+let   categoryWagon:UInt32  = 0x1 << 5;
+let   categoryBorder:UInt32  = 0x1 << 6;
 let   categoryTrain:UInt32  = 0x1 << 7;
-let   category_deadline:UInt32  = 0x1 << 8;
+let   categoryDeadline:UInt32  = 0x1 << 8;
 
 
 
