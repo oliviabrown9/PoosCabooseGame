@@ -61,7 +61,6 @@
                     </view>
                     <connections>
                         <outlet property="startBackground" destination="CaN-ce-hrA" id="SWs-9e-KKl"/>
-                        <outlet property="startButton" destination="jCz-KS-ByN" id="8su-AW-kky"/>
                         <segue destination="doZ-1J-RsL" kind="show" identifier="toGameOver" id="5ND-GG-Cqs"/>
                     </connections>
                 </viewController>
