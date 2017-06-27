@@ -7,48 +7,27 @@
 //
 
 import UIKit
-import Gifu
 
 class SplashViewController: UIViewController {
     
     @IBOutlet var gifImageView: UIImageView!
+    var animateComplete: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let gif = UIImage.gifImageWithName(name: "sample")
+        let imageView = UIImageView(image: gif)
+        imageView.frame = CGRect(x: 20.0, y: 50.0, width: self.view.frame.size.width - 40, height: 150.0)
+        view.addSubview(imageView)
+    }
 
-        gifImageView.animate(withGIFNamed: "sample", loopCount: 1)
-        
-        let hasItStopped = gifImageView.isAnimating
-        
-        if hasItStopped == false {
-            performSegue(withIdentifier: "toStart", sender: self)
-        }
-        else {
-            }
-        }
-    }
-extension UIImageView: GIFAnimatable {
-    
-    private struct AssociatedKeys {
-        static var AnimatorKey = "gifu.animator.key"
-    }
-    
-    override open func display(_ layer: CALayer) {
-        updateImageIfNeeded()
-    }
-    
-    public var animator: Animator? {
-        get {
-            guard let animator = objc_getAssociatedObject(self, &AssociatedKeys.AnimatorKey) as? Animator else {
-                let animator = Animator(withDelegate: self)
-                self.animator = animator
-                return animator
-            }
-            
-            return animator
-        }
-        
-        set {
-            objc_setAssociatedObject(self, &AssociatedKeys.AnimatorKey, newValue as Animator?, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-    }
+
+//        if gifImageView.isAnimatingGIF == false {
+//            DispatchQueue.main.async(execute: {
+//                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//                let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController")
+//                self.show(vc, sender: self)
+//            })
+//        }
 }

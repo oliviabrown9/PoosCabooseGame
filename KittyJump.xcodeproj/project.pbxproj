@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		742B229AFCD05EC9C33F8B35 /* Pods_KittyJump.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E0CEDFF2FBD96AB50BDE15 /* Pods_KittyJump.framework */; };
 		7533A8AD1F02E5050049C2FB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7533A8AC1F02E5050049C2FB /* SplashViewController.swift */; };
-		755A24C41F02E8F80096B11A /* sample.gif in Resources */ = {isa = PBXBuildFile; fileRef = 755A24C31F02E8F80096B11A /* sample.gif */; };
+		753E183D1F02F49800F84909 /* sample.gif in Resources */ = {isa = PBXBuildFile; fileRef = 753E183C1F02F49800F84909 /* sample.gif */; };
 		75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */; };
 		D1C52BEF1EF5911200115764 /* Deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C52BEE1EF5911200115764 /* Deadline.swift */; };
 		D7C5EAB41EEB5C21007DA71A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */; };
@@ -32,11 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		05E0CEDFF2FBD96AB50BDE15 /* Pods_KittyJump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KittyJump.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E3A438FF2F0DB40103B71C1 /* Pods-KittyJump.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KittyJump.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KittyJump/Pods-KittyJump.debug.xcconfig"; sourceTree = "<group>"; };
-		5FCFFE497760030A128DB50E /* Pods-KittyJump.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KittyJump.release.xcconfig"; path = "Pods/Target Support Files/Pods-KittyJump/Pods-KittyJump.release.xcconfig"; sourceTree = "<group>"; };
 		7533A8AC1F02E5050049C2FB /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		755A24C31F02E8F80096B11A /* sample.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sample.gif; sourceTree = "<group>"; };
+		753E183C1F02F49800F84909 /* sample.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sample.gif; sourceTree = "<group>"; };
 		75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		D1C52BEE1EF5911200115764 /* Deadline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deadline.swift; sourceTree = "<group>"; };
 		D7C5EAB01EEB5C21007DA71A /* KittyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KittyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,28 +61,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				742B229AFCD05EC9C33F8B35 /* Pods_KittyJump.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6F91C4CA21A3CA34BE3FDC03 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				05E0CEDFF2FBD96AB50BDE15 /* Pods_KittyJump.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		D7C5EAA71EEB5C21007DA71A = {
 			isa = PBXGroup;
 			children = (
 				D7C5EAB21EEB5C21007DA71A /* KittyJump */,
 				D7C5EAB11EEB5C21007DA71A /* Products */,
-				E0FF6F922E2D885658CE25EF /* Pods */,
-				6F91C4CA21A3CA34BE3FDC03 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,17 +86,17 @@
 		D7C5EAB21EEB5C21007DA71A /* KittyJump */ = {
 			isa = PBXGroup;
 			children = (
-				755A24C31F02E8F80096B11A /* sample.gif */,
 				D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */,
 				D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */,
+				753E183C1F02F49800F84909 /* sample.gif */,
 				D7C5EAB51EEB5C21007DA71A /* GameScene.sks */,
 				D7C5EAB71EEB5C21007DA71A /* Actions.sks */,
 				D7C5EAB91EEB5C21007DA71A /* GameScene.swift */,
 				D7C5EAFB1EF0FA9E007DA71A /* SceneHelper */,
+				7533A8AC1F02E5050049C2FB /* SplashViewController.swift */,
 				D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */,
 				75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */,
 				D7C5EABD1EEB5C21007DA71A /* Main.storyboard */,
-				7533A8AC1F02E5050049C2FB /* SplashViewController.swift */,
 				D7C5EAC01EEB5C21007DA71A /* Assets.xcassets */,
 				D7C5EAE41EEC058C007DA71A /* Sprites */,
 				D7C5EAC21EEB5C21007DA71A /* LaunchScreen.storyboard */,
@@ -141,15 +126,6 @@
 				D7C5EAFE1EF24469007DA71A /* KCamera.swift */,
 			);
 			name = SceneHelper;
-			sourceTree = "<group>";
-		};
-		E0FF6F922E2D885658CE25EF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4E3A438FF2F0DB40103B71C1 /* Pods-KittyJump.debug.xcconfig */,
-				5FCFFE497760030A128DB50E /* Pods-KittyJump.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,7 +195,7 @@
 				D7C5EAB61EEB5C21007DA71A /* GameScene.sks in Resources */,
 				D7C5EAC11EEB5C21007DA71A /* Assets.xcassets in Resources */,
 				D7C5EAC41EEB5C21007DA71A /* LaunchScreen.storyboard in Resources */,
-				755A24C41F02E8F80096B11A /* sample.gif in Resources */,
+				753E183D1F02F49800F84909 /* sample.gif in Resources */,
 				D7C5EAB81EEB5C21007DA71A /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,7 +390,6 @@
 		};
 		D7C5EAD41EEB5C21007DA71A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E3A438FF2F0DB40103B71C1 /* Pods-KittyJump.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -430,7 +405,6 @@
 		};
 		D7C5EAD51EEB5C21007DA71A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FCFFE497760030A128DB50E /* Pods-KittyJump.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

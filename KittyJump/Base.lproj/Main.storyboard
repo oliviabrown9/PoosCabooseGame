@@ -20,17 +20,17 @@
                     </imageView>
                     <connections>
                         <outlet property="gifImageView" destination="Fei-sO-NkU" id="1PM-B0-Yj9"/>
-                        <segue destination="BV1-FR-VrT" kind="show" identifier="toStart" id="HjH-Yi-fGG"/>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="toStart" id="dlM-JT-VR3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMY-Zo-DMP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-943" y="139"/>
+            <point key="canvasLocation" x="-1191" y="139"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="KittyJump" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" id="BV1-FR-VrT" customClass="GameViewController" customModule="KittyJump" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8aa-yV-Osq"/>
                         <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
