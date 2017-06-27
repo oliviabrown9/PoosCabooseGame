@@ -31,17 +31,17 @@ class SharingManager {
     static let sharedInstance = SharingManager()
     
     private init() {
-        let _highScore = userDefaults.integer(forKey: "HighScore")
-        if _highScore != 0 {
-            highScore = _highScore
+        let storedHighScore = userDefaults.integer(forKey: "HighScore")
+        if storedHighScore != 0 {
+            highScore = storedHighScore
         }
         else {
             userDefaults.set(highScore, forKey: "HighScore")
         }
         
-        let _lastScores = userDefaults.array(forKey: "LastScores") as? [Int]
-        if _lastScores != nil {
-            lastScores = _lastScores!
+        let storedLastScores = userDefaults.array(forKey: "LastScores") as? [Int]
+        if storedLastScores != nil {
+            lastScores = storedLastScores!
         }
         else {
             userDefaults.set(lastScores, forKey: "LastScores")

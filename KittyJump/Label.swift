@@ -16,6 +16,7 @@ class Label: SKLabelNode {
     static var highScoreLabel = SKLabelNode()
     static var scoreLabelHelper = SKLabelNode()
     
+    // Score number label
     static func createScoreTitle()  {
         scoreLabel = SKLabelNode(fontNamed: "Avenir")
         scoreLabel.zPosition = 4
@@ -25,6 +26,7 @@ class Label: SKLabelNode {
         scoreLabel.verticalAlignmentMode = .center
     }
     
+    // Current Score text label
     static func createScoreHelper() {
         scoreLabelHelper = SKLabelNode(fontNamed: "Avenir")
         scoreLabelHelper.zPosition = 4
@@ -35,6 +37,7 @@ class Label: SKLabelNode {
         scoreLabelHelper.verticalAlignmentMode = .center
     }
     
+    // High score text & number label
     static func createHighScore()  {
         highScoreLabel = SKLabelNode(fontNamed: "Avenir")
         highScoreLabel.zPosition = 4

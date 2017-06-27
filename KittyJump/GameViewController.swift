@@ -11,10 +11,13 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    
+    // Variables to run game
     var homeView = SKView()
     var scene = GameScene()
     var isReplayGame = false
     
+    // Variables for start scree
     @IBOutlet weak var startBackground: UIView!
     
     @IBOutlet weak var startButton: UIButton!
@@ -22,6 +25,7 @@ class GameViewController: UIViewController {
         startGameScreen()
     }
     
+    // Unwind segue
     @IBAction func unwindToHomeView(sender: UIStoryboardSegue) {
         if isReplayGame {
             viewDidLoad()
@@ -34,6 +38,7 @@ class GameViewController: UIViewController {
         initView()
     }
     
+    // Initial screen
     func initView(){
         startBackground.backgroundColor = UIColor(red:0.16, green:0.50, blue:0.73, alpha:0.7)
         
@@ -51,7 +56,7 @@ class GameViewController: UIViewController {
         homeView.ignoresSiblingOrder = true
     }
     
-    
+    // Transition from start to game
     func startGameScreen(){
         startButton?.isEnabled = false
         startButton?.isHidden = true
@@ -67,19 +72,8 @@ class GameViewController: UIViewController {
         homeView.presentScene(scene)
         homeView.ignoresSiblingOrder = true
     }
-    override var shouldAutorotate: Bool {
-        return true
-    }
     
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        }
-        else {
-            return .all
-        }
-    }
-    
+    // Hide status bar
     override var prefersStatusBarHidden: Bool {
         return true
     }

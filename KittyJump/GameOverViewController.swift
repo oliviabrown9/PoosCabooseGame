@@ -12,9 +12,7 @@ import GameplayKit
 
 class GameOverViewController: UIViewController {
     
-    var homeView = SKView()
-    var scene = GameScene()
-    
+    // Variables for changing label text
     var lastNineScores = SharingManager.sharedInstance.lastScores
     let highScore = SharingManager.sharedInstance.highScore
     
@@ -29,6 +27,7 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var eight: UILabel!
     @IBOutlet weak var nine: UILabel!
     
+    // Start over image
     @IBOutlet weak var startOver: UIImageView!
     
     override func viewDidLoad() {
@@ -47,17 +46,20 @@ class GameOverViewController: UIViewController {
         nine.text = "\(lastNineScores[8])"
     }
 
+    // Recognize if startOver image is tapped
     override func viewDidAppear(_ animated: Bool) {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         startOver.isUserInteractionEnabled = true
         startOver.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    // Unwind segue back to gameView
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         performSegue(withIdentifier: "unwindToHomeView", sender: self)
     }
     
+    // Replay game with unwind segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindToHomeView" {
             if let gameViewController = segue.destination as? GameViewController {
