@@ -1,0 +1,6 @@
+framework module Pods_KittyJump {
+  umbrella header "Pods-KittyJump-umbrella.h"
+
+  export *
+  module * { export * }
+}
