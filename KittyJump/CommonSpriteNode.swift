@@ -8,10 +8,9 @@
 
 import SpriteKit
 
-
-let categoryTrack:UInt32 = 0x1 << 1;
-let categoryKitty:UInt32 = 0x1 << 4;
-let categoryWagon:UInt32 = 0x1 << 5;
-let categoryBorder:UInt32 = 0x1 << 6;
-let categoryTrain:UInt32 = 0x1 << 7;
-let categoryDeadline:UInt32 = 0x1 << 8;
+let categoryTrack: UInt32 = 0x1 << 1;
+let categoryKitty: UInt32 = 0x1 << 4;
+let categoryWagon: UInt32 = 0x1 << 5;
+let categoryBorder: UInt32 = 0x1 << 6;
+let categoryTrain: UInt32 = 0x1 << 7;
+let categoryDeadline: UInt32 = 0x1 << 8;

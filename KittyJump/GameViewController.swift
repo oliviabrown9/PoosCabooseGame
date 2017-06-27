@@ -19,20 +19,19 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var startButton: UIButton!
     @IBAction func startGame(_ sender: Any) {
-        _startGame()
+        startGameScreen()
     }
     
     @IBAction func unwindToHomeView(sender: UIStoryboardSegue) {
         if isReplayGame {
             viewDidLoad()
-            _startGame()
+            startGameScreen()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
-        
     }
     
     func initView(){
@@ -53,7 +52,7 @@ class GameViewController: UIViewController {
     }
     
     
-    func _startGame(){
+    func startGameScreen(){
         startButton?.isEnabled = false
         startButton?.isHidden = true
         startBackground?.isHidden = true

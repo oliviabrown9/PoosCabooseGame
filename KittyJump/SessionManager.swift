@@ -16,13 +16,13 @@ class SharingManager {
     var lastScores = [Int](repeating: 0, count: 9)
     var userDefaults: UserDefaults = UserDefaults.standard
     
-    var highScore: Int = 0{
+    var highScore: Int = 0 {
         didSet {
             userDefaults.set(highScore, forKey: "HighScore")
         }
     }
     
-    var currentScore: Int = 0{
+    var currentScore: Int = 0 {
         didSet {
             changeLastScores(score: currentScore)
         }
@@ -30,7 +30,7 @@ class SharingManager {
     
     static let sharedInstance = SharingManager()
     
-    private init(){
+    private init() {
         let _highScore = userDefaults.integer(forKey: "HighScore")
         if _highScore != 0 {
             highScore = _highScore
@@ -48,7 +48,7 @@ class SharingManager {
         }
     }
     
-    func changeLastScores(score: Int){
+    func changeLastScores(score: Int) {
         var temp1, temp2: Int
         temp1 = score
         

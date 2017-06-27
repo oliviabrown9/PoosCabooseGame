@@ -14,7 +14,6 @@ class Grass : SKSpriteNode {
     init() {
         
         let texture = SKTexture(imageNamed: "grass.png")
-        // super.init(texture: texture, color: UIColor.clear, size: texture.size())
         super.init(texture: texture, color: UIColor.clear, size: CGSize(width: 750, height: 100))
         setup()
     }
@@ -30,5 +29,4 @@ class Grass : SKSpriteNode {
         anchorPoint.y = 0
         zPosition = -1
     }
-    
 }

@@ -13,8 +13,6 @@ class LeftTrain : SKSpriteNode{
     // MARK: Init
     init() {
         let texture = SKTexture(imageNamed: "trainleftfacing.png")
-        
-        // super.init(texture : texture , color: UIColor.black, size: CGSize(width: 100, height: 45))
         super.init(texture : texture , color: UIColor.black, size: CGSize(width: 600, height: 90))
         setup()
     }

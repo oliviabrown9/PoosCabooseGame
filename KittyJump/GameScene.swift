@@ -39,10 +39,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var kittyPostion = kittyCurrentTrain.RightTrain
     
     // MARK: Screen sprite variable
-    
     var kittyCamera = KCamera()
     var isUpdateCameraPosY = false
-    var camera_focus = SKSpriteNode()
+    var cameraFocus = SKSpriteNode()
     
     var trainTrackArray = [TrainTrack] ()
     var grassArray = [Grass] ()
@@ -116,10 +115,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupFirstRightAndLeftTrains()
         createHud()
     }
+    
     // MARK: Movement
-    
-    /* Called when a touch begins */
-    
     func switchJoint(iWagon :RightTrain )  {
         
         if let jointN = joint1 {
@@ -156,7 +153,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // MARK:- Touches
-    
     override func  touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if kittyCurrentState == .onTrain{
             self.physicsWorld.removeAllJoints()
@@ -170,12 +166,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             switchJoint(iWagon:train)
             if (train.name == "rightTrain3"){
-                showStop()
+                stop()
             }
         }
         else
         {
-            showStop(reason :"Game Over! ")
+            stop()
         }
         
     }
@@ -186,7 +182,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             switchJointL(iWagon:train)
         }
         else {
-            showStop(reason :"Game Over! ")
+            stop()
         }
     }
     
@@ -224,6 +220,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
     }
+    
     // MARK: Train Track & Grass
     func setupTrackArray()  {
         for i in 0...5 {
@@ -257,7 +254,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(trainTrack)
     }
     
-    func setupGrassArray()  {
+    func setupGrassArray() {
         
         for i in 0...5 {
             let grass = Grass()
@@ -270,19 +267,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func getGrassPosition( row:Int) -> CGPoint{
+    func getGrassPosition( row:Int) -> CGPoint {
         
         let x = self.frame.minX
         let y = trainYpostion  + trainDiffpostion * CGFloat(row)  + TrainTrack.getHeight()
         return CGPoint(x: x, y: y)
     }
     
-    func setupDeadline(){
+    func setupDeadline() {
         deadline.position = getDeadlinePosition(posY: newDeadlinePosY)
         self.addChild(deadline)
     }
     
-    func getDeadlinePosition(posY: CGFloat) -> CGPoint{
+    func getDeadlinePosition(posY: CGFloat) -> CGPoint {
         let x = self.frame.minX
         return CGPoint(x: x, y: posY)
     }
@@ -291,13 +288,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var posY1:CGFloat = newTrainPosY + 20 + 45
         var posY2:CGFloat = posY1 + trainDiffpostion
         
-        for i in 0..<3{
+        for i in 0..<3 {
             if i != 0 {
                 posY1 = -1000
                 posY2 = -1000
             }
             
-            // train in right side
+            // Train on right
             let rightTrain = RightTrain()
             rightTrain.position = CGPoint(x:self.frame.minX + (rightTrain.size.width - 200), y: posY1)
             rightTrain.name = "right" + String(i)
@@ -307,7 +304,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             rightTrainArray.append(rightTrain);
             
-            // train in left side
+            // Train on left
             let leftTrain = LeftTrain()
             leftTrain.position = CGPoint(x:self.frame.maxX + leftTrain.size.width/2,
                                          y:posY2)
@@ -319,8 +316,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func selectColorImage(rightSide: Bool = true) -> SKSpriteNode{
-        // Get random one color except the color before
+    func selectColorImage(rightSide: Bool = true) -> SKSpriteNode {
+        // Get random color except the color before
         var restColorIndices = [Int]()
         for i in 0...2 {
             if i != beforeColorIndex {
@@ -359,16 +356,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return wagon
     }
     
-    // MARK:- Set the train on motion
-    
+    // MARK:- Set the train in motion
     func moveRightWagon2()  {
         
-        // 20: height of track, 45: height of train
+        // Track height: 20 & train height: 45
         let yPostionC :CGFloat = CGFloat(newTrainPosY + 20 + 45)
         let path = CGMutablePath()
         
         newRightTrainIndex += 1
-        if newRightTrainIndex > 2{
+        if newRightTrainIndex > 2 {
             newRightTrainIndex %= 3
         }
         
@@ -376,7 +372,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if irWagon.name == "rightTrain1"{
             path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - 200, y: yPostionC))
-            
         }
         else {
             path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - 300, y: yPostionC))
@@ -392,11 +387,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func moveLeftTrain2()  {
         
-        // 20: height of track, 45: height of train
+        // Track height: 20 & train height: 45
         let yPostionC :CGFloat = CGFloat(newTrainPosY + 20 + 45)
         
         newLeftTrainIndex += 1
-        if newLeftTrainIndex > 2{
+        if newLeftTrainIndex > 2 {
             newLeftTrainIndex %= 3
         }
         
@@ -414,7 +409,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // MARK:- Contact Delegate  functions
-    
     func didBegin(_ contact: SKPhysicsContact) {
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
@@ -428,9 +422,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryBorder) || (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryDeadline) {
-            showStop(reason:"Game Over! ")
+            stop()
         }
-        // Handles left train & creates a right train - first call
+        // Handles left train & creates a right train
         if kittyPostion == .RightTrain {
             
             if firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryTrain{
@@ -453,16 +447,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
                 else {
-                    showStop(reason :"Game Over!")
+                    stop()
                 }
             }
         }
         
-        // Handles right train and creates a left train - first call
+        // Handles right train and creates a left train
         if kittyPostion ==  .LeftTrain {
-            if firstBody.categoryBitMask == categoryKitty   && secondBody.categoryBitMask == categoryWagon{
+            if firstBody.categoryBitMask == categoryKitty   && secondBody.categoryBitMask == categoryWagon {
                 
-                if (contact.contactPoint.x < (secondBody.node!.frame.minX + 100)){
+                if (contact.contactPoint.x < (secondBody.node!.frame.minX + 100)) {
                     
                     switchJoint(iWagon:secondBody.node! as! RightTrain)
                     changeTrackAndGrassInNewLocation()
@@ -475,10 +469,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     newDeadlinePosY += trainDiffpostion
                     setNewDeadline()
                     
-                    // camera
+                    // Camera
                     isUpdateCameraPosY = true
-                }else{
-                    showStop(reason :"Game Over!")
+                }
+                else {
+                    stop()
                 }
             }
         }
@@ -492,7 +487,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupDeadline()
     }
     
-    func changeTrackAndGrassInNewLocation(){
+    func changeTrackAndGrassInNewLocation() {
         let lastTrain = currentTrain
         currentTrain += 1
         if currentTrain > 5 {
@@ -505,12 +500,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         grassArray[currentTrain].position.y = grassArray[lastTrain].position.y + trainDiffpostion
     }
     
-    //MARK: - SKScene functions
-    
-    override func update(_ currentTime: TimeInterval) {
-        //        kittyCamera.position.y = -kitty.position.y
-    }
-    
+    //MARK: SKScene functions
     override func didSimulatePhysics() {
         if isUpdateCameraPosY && (kitty.position.y > -100.0){
             grassArray[5].alpha = 1
@@ -522,10 +512,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             isUpdateCameraPosY = false
         }
-    }
-    
-    override func didFinishUpdate() {
-        
     }
     
     func updateNodesYPosition(){
@@ -550,11 +536,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         updateAllTrainsCoordinate(temp: temp)
     }
     
-    func updateAllTrainsCoordinate(temp: CGFloat){
+    func updateAllTrainsCoordinate(temp: CGFloat) {
         var rightTrainName: String = ""
         var leftTrainName: String = ""
         
-        for i in 0..<3{
+        for i in 0..<3 {
+            
             // Train on right
             rightTrainName = "right" + String(i)
             self.enumerateChildNodes(withName: rightTrainName) {
@@ -585,15 +572,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.removeAllActions()
             
             self.physicsWorld.contactDelegate = self
+            
             // Move the first 2 trains
             newTrainPosY = trainYpostion
             moveRightWagon2()
             moveLeftTrain2()
-            //            moveRightWagon2()
-            
-            // kitty
-            //            camera_focus.position = CGPoint(x: 0, y: trainDiffpostion)
-            //            kitty.addChild(camera_focus)
             
             kitty.position.x  = rightTrainArray[0].frame.minX + kitty.size.width / 2
             kitty.position.y  = rightTrainArray[0].frame.maxY
@@ -602,18 +585,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody! , bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
             self.physicsWorld.add(joint1)
             
-            //            kittyCamera.kitty = kitty
-            //            kittyCamera.createCamera(kitty: kitty, frameMax: self.frame.maxY)
-            //            kittyCamera.createCamera(focus:camera_focus, frameMax: self.frame.maxY)
             kittyCamera.position.y = 0
             addChild(kittyCamera)
             self.camera = kittyCamera
-        } else {
-            
+        }
+        else {
         }
     }
     
-    func showStop() {
+    func stop() {
         
         if score >  SharingManager.sharedInstance.highScore {
             SharingManager.sharedInstance.highScore = score
