@@ -10,7 +10,7 @@ import SpriteKit
 
 class RightTrain : SKSpriteNode{
     
-    // MARK: -Init
+    // MARK: Init
     init() {
         let texture = SKTexture(imageNamed: "trainrightfacing.png")
         
@@ -20,18 +20,18 @@ class RightTrain : SKSpriteNode{
         setup()
         
     }
- 
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     
-    // MARK: - custom function
+    // Right train setup
     func setup(){
         alpha = 1
         zPosition = 1
-         
+        
         anchorPoint.x = 0.5
         
         anchorPoint.y = 0.5
@@ -40,7 +40,7 @@ class RightTrain : SKSpriteNode{
         let bCenterPoint = CGPoint(x: self.frame.maxX - (490 / 2) , y:0)
         
         let leftSmallBox = SKPhysicsBody(rectangleOf :CGSize(width: 100, height: 45) , center:sCenterPoint )
- 
+        
         
         
         let rightBigBox = SKPhysicsBody(rectangleOf :CGSize(width: 490, height: 90) , center:bCenterPoint )
@@ -59,7 +59,7 @@ class RightTrain : SKSpriteNode{
         physicsBody!.usesPreciseCollisionDetection = false
         physicsBody!.isDynamic = true
         physicsBody!.affectedByGravity = false
-
+        
     }
     
 }

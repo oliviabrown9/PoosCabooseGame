@@ -34,10 +34,6 @@ class GameOverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        startOver.isUserInteractionEnabled = true
-        startOver.addGestureRecognizer(tapGestureRecognizer)
-        
         // Setting text of labels to stored value
         mostRecentScore.text = "\(lastNineScores[0])"
         one.text = "\(lastNineScores[0])"
@@ -50,8 +46,23 @@ class GameOverViewController: UIViewController {
         eight.text = "\(lastNineScores[7])"
         nine.text = "\(lastNineScores[8])"
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        startOver.isUserInteractionEnabled = true
+        startOver.addGestureRecognizer(tapGestureRecognizer)
+    }
     
-    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        performSegue(withIdentifier: "toGame", sender: self)
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        performSegue(withIdentifier: "unwindToHomeView", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "unwindToHomeView" {
+            if let gameViewController = segue.destination as? GameViewController {
+                gameViewController.isReplayGame = true
+            }
+        }
     }
 }

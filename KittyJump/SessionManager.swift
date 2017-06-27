@@ -8,13 +8,15 @@
 
 import UIKit
 
+
 class SharingManager {
     
     // MARK: Local Variable
+    
     var lastScores = [Int](repeating: 0, count: 9)
     var userDefaults: UserDefaults = UserDefaults.standard
     
-    var highScore: Int = 0 {
+    var highScore: Int = 0{
         didSet {
             userDefaults.set(highScore, forKey: "HighScore")
         }

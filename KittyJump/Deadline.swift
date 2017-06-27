@@ -10,22 +10,18 @@ import SpriteKit
 
 class Deadline : SKSpriteNode{
     
-    // MARK: -Init
+    // MARK: Init
     init() {
         let texture = SKTexture(imageNamed: "deadline")
         super.init(texture: texture, color: UIColor.clear, size: CGSize(width: 750, height: 20))
-        
         setup()
     }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    // MARK: - custom function
-    // train setup
+
+    // Train setup
     func setup(){
         
         name="Deadline"
@@ -47,9 +43,6 @@ class Deadline : SKSpriteNode{
     }
     
     static func getHeight() -> CGFloat{
-        
         return 20
-        
     }
-    
 }

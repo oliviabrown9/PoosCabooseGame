@@ -44,4 +44,4 @@ class Label: SKLabelNode {
         highScoreLabel.horizontalAlignmentMode = .right
         highScoreLabel.verticalAlignmentMode = .center
     }
- }
+}
