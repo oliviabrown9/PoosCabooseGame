@@ -10,7 +10,7 @@ import SpriteKit
 
 class Grass : SKSpriteNode {
     
-    // MARK: Init
+    // Init
     init() {
         
         let texture = SKTexture(imageNamed: "grass.png")

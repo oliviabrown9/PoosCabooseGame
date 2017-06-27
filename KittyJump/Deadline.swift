@@ -10,7 +10,7 @@ import SpriteKit
 
 class Deadline : SKSpriteNode{
     
-    // MARK: Init
+    // Init
     init() {
         let texture = SKTexture(imageNamed: "deadline")
         super.init(texture: texture, color: UIColor.clear, size: CGSize(width: 750, height: 20))

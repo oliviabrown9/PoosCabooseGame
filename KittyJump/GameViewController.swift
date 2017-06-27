@@ -45,7 +45,6 @@ class GameViewController: UIViewController {
         startButton?.isHidden = true
         startBackground?.isHidden = true
         
-        
         let gif = UIImage(gifName: "splash.gif")
         let gifmanager = SwiftyGifManager(memoryLimit:20)
         self.gifImageView.setGifImage(gif, manager: gifmanager, loopCount: 1)

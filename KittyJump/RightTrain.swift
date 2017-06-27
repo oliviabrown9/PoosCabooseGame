@@ -10,7 +10,7 @@ import SpriteKit
 
 class RightTrain : SKSpriteNode{
     
-    // MARK: Init
+    // Init
     init() {
         let texture = SKTexture(imageNamed: "trainrightfacing.png")
         super.init(texture : texture , color: UIColor.black, size: CGSize(width: 600, height: 90))

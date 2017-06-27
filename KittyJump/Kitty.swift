@@ -10,7 +10,7 @@ import SpriteKit
 
 class Kitty : SKSpriteNode{
     
-    // MARK: Init
+    // Init
     init() {
         let texture = SKTexture(imageNamed: "kitty.png")
         super.init(texture: texture, color: UIColor.clear, size: CGSize(width: texture.size().width/3, height: texture.size().height/3))

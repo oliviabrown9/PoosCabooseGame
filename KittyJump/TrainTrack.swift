@@ -10,7 +10,7 @@ import SpriteKit
 
 class TrainTrack : SKSpriteNode{
     
-    // MARK: Init
+    // Init
     init() {
         let texture = SKTexture(imageNamed: "railroad.png")
         super.init(texture: texture, color: UIColor.clear, size: CGSize(width: 750, height: 20))
