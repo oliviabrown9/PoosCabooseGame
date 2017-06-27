@@ -66,7 +66,7 @@
                     <connections>
                         <outlet property="gifImageView" destination="Fei-sO-NkU" id="nD4-aQ-BBX"/>
                         <outlet property="startBackground" destination="CaN-ce-hrA" id="SWs-9e-KKl"/>
-                        <segue destination="doZ-1J-RsL" kind="show" identifier="toGameOver1" id="5ND-GG-Cqs"/>
+                        <segue destination="doZ-1J-RsL" kind="show" identifier="toGameOver" id="5ND-GG-Cqs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

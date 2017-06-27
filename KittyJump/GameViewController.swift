@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import SwiftyGif
+import AVFoundation
 
 class GameViewController: UIViewController {
     
@@ -31,7 +32,7 @@ class GameViewController: UIViewController {
     // Unwind segue
     @IBAction func unwindToHomeView(sender: UIStoryboardSegue) {
         if isReplayGame {
-            viewDidLoad()
+            initView()
             startGameScreen()
         }
     }
@@ -96,10 +97,6 @@ class GameViewController: UIViewController {
     }
 }
 extension GameViewController : SwiftyGifDelegate {
-    
-    func gifDidStart() {
-        print("gifDidStart")
-    }
     
     func gifDidLoop() {
         gifImageView.isHidden = true

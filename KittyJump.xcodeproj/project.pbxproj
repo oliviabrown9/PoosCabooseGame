@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		756639581F030AD900EEFB66 /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 756639571F030AD900EEFB66 /* splash.gif */; };
+		7566395A1F030EF200EEFB66 /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 756639591F030EF200EEFB66 /* splash.gif */; };
 		75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */; };
 		A4892182E1E85A5DD8434DDA /* Pods_KittyJump.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170ABEBE832CE954F508ADBC /* Pods_KittyJump.framework */; };
 		D1C52BEF1EF5911200115764 /* Deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C52BEE1EF5911200115764 /* Deadline.swift */; };
@@ -33,7 +33,7 @@
 /* Begin PBXFileReference section */
 		170ABEBE832CE954F508ADBC /* Pods_KittyJump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KittyJump.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5783ACE75A3B97ED65A81BCD /* Pods-KittyJump.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KittyJump.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KittyJump/Pods-KittyJump.debug.xcconfig"; sourceTree = "<group>"; };
-		756639571F030AD900EEFB66 /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
+		756639591F030EF200EEFB66 /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		C824AB0E7CB08042295979CA /* Pods-KittyJump.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KittyJump.release.xcconfig"; path = "Pods/Target Support Files/Pods-KittyJump/Pods-KittyJump.release.xcconfig"; sourceTree = "<group>"; };
 		D1C52BEE1EF5911200115764 /* Deadline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deadline.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 			children = (
 				D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */,
 				D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */,
-				756639571F030AD900EEFB66 /* splash.gif */,
+				756639591F030EF200EEFB66 /* splash.gif */,
 				D7C5EAB51EEB5C21007DA71A /* GameScene.sks */,
 				D7C5EAB71EEB5C21007DA71A /* Actions.sks */,
 				D7C5EAB91EEB5C21007DA71A /* GameScene.swift */,
@@ -215,8 +215,8 @@
 				D7C5EABF1EEB5C21007DA71A /* Main.storyboard in Resources */,
 				D7C5EAB61EEB5C21007DA71A /* GameScene.sks in Resources */,
 				D7C5EAC11EEB5C21007DA71A /* Assets.xcassets in Resources */,
+				7566395A1F030EF200EEFB66 /* splash.gif in Resources */,
 				D7C5EAC41EEB5C21007DA71A /* LaunchScreen.storyboard in Resources */,
-				756639581F030AD900EEFB66 /* splash.gif in Resources */,
 				D7C5EAB81EEB5C21007DA71A /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
