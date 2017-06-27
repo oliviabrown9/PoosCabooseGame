@@ -9,8 +9,11 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import SwiftyGif
 
 class GameViewController: UIViewController {
+    
+    @IBOutlet weak var gifImageView: UIImageView!
     
     // Variables to run game
     var homeView = SKView()
@@ -35,11 +38,25 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initView()
+        self.gifImageView.delegate = self
+        
+        startButton?.isEnabled = false
+        startButton?.isHidden = true
+        startBackground?.isHidden = true
+        
+        
+        let gif = UIImage(gifName: "splash.gif")
+        let gifmanager = SwiftyGifManager(memoryLimit:20)
+        self.gifImageView.setGifImage(gif, manager: gifmanager, loopCount: 1)
     }
     
     // Initial screen
     func initView(){
+        
+        startButton?.isEnabled = true
+        startButton?.isHidden = false
+        startBackground?.isHidden = false
+        
         startBackground.backgroundColor = UIColor(red:0.16, green:0.50, blue:0.73, alpha:0.7)
         
         homeView = self.view as! SKView
@@ -76,5 +93,16 @@ class GameViewController: UIViewController {
     // Hide status bar
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+}
+extension GameViewController : SwiftyGifDelegate {
+    
+    func gifDidStart() {
+        print("gifDidStart")
+    }
+    
+    func gifDidLoop() {
+        gifImageView.isHidden = true
+        initView()
     }
 }
