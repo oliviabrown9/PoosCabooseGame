@@ -430,7 +430,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     // camera
                     isUpdateCameraPosY = true
-                    
                 }
                 else {
                     stop()
@@ -439,8 +438,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // Handles right train and creates a left train
-        if kittyPostion ==  .LeftTrain {
-            if firstBody.categoryBitMask == categoryKitty   && secondBody.categoryBitMask == categoryWagon {
+        if kittyPostion == .LeftTrain {
+            if firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryWagon {
                 
                 if (contact.contactPoint.x < (secondBody.node!.frame.minX + 100)) {
                     
