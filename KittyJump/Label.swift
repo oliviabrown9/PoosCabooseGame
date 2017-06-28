@@ -20,7 +20,7 @@ class Label: SKLabelNode {
     static func createScoreTitle()  {
         scoreLabel = SKLabelNode(fontNamed: "Avenir")
         scoreLabel.zPosition = 4
-        scoreLabel.fontSize = 250
+        scoreLabel.fontSize = 225
         scoreLabel.fontColor = UIColor.white
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center

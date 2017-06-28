@@ -39,7 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case onAir
         case onTrain
     }
-
+    
     // Starting position is on a right train
     var kittyCurrentState  = kittyState.onTrain
     var kittyPostion = kittyCurrentTrain.RightTrain
@@ -444,8 +444,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if (contact.contactPoint.x < (secondBody.node!.frame.minX + 100)) {
                     
-                    
-                    
                     switchJoint(iWagon:secondBody.node! as! RightTrain)
                     changeTrackAndGrassInNewLocation()
                     
@@ -607,17 +605,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.removeAllJoints()
         self.removeAllActions()
         self.isPaused = true
-        
+    
         // Segue to gameOverVC
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.view!.window!.rootViewController!.performSegue(withIdentifier: "toGameOver", sender: self)
         }
     }
 }
-    // Random
-    func randRange (lower: Int , upper: Int) -> Int {
-        return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
-    }
+// Random
+func randRange (lower: Int , upper: Int) -> Int {
+    return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
+}
 
 extension Array {
     func randomItem() -> Element {

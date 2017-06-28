@@ -45,7 +45,7 @@ class GameOverViewController: UIViewController {
         eight.text = "\(lastNineScores[7])"
         nine.text = "\(lastNineScores[8])"
     }
-
+    
     // Recognize if startOver image is tapped
     override func viewDidAppear(_ animated: Bool) {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
@@ -59,7 +59,7 @@ class GameOverViewController: UIViewController {
         performSegue(withIdentifier: "unwindToHomeView", sender: self)
     }
     
-//     Replay game with unwind segue
+    // Replay game with unwind segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindToHomeView" {
             if let gameViewController = segue.destination as? GameViewController {
