@@ -96,6 +96,7 @@
 				7E205AA97C6877150B5D7836 /* Frameworks */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		D7C5EAB11EEB5C21007DA71A /* Products */ = {
 			isa = PBXGroup;
@@ -416,6 +417,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 8GEKYYW3CQ;
 				INFOPLIST_FILE = KittyJump/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = la.flux.poosCaboose;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -432,6 +434,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 8GEKYYW3CQ;
 				INFOPLIST_FILE = KittyJump/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = la.flux.poosCaboose;
 				PRODUCT_NAME = "$(TARGET_NAME)";

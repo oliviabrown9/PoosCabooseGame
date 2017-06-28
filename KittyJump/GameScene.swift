@@ -64,11 +64,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let kitty = Kitty()
     
-    var joint1 : SKPhysicsJointPin!
+    var joint1: SKPhysicsJointPin!
     
-    var currentTrain :Int = 2
+    var currentTrain: Int = 2
     
-    // To change wagon color
     var beforeColorIndex = -1
     
     // Starting score label set to zero & changes with current score
@@ -115,7 +114,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupTrackArray()
         setupGrassArray()
         
-        newDeadlinePosY = trainYpostion  + trainDiffpostion + 160
+        newDeadlinePosY = trainYpostion + trainDiffpostion + 160
         setupDeadline()
         
         setupFirstRightAndLeftTrains()
@@ -123,7 +122,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // Movement
-    func switchJoint(iWagon :RightTrain )  {
+    func switchJoint(iWagon: RightTrain )  {
         
         if let jointN = joint1 {
             
@@ -131,8 +130,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if let wagonPhysicBody = iWagon.physicsBody , let kittyPhysicBody = kitty.physicsBody {
                 
-                kitty.position.x  = iWagon.frame.minX + kitty.size.width / 2
-                kitty.position.y  = iWagon.frame.maxY
+                kitty.position.x = iWagon.frame.minX + kitty.size.width / 2
+                kitty.position.y = iWagon.frame.maxY
                 
                 joint1 = SKPhysicsJointPin.joint(withBodyA: wagonPhysicBody , bodyB: kittyPhysicBody, anchor: CGPoint(x: iWagon.frame.minX, y: iWagon.frame.midY))
                 self.physicsWorld.add(joint1)
@@ -167,31 +166,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func locationDetectR(train:RightTrain, location:CGPoint) {
-        if (location.x < (train.frame.minX + 100)){
-            
-            switchJoint(iWagon:train)
-            if (train.name == "rightTrain3"){
-                stop()
-            }
-        }
-        else
-        {
-            stop()
-        }
-        
-    }
-    
-    func locationDetectL(train:LeftTrain, location:CGPoint) {
-        
-        if (location.x > (train.frame.maxX - 100)){
-            switchJointL(iWagon:train)
-        }
-        else {
-            stop()
-        }
-    }
-    
     // Init functions to build screen
     
     // HUD
@@ -199,15 +173,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let hud = SKSpriteNode(color: UIColor.init(red: 0.1, green: 0.5, blue: 0.9, alpha: 0), size: CGSize(width: self.frame.width, height: trainDiffpostion * 2
         ))
         
-        hud.anchorPoint=CGPoint(x:0.5, y:0.5)
+        hud.anchorPoint = CGPoint(x:0.5, y:0.5)
         hud.position = CGPoint(x:0 , y:self.size.height/2  - hud.size.height/2)
         hud.zPosition=4
-        scoreLabel = SKLabelNode(fontNamed: "Arial")
+        scoreLabel = SKLabelNode(fontNamed: "Avenir")
         scoreLabel.zPosition = 1
-        scoreLabel.fontSize=250
+        scoreLabel.fontSize = 250
         scoreLabel.text = "0"
         
-        scoreLabel.fontColor=UIColor.white
+        scoreLabel.fontColor = UIColor.white
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
         hud.addChild(scoreLabel)
@@ -223,8 +197,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Label.highScoreLabel.position = CGPoint(x: self.frame.maxX - 30 , y: 90)
         
         hud.addChild(Label.highScoreLabel)
-        
-        
     }
     
     // Train Track & Grass
