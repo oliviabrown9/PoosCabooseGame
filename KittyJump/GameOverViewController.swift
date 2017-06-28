@@ -59,12 +59,16 @@ class GameOverViewController: UIViewController {
         performSegue(withIdentifier: "unwindToHomeView", sender: self)
     }
     
-    // Replay game with unwind segue
+//     Replay game with unwind segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindToHomeView" {
             if let gameViewController = segue.destination as? GameViewController {
                 gameViewController.isReplayGame = true
             }
         }
+    }
+    // Hide status bar
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
 }

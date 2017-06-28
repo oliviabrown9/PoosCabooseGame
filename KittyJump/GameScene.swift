@@ -9,8 +9,11 @@
 import SpriteKit
 import GameplayKit
 import Foundation
+import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    
+    var stopSoundPlayer: AVAudioPlayer = AVAudioPlayer()
     
     var viewController: UIViewController?
     
@@ -162,6 +165,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if kittyCurrentState == .onTrain{
             self.physicsWorld.removeAllJoints()
             kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
+            let jumpSound = SKAction.playSoundFileNamed("jump.mp3", waitForCompletion: false)
+            self.run(jumpSound)
             kittyCurrentState = .onAir
         }
     }
@@ -261,6 +266,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupFirstRightAndLeftTrains() {
+        
         var posY1:CGFloat = newTrainPosY + 20 + 45
         var posY2:CGFloat = posY1 + trainDiffpostion
         
@@ -387,6 +393,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Contact delegate functions
     func didBegin(_ contact: SKPhysicsContact) {
+        
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
         
@@ -399,7 +406,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryBorder) || (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryDeadline) {
-            stop()
+            
+            self.stop()
         }
         
         // Handles left train & creates a right train
@@ -435,6 +443,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if firstBody.categoryBitMask == categoryKitty   && secondBody.categoryBitMask == categoryWagon {
                 
                 if (contact.contactPoint.x < (secondBody.node!.frame.minX + 100)) {
+                    
+                    
                     
                     switchJoint(iWagon:secondBody.node! as! RightTrain)
                     changeTrackAndGrassInNewLocation()
@@ -572,8 +582,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Game lost
     func stop() {
         
+        backgroundMusicPlayer.stop()
+        
+        let stopSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "stop", ofType: "mp3")!)
+        do {
+            stopSoundPlayer = try AVAudioPlayer(contentsOf: stopSound as URL)
+            stopSoundPlayer.numberOfLoops = 1
+            stopSoundPlayer.prepareToPlay()
+            stopSoundPlayer.play()
+        } catch {
+            print("Cannot play the file")
+        }
+        
         // Store high score if necessary
-        if score >  SharingManager.sharedInstance.highScore {
+        if score > SharingManager.sharedInstance.highScore {
             SharingManager.sharedInstance.highScore = score
         }
         
@@ -591,12 +613,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.view!.window!.rootViewController!.performSegue(withIdentifier: "toGameOver", sender: self)
         }
     }
-    
+}
     // Random
     func randRange (lower: Int , upper: Int) -> Int {
         return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
     }
-}
 
 extension Array {
     func randomItem() -> Element {

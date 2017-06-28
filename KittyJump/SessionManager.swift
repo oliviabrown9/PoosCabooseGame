@@ -50,7 +50,6 @@ class SharingManager {
     func changeLastScores(score: Int) {
         var temp1, temp2: Int
         temp1 = score
-        
         for i in 0..<lastScores.count {
             temp2 = lastScores[i]
             lastScores[i] = temp1
