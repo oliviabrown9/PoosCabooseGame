@@ -276,29 +276,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 posY2 = -1000
             }
             
-            // Train on right
+            // Right train
             let rightTrain = RightTrain()
             rightTrain.position = CGPoint(x:self.frame.minX + (rightTrain.size.width - 200), y: posY1)
             rightTrain.name = "right" + String(i)
-            var wagon = selectColorImage()
+            var wagon = createWagon()
             rightTrain.addChild(wagon)
             self.addChild(rightTrain)
             
             rightTrainArray.append(rightTrain);
             
-            // Train on left
+            // Left train
             let leftTrain = LeftTrain()
             leftTrain.position = CGPoint(x:self.frame.maxX + leftTrain.size.width/2,
                                          y:posY2)
             leftTrain.name = "left" + String(i)
-            wagon = selectColorImage(rightSide: false)
+            wagon = createWagon(rightSide: false)
             leftTrain.addChild(wagon)
             self.addChild(leftTrain)
             leftTrainArray.append(leftTrain)
         }
     }
     
-    func selectColorImage(rightSide: Bool = true) -> SKSpriteNode {
+    func createWagon(rightSide: Bool = true) -> SKSpriteNode {
         
         // Get random color except the color before
         var restColorIndices = [Int]()
@@ -550,6 +550,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
+        
         if isStart {
             self.physicsWorld.removeAllJoints()
             self.removeAllActions()
@@ -611,6 +612,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 }
+
 // Random
 func randRange (lower: Int , upper: Int) -> Int {
     return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
