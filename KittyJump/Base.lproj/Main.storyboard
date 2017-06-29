@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCz-KS-ByN">
-                                        <rect key="frame" x="118.5" y="286" width="137" height="94"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="666"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="60"/>
                                         <state key="normal" title="Start">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -59,10 +59,13 @@
                                     <constraint firstItem="KTu-L7-ZAE" firstAttribute="centerX" secondItem="CaN-ce-hrA" secondAttribute="centerX" id="4sb-Uc-Ipc"/>
                                     <constraint firstItem="Pwt-ci-77c" firstAttribute="top" secondItem="Ehf-xW-ZVk" secondAttribute="bottom" id="KF2-L2-Yr5"/>
                                     <constraint firstItem="KTu-L7-ZAE" firstAttribute="top" secondItem="CaN-ce-hrA" secondAttribute="top" id="MMl-Wa-deQ"/>
+                                    <constraint firstItem="jCz-KS-ByN" firstAttribute="top" secondItem="CaN-ce-hrA" secondAttribute="top" id="NoW-cB-hRS"/>
                                     <constraint firstItem="Pwt-ci-77c" firstAttribute="centerX" secondItem="CaN-ce-hrA" secondAttribute="centerX" id="Oxd-DE-7jM"/>
                                     <constraint firstItem="KTu-L7-ZAE" firstAttribute="centerY" secondItem="CaN-ce-hrA" secondAttribute="centerY" id="UKf-2j-7LU"/>
+                                    <constraint firstAttribute="trailing" secondItem="jCz-KS-ByN" secondAttribute="trailing" id="Yg1-RZ-d8H"/>
                                     <constraint firstAttribute="bottom" secondItem="KTu-L7-ZAE" secondAttribute="bottom" id="dSr-xv-aku"/>
                                     <constraint firstItem="KTu-L7-ZAE" firstAttribute="leading" secondItem="CaN-ce-hrA" secondAttribute="leading" id="jfy-Jz-PFh"/>
+                                    <constraint firstItem="jCz-KS-ByN" firstAttribute="leading" secondItem="CaN-ce-hrA" secondAttribute="leading" id="zeI-qU-hW4"/>
                                     <constraint firstAttribute="trailing" secondItem="KTu-L7-ZAE" secondAttribute="trailing" id="zsV-kr-uru"/>
                                 </constraints>
                             </view>
@@ -88,7 +91,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="animationEndBackground" destination="KTu-L7-ZAE" id="hMM-FA-tPO"/>
+                        <outlet property="animationEndImage" destination="KTu-L7-ZAE" id="coW-CE-DIm"/>
                         <outlet property="gifImageView" destination="Fei-sO-NkU" id="nD4-aQ-BBX"/>
                         <outlet property="startBackground" destination="CaN-ce-hrA" id="SWs-9e-KKl"/>
                         <segue destination="doZ-1J-RsL" kind="show" identifier="toGameOver" id="5ND-GG-Cqs"/>

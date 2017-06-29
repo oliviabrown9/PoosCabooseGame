@@ -58,6 +58,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let rightTrain1 = RightTrain()
     
     var leftTrainArray = [LeftTrain]()
+    var isFirstTrain = true
     var newLeftTrainIndex = -1
     
     var rightTrainArray = [RightTrain]()
@@ -70,6 +71,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var joint1: SKPhysicsJointPin!
     
     var currentTrain: Int = 2
+    var currentTrainNumber: Int = 0
+    
+    var stepSpeed: Int = 0
+    var stepPos: CGFloat = 0
     
     var beforeColorIndex = -1
     
@@ -93,7 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         isStart = false
     }
     
-    override init(size: CGSize ) {
+    override init(size: CGSize) {
         super.init(size: size)
     }
     
@@ -113,7 +118,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.categoryBitMask = categoryBorder
         
         beforeColorIndex = [0, 1, 2].randomItem()
-
+        
         setupTrackArray()
         setupGrassArray()
         
@@ -121,9 +126,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupDeadline()
         
         setupFirstRightAndLeftTrains()
+        currentTrainNumber = 0
+        
+        stepSpeed = 0
+        stepPos = 0
         createHud()
     }
-
+    
     // Movement
     func switchJoint(iWagon: RightTrain )  {
         
@@ -179,7 +188,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ))
         
         hud.anchorPoint = CGPoint(x:0.5, y:0.5)
-        hud.position = CGPoint(x:0 , y:self.size.height/2 - hud.size.height/2)
+        hud.position = CGPoint(x:0 , y:self.size.height/2  - hud.size.height/2)
         hud.zPosition=4
         scoreLabel = SKLabelNode(fontNamed: "Avenir")
         scoreLabel.zPosition = 1
@@ -266,6 +275,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupFirstRightAndLeftTrains() {
+        isFirstTrain = true
         
         var posY1:CGFloat = newTrainPosY + 20 + 45
         var posY2:CGFloat = posY1 + trainDiffpostion
@@ -353,15 +363,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let irWagon = rightTrainArray[newRightTrainIndex]
         
-        if irWagon.name == "rightTrain1"{
-            path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - 200, y: yPostionC))
-        }
-        else {
+        if isFirstTrain {
             path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - 300, y: yPostionC))
+            isFirstTrain = false
+        } else {
+            path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - 400 - stepPos, y: yPostionC))
         }
         path.addLine(to: CGPoint(x: self.frame.size.width , y: yPostionC))
         
-        let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 5, upper: 7)))
+        let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 5 - stepSpeed, upper: 6 - stepSpeed)))
         
         irWagon.run(SKAction.repeatForever(followLine))
         
@@ -381,11 +391,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let ilTrain = leftTrainArray[newLeftTrainIndex]
         
         let path = CGMutablePath()
-        path.move(to: CGPoint(x: self.frame.maxX  + ilTrain.size.width/2 , y: yPostionC))
+        path.move(to: CGPoint(x: self.frame.maxX  + ilTrain.size.width/2 - 100 - stepPos, y: yPostionC))
         
         path.addLine(to: CGPoint(x: -self.frame.size.width , y: yPostionC))
         
-        let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 5, upper: 7)))
+        let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 5 - stepSpeed, upper: 6 - stepSpeed)))
         ilTrain.run(SKAction.repeatForever(followLine))
         
         newTrainPosY += trainDiffpostion
@@ -488,6 +498,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // SKScene functions
     override func didSimulatePhysics() {
         if isUpdateCameraPosY && (kitty.position.y > -100.0){
+            currentTrainNumber += 1
+            if currentTrainNumber > 5 {
+                stepPos = 50
+                stepSpeed = 1
+            }
             grassArray[5].alpha = 1
             trainTrackArray[5].alpha = 1
             
@@ -512,7 +527,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // Grass
             grassArray[i].position.y -= temp
-            
         }
         // Deadline
         newDeadlinePosY -= temp
@@ -606,7 +620,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.removeAllJoints()
         self.removeAllActions()
         self.isPaused = true
-    
+        
         // Segue to gameOverVC
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.view!.window!.rootViewController!.performSegue(withIdentifier: "toGameOver", sender: self)
