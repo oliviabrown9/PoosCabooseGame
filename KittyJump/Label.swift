@@ -18,7 +18,7 @@ class Label: SKLabelNode {
     
     // Current Score text label
     static func createScoreHelper() {
-        scoreLabelHelper = SKLabelNode(fontNamed: "Farah")
+        scoreLabelHelper = SKLabelNode(fontNamed: "Avenir")
         scoreLabelHelper.zPosition = 4
         scoreLabelHelper.text = "Current Score"
         scoreLabelHelper.fontSize = 30

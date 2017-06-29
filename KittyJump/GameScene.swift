@@ -113,7 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.categoryBitMask = categoryBorder
         
         beforeColorIndex = [0, 1, 2].randomItem()
-        
+
         setupTrackArray()
         setupGrassArray()
         
@@ -123,7 +123,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupFirstRightAndLeftTrains()
         createHud()
     }
-    
+
     // Movement
     func switchJoint(iWagon: RightTrain )  {
         
@@ -179,7 +179,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ))
         
         hud.anchorPoint = CGPoint(x:0.5, y:0.5)
-        hud.position = CGPoint(x:0 , y:self.size.height/2  - hud.size.height/2)
+        hud.position = CGPoint(x:0 , y:self.size.height/2 - hud.size.height/2)
         hud.zPosition=4
         scoreLabel = SKLabelNode(fontNamed: "Avenir")
         scoreLabel.zPosition = 1
@@ -512,6 +512,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // Grass
             grassArray[i].position.y -= temp
+            
         }
         // Deadline
         newDeadlinePosY -= temp

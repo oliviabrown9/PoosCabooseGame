@@ -23,6 +23,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
     var scene = GameScene()
     var isReplayGame = false
     
+    @IBOutlet weak var animationEndBackground: UIImageView!
     // Variables for start scree
     @IBOutlet weak var startBackground: UIView!
     var tapCount: Int = 0
@@ -47,6 +48,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         startButton?.isEnabled = false
         startButton?.isHidden = true
         startBackground?.isHidden = true
+        animationEndBackground?.isHidden = true
         
         let gif = UIImage(gifName: "splash.gif")
         let gifManager = SwiftyGifManager(memoryLimit:20)
@@ -59,6 +61,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         startButton?.isEnabled = true
         startButton?.isHidden = false
         startBackground?.isHidden = false
+//        animationEndBackground?.isHidden = true
         
         startBackground.backgroundColor = UIColor(red:0.16, green:0.50, blue:0.73, alpha:0.7)
         
@@ -121,10 +124,25 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         return true
     }
 }
-extension GameViewController : SwiftyGifDelegate {
+extension GameViewController: SwiftyGifDelegate {
     
     func gifDidLoop() {
         gifImageView.isHidden = true
+        animationEndBackground.isHidden = false
+        animationEndBackground.fadeOut()
         initView()
+    }
+}
+public extension UIView {
+    func fadeOut(withDuration duration: TimeInterval = 1.0) {
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 0.0
+        })
+    }
+    
+    func fadeIn(withDuration duration: TimeInterval = 1.0) {
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 1.0
+        })
     }
 }
