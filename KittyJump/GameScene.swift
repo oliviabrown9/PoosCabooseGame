@@ -177,6 +177,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let jumpSound = SKAction.playSoundFileNamed("jump.mp3", waitForCompletion: false)
             self.run(jumpSound)
             kittyCurrentState = .onAir
+            
+            let newHighScore: Int = SharingManager.sharedInstance.highScore
+            if score == newHighScore {
+                let highScoreSound = SKAction.playSoundFileNamed("newHighScore.mp3", waitForCompletion: false)
+                self.run(highScoreSound)
+            }
         }
     }
     

@@ -90,7 +90,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         do {
             backgroundMusicPlayer = try AVAudioPlayer(contentsOf: introSound as URL)
             backgroundMusicPlayer.delegate = self
-            backgroundMusicPlayer.numberOfLoops = 1
+            backgroundMusicPlayer.numberOfLoops = 0
             backgroundMusicPlayer.prepareToPlay()
             backgroundMusicPlayer.play()
         } catch {

@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		753E80A61F058FAD001FEE97 /* stop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 753E80A51F058FAD001FEE97 /* stop.mp3 */; };
+		753E80A81F0593F2001FEE97 /* newHighScore.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 753E80A71F0593F2001FEE97 /* newHighScore.mp3 */; };
 		755820EE1F04126400A68A88 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755820ED1F04126400A68A88 /* jump.mp3 */; };
-		755820F01F0413CD00A68A88 /* stop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755820EF1F0413CD00A68A88 /* stop.mp3 */; };
 		755C59001F0484E50064472D /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755C58FF1F0484E50064472D /* intro.mp3 */; };
 		755C59021F0484F70064472D /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755C59011F0484F70064472D /* background.mp3 */; };
 		756C74731F05663900EFF2FB /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 756C74721F05663900EFF2FB /* splash.gif */; };
@@ -37,8 +38,9 @@
 /* Begin PBXFileReference section */
 		170ABEBE832CE954F508ADBC /* Pods_KittyJump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KittyJump.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5783ACE75A3B97ED65A81BCD /* Pods-KittyJump.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KittyJump.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KittyJump/Pods-KittyJump.debug.xcconfig"; sourceTree = "<group>"; };
+		753E80A51F058FAD001FEE97 /* stop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stop.mp3; sourceTree = "<group>"; };
+		753E80A71F0593F2001FEE97 /* newHighScore.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = newHighScore.mp3; sourceTree = "<group>"; };
 		755820ED1F04126400A68A88 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
-		755820EF1F0413CD00A68A88 /* stop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stop.mp3; sourceTree = "<group>"; };
 		755C58FF1F0484E50064472D /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = intro.mp3; sourceTree = "<group>"; };
 		755C59011F0484F70064472D /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 		756C74721F05663900EFF2FB /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
@@ -82,9 +84,10 @@
 			isa = PBXGroup;
 			children = (
 				755820ED1F04126400A68A88 /* jump.mp3 */,
+				753E80A71F0593F2001FEE97 /* newHighScore.mp3 */,
 				755C58FF1F0484E50064472D /* intro.mp3 */,
 				755C59011F0484F70064472D /* background.mp3 */,
-				755820EF1F0413CD00A68A88 /* stop.mp3 */,
+				753E80A51F058FAD001FEE97 /* stop.mp3 */,
 			);
 			name = Audio;
 			sourceTree = "<group>";
@@ -236,13 +239,14 @@
 				D7C5EABF1EEB5C21007DA71A /* Main.storyboard in Resources */,
 				D7C5EAB61EEB5C21007DA71A /* GameScene.sks in Resources */,
 				D7C5EAC11EEB5C21007DA71A /* Assets.xcassets in Resources */,
-				755820F01F0413CD00A68A88 /* stop.mp3 in Resources */,
 				D7C5EAC41EEB5C21007DA71A /* LaunchScreen.storyboard in Resources */,
 				755820EE1F04126400A68A88 /* jump.mp3 in Resources */,
 				755C59021F0484F70064472D /* background.mp3 in Resources */,
+				753E80A61F058FAD001FEE97 /* stop.mp3 in Resources */,
 				D7C5EAB81EEB5C21007DA71A /* Actions.sks in Resources */,
 				756C74731F05663900EFF2FB /* splash.gif in Resources */,
 				755C59001F0484E50064472D /* intro.mp3 in Resources */,
+				753E80A81F0593F2001FEE97 /* newHighScore.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
