@@ -112,7 +112,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 x:self.frame.minX,
                 y:self.frame.minY,
                 width:self.frame.width,
-                height:self.frame.height * 10))
+                height:self.frame.height * 10000))
         borderBody.friction = 0
         self.physicsBody = borderBody
         self.physicsBody?.categoryBitMask = categoryBorder
@@ -174,15 +174,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if kittyCurrentState == .onTrain{
             self.physicsWorld.removeAllJoints()
             kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
-            let jumpSound = SKAction.playSoundFileNamed("jump.mp3", waitForCompletion: false)
-            self.run(jumpSound)
+            //            let jumpSound = SKAction.playSoundFileNamed("jump.mp3", waitForCompletion: false)
+            //            self.run(jumpSound)
             kittyCurrentState = .onAir
-            
-            let newHighScore: Int = SharingManager.sharedInstance.highScore
-            if score == newHighScore {
-                let highScoreSound = SKAction.playSoundFileNamed("newHighScore.mp3", waitForCompletion: false)
-                self.run(highScoreSound)
-            }
         }
     }
     
@@ -422,7 +416,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryBorder) || (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryDeadline) {
-            
             self.stop()
         }
         
@@ -505,6 +498,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didSimulatePhysics() {
         if isUpdateCameraPosY && (kitty.position.y > -100.0){
             currentTrainNumber += 1
+            
             if currentTrainNumber > 5 {
                 stepPos = 50
                 stepSpeed = 1

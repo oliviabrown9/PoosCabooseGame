@@ -45,5 +45,3 @@ class TrainTrack : SKSpriteNode{
         return 20
     }
 }
-
-
