@@ -32,7 +32,7 @@ class Label: SKLabelNode {
         highScoreLabel = SKLabelNode(fontNamed: "Avenir")
         highScoreLabel.zPosition = 4
         highScoreLabel.text = "High Score: \(SharingManager.sharedInstance.highScore)"
-        highScoreLabel.fontSize = 30
+        highScoreLabel.fontSize = 35
         highScoreLabel.fontColor = UIColor.yellow
         highScoreLabel.horizontalAlignmentMode = .right
         highScoreLabel.verticalAlignmentMode = .center
