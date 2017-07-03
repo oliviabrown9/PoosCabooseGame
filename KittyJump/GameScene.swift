@@ -13,7 +13,7 @@ import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var stopSoundPlayer: AVAudioPlayer = AVAudioPlayer()
+    var soundEffectPlayer: AVAudioPlayer = AVAudioPlayer()
     
     var viewController: UIViewController?
     
@@ -174,8 +174,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if kittyCurrentState == .onTrain{
             self.physicsWorld.removeAllJoints()
             kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
-            //            let jumpSound = SKAction.playSoundFileNamed("jump.mp3", waitForCompletion: false)
-            //            self.run(jumpSound)
+            let jumpSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "jump", ofType: "mp3")!)
+            do {
+                soundEffectPlayer = try AVAudioPlayer(contentsOf: jumpSound as URL)
+                soundEffectPlayer.numberOfLoops = 1
+                soundEffectPlayer.prepareToPlay()
+                soundEffectPlayer.play()
+            } catch {
+                print("Cannot play the file")
+            }
             kittyCurrentState = .onAir
         }
     }
@@ -208,7 +215,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         Label.createHighScore()
-        Label.highScoreLabel.position = CGPoint(x: self.frame.maxX - 30 , y: 90)
+        Label.highScoreLabel.position = CGPoint(x: self.frame.maxX - 30 , y: 130)
         
         hud.addChild(Label.highScoreLabel)
     }
@@ -599,10 +606,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let stopSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "stop", ofType: "mp3")!)
         do {
-            stopSoundPlayer = try AVAudioPlayer(contentsOf: stopSound as URL)
-            stopSoundPlayer.numberOfLoops = 1
-            stopSoundPlayer.prepareToPlay()
-            stopSoundPlayer.play()
+            soundEffectPlayer = try AVAudioPlayer(contentsOf: stopSound as URL)
+            soundEffectPlayer.numberOfLoops = 1
+            soundEffectPlayer.prepareToPlay()
+            soundEffectPlayer.play()
         } catch {
             print("Cannot play the file")
         }
