@@ -8,12 +8,12 @@
 
 import SpriteKit
 
-class LeftTrain : SKSpriteNode{
+class LeftTrain : SKSpriteNode {
     
     // Init
     init() {
         let texture = SKTexture(imageNamed: "trainleftfacing.png")
-        super.init(texture : texture , color: UIColor.black, size: CGSize(width: 600, height: 90))
+        super.init(texture: texture, color: UIColor.black, size: CGSize(width: 600, height: 90))
         setup()
     }
     
@@ -22,17 +22,17 @@ class LeftTrain : SKSpriteNode{
     }
     
     // Left train setup
-    func setup(){
+    func setup() {
         alpha = 1
         zPosition = 1
         
         anchorPoint.x = 0.5
         anchorPoint.y = 0.5
         
-        let bCenterPoint = CGPoint(x: self.frame.minX + (490 / 2) , y:0)
+        let bCenterPoint = CGPoint(x: self.frame.minX + (490 / 2), y:0)
         let sCenterPoint = CGPoint(x: self.frame.maxX - (100 / 2), y:-1)
-        let leftBigBox = SKPhysicsBody(rectangleOf :CGSize(width: 490, height: 90) , center:bCenterPoint )
-        let rightSmallBox = SKPhysicsBody(rectangleOf :CGSize(width: 100, height: 45) , center:sCenterPoint )
+        let leftBigBox = SKPhysicsBody(rectangleOf :CGSize(width: 490, height: 90), center:bCenterPoint)
+        let rightSmallBox = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 45), center: sCenterPoint)
         
         physicsBody=SKPhysicsBody(bodies: [leftBigBox,rightSmallBox])
         

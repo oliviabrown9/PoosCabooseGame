@@ -25,10 +25,11 @@ class Label: SKLabelNode {
         scoreLabelHelper.fontColor = UIColor.white
         scoreLabelHelper.horizontalAlignmentMode = .center
         scoreLabelHelper.verticalAlignmentMode = .center
+        
     }
     
     // High score text & number label
-    static func createHighScore()  {
+    static func createHighScore() {
         highScoreLabel = SKLabelNode(fontNamed: "Avenir")
         highScoreLabel.zPosition = 4
         highScoreLabel.text = "High Score: \(SharingManager.sharedInstance.highScore)"

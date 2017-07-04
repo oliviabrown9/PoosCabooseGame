@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class Deadline : SKSpriteNode{
+class Deadline : SKSpriteNode {
     
     // Init
     init() {
@@ -23,13 +23,13 @@ class Deadline : SKSpriteNode{
     }
     
     // Train setup
-    func setup(){
+    func setup() {
         
         name="Deadline"
         anchorPoint.x = 0
         anchorPoint.y = 0
         zPosition = -1
-        let centerPoint = CGPoint(x: self.size.width / 2 - (self.size.width * self.anchorPoint.x),y: self.size.height / 2 - (self.size.height * self.anchorPoint.y))
+        let centerPoint = CGPoint(x: self.size.width / 2 - (self.size.width * self.anchorPoint.x), y: self.size.height / 2 - (self.size.height * self.anchorPoint.y))
         
         physicsBody=SKPhysicsBody(rectangleOf:CGSize(width: 750*3, height: 20), center :centerPoint)
         

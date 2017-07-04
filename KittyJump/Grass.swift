@@ -23,7 +23,7 @@ class Grass : SKSpriteNode {
     }
     
     // Grass setup
-    func setup(){
+    func setup() {
         name="Grass"
         anchorPoint.x = 0
         anchorPoint.y = 0

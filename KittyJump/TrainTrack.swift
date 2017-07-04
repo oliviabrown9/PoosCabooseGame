@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class TrainTrack : SKSpriteNode{
+class TrainTrack : SKSpriteNode {
     
     // Init
     init() {
@@ -22,7 +22,7 @@ class TrainTrack : SKSpriteNode{
     }
     
     // Train setup
-    func setup(){
+    func setup() {
         
         anchorPoint.x = 0
         anchorPoint.y = 0

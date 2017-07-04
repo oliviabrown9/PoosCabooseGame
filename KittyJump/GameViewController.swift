@@ -14,6 +14,8 @@ import AVFoundation
 
 var backgroundMusicPlayer: AVAudioPlayer = AVAudioPlayer()
 
+var homeView = SKView()
+
 class GameViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var animationEndImage: UIImageView!
@@ -22,7 +24,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var gifImageView: UIImageView!
     
     // Variables to run game
-    var homeView = SKView()
+
     var scene = GameScene()
     var isReplayGame = false
     
@@ -51,13 +53,12 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         startBackground?.isHidden = true
         
         let gif = UIImage(gifName: "splash.gif")
-        let gifManager = SwiftyGifManager(memoryLimit:20)
+        let gifManager = SwiftyGifManager(memoryLimit: 20)
         self.gifImageView.setGifImage(gif, manager: gifManager, loopCount: 1)
     }
     
     // Initial screen
-    func initView(){
-        
+    func initView() {
         startButton?.isEnabled = true
         startButton?.isHidden = false
         startBackground?.isHidden = false
@@ -79,7 +80,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     // Transition from start to game
-    func startGameScreen(){
+    func startGameScreen() {
         startButton?.isEnabled = false
         startButton?.isHidden = true
         startBackground?.isHidden = true
