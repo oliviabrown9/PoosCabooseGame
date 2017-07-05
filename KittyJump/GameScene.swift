@@ -85,10 +85,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    let pastHighScore: Int = SharingManager.sharedInstance.highScore
     // Starting high score set to zero & changes as high score updates
     var highScore: Int = 0 {
         didSet {
-            Label.highScoreLabel.text = "High Score: \(SharingManager.sharedInstance.highScore)"
+            Label.highScoreLabel.text = "Best: \(pastHighScore)"
         }
     }
     
@@ -147,7 +148,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 joint1 = SKPhysicsJointPin.joint(withBodyA: wagonPhysicBody, bodyB: kittyPhysicBody, anchor: CGPoint(x: iWagon.frame.minX, y: iWagon.frame.midY))
                 self.physicsWorld.add(joint1)
-                score = score + 1
+                updateScore()
                 kittyCurrentState = .onTrain
             }
         }
@@ -164,8 +165,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             joint1 = SKPhysicsJointPin.joint(withBodyA: wagonPhysicBody, bodyB: kittyPhysicBody, anchor: CGPoint(x: iWagon.frame.midX, y: iWagon.frame.midY))
             self.physicsWorld.add(joint1)
-            score = score + 1
+            updateScore()
             kittyCurrentState = .onTrain
+        }
+    }
+    
+    func updateScore() {
+        score = score + 1
+        if score > pastHighScore {
+            Label.highScoreLabel.text = "Best: \(score)"
         }
     }
     
@@ -177,13 +185,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let jumpSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "jump", ofType: "mp3")!)
             do {
                 soundEffectPlayer = try AVAudioPlayer(contentsOf: jumpSound as URL)
-                soundEffectPlayer.numberOfLoops = 1
+                soundEffectPlayer.numberOfLoops = 0
                 soundEffectPlayer.prepareToPlay()
                 soundEffectPlayer.play()
             } catch {
                 print("Cannot play the file")
             }
             kittyCurrentState = .onAir
+            
+            if score == pastHighScore {
+                let newHighScoreSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "newHighScore", ofType: "mp3")!)
+                do {
+                    soundEffectPlayer = try AVAudioPlayer(contentsOf: newHighScoreSound as URL)
+                    soundEffectPlayer.numberOfLoops = 0
+                    soundEffectPlayer.prepareToPlay()
+                    soundEffectPlayer.play()
+                } catch {
+                    print("Cannot play the file")
+                }
+                
+            }
         }
     }
     
@@ -419,7 +440,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             firstBody = contact.bodyB
             secondBody = contact.bodyA
         }
-
+        
         if (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryBorder) || (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryDeadline) {
             self.stop()
         }
