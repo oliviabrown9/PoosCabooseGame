@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7520289E1F0D55FE00308742 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520289D1F0D55FE00308742 /* ButtonNode.swift */; };
 		753E80A61F058FAD001FEE97 /* stop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 753E80A51F058FAD001FEE97 /* stop.mp3 */; };
 		753E80A81F0593F2001FEE97 /* newHighScore.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 753E80A71F0593F2001FEE97 /* newHighScore.mp3 */; };
 		755820EE1F04126400A68A88 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755820ED1F04126400A68A88 /* jump.mp3 */; };
@@ -39,7 +38,6 @@
 /* Begin PBXFileReference section */
 		170ABEBE832CE954F508ADBC /* Pods_KittyJump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KittyJump.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5783ACE75A3B97ED65A81BCD /* Pods-KittyJump.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KittyJump.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KittyJump/Pods-KittyJump.debug.xcconfig"; sourceTree = "<group>"; };
-		7520289D1F0D55FE00308742 /* ButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		753E80A51F058FAD001FEE97 /* stop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stop.mp3; sourceTree = "<group>"; };
 		753E80A71F0593F2001FEE97 /* newHighScore.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = newHighScore.mp3; sourceTree = "<group>"; };
 		755820ED1F04126400A68A88 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 			children = (
 				D7C5EAF91EF0F638007DA71A /* Label.swift */,
 				D7C5EAFE1EF24469007DA71A /* KCamera.swift */,
-				7520289D1F0D55FE00308742 /* ButtonNode.swift */,
 			);
 			name = SceneHelper;
 			sourceTree = "<group>";
@@ -322,7 +319,6 @@
 				D1C52BEF1EF5911200115764 /* Deadline.swift in Sources */,
 				D7C5EAEA1EEC0993007DA71A /* RightTrain.swift in Sources */,
 				D7C5EAF61EEF3ACC007DA71A /* SessionManager.swift in Sources */,
-				7520289E1F0D55FE00308742 /* ButtonNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
