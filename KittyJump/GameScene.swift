@@ -104,7 +104,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        
         super.init(coder: aDecoder)
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -1)
         
@@ -179,6 +178,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Touches
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         if kittyCurrentState == .onTrain {
             self.physicsWorld.removeAllJoints()
             kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
@@ -236,8 +236,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         Label.createHighScore()
         Label.highScoreLabel.position = CGPoint(x: self.frame.maxX - 30 , y: 130)
-        
         hud.addChild(Label.highScoreLabel)
+        
     }
     
     // Train Track & Grass
@@ -616,6 +616,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         else {
         }
+    
     }
     
     // Game lost
@@ -649,7 +650,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Segue to gameOverVC
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.view!.window!.rootViewController!.performSegue(withIdentifier: "toGameOver", sender: self)
+            self.viewController?.performSegue(withIdentifier: "toGameOver", sender: self.viewController)
         }
     }
 }

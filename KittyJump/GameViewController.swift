@@ -44,6 +44,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.gifImageView.delegate = self
         
         startButton?.isEnabled = false
