@@ -15,9 +15,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var soundEffectPlayer: AVAudioPlayer = AVAudioPlayer()
     
-    var background = SKSpriteNode(imageNamed: "background")
-    
     var viewController: UIViewController?
+    
+    let background = SKSpriteNode(imageNamed: "background")
     
     // Variables for position
     let trainYPosition: CGFloat = -600.0
@@ -190,8 +190,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if kittyCurrentState == .onTrain {
             self.physicsWorld.removeAllJoints()
+            
             kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
-            background.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
+            
             let jumpSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "jump", ofType: "mp3")!)
             do {
                 soundEffectPlayer = try AVAudioPlayer(contentsOf: jumpSound as URL)
@@ -201,6 +202,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } catch {
                 print("Cannot play the file")
             }
+            
             kittyCurrentState = .onAir
             
             if score == pastHighScore {
@@ -560,74 +562,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let action = SKAction.moveTo(y: kitty.position.y + trainDiffPosition, duration: 0.5)
             action.timingMode = .easeInEaseOut
             kittyCamera.run(action)
+            background.run(action)
             
             isUpdateCameraPosY = false
         }
     }
     
-    func updateNodesYPosition() {
-        let temp: CGFloat = 1000
-        var newYPos: CGFloat = 0
-
-        // Track & grass
-        for i in 0...4 {
-            
-            // Track
-            newYPos = trainTrackArray[i].position.y - temp
-            setupNewTrack(index: i, posY: newYPos)
-            
-            // Grass
-            grassArray[i].position.y -= temp
-        }
-        // Deadline
-        newDeadlinePosY -= temp
-        setNewDeadline()
-        
-        // Left & right trains
-        updateAllTrainsCoordinate(temp: temp)
-    }
-    
-    func updateAllTrainsCoordinate(temp: CGFloat) {
-        var rightTrainName: String = ""
-        var leftTrainName: String = ""
-        
-        for i in 0..<3 {
-            
-            // Right train
-            rightTrainName = "right" + String(i)
-            self.enumerateChildNodes(withName: rightTrainName) {
-                node, stop in
-                node.removeFromParent();
-            }
-            rightTrainArray[i].position.y -= temp
-            rightTrainArray[i].zPosition = 2
-            
-            self.addChild(rightTrainArray[i])
-            
-            // Left train
-            leftTrainName = "left" + String(i)
-            self.enumerateChildNodes(withName: leftTrainName) {
-                node, stop in
-                node.removeFromParent();
-            }
-            leftTrainArray[i].position.y -= temp
-            leftTrainArray[i].zPosition = 2
-            self.addChild(leftTrainArray[i])
-            newTrainPosY -= temp
-        }
-    }
-    
     override func didMove(to view: SKView) {
         
-        let background = SKSpriteNode(imageNamed: "background")
-        background.position = CGPoint(x: 0, y: 0)
-        background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        background.size = self.size
-        background.zPosition = -1
-        
-        self.addChild(background)
-        
         if isStart {
+            
+            background.position = CGPoint(x: 0, y: 0)
+            background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            background.size = self.size
+            background.zPosition = -1
+            self.addChild(background)
+            
             self.physicsWorld.removeAllJoints()
             self.removeAllActions()
             
@@ -642,7 +592,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             kitty.position.y = rightTrainArray[0].frame.maxY
             
             self.addChild(kitty)
-            joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody! , bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
+            joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody!, bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
             self.physicsWorld.add(joint1)
             
             kittyCamera.position.y = 0
