@@ -19,19 +19,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let background = SKSpriteNode(imageNamed: "background")
     
-    // Variables for position
-    let trainYPosition: CGFloat = -600.0
-    let trainDiffPosition: CGFloat = 185.0
-    
-    // Variables for game play
+    // Variables for starting
     var isStart = false
     var gamePaused = false
     
-    // Variables for mute
+    // Variables for screen buttons
     var soundButton = SKSpriteNode(imageNamed: "sound")
     var muteButton = SKSpriteNode (imageNamed: "mute")
-    
-    // Variables for pause
     var pauseButton = SKSpriteNode(imageNamed: "pause")
     
     // Variable for current score label
@@ -43,17 +37,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case RightTrain
     }
     
-    // Enum for kitty location
+    // Enum for location
     enum kittyState {
         case onAir
         case onTrain
     }
     
-    // Starting position is on a right train
+    // Starting position on right train
     var kittyCurrentState  = kittyState.onTrain
     var kittyPosition = kittyCurrentTrain.RightTrain
     
-    // Screen sprite variable
+    // Variables for game play
     var kittyCamera = KCamera()
     var isUpdateCameraPosY = false
     var cameraFocus = SKSpriteNode()
@@ -73,6 +67,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var rightTrainArray = [RightTrain]()
     var newRightTrainIndex = -1
     
+    let trainYPosition: CGFloat = -600.0
+    let trainDiffPosition: CGFloat = 185.0
     var newTrainPosY: CGFloat = -600.0
     
     let kitty = Kitty()
@@ -191,8 +187,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if kittyCurrentState == .onTrain {
             self.physicsWorld.removeAllJoints()
             
+            // Move up
             kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
             
+            // Play sound with jump
             let jumpSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "jump", ofType: "mp3")!)
             do {
                 soundEffectPlayer = try AVAudioPlayer(contentsOf: jumpSound as URL)
@@ -203,8 +201,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 print("Cannot play the file")
             }
             
+            // Set state to air
             kittyCurrentState = .onAir
             
+            // Play sound if beat high score
             if score == pastHighScore {
                 let newHighScoreSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "newHighScore", ofType: "mp3")!)
                 do {
@@ -230,11 +230,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hud.anchorPoint = CGPoint(x:0.5, y:0.5)
         hud.position = CGPoint(x:0 , y:self.size.height/2  - hud.size.height/2)
         hud.zPosition = 4
+        
+        // Current score label
         scoreLabel = SKLabelNode(fontNamed: "Avenir")
         scoreLabel.zPosition = 1
         scoreLabel.fontSize = 250
         scoreLabel.text = "0"
-        
         scoreLabel.fontColor = UIColor.white
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
@@ -242,10 +243,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         kittyCamera.addChild(hud)
         
+        // High score label
         Label.createScoreHelper()
         Label.scoreLabelHelper.position = CGPoint(x: self.frame.midX, y: -(hud.size.height/2)+60)
         hud.addChild(Label.scoreLabelHelper)
-        
         Label.createHighScore()
         Label.highScoreLabel.position = CGPoint(x: self.frame.maxX - 30 , y: 130)
         Label.highScoreLabel.zPosition = 1
@@ -313,6 +314,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return CGPoint(x: x, y: y)
     }
     
+    // Deadline for game play
     func setupDeadline() {
         deadline.position = getDeadlinePosition(posY: newDeadlinePosY)
         self.addChild(deadline)
@@ -323,6 +325,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return CGPoint(x: x, y: posY)
     }
     
+    // Make the first trains
     func setupFirstRightAndLeftTrains() {
         isFirstTrain = true
         
@@ -524,7 +527,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-    
+
+    // Remove old deadline & set new
     func setNewDeadline() {
         self.enumerateChildNodes(withName: "Deadline") {
             node, stop in
@@ -533,6 +537,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupDeadline()
     }
     
+    // Move the track & grass once screen moves up
     func changeTrackAndGrassInNewLocation() {
         let lastTrain = currentTrain
         currentTrain += 1
@@ -569,32 +574,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
-        
         if isStart {
-            
-            background.position = CGPoint(x: 0, y: 0)
-            background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-            background.size = self.size
-            background.zPosition = -1
-            self.addChild(background)
             
             self.physicsWorld.removeAllJoints()
             self.removeAllActions()
             
             self.physicsWorld.contactDelegate = self
             
+            // Place the background
+            background.position = CGPoint(x: 0, y: 0)
+            background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            background.size = self.size
+            background.zPosition = -1
+            self.addChild(background)
+            
             // Move the first 2 trains
             newTrainPosY = trainYPosition
             moveRightWagon2()
             moveLeftTrain2()
             
+            // Place the cat
             kitty.position.x = rightTrainArray[0].frame.minX + kitty.size.width / 2
             kitty.position.y = rightTrainArray[0].frame.maxY
-            
             self.addChild(kitty)
             joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody!, bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
             self.physicsWorld.add(joint1)
-            
             kittyCamera.position.y = 0
             addChild(kittyCamera)
             self.camera = kittyCamera
@@ -606,8 +610,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Game lost
     func stop() {
         
+        // End background music
         backgroundMusicPlayer.stop()
         
+        // Play sound on end of game
         let stopSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "stop", ofType: "mp3")!)
         do {
             soundEffectPlayer = try AVAudioPlayer(contentsOf: stopSound as URL)
