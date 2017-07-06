@@ -113,6 +113,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
             backgroundMusicPlayer.numberOfLoops = -1
             backgroundMusicPlayer.prepareToPlay()
             backgroundMusicPlayer.play()
+            
         } catch {
             print("Cannot play the file")
         }
@@ -123,6 +124,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         return true
     }
 }
+
 extension GameViewController: SwiftyGifDelegate {
     
     func gifDidLoop() {
@@ -132,6 +134,7 @@ extension GameViewController: SwiftyGifDelegate {
         initView()
     }
 }
+
 public extension UIView {
     func fadeOut(withDuration duration: TimeInterval = 1.0) {
         UIView.animate(withDuration: duration, animations: {

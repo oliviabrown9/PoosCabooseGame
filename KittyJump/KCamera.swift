@@ -23,6 +23,6 @@ class KCamera: SKCameraNode {
         let rightConstraint = SKConstraint.positionX(SKRange(upperLimit:0))
         let topConstraint = SKConstraint.positionY(SKRange(upperLimit: (frameMax*100000)))
         
-        constraints = [horizConstraint, vertConstraint, leftConstraint , bottomConstraint, rightConstraint,topConstraint]
+        constraints = [horizConstraint, vertConstraint, leftConstraint, bottomConstraint, rightConstraint, topConstraint]
     }
 }

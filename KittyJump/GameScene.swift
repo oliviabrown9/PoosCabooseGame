@@ -15,6 +15,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var soundEffectPlayer: AVAudioPlayer = AVAudioPlayer()
     
+    var background = SKSpriteNode(imageNamed: "background")
+    
     var viewController: UIViewController?
     
     // Variables for position
@@ -25,7 +27,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isStart = false
     var gamePaused = false
     
-    // Label for current score
+    // Variables for mute
+    var soundButton = SKSpriteNode(imageNamed: "sound")
+    var muteButton = SKSpriteNode (imageNamed: "mute")
+    
+    // Variables for pause
+    var pauseButton = SKSpriteNode(imageNamed: "pause")
+    
+    // Variable for current score label
     var scoreLabel: SKLabelNode!
     
     // Enum for train direction
@@ -182,6 +191,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if kittyCurrentState == .onTrain {
             self.physicsWorld.removeAllJoints()
             kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
+            background.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
             let jumpSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "jump", ofType: "mp3")!)
             do {
                 soundEffectPlayer = try AVAudioPlayer(contentsOf: jumpSound as URL)
@@ -236,8 +246,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         Label.createHighScore()
         Label.highScoreLabel.position = CGPoint(x: self.frame.maxX - 30 , y: 130)
+        Label.highScoreLabel.zPosition = 1
         hud.addChild(Label.highScoreLabel)
         
+        //        muteButton.position = CGPoint(x: self.frame.minX + 100, y: 130)
+        //        muteButton.setScale(0.2)
+        //        hud.addChild(muteButton)
+        //
+        //        pauseButton.position = CGPoint(x: self.frame.minX + 40, y: 130)
+        //        pauseButton.setScale(0.15)
+        //        hud.addChild(pauseButton)
     }
     
     // Train Track & Grass
@@ -249,6 +267,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             trainTrack.position = getTrainTrackPosition(row : i)
             trainTrack.name = "Track" + String(i)
+            trainTrack.zPosition = 1
             self.addChild(trainTrack)
             trainTrackArray.append(trainTrack)
         }
@@ -280,6 +299,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 grass.alpha = 0
             }
             grass.position = getGrassPosition(row: i)
+            grass.zPosition = 1
             self.addChild(grass)
             grassArray.append(grass)
         }
@@ -319,6 +339,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rightTrain.name = "right" + String(i)
             var wagon = createWagon()
             rightTrain.addChild(wagon)
+            rightTrain.zPosition = 2
             self.addChild(rightTrain)
             
             rightTrainArray.append(rightTrain);
@@ -329,7 +350,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             leftTrain.name = "left" + String(i)
             wagon = createWagon(rightSide: false)
             leftTrain.addChild(wagon)
+            leftTrain.zPosition = 2
             self.addChild(leftTrain)
+            
             leftTrainArray.append(leftTrain)
         }
     }
@@ -422,6 +445,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         path.addLine(to: CGPoint(x: -self.frame.size.width, y: yPositionC))
         
         let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 5 - stepSpeed, upper: 6 - stepSpeed)))
+        
         ilTrain.run(SKAction.repeatForever(followLine))
         
         newTrainPosY += trainDiffPosition
@@ -522,6 +546,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // SKScene functions
     override func didSimulatePhysics() {
+        
         if isUpdateCameraPosY && (kitty.position.y > -100.0) {
             currentTrainNumber += 1
             
@@ -540,10 +565,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func updateNodesYPosition(){
+    func updateNodesYPosition() {
         let temp: CGFloat = 1000
         var newYPos: CGFloat = 0
-        
+
         // Track & grass
         for i in 0...4 {
             
@@ -575,6 +600,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node.removeFromParent();
             }
             rightTrainArray[i].position.y -= temp
+            rightTrainArray[i].zPosition = 2
             
             self.addChild(rightTrainArray[i])
             
@@ -585,12 +611,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node.removeFromParent();
             }
             leftTrainArray[i].position.y -= temp
+            leftTrainArray[i].zPosition = 2
             self.addChild(leftTrainArray[i])
             newTrainPosY -= temp
         }
     }
     
     override func didMove(to view: SKView) {
+        
+        let background = SKSpriteNode(imageNamed: "background")
+        background.position = CGPoint(x: 0, y: 0)
+        background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        background.size = self.size
+        background.zPosition = -1
+        
+        self.addChild(background)
         
         if isStart {
             self.physicsWorld.removeAllJoints()
@@ -616,7 +651,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         else {
         }
-    
     }
     
     // Game lost
@@ -641,7 +675,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Store current score
         SharingManager.sharedInstance.currentScore = score
-        
+       
         // Stop the game
         self.gamePaused = true
         self.physicsWorld.removeAllJoints()
