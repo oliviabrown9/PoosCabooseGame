@@ -284,7 +284,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pauseButton.name = "pause"
         pauseButton.size.height = 50
         pauseButton.size.width = 60
-        pauseButton.position = CGPoint(x:-(hud.size.width/2)+50, y: (hud.size.height/2)-40);
+        pauseButton.position = CGPoint(x:-(hud.size.width/2)+50, y: 130)
         
         hud.name = "hud"
         hud.addChild(pauseButton)
@@ -294,7 +294,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         soundButton.name = "sound"
         soundButton.size.height = 60
         soundButton.size.width = 60
-        soundButton.position = CGPoint(x:-(hud.size.width/2)+130, y: (hud.size.height/2)-40);
+        soundButton.position = CGPoint(x:-(hud.size.width/2)+130, y: 130)
         
         hud.addChild(soundButton)
         
@@ -309,6 +309,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             trainTrack.position = getTrainTrackPosition(row : i)
             trainTrack.name = "Track" + String(i)
+            trainTrack.zPosition = 1
             self.addChild(trainTrack)
             trainTrackArray.append(trainTrack)
         }
@@ -330,6 +331,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let trainTrack = trainTrackArray[index]
         trainTrack.position.y = posY
         trainTrack.name = nodeName
+        trainTrack.zPosition = 1
         self.addChild(trainTrack)
     }
     
@@ -340,6 +342,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 grass.alpha = 0
             }
             grass.position = getGrassPosition(row: i)
+            grass.zPosition = 1
             self.addChild(grass)
             grassArray.append(grass)
         }
@@ -375,10 +378,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // Right train
             let rightTrain = RightTrain()
             rightTrain.position = CGPoint(x:self.frame.minX + (rightTrain.size.width - rightTrain.size.width/2), y: posY1)
-            NSLog("-------------------%f", rightTrain.position.x)
             rightTrain.name = "right" + String(i)
             currentRightTrain = rightTrain
             var wagon = createWagon()
+            rightTrain.zPosition = 2
             rightTrain.addChild(wagon)
             self.addChild(rightTrain)
             
@@ -390,6 +393,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             leftTrain.name = "left" + String(i)
             currentLeftTrain = leftTrain
             wagon = createWagon(rightSide: false)
+            leftTrain.zPosition = 2
             leftTrain.addChild(wagon)
             self.addChild(leftTrain)
             leftTrainArray.append(leftTrain)
@@ -666,14 +670,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
-        // Place the background
-        background.position = CGPoint(x: 0, y: 0)
-        background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        background.size = self.size
-        background.zPosition = -1
-        self.addChild(background)
-        
         if isStart {
+            
+            // Place the background
+            background.position = CGPoint(x: 0, y: 0)
+            background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            background.size = self.size
+            background.zPosition = -1
+            self.addChild(background)
+            
             self.physicsWorld.removeAllJoints()
             self.removeAllActions()
             
@@ -687,6 +692,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             kitty.position.x = rightTrainArray[0].frame.minX + (kitty.size.width/2.0)+8.0
             kitty.position.y = rightTrainArray[0].frame.maxY
             
+            kitty.zPosition = 3
             self.addChild(kitty)
             joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody! , bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
             self.physicsWorld.add(joint1)

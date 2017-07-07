@@ -32,9 +32,9 @@ class Label: SKLabelNode {
     static func createHighScore() {
         highScoreLabel = SKLabelNode(fontNamed: "Avenir")
         highScoreLabel.zPosition = 4
-        highScoreLabel.text = "High Score: \(SharingManager.sharedInstance.highScore)"
-        highScoreLabel.fontSize = 35
-        highScoreLabel.fontColor = UIColor.yellow
+        highScoreLabel.text = "Best: \(SharingManager.sharedInstance.highScore)"
+        highScoreLabel.fontSize = 40
+        highScoreLabel.fontColor = UIColor.white
         highScoreLabel.horizontalAlignmentMode = .right
         highScoreLabel.verticalAlignmentMode = .center
     }
