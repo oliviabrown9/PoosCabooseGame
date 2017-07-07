@@ -13,7 +13,7 @@ class KCamera: SKCameraNode {
     
     public var kitty : SKSpriteNode!
     
-    // Find where the kitty is 
+    // Find where the kitty is
     func createCamera(kitty:Kitty ,frameMax:CGFloat )  {
         
         let horizConstraint = SKConstraint.distance(SKRange(upperLimit: 0), to: kitty)
@@ -23,6 +23,6 @@ class KCamera: SKCameraNode {
         let rightConstraint = SKConstraint.positionX(SKRange(upperLimit:0))
         let topConstraint = SKConstraint.positionY(SKRange(upperLimit: (frameMax*100000)))
         
-        constraints = [horizConstraint, vertConstraint, leftConstraint, bottomConstraint, rightConstraint, topConstraint]
+        constraints = [horizConstraint, vertConstraint, leftConstraint , bottomConstraint, rightConstraint,topConstraint]
     }
 }

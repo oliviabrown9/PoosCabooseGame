@@ -13,7 +13,7 @@ class Kitty : SKSpriteNode {
     // Init
     init() {
         let texture = SKTexture(imageNamed: "kitty.png")
-        super.init(texture: texture, color: UIColor.clear, size: CGSize(width: texture.size().width/3, height: texture.size().height/3))
+        super.init(texture: texture, color: UIColor.clear, size: CGSize(width: texture.size().width/2, height: texture.size().height/2))
         setup()
     }
     

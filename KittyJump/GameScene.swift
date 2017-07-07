@@ -14,21 +14,19 @@ import AVFoundation
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var soundEffectPlayer: AVAudioPlayer = AVAudioPlayer()
-    
+
     var viewController: UIViewController?
-    
     let background = SKSpriteNode(imageNamed: "background")
     
-    // Variables for starting
+    // Variables for position
+    let trainYPosition: CGFloat = -600.0
+    let trainDiffPosition: CGFloat = 185.0
+    
+    // Variables for game play
     var isStart = false
     var gamePaused = false
     
-    // Variables for screen buttons
-    var soundButton = SKSpriteNode(imageNamed: "sound")
-    var muteButton = SKSpriteNode (imageNamed: "mute")
-    var pauseButton = SKSpriteNode(imageNamed: "pause")
-    
-    // Variable for current score label
+    // Label for current score
     var scoreLabel: SKLabelNode!
     
     // Enum for train direction
@@ -37,17 +35,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case RightTrain
     }
     
-    // Enum for location
+    // Enum for kitty location
     enum kittyState {
         case onAir
         case onTrain
     }
     
-    // Starting position on right train
+    // Starting position is on a right train
     var kittyCurrentState  = kittyState.onTrain
     var kittyPosition = kittyCurrentTrain.RightTrain
     
-    // Variables for game play
+    // Screen sprite variable
     var kittyCamera = KCamera()
     var isUpdateCameraPosY = false
     var cameraFocus = SKSpriteNode()
@@ -67,8 +65,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var rightTrainArray = [RightTrain]()
     var newRightTrainIndex = -1
     
-    let trainYPosition: CGFloat = -600.0
-    let trainDiffPosition: CGFloat = 185.0
     var newTrainPosY: CGFloat = -600.0
     
     let kitty = Kitty()
@@ -90,11 +86,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    let pastHighScore: Int = SharingManager.sharedInstance.highScore
     // Starting high score set to zero & changes as high score updates
     var highScore: Int = 0 {
         didSet {
-            Label.highScoreLabel.text = "Best: \(pastHighScore)"
+            Label.highScoreLabel.text = "High Score: \(SharingManager.sharedInstance.highScore)"
         }
     }
     
@@ -109,6 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     required init?(coder aDecoder: NSCoder) {
+        
         super.init(coder: aDecoder)
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -1)
         
@@ -147,12 +143,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if let wagonPhysicBody = iWagon.physicsBody, let kittyPhysicBody = kitty.physicsBody {
                 
-                kitty.position.x = iWagon.frame.minX + kitty.size.width / 2
+                kitty.position.x = iWagon.frame.minX + (kitty.size.width/2.0)+8.0
                 kitty.position.y = iWagon.frame.maxY
                 
                 joint1 = SKPhysicsJointPin.joint(withBodyA: wagonPhysicBody, bodyB: kittyPhysicBody, anchor: CGPoint(x: iWagon.frame.minX, y: iWagon.frame.midY))
                 self.physicsWorld.add(joint1)
-                updateScore()
+                score = score + 1
                 kittyCurrentState = .onTrain
             }
         }
@@ -164,59 +160,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if let wagonPhysicBody = iWagon.physicsBody, let kittyPhysicBody = kitty.physicsBody {
             
-            kitty.position.x  = iWagon.frame.maxX - kitty.size.width / 2
+            kitty.position.x  = iWagon.frame.maxX - (kitty.size.width/2.0)-8.0
             kitty.position.y  = iWagon.frame.maxY
             
             joint1 = SKPhysicsJointPin.joint(withBodyA: wagonPhysicBody, bodyB: kittyPhysicBody, anchor: CGPoint(x: iWagon.frame.midX, y: iWagon.frame.midY))
             self.physicsWorld.add(joint1)
-            updateScore()
+            score = score + 1
             kittyCurrentState = .onTrain
-        }
-    }
-    
-    func updateScore() {
-        score = score + 1
-        if score > pastHighScore {
-            Label.highScoreLabel.text = "Best: \(score)"
         }
     }
     
     // Touches
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         if kittyCurrentState == .onTrain {
             self.physicsWorld.removeAllJoints()
-            
-            // Move up
             kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
-            
-            // Play sound with jump
             let jumpSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "jump", ofType: "mp3")!)
             do {
                 soundEffectPlayer = try AVAudioPlayer(contentsOf: jumpSound as URL)
-                soundEffectPlayer.numberOfLoops = 0
+                soundEffectPlayer.numberOfLoops = 1
                 soundEffectPlayer.prepareToPlay()
                 soundEffectPlayer.play()
             } catch {
                 print("Cannot play the file")
             }
-            
-            // Set state to air
             kittyCurrentState = .onAir
-            
-            // Play sound if beat high score
-            if score == pastHighScore {
-                let newHighScoreSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "newHighScore", ofType: "mp3")!)
-                do {
-                    soundEffectPlayer = try AVAudioPlayer(contentsOf: newHighScoreSound as URL)
-                    soundEffectPlayer.numberOfLoops = 0
-                    soundEffectPlayer.prepareToPlay()
-                    soundEffectPlayer.play()
-                } catch {
-                    print("Cannot play the file")
-                }
-                
-            }
         }
     }
     
@@ -230,12 +198,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hud.anchorPoint = CGPoint(x:0.5, y:0.5)
         hud.position = CGPoint(x:0 , y:self.size.height/2  - hud.size.height/2)
         hud.zPosition = 4
-        
-        // Current score label
         scoreLabel = SKLabelNode(fontNamed: "Avenir")
         scoreLabel.zPosition = 1
         scoreLabel.fontSize = 250
         scoreLabel.text = "0"
+        
         scoreLabel.fontColor = UIColor.white
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
@@ -243,22 +210,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         kittyCamera.addChild(hud)
         
-        // High score label
         Label.createScoreHelper()
         Label.scoreLabelHelper.position = CGPoint(x: self.frame.midX, y: -(hud.size.height/2)+60)
         hud.addChild(Label.scoreLabelHelper)
+        
         Label.createHighScore()
         Label.highScoreLabel.position = CGPoint(x: self.frame.maxX - 30 , y: 130)
-        Label.highScoreLabel.zPosition = 1
-        hud.addChild(Label.highScoreLabel)
         
-        //        muteButton.position = CGPoint(x: self.frame.minX + 100, y: 130)
-        //        muteButton.setScale(0.2)
-        //        hud.addChild(muteButton)
-        //
-        //        pauseButton.position = CGPoint(x: self.frame.minX + 40, y: 130)
-        //        pauseButton.setScale(0.15)
-        //        hud.addChild(pauseButton)
+        hud.addChild(Label.highScoreLabel)
     }
     
     // Train Track & Grass
@@ -292,6 +251,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let trainTrack = trainTrackArray[index]
         trainTrack.position.y = posY
         trainTrack.name = nodeName
+        trainTrack.zPosition = 1
         self.addChild(trainTrack)
     }
     
@@ -314,7 +274,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return CGPoint(x: x, y: y)
     }
     
-    // Deadline for game play
     func setupDeadline() {
         deadline.position = getDeadlinePosition(posY: newDeadlinePosY)
         self.addChild(deadline)
@@ -325,7 +284,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return CGPoint(x: x, y: posY)
     }
     
-    // Make the first trains
     func setupFirstRightAndLeftTrains() {
         isFirstTrain = true
         
@@ -343,8 +301,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rightTrain.position = CGPoint(x:self.frame.minX + (rightTrain.size.width - 200), y: posY1)
             rightTrain.name = "right" + String(i)
             var wagon = createWagon()
-            rightTrain.addChild(wagon)
             rightTrain.zPosition = 2
+            rightTrain.addChild(wagon)
             self.addChild(rightTrain)
             
             rightTrainArray.append(rightTrain);
@@ -354,10 +312,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             leftTrain.position = CGPoint(x:self.frame.maxX + leftTrain.size.width/2, y:posY2)
             leftTrain.name = "left" + String(i)
             wagon = createWagon(rightSide: false)
-            leftTrain.addChild(wagon)
             leftTrain.zPosition = 2
+            leftTrain.addChild(wagon)
             self.addChild(leftTrain)
-            
             leftTrainArray.append(leftTrain)
         }
     }
@@ -450,7 +407,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         path.addLine(to: CGPoint(x: -self.frame.size.width, y: yPositionC))
         
         let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 5 - stepSpeed, upper: 6 - stepSpeed)))
-        
         ilTrain.run(SKAction.repeatForever(followLine))
         
         newTrainPosY += trainDiffPosition
@@ -527,8 +483,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-
-    // Remove old deadline & set new
+    
     func setNewDeadline() {
         self.enumerateChildNodes(withName: "Deadline") {
             node, stop in
@@ -537,7 +492,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupDeadline()
     }
     
-    // Move the track & grass once screen moves up
     func changeTrackAndGrassInNewLocation() {
         let lastTrain = currentTrain
         currentTrain += 1
@@ -553,7 +507,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // SKScene functions
     override func didSimulatePhysics() {
-        
         if isUpdateCameraPosY && (kitty.position.y > -100.0) {
             currentTrainNumber += 1
             
@@ -573,9 +526,60 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    override func didMove(to view: SKView) {
-        if isStart {
+    func updateNodesYPosition(){
+        let temp: CGFloat = 1000
+        var newYPos: CGFloat = 0
+        
+        // Track & grass
+        for i in 0...4 {
             
+            // Track
+            newYPos = trainTrackArray[i].position.y - temp
+            setupNewTrack(index: i, posY: newYPos)
+            
+            // Grass
+            grassArray[i].position.y -= temp
+        }
+        // Deadline
+        newDeadlinePosY -= temp
+        setNewDeadline()
+        
+        // Left & right trains
+        updateAllTrainsCoordinate(temp: temp)
+    }
+    
+    func updateAllTrainsCoordinate(temp: CGFloat) {
+        var rightTrainName: String = ""
+        var leftTrainName: String = ""
+        
+        for i in 0..<3 {
+            
+            // Right train
+            rightTrainName = "right" + String(i)
+            self.enumerateChildNodes(withName: rightTrainName) {
+                node, stop in
+                node.removeFromParent();
+            }
+            rightTrainArray[i].position.y -= temp
+            rightTrainArray[i].zPosition = 2
+            self.addChild(rightTrainArray[i])
+            
+            // Left train
+            leftTrainName = "left" + String(i)
+            self.enumerateChildNodes(withName: leftTrainName) {
+                node, stop in
+                node.removeFromParent();
+            }
+            leftTrainArray[i].position.y -= temp
+            leftTrainArray[i].zPosition = 2
+            self.addChild(leftTrainArray[i])
+            newTrainPosY -= temp
+        }
+    }
+    
+    override func didMove(to view: SKView) {
+        
+        if isStart {
             self.physicsWorld.removeAllJoints()
             self.removeAllActions()
             
@@ -593,12 +597,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             moveRightWagon2()
             moveLeftTrain2()
             
-            // Place the cat
-            kitty.position.x = rightTrainArray[0].frame.minX + kitty.size.width / 2
+            kitty.position.x = rightTrainArray[0].frame.minX + (kitty.size.width/2.0)+8.0
             kitty.position.y = rightTrainArray[0].frame.maxY
+            kitty.zPosition = 2
             self.addChild(kitty)
-            joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody!, bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
+            joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody! , bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
             self.physicsWorld.add(joint1)
+            
             kittyCamera.position.y = 0
             addChild(kittyCamera)
             self.camera = kittyCamera
@@ -610,10 +615,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Game lost
     func stop() {
         
-        // End background music
         backgroundMusicPlayer.stop()
         
-        // Play sound on end of game
         let stopSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "stop", ofType: "mp3")!)
         do {
             soundEffectPlayer = try AVAudioPlayer(contentsOf: stopSound as URL)
@@ -631,7 +634,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Store current score
         SharingManager.sharedInstance.currentScore = score
-       
+        
         // Stop the game
         self.gamePaused = true
         self.physicsWorld.removeAllJoints()
@@ -640,7 +643,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Segue to gameOverVC
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.viewController?.performSegue(withIdentifier: "toGameOver", sender: self.viewController)
+            self.view!.window!.rootViewController!.performSegue(withIdentifier: "toGameOver", sender: self)
         }
     }
 }

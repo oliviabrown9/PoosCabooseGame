@@ -17,15 +17,7 @@ class GameOverViewController: UIViewController {
     let highScore = SharingManager.sharedInstance.highScore
     
     @IBOutlet weak var mostRecentScore: UILabel!
-    @IBOutlet weak var one: UILabel!
-    @IBOutlet weak var two: UILabel!
-    @IBOutlet weak var three: UILabel!
-    @IBOutlet weak var four: UILabel!
-    @IBOutlet weak var five: UILabel!
-    @IBOutlet weak var six: UILabel!
-    @IBOutlet weak var seven: UILabel!
-    @IBOutlet weak var eight: UILabel!
-    @IBOutlet weak var nine: UILabel!
+    @IBOutlet weak var pastScores: UILabel!
     
     // Start over image
     @IBOutlet weak var startOver: UIImageView!
@@ -35,15 +27,11 @@ class GameOverViewController: UIViewController {
         
         // Setting text of labels to stored value
         mostRecentScore.text = "\(lastNineScores[0])"
-        one.text = "\(lastNineScores[0])"
-        two.text = "\(lastNineScores[1])"
-        three.text = "\(lastNineScores[2])"
-        four.text = "\(lastNineScores[3])"
-        five.text = "\(lastNineScores[4])"
-        six.text = "\(lastNineScores[5])"
-        seven.text = "\(lastNineScores[6])"
-        eight.text = "\(lastNineScores[7])"
-        nine.text = "\(lastNineScores[8])"
+        let stringArray = lastNineScores.map
+        {
+            String($0)
+        }
+        pastScores.text = stringArray.joined(separator: " ")
     }
     
     // Recognize if startOver image is tapped
