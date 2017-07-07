@@ -20,11 +20,9 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var animationEndImage: UIImageView!
     
-    
     @IBOutlet weak var gifImageView: UIImageView!
     
     // Variables to run game
-    
     var scene = GameScene()
     var isReplayGame = false
     
@@ -46,6 +44,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.gifImageView.delegate = self
         
         startButton?.isEnabled = false
@@ -66,7 +65,6 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         startBackground.backgroundColor = UIColor(red:0.16, green:0.50, blue:0.73, alpha:0.7)
         
         homeView = self.view as! SKView
-        
         // Load the SKScene from 'GameScene.sks'
         scene = GameScene(fileNamed: "GameScene")!
         
@@ -105,6 +103,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         scene.viewController = self
         homeView.presentScene(scene)
         homeView.ignoresSiblingOrder = true
+        
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {

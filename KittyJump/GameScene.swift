@@ -14,7 +14,7 @@ import AVFoundation
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var soundEffectPlayer: AVAudioPlayer = AVAudioPlayer()
-
+    
     var viewController: UIViewController?
     let background = SKSpriteNode(imageNamed: "background")
     
@@ -24,7 +24,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Variables for game play
     var isStart = false
+    var soundState = false
+    var pauseState = false
     var gamePaused = false
+    var pauseButton:SKSpriteNode!
+    var soundButton:SKSpriteNode!
     
     // Label for current score
     var scoreLabel: SKLabelNode!
@@ -58,6 +62,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let leftTrain1 = LeftTrain()
     let rightTrain1 = RightTrain()
     
+    var currentLeftTrain:LeftTrain!
+    var currentRightTrain:RightTrain!
+    
     var leftTrainArray = [LeftTrain]()
     var isFirstTrain = true
     var newLeftTrainIndex = -1
@@ -86,10 +93,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    let pastHighScore: Int = SharingManager.sharedInstance.highScore
     // Starting high score set to zero & changes as high score updates
     var highScore: Int = 0 {
         didSet {
-            Label.highScoreLabel.text = "High Score: \(SharingManager.sharedInstance.highScore)"
+            Label.highScoreLabel.text = "Best: \(pastHighScore)"
         }
     }
     
@@ -104,7 +112,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        
         super.init(coder: aDecoder)
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -1)
         
@@ -143,12 +150,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if let wagonPhysicBody = iWagon.physicsBody, let kittyPhysicBody = kitty.physicsBody {
                 
-                kitty.position.x = iWagon.frame.minX + (kitty.size.width/2.0)+8.0
+                kitty.position.x = iWagon.frame.minX + (kitty.size.width/2.0) + 8.0
                 kitty.position.y = iWagon.frame.maxY
                 
                 joint1 = SKPhysicsJointPin.joint(withBodyA: wagonPhysicBody, bodyB: kittyPhysicBody, anchor: CGPoint(x: iWagon.frame.minX, y: iWagon.frame.midY))
                 self.physicsWorld.add(joint1)
-                score = score + 1
+                updateScore()
                 kittyCurrentState = .onTrain
             }
         }
@@ -165,27 +172,82 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             joint1 = SKPhysicsJointPin.joint(withBodyA: wagonPhysicBody, bodyB: kittyPhysicBody, anchor: CGPoint(x: iWagon.frame.midX, y: iWagon.frame.midY))
             self.physicsWorld.add(joint1)
-            score = score + 1
+            updateScore()
             kittyCurrentState = .onTrain
+        }
+    }
+    
+    func updateScore() {
+        score = score + 1
+        if score > pastHighScore {
+            Label.highScoreLabel.text = "Best: \(score)"
         }
     }
     
     // Touches
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if kittyCurrentState == .onTrain {
-            self.physicsWorld.removeAllJoints()
-            kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
-            let jumpSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "jump", ofType: "mp3")!)
-            do {
-                soundEffectPlayer = try AVAudioPlayer(contentsOf: jumpSound as URL)
-                soundEffectPlayer.numberOfLoops = 1
-                soundEffectPlayer.prepareToPlay()
-                soundEffectPlayer.play()
-            } catch {
-                print("Cannot play the file")
+        
+        //Pause Button click
+        let touch = touches.first
+        let positionInScene = touch!.location(in: self)
+        let touchedNode = self.atPoint(positionInScene)
+        let name = touchedNode.name
+        
+        if (name == "pause") {
+            pauseState = !pauseState
+            if(pauseState) {
+                pauseGame()
+                pauseButton.texture = SKTexture(imageNamed: "play")
             }
-            kittyCurrentState = .onAir
+            else {
+                playGame()
+                pauseButton.texture = SKTexture(imageNamed: "pause")
+            }
         }
+        else if (name == "sound") {
+            soundState = !soundState
+            if(soundState) {
+                muteSound()
+                soundButton.texture = SKTexture(imageNamed: "sound")
+            }
+            else{
+                playSound()
+                soundButton.texture = SKTexture(imageNamed: "mute")
+            }
+        }
+        else {
+            if (!pauseState) {
+                if kittyCurrentState == .onTrain {
+                self.physicsWorld.removeAllJoints()
+                kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
+                if (!soundState) {
+                let jumpSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "jump", ofType: "mp3")!)
+                do {
+                    soundEffectPlayer = try AVAudioPlayer(contentsOf: jumpSound as URL)
+                    soundEffectPlayer.numberOfLoops = 0
+                    soundEffectPlayer.prepareToPlay()
+                    soundEffectPlayer.play()
+                } catch {
+                    print("Cannot play the file")
+                }
+                }
+                kittyCurrentState = .onAir
+        
+                if score == pastHighScore {
+                    let newHighScoreSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "newHighScore", ofType: "mp3")!)
+                    do {
+                        soundEffectPlayer = try AVAudioPlayer(contentsOf: newHighScoreSound as URL)
+                        soundEffectPlayer.numberOfLoops = 0
+                        soundEffectPlayer.prepareToPlay()
+                        soundEffectPlayer.play()
+                    } catch {
+                        print("Cannot play the file")
+                    }
+                    }
+                }
+            }
+        }
+        
     }
     
     // Init functions to build screen
@@ -216,8 +278,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         Label.createHighScore()
         Label.highScoreLabel.position = CGPoint(x: self.frame.maxX - 30 , y: 130)
-        
         hud.addChild(Label.highScoreLabel)
+        pauseButton = SKSpriteNode(imageNamed: "pause")
+        // Put it in the center of the scene
+        pauseButton.name = "pause"
+        pauseButton.size.height = 50
+        pauseButton.size.width = 60
+        pauseButton.position = CGPoint(x:-(hud.size.width/2)+50, y: (hud.size.height/2)-40);
+        
+        hud.name = "hud"
+        hud.addChild(pauseButton)
+        
+        soundButton = SKSpriteNode(imageNamed: "mute")
+        // Put it in the center of the scene
+        soundButton.name = "sound"
+        soundButton.size.height = 60
+        soundButton.size.width = 60
+        soundButton.position = CGPoint(x:-(hud.size.width/2)+130, y: (hud.size.height/2)-40);
+        
+        hud.addChild(soundButton)
+        
     }
     
     // Train Track & Grass
@@ -229,7 +309,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             trainTrack.position = getTrainTrackPosition(row : i)
             trainTrack.name = "Track" + String(i)
-            trainTrack.zPosition = 1
             self.addChild(trainTrack)
             trainTrackArray.append(trainTrack)
         }
@@ -251,7 +330,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let trainTrack = trainTrackArray[index]
         trainTrack.position.y = posY
         trainTrack.name = nodeName
-        trainTrack.zPosition = 1
         self.addChild(trainTrack)
     }
     
@@ -262,7 +340,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 grass.alpha = 0
             }
             grass.position = getGrassPosition(row: i)
-            grass.zPosition = 1
             self.addChild(grass)
             grassArray.append(grass)
         }
@@ -286,7 +363,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setupFirstRightAndLeftTrains() {
         isFirstTrain = true
-        
         var posY1: CGFloat = newTrainPosY + 20 + 45
         var posY2: CGFloat = posY1 + trainDiffPosition
         
@@ -298,10 +374,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // Right train
             let rightTrain = RightTrain()
-            rightTrain.position = CGPoint(x:self.frame.minX + (rightTrain.size.width - 200), y: posY1)
+            rightTrain.position = CGPoint(x:self.frame.minX + (rightTrain.size.width - rightTrain.size.width/2), y: posY1)
+            NSLog("-------------------%f", rightTrain.position.x)
             rightTrain.name = "right" + String(i)
+            currentRightTrain = rightTrain
             var wagon = createWagon()
-            rightTrain.zPosition = 2
             rightTrain.addChild(wagon)
             self.addChild(rightTrain)
             
@@ -311,8 +388,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let leftTrain = LeftTrain()
             leftTrain.position = CGPoint(x:self.frame.maxX + leftTrain.size.width/2, y:posY2)
             leftTrain.name = "left" + String(i)
+            currentLeftTrain = leftTrain
             wagon = createWagon(rightSide: false)
-            leftTrain.zPosition = 2
             leftTrain.addChild(wagon)
             self.addChild(leftTrain)
             leftTrainArray.append(leftTrain)
@@ -344,17 +421,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // Locate imate at specified point
-        let rightTrain = RightTrain()
-        let xPos = rightTrain.size.width/2
-        let yPos = rightTrain.size.height/2
         let size = CGSize(width: 110, height: 45)
         wagon.scale(to: size)
         if rightSide {
+            let xPos = currentRightTrain.size.width/2
+            let yPos = currentRightTrain.size.height/2
             wagon.anchorPoint = CGPoint(x:0, y:0)
             wagon.position = CGPoint(x: -xPos, y: -yPos)
         } else {
+            let xPos1 = currentLeftTrain.size.width/2
+            let yPos1 = currentLeftTrain.size.height/2
             wagon.anchorPoint = CGPoint(x:1, y:0)
-            wagon.position = CGPoint(x: xPos, y: -yPos)
+            wagon.position = CGPoint(x: xPos1, y: -yPos1)
         }
         wagon.zPosition = 2
         return wagon
@@ -375,14 +453,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let irWagon = rightTrainArray[newRightTrainIndex]
         
         if isFirstTrain {
-            path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - 300, y: yPositionC))
+            let firsttrain = rightTrainArray[0]
+            path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - firsttrain.size.width/2, y: yPositionC))
             isFirstTrain = false
         } else {
-            path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - 400 - stepPos, y: yPositionC))
+            path.move(to: CGPoint(x: self.frame.minX - irWagon.size.width/2 - stepPos, y: yPositionC))
         }
         path.addLine(to: CGPoint(x: self.frame.size.width, y: yPositionC))
-        
-        let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 5 - stepSpeed, upper: 6 - stepSpeed)))
+        var followLine:SKAction!
+        if(irWagon.size.width > 400){
+            followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 3 - stepSpeed, upper: 4 - stepSpeed)))
+        }
+        else{
+            followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 5 - stepSpeed, upper: 6 - stepSpeed)))
+        }
         
         irWagon.run(SKAction.repeatForever(followLine))
         
@@ -405,8 +489,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         path.move(to: CGPoint(x: self.frame.maxX + ilTrain.size.width/2 - 100 - stepPos, y: yPositionC))
         
         path.addLine(to: CGPoint(x: -self.frame.size.width, y: yPositionC))
-        
-        let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 5 - stepSpeed, upper: 6 - stepSpeed)))
+        var followLine:SKAction!
+        if(ilTrain.size.width > 400){
+            followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 4 - stepSpeed, upper: 5 - stepSpeed)))
+        }
+        else {
+            followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 6 - stepSpeed, upper: 7 - stepSpeed)))
+        }
         ilTrain.run(SKAction.repeatForever(followLine))
         
         newTrainPosY += trainDiffPosition
@@ -437,7 +526,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if (contact.contactPoint.x > (secondBody.node!.frame.maxX - 100)) {
                     switchJointL(iWagon: secondBody.node! as! LeftTrain)
-                    
                     changeTrackAndGrassInNewLocation()
                     
                     moveRightWagon2()
@@ -561,7 +649,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node.removeFromParent();
             }
             rightTrainArray[i].position.y -= temp
-            rightTrainArray[i].zPosition = 2
+            
             self.addChild(rightTrainArray[i])
             
             // Left train
@@ -571,7 +659,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node.removeFromParent();
             }
             leftTrainArray[i].position.y -= temp
-            leftTrainArray[i].zPosition = 2
             self.addChild(leftTrainArray[i])
             newTrainPosY -= temp
         }
@@ -579,18 +666,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
+        // Place the background
+        background.position = CGPoint(x: 0, y: 0)
+        background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        background.size = self.size
+        background.zPosition = -1
+        self.addChild(background)
+        
         if isStart {
             self.physicsWorld.removeAllJoints()
             self.removeAllActions()
             
             self.physicsWorld.contactDelegate = self
-            
-            // Place the background
-            background.position = CGPoint(x: 0, y: 0)
-            background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-            background.size = self.size
-            background.zPosition = -1
-            self.addChild(background)
             
             // Move the first 2 trains
             newTrainPosY = trainYPosition
@@ -599,7 +686,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             kitty.position.x = rightTrainArray[0].frame.minX + (kitty.size.width/2.0)+8.0
             kitty.position.y = rightTrainArray[0].frame.maxY
-            kitty.zPosition = 2
+            
             self.addChild(kitty)
             joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody! , bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
             self.physicsWorld.add(joint1)
@@ -610,6 +697,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         else {
         }
+        
     }
     
     // Game lost
@@ -617,14 +705,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         backgroundMusicPlayer.stop()
         
+        if (!soundState) {
         let stopSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "stop", ofType: "mp3")!)
         do {
             soundEffectPlayer = try AVAudioPlayer(contentsOf: stopSound as URL)
             soundEffectPlayer.numberOfLoops = 1
             soundEffectPlayer.prepareToPlay()
+            soundEffectPlayer.setVolume(0.7, fadeDuration: 0)
             soundEffectPlayer.play()
         } catch {
             print("Cannot play the file")
+        }
         }
         
         // Store high score if necessary
@@ -643,8 +734,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Segue to gameOverVC
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.view!.window!.rootViewController!.performSegue(withIdentifier: "toGameOver", sender: self)
+            self.viewController?.performSegue(withIdentifier: "toGameOver", sender: self.viewController)
         }
+    }
+    func pauseGame() {
+        
+        backgroundMusicPlayer.stop()
+        
+        // Stop the game
+        self.gamePaused = true
+        self.isPaused = true
+    }
+    func muteSound() {
+        
+        backgroundMusicPlayer.stop()
+    }
+    func playSound() {
+        
+        backgroundMusicPlayer.play()
+
+    }
+    func playGame() {
+        
+        backgroundMusicPlayer.stop()
+        
+        if (!soundState) {
+        let backgroundMusic = NSURL(fileURLWithPath: Bundle.main.path(forResource: "background", ofType: "mp3")!)
+        do {
+            backgroundMusicPlayer = try AVAudioPlayer(contentsOf: backgroundMusic as URL)
+            backgroundMusicPlayer.numberOfLoops = 1
+            backgroundMusicPlayer.prepareToPlay()
+            backgroundMusicPlayer.play()
+        } catch {
+            print("Cannot play the file")
+        }
+        }
+        
+        // Play the game
+        self.gamePaused = false
+        self.isPaused = false
     }
 }
 

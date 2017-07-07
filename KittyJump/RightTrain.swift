@@ -10,10 +10,37 @@ import SpriteKit
 
 class RightTrain : SKSpriteNode {
     
+    
     // Init
     init() {
-        let texture = SKTexture(imageNamed: "trainrightfacing.png")
-        super.init(texture: texture, color: UIColor.black, size: CGSize(width: 600, height: 90))
+        
+        let randomNum:UInt32 = arc4random_uniform(100)
+        let trainnumber:Int = Int(randomNum)
+        var str_trainname:String!
+        var size_train:Int!
+        switch (trainnumber % 6) {
+        case 0:
+            str_trainname = "trainrightfacing1.png"
+            size_train = 240
+        case 1:
+            str_trainname = "trainrightfacing2.png"
+            size_train = 360
+        case 2:
+            str_trainname = "trainrightfacing3.png"
+            size_train = 480
+        case 3:
+            str_trainname = "trainrightfacing4.png"
+            size_train = 600
+        case 4:
+            str_trainname = "trainrightfacing5.png"
+            size_train = 720
+        default:
+            str_trainname = "trainrightfacing2.png"
+            size_train = 360
+        }
+        let texture = SKTexture(imageNamed: str_trainname)
+        super.init(texture: texture, color: UIColor.black, size: CGSize(width: size_train, height: 90))
+        
         setup()
     }
     
@@ -30,10 +57,10 @@ class RightTrain : SKSpriteNode {
         anchorPoint.y = 0.5
         
         let sCenterPoint = CGPoint(x: self.frame.minX + (100 / 2), y: -1)
-        let bCenterPoint = CGPoint(x: self.frame.maxX - (490 / 2), y: 0)
+        let bCenterPoint = CGPoint(x: self.frame.maxX - ((self.size.width - 110) / 2), y: 0)
         
         let leftSmallBox = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 45), center: sCenterPoint)
-        let rightBigBox = SKPhysicsBody(rectangleOf: CGSize(width: 490, height: 90), center: bCenterPoint)
+        let rightBigBox = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width - 110, height: 90), center: bCenterPoint)
         
         physicsBody=SKPhysicsBody(bodies: [leftSmallBox,rightBigBox])
         

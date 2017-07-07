@@ -12,8 +12,32 @@ class LeftTrain : SKSpriteNode {
     
     // Init
     init() {
-        let texture = SKTexture(imageNamed: "trainleftfacing.png")
-        super.init(texture: texture, color: UIColor.black, size: CGSize(width: 600, height: 90))
+        let randomNum:UInt32 = arc4random_uniform(100)
+        let trainnumber:Int = Int(randomNum)
+        var str_trainname:String!
+        var size_train:Int!
+        switch (trainnumber % 6) {
+        case 0:
+            str_trainname = "trainleftfacing1.png"
+            size_train = 240
+        case 1:
+            str_trainname = "trainleftfacing2.png"
+            size_train = 360
+        case 2:
+            str_trainname = "trainleftfacing3.png"
+            size_train = 480
+        case 3:
+            str_trainname = "trainleftfacing4.png"
+            size_train = 600
+        case 4:
+            str_trainname = "trainleftfacing5.png"
+            size_train = 720
+        default:
+            str_trainname = "trainleftfacing3.png"
+            size_train = 480
+        }
+        let texture = SKTexture(imageNamed: str_trainname)
+        super.init(texture: texture, color: UIColor.black, size: CGSize(width: size_train, height: 90))
         setup()
     }
     
