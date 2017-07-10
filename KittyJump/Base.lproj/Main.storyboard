@@ -141,10 +141,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startOver" translatesAutoresizingMaskIntoConstraints="NO" id="RIt-Zv-u3b">
-                                <rect key="frame" x="50" y="550" width="79" height="79"/>
+                                <rect key="frame" x="50" y="559" width="70" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="79" id="aeS-f5-7c0"/>
-                                    <constraint firstAttribute="width" constant="79" id="et2-cH-v9h"/>
+                                    <constraint firstAttribute="height" constant="70" id="aeS-f5-7c0"/>
+                                    <constraint firstAttribute="width" constant="70" id="et2-cH-v9h"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last 9 Lives" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="6DS-U8-LL5">

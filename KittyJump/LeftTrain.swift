@@ -18,8 +18,8 @@ class LeftTrain : SKSpriteNode {
         var size_train:Int!
         switch (trainnumber % 6) {
         case 0:
-            str_trainname = "trainleftfacing1.png"
-            size_train = 240
+            str_trainname = "trainleftfacing3.png"
+            size_train = 480
         case 1:
             str_trainname = "trainleftfacing2.png"
             size_train = 360
@@ -30,6 +30,15 @@ class LeftTrain : SKSpriteNode {
             str_trainname = "trainleftfacing4.png"
             size_train = 600
         case 4:
+            str_trainname = "trainleftfacing3.png"
+            size_train = 480
+        case 5:
+            str_trainname = "trainleftfacing4.png"
+            size_train = 600
+        case 6:
+            str_trainname = "trainleftfacing1.png"
+            size_train = 240
+        case 7:
             str_trainname = "trainleftfacing5.png"
             size_train = 720
         default:

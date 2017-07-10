@@ -18,10 +18,10 @@ class RightTrain : SKSpriteNode {
         let trainnumber:Int = Int(randomNum)
         var str_trainname:String!
         var size_train:Int!
-        switch (trainnumber % 6) {
+        switch (trainnumber % 9) {
         case 0:
-            str_trainname = "trainrightfacing1.png"
-            size_train = 240
+            str_trainname = "trainrightfacing3.png"
+            size_train = 480
         case 1:
             str_trainname = "trainrightfacing2.png"
             size_train = 360
@@ -32,6 +32,15 @@ class RightTrain : SKSpriteNode {
             str_trainname = "trainrightfacing4.png"
             size_train = 600
         case 4:
+            str_trainname = "trainrightfacing3.png"
+            size_train = 480
+        case 5:
+            str_trainname = "trainrightfacing4.png"
+            size_train = 600
+        case 6:
+            str_trainname = "trainrightfacing1.png"
+            size_train = 240
+        case 7:
             str_trainname = "trainrightfacing5.png"
             size_train = 720
         default:
