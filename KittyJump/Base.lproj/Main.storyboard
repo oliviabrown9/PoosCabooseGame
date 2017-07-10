@@ -51,7 +51,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="KTu-L7-ZAE">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundGradient" translatesAutoresizingMaskIntoConstraints="NO" id="KTu-L7-ZAE">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     </imageView>
                                 </subviews>
@@ -339,42 +339,42 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poos coin " translatesAutoresizingMaskIntoConstraints="NO" id="vv3-qG-3cD">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="vv3-qG-3cD">
                                 <rect key="frame" x="326" y="181" width="28" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="EY0-Q3-LWP"/>
                                     <constraint firstAttribute="width" secondItem="vv3-qG-3cD" secondAttribute="height" multiplier="1:1" id="ukU-i4-as6"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poos coin " translatesAutoresizingMaskIntoConstraints="NO" id="tiY-Z9-ZzS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="tiY-Z9-ZzS">
                                 <rect key="frame" x="314" y="60" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="8XE-Vo-c7Q"/>
                                     <constraint firstAttribute="width" secondItem="tiY-Z9-ZzS" secondAttribute="height" multiplier="1:1" id="NVX-yf-Lzw"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poos coin " translatesAutoresizingMaskIntoConstraints="NO" id="ZpZ-ra-LRF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="ZpZ-ra-LRF">
                                 <rect key="frame" x="326" y="237" width="28" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="aWL-W1-2L3"/>
                                     <constraint firstAttribute="width" secondItem="ZpZ-ra-LRF" secondAttribute="height" multiplier="1:1" id="yyw-Ic-xFe"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poos coin " translatesAutoresizingMaskIntoConstraints="NO" id="u1e-X6-rjC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="u1e-X6-rjC">
                                 <rect key="frame" x="326" y="295" width="28" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="65f-cU-Kta"/>
                                     <constraint firstAttribute="width" secondItem="u1e-X6-rjC" secondAttribute="height" multiplier="1:1" id="tgf-lf-5mc"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poos coin " translatesAutoresizingMaskIntoConstraints="NO" id="7KQ-Ox-cQ4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="7KQ-Ox-cQ4">
                                 <rect key="frame" x="326" y="351" width="28" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="9MM-Ci-jpr"/>
                                     <constraint firstAttribute="width" secondItem="7KQ-Ox-cQ4" secondAttribute="height" multiplier="1:1" id="lHV-j0-Meq"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poos coin " translatesAutoresizingMaskIntoConstraints="NO" id="BLk-cw-S7f">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="BLk-cw-S7f">
                                 <rect key="frame" x="326" y="408" width="28" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="AG5-Nt-jPa"/>
@@ -530,8 +530,7 @@
     <resources>
         <image name="arrow" width="24" height="42"/>
         <image name="backgroundGradient" width="1125" height="2001"/>
-        <image name="launch" width="375" height="667"/>
-        <image name="poos coin " width="189" height="168"/>
+        <image name="coin" width="189" height="168"/>
         <image name="poosCorner" width="183" height="161"/>
         <image name="startOver" width="256" height="256"/>
     </resources>
