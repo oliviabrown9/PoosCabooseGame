@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		750899C61F14201000D4227F /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750899C51F14201000D4227F /* StoreViewController.swift */; };
 		753E80A61F058FAD001FEE97 /* stop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 753E80A51F058FAD001FEE97 /* stop.mp3 */; };
 		753E80A81F0593F2001FEE97 /* newHighScore.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 753E80A71F0593F2001FEE97 /* newHighScore.mp3 */; };
 		755820EE1F04126400A68A88 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755820ED1F04126400A68A88 /* jump.mp3 */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		170ABEBE832CE954F508ADBC /* Pods_KittyJump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KittyJump.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5783ACE75A3B97ED65A81BCD /* Pods-KittyJump.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KittyJump.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KittyJump/Pods-KittyJump.debug.xcconfig"; sourceTree = "<group>"; };
+		750899C51F14201000D4227F /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		753E80A51F058FAD001FEE97 /* stop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stop.mp3; sourceTree = "<group>"; };
 		753E80A71F0593F2001FEE97 /* newHighScore.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = newHighScore.mp3; sourceTree = "<group>"; };
 		755820ED1F04126400A68A88 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */,
 				D7C5EAB91EEB5C21007DA71A /* GameScene.swift */,
 				75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */,
+				750899C51F14201000D4227F /* StoreViewController.swift */,
 				D7C5EAB51EEB5C21007DA71A /* GameScene.sks */,
 				D7C5EAB71EEB5C21007DA71A /* Actions.sks */,
 				756C74721F05663900EFF2FB /* splash.gif */,
@@ -310,6 +313,7 @@
 				D7C5EABA1EEB5C21007DA71A /* GameScene.swift in Sources */,
 				D7C5EAFA1EF0F638007DA71A /* Label.swift in Sources */,
 				75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */,
+				750899C61F14201000D4227F /* StoreViewController.swift in Sources */,
 				D7C5EAE31EEBFB03007DA71A /* Grass.swift in Sources */,
 				D7C5EAE61EEC07E5007DA71A /* LeftTrain.swift in Sources */,
 				D7C5EABC1EEB5C21007DA71A /* GameViewController.swift in Sources */,

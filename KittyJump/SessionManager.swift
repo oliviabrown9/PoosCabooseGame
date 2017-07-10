@@ -11,7 +11,6 @@ import UIKit
 class SharingManager {
     
     // Local Variable
-    
     var lastScores = [Int](repeating: 0, count: 9)
     var userDefaults: UserDefaults = UserDefaults.standard
     
@@ -24,6 +23,12 @@ class SharingManager {
     var currentScore: Int = 0 {
         didSet {
             changeLastScores(score: currentScore)
+        }
+    }
+    
+    var lifetimeScore: Int = 0 {
+        didSet {
+            userDefaults.set((lifetimeScore), forKey: "LifetimeScore")
         }
     }
     
@@ -44,6 +49,14 @@ class SharingManager {
         }
         else {
             userDefaults.set(lastScores, forKey: "LastScores")
+        }
+        
+        let storedLifetimeScore = userDefaults.integer(forKey: "LifetimeScore")
+        if storedLifetimeScore != 0 {
+            lifetimeScore = storedLifetimeScore
+        }
+        else {
+            userDefaults.set(lifetimeScore, forKey: "LifetimeScore")
         }
     }
     

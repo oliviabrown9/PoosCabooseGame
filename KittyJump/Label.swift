@@ -18,11 +18,11 @@ class Label: SKLabelNode {
     
     // Current Score text label
     static func createScoreHelper() {
-        scoreLabelHelper = SKLabelNode(fontNamed: "Avenir")
+        scoreLabelHelper = SKLabelNode(fontNamed: "Avenir-Black")
         scoreLabelHelper.zPosition = 4
         scoreLabelHelper.text = "Current Score"
-        scoreLabelHelper.fontSize = 30
-        scoreLabelHelper.fontColor = UIColor.white
+        scoreLabelHelper.fontSize = 35
+        scoreLabelHelper.fontColor = UIColor(colorLiteralRed: 1, green: 1, blue: 1, alpha: 0.75)
         scoreLabelHelper.horizontalAlignmentMode = .center
         scoreLabelHelper.verticalAlignmentMode = .center
         
@@ -30,7 +30,7 @@ class Label: SKLabelNode {
     
     // High score text & number label
     static func createHighScore() {
-        highScoreLabel = SKLabelNode(fontNamed: "Avenir")
+        highScoreLabel = SKLabelNode(fontNamed: "Avenir-Heavy")
         highScoreLabel.zPosition = 4
         highScoreLabel.text = "Best: \(SharingManager.sharedInstance.highScore)"
         highScoreLabel.fontSize = 40

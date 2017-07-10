@@ -267,7 +267,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hud.position = CGPoint(x:0 , y:self.size.height/2  - hud.size.height/2)
         hud.zPosition = 4
         hud.name = "hud"
-        scoreLabel = SKLabelNode(fontNamed: "Avenir")
+        scoreLabel = SKLabelNode(fontNamed: "Avenir-Medium")
         scoreLabel.zPosition = 1
         scoreLabel.fontSize = 250
         scoreLabel.text = "0"
@@ -747,6 +747,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } catch {
                 print("Cannot play the file")
             }
+        }
+        
+        // Add score to lifetimeScore
+        if score != 0 {
+            SharingManager.sharedInstance.lifetimeScore = SharingManager.sharedInstance.lifetimeScore + score
         }
         
         // Store high score if necessary
