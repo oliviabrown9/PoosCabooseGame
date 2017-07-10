@@ -114,7 +114,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gameOverBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Kpj-aq-ezg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundGradient" translatesAutoresizingMaskIntoConstraints="NO" id="Kpj-aq-ezg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Poos Caboose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="wPL-dS-eOZ">
@@ -167,11 +167,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ysV-3q-rdg">
-                                <rect key="frame" x="327" y="478" width="20" height="20"/>
+                                <rect key="frame" x="327" y="473.5" width="20" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="ysV-3q-rdg" secondAttribute="height" multiplier="1:1" id="09R-VS-qtx"/>
-                                    <constraint firstAttribute="width" constant="20" id="Icy-KV-bOU"/>
+                                    <constraint firstAttribute="height" constant="30" id="0EX-8e-Lgh"/>
+                                    <constraint firstAttribute="width" constant="20" id="mn6-Pw-yIh"/>
                                 </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poosCorner" translatesAutoresizingMaskIntoConstraints="NO" id="T9A-VY-ya6">
+                                <rect key="frame" x="192" y="506" width="183" height="161"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61j-Pl-6Nf">
                                 <rect key="frame" x="238" y="470" width="126" height="37"/>
@@ -192,7 +195,6 @@
                             <constraint firstItem="rAM-9b-1Uj" firstAttribute="centerX" secondItem="xeD-0f-y0X" secondAttribute="centerX" id="2WF-b5-uc9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="61j-Pl-6Nf" secondAttribute="trailing" constant="-5" id="2n5-vd-en6"/>
                             <constraint firstAttribute="trailing" secondItem="Kpj-aq-ezg" secondAttribute="trailing" id="5Nl-n7-UwY"/>
-                            <constraint firstItem="3Lb-n6-gf7" firstAttribute="top" secondItem="61j-Pl-6Nf" secondAttribute="bottom" constant="160" id="6Zt-gW-Ax1"/>
                             <constraint firstItem="tnq-gu-eye" firstAttribute="centerX" secondItem="xeD-0f-y0X" secondAttribute="centerX" id="7JE-Sn-GlK"/>
                             <constraint firstItem="tnq-gu-eye" firstAttribute="top" secondItem="6DS-U8-LL5" secondAttribute="bottom" id="7pb-dR-S98"/>
                             <constraint firstItem="aPX-hV-qxj" firstAttribute="leading" secondItem="xeD-0f-y0X" secondAttribute="leadingMargin" constant="5" id="Aj8-Rm-Jgl"/>
@@ -202,18 +204,21 @@
                             <constraint firstItem="I1j-K6-rVR" firstAttribute="centerX" secondItem="xeD-0f-y0X" secondAttribute="centerX" id="KRV-U9-wM2"/>
                             <constraint firstItem="aPX-hV-qxj" firstAttribute="top" secondItem="Z5D-vU-5Ri" secondAttribute="bottom" constant="35" id="LLt-If-biA"/>
                             <constraint firstItem="6DS-U8-LL5" firstAttribute="centerX" secondItem="xeD-0f-y0X" secondAttribute="centerX" id="VIk-4w-LJQ"/>
-                            <constraint firstItem="ysV-3q-rdg" firstAttribute="centerY" secondItem="61j-Pl-6Nf" secondAttribute="centerY" id="Vpy-Zy-d8M"/>
                             <constraint firstItem="EPO-0P-T3r" firstAttribute="top" secondItem="I1j-K6-rVR" secondAttribute="bottom" id="VtY-ib-iVP"/>
                             <constraint firstItem="Kpj-aq-ezg" firstAttribute="leading" secondItem="xeD-0f-y0X" secondAttribute="leading" id="XvQ-gF-sqg"/>
                             <constraint firstItem="wPL-dS-eOZ" firstAttribute="leading" secondItem="xeD-0f-y0X" secondAttribute="leadingMargin" constant="5" id="cE4-Xd-XuY"/>
                             <constraint firstItem="Kpj-aq-ezg" firstAttribute="centerY" secondItem="xeD-0f-y0X" secondAttribute="centerY" id="g9H-2m-X3j"/>
                             <constraint firstItem="RIt-Zv-u3b" firstAttribute="leading" secondItem="xeD-0f-y0X" secondAttribute="leadingMargin" constant="35" id="j7Q-zg-76N"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ysV-3q-rdg" secondAttribute="trailing" constant="12" id="kOc-ht-lmq"/>
                             <constraint firstItem="wPL-dS-eOZ" firstAttribute="top" secondItem="aPX-hV-qxj" secondAttribute="bottom" constant="-3.5" id="onR-NL-str"/>
+                            <constraint firstItem="ysV-3q-rdg" firstAttribute="centerY" secondItem="61j-Pl-6Nf" secondAttribute="centerY" id="rA0-dP-kwQ"/>
                             <constraint firstItem="6DS-U8-LL5" firstAttribute="top" secondItem="EPO-0P-T3r" secondAttribute="bottom" constant="30" id="rGq-Qs-Elg"/>
                             <constraint firstItem="Kpj-aq-ezg" firstAttribute="centerX" secondItem="xeD-0f-y0X" secondAttribute="centerX" id="rcD-DG-AqS"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ysV-3q-rdg" secondAttribute="trailing" constant="12" id="s6f-p7-BaF"/>
+                            <constraint firstItem="3Lb-n6-gf7" firstAttribute="top" secondItem="T9A-VY-ya6" secondAttribute="bottom" id="t30-8l-XdG"/>
                             <constraint firstItem="Kpj-aq-ezg" firstAttribute="top" secondItem="xeD-0f-y0X" secondAttribute="top" id="uOH-Ms-IOd"/>
                             <constraint firstItem="rAM-9b-1Uj" firstAttribute="top" secondItem="wPL-dS-eOZ" secondAttribute="bottom" constant="10" id="ukS-nd-EOD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="T9A-VY-ya6" secondAttribute="trailing" constant="-16" id="utU-Jc-ZgE"/>
+                            <constraint firstItem="T9A-VY-ya6" firstAttribute="top" secondItem="61j-Pl-6Nf" secondAttribute="bottom" constant="-1" id="zA7-1Q-jQR"/>
                             <constraint firstItem="EPO-0P-T3r" firstAttribute="centerX" secondItem="xeD-0f-y0X" secondAttribute="centerX" id="ztu-P4-bvZ"/>
                         </constraints>
                     </view>
@@ -228,7 +233,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Egq-xP-xz8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="S1n-et-zFN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="437.60000000000002" y="138.98050974512745"/>
+            <point key="canvasLocation" x="420" y="138.98050974512745"/>
         </scene>
         <!--Store View Controller-->
         <scene sceneID="A5f-WD-Bua">
@@ -242,7 +247,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gameOverBackground" translatesAutoresizingMaskIntoConstraints="NO" id="nWy-aB-ild" userLabel="background">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundGradient" translatesAutoresizingMaskIntoConstraints="NO" id="nWy-aB-ild" userLabel="backgroundGradient">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customize your Poos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="XrY-i5-Asb">
@@ -440,6 +445,9 @@
                                     <constraint firstAttribute="width" constant="70" id="fXv-uR-23z"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poosCorner" translatesAutoresizingMaskIntoConstraints="NO" id="sEd-V3-kmx">
+                                <rect key="frame" x="192" y="506" width="183" height="161"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -450,6 +458,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="vv3-qG-3cD" secondAttribute="trailing" constant="5" id="0zO-JG-Dat"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PAD-wz-Vct" secondAttribute="trailing" id="1dm-FM-Stp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="g5h-yg-zDm" secondAttribute="trailing" id="2Oo-QS-G1Z"/>
+                            <constraint firstItem="Mgl-uL-ipJ" firstAttribute="top" secondItem="sEd-V3-kmx" secondAttribute="bottom" id="3Xj-bC-oOm"/>
                             <constraint firstItem="nWy-aB-ild" firstAttribute="centerY" secondItem="hD9-Wa-hV6" secondAttribute="centerY" id="3sq-7u-7FC"/>
                             <constraint firstItem="R2o-cr-FnG" firstAttribute="leading" secondItem="hD9-Wa-hV6" secondAttribute="leadingMargin" constant="5" id="4HQ-Dv-VZK"/>
                             <constraint firstItem="pUU-be-u4f" firstAttribute="top" secondItem="awn-Kq-T8x" secondAttribute="bottom" constant="30" id="4zl-dK-VlL"/>
@@ -472,6 +481,7 @@
                             <constraint firstItem="caM-2Q-Y5L" firstAttribute="top" secondItem="pUU-be-u4f" secondAttribute="bottom" constant="30" id="NRN-zw-ZpF"/>
                             <constraint firstItem="XrY-i5-Asb" firstAttribute="top" secondItem="8XH-BJ-ZYs" secondAttribute="bottom" constant="-3.5" id="Ntf-HN-waC"/>
                             <constraint firstItem="w6K-ZA-oRo" firstAttribute="centerY" secondItem="zDZ-Ru-YPI" secondAttribute="centerY" id="OPY-vz-Ib4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sEd-V3-kmx" secondAttribute="trailing" constant="-16" id="Oh8-CM-jcU"/>
                             <constraint firstItem="kvS-AW-G8Y" firstAttribute="bottom" secondItem="tiY-Z9-ZzS" secondAttribute="bottom" id="Tdu-R4-TCi"/>
                             <constraint firstItem="4cj-GK-7q2" firstAttribute="centerY" secondItem="R2o-cr-FnG" secondAttribute="centerY" id="U0G-66-PXe"/>
                             <constraint firstItem="PAD-wz-Vct" firstAttribute="centerY" secondItem="w6K-ZA-oRo" secondAttribute="centerY" id="Uw6-zK-fYP"/>
@@ -507,18 +517,22 @@
                     </view>
                     <connections>
                         <outlet property="currentCoins" destination="Zen-qP-XiF" id="laY-hF-lrx"/>
+                        <outlet property="startOver" destination="DKW-8B-26J" id="y4q-7k-BrR"/>
+                        <segue destination="IZF-mN-TjC" kind="unwind" identifier="unwindToHomeView" unwindAction="unwindToHomeViewWithSender:" id="ILJ-jA-yyI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rJ-bN-eTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="IZF-mN-TjC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1117.5999999999999" y="138.98050974512745"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrow" width="24" height="42"/>
-        <image name="gameOverBackground" width="1125" height="2001"/>
+        <image name="backgroundGradient" width="1125" height="2001"/>
         <image name="launch" width="375" height="667"/>
         <image name="poos coin " width="189" height="168"/>
+        <image name="poosCorner" width="183" height="161"/>
         <image name="startOver" width="256" height="256"/>
     </resources>
 </document>
