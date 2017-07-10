@@ -16,6 +16,7 @@ class GameOverViewController: UIViewController {
     var lastNineScores = SharingManager.sharedInstance.lastScores
     let highScore = SharingManager.sharedInstance.highScore
     
+    @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var mostRecentScore: UILabel!
     @IBOutlet weak var pastScores: UILabel!
     
@@ -25,6 +26,7 @@ class GameOverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        highScoreLabel.text = "Best: \(highScore)"
         // Setting text of labels to stored value
         mostRecentScore.text = "\(lastNineScores[0])"
         let stringArray = lastNineScores.map

@@ -133,6 +133,7 @@
 		D7C5EAB21EEB5C21007DA71A /* KittyJump */ = {
 			isa = PBXGroup;
 			children = (
+				D7C5EABD1EEB5C21007DA71A /* Main.storyboard */,
 				D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */,
 				D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */,
 				D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */,
@@ -145,7 +146,6 @@
 				D7C5EAE41EEC058C007DA71A /* Sprites */,
 				755820F11F0413D400A68A88 /* Audio */,
 				D7C5EAFB1EF0FA9E007DA71A /* SceneHelper */,
-				D7C5EABD1EEB5C21007DA71A /* Main.storyboard */,
 				D7C5EAC01EEB5C21007DA71A /* Assets.xcassets */,
 				D7C5EAC21EEB5C21007DA71A /* LaunchScreen.storyboard */,
 				D7C5EAC51EEB5C21007DA71A /* Info.plist */,
