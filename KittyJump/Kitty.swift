@@ -8,11 +8,14 @@
 
 import SpriteKit
 
+var catImage: UIImage = #imageLiteral(resourceName: "kitty")
+
 class Kitty : SKSpriteNode {
     
+
     // Init
     init() {
-        let texture = SKTexture(imageNamed: "kitty.png")
+        let texture = SKTexture(image: catImage)
         super.init(texture: texture, color: UIColor.clear, size: CGSize(width: texture.size().width/2, height: texture.size().height/2))
         setup()
     }

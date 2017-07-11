@@ -30,6 +30,12 @@ class StoreViewController: UIViewController {
     var tryThird: Bool = false
     var tryFourth: Bool = false
     
+    var useFirst: Bool = false
+    var useSecond: Bool = false
+    var useThird: Bool = false
+    var useFourth: Bool = false
+    var useFifth: Bool = false
+    
     @IBOutlet weak var firstTryButton: UIButton!
     @IBOutlet weak var secondTryButton: UIButton!
     @IBOutlet weak var thirdTryButton: UIButton!
@@ -82,6 +88,8 @@ class StoreViewController: UIViewController {
         buyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
         coin.isHidden = true
     }
+    
+    // Try on
     @IBAction func firstTry(_ sender: Any) {
         if tryFirst == true {
             tryFirst = false
@@ -90,7 +98,7 @@ class StoreViewController: UIViewController {
         tryFirst = true
             firstTryButton.setTitle("take off", for: .normal)
         }
-        updateCatImage()
+        updateCornerCat()
     }
     @IBAction func secondTry(_ sender: Any) {
        if trySecond == true {
@@ -100,7 +108,7 @@ class StoreViewController: UIViewController {
             trySecond = true
             secondTryButton.setTitle("take off", for: .normal)
         }
-        updateCatImage()
+        updateCornerCat()
     }
     @IBAction func thirdTry(_ sender: Any) {
         if tryThird == true {
@@ -110,7 +118,7 @@ class StoreViewController: UIViewController {
             tryThird = true
             thirdTryButton.setTitle("take off", for: .normal)
         }
-        updateCatImage()
+        updateCornerCat()
     }
     @IBAction func fourthTry(_ sender: Any) {
         if tryFourth == true {
@@ -120,7 +128,7 @@ class StoreViewController: UIViewController {
             tryFourth = true
             fourthTryButton.setTitle("take off", for: .normal)
         }
-        updateCatImage()
+        updateCornerCat()
     }
     @IBAction func fifthTry(_ sender: Any) {
         if cornerCat.image != #imageLiteral(resourceName: "poos-poosrate") {
@@ -132,7 +140,10 @@ class StoreViewController: UIViewController {
         }
     }
     
-    func updateCatImage() {
+    // Change cat image depending on try on selections
+    func updateCornerCat() {
+        
+        // Switch first & third since they cannot be displayed at the same time
         if tryFirst && tryThird {
             if cornerCat.image == #imageLiteral(resourceName: "poos-monocle") || cornerCat.image == #imageLiteral(resourceName: "poos-monocle-mustache") {
                 tryThird = false
@@ -140,8 +151,10 @@ class StoreViewController: UIViewController {
             else {
                 tryFirst = false
             }
-            updateCatImage()
+            updateCornerCat()
         }
+        
+        // Switch second & third since they cannot be displayed at the same time
         else if trySecond && tryThird {
             if cornerCat.image == #imageLiteral(resourceName: "poos-monocle") || cornerCat.image == #imageLiteral(resourceName: "poos-monocle-mustache") {
                 tryThird = false
@@ -149,7 +162,7 @@ class StoreViewController: UIViewController {
             else {
                 trySecond = false
             }
-            updateCatImage()
+            updateCornerCat()
         }
         if tryFirst && !trySecond && !tryFourth {
             cornerCat.image = #imageLiteral(resourceName: "poos-shades")
@@ -183,6 +196,61 @@ class StoreViewController: UIViewController {
         }
     }
     
+    func updateUsing() {
+        
+        // Switch first & third since they cannot be used at the same time
+        if useFirst && useThird {
+            if catImage == #imageLiteral(resourceName: "poos-monocle") || catImage == #imageLiteral(resourceName: "poos-monocle-mustache") {
+                useThird = false
+            }
+            else {
+                useFirst = false
+            }
+            updateUsing()
+        }
+            
+        // Switch second & third since they cannot be displayed at the same time
+        else if useSecond && useThird {
+            if catImage == #imageLiteral(resourceName: "poos-monocle") || catImage == #imageLiteral(resourceName: "poos-monocle-mustache") {
+                useThird = false
+            }
+            else {
+                useSecond = false
+            }
+            updateUsing()
+        }
+        if useFirst && !useSecond && !useFourth {
+            catImage = #imageLiteral(resourceName: "poos-shades")
+        }
+        else if useFirst && useSecond && !useFourth {
+            catImage = #imageLiteral(resourceName: "poos-shades-chain")
+        }
+        else if useFirst && useSecond && useFourth {
+            catImage = #imageLiteral(resourceName: "poos-shades-chain-mustache")
+        }
+        else if useFirst && !useSecond && useFourth {
+            catImage = #imageLiteral(resourceName: "poos-shades-mustache")
+        }
+        else if !useFirst && useSecond && !useThird && !useFourth {
+            catImage = #imageLiteral(resourceName: "poos-chain")
+        }
+        else if !useFirst && useSecond && !useThird && useFourth {
+            catImage = #imageLiteral(resourceName: "poos-chain-mustache")
+        }
+        else if !useFirst && !useSecond && useThird && useFourth {
+            catImage = #imageLiteral(resourceName: "poos-monocle-mustache")
+        }
+        else if !useFirst && !useSecond && useThird && !useFourth {
+            catImage = #imageLiteral(resourceName: "poos-monocle")
+        }
+        else if !useFirst && !useSecond && !useThird && useFourth {
+            catImage = #imageLiteral(resourceName: "poos-mustache")
+        }
+        else {
+            catImage = #imageLiteral(resourceName: "poosCorner")
+        }
+    }
+    
     // Buy or use items
     @IBOutlet weak var firstBuyButton: UIButton!
     @IBOutlet weak var firstCoin: UIImageView!
@@ -191,7 +259,17 @@ class StoreViewController: UIViewController {
             purchaseItem(price: 1, num: 0, button: firstBuyButton, image: firstCoin, title: "shades")
         }
         else {
-            print("use")
+            if useFirst == false {
+            useFirst = true
+                print("using")
+                firstBuyButton.setTitle("remove", for: .normal)
+            }
+            else {
+                useFirst = false
+                firstBuyButton.setTitle("use", for: .normal)
+                print("removed")
+            }
+            updateUsing()
         }
     }
     @IBOutlet weak var secondCoin: UIImageView!
@@ -201,7 +279,15 @@ class StoreViewController: UIViewController {
             purchaseItem(price: 2000, num: 1, button: secondBuyButton, image: secondCoin, title: "chain")
         }
         else {
-            print("use")
+            if useSecond == false {
+                useSecond = true
+                secondBuyButton.setTitle("remove", for: .normal)
+            }
+            else {
+                useSecond = false
+                secondBuyButton.setTitle("use", for: .normal)
+            }
+          updateUsing()
         }
     }
     @IBOutlet weak var thirdCoin: UIImageView!
@@ -211,7 +297,15 @@ class StoreViewController: UIViewController {
             purchaseItem(price: 5000, num: 2, button: thirdBuyButton, image: thirdCoin, title: "monocle")
         }
         else {
-            print("use")
+            if useThird == false {
+                useThird = true
+                thirdBuyButton.setTitle("remove", for: .normal)
+            }
+            else {
+                useThird = false
+                thirdBuyButton.setTitle("use", for: .normal)
+            }
+            updateUsing()
         }
     }
     @IBOutlet weak var fourthCoin: UIImageView!
@@ -221,7 +315,15 @@ class StoreViewController: UIViewController {
             purchaseItem(price: 10000, num: 3, button: fourthBuyButton, image: fourthCoin, title: "mustache")
         }
         else {
-            print("use")
+            if useFourth == false {
+                useFourth = true
+                fourthBuyButton.setTitle("remove", for: .normal)
+            }
+            else {
+                useFourth = false
+                fourthBuyButton.setTitle("use", for: .normal)
+            }
+            updateUsing()
         }
     }
     @IBOutlet weak var fifthCoin: UIImageView!
@@ -231,7 +333,16 @@ class StoreViewController: UIViewController {
             purchaseItem(price: 100000, num: 4, button: fifthBuyButton, image: fifthCoin, title: "?????")
         }
         else {
-            print("use")
+            if useFifth == false {
+                useFifth = true
+                fifthBuyButton.setTitle("remove", for: .normal)
+                catImage = #imageLiteral(resourceName: "poos-poosrate")
+            }
+            else {
+                useFifth = false
+                fifthBuyButton.setTitle("use", for: .normal)
+                catImage = #imageLiteral(resourceName: "kitty")
+            }
         }
     }
     
@@ -257,8 +368,6 @@ class StoreViewController: UIViewController {
             showModal()
         }
         else {
-            // popup not enough coins - buy more?
-//            modalView.backgroundColor = UIColor(colorLiteralRed: 0/255, green: 93/255, blue: 172/255, alpha: 1)
             modalView.layer.cornerRadius = 15
             confirmButton.layer.cornerRadius = 20
             messageLabel.text = "Oops! You don't have enough coins. Would you like to buy more?"
