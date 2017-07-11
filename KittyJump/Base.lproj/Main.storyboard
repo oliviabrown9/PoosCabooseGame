@@ -310,6 +310,9 @@
                                 <state key="normal" title="try on">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="firstTry:" destination="nFG-jk-vvE" eventType="touchUpInside" id="x3Y-I9-DwS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cj-GK-7q2">
                                 <rect key="frame" x="163.5" y="233.5" width="48" height="36"/>
@@ -317,6 +320,9 @@
                                 <state key="normal" title="try on">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="secondTry:" destination="nFG-jk-vvE" eventType="touchUpInside" id="bt8-0b-mJY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vl9-uO-Oaa">
                                 <rect key="frame" x="163.5" y="291" width="48" height="36"/>
@@ -324,6 +330,9 @@
                                 <state key="normal" title="try on">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="thirdTry:" destination="nFG-jk-vvE" eventType="touchUpInside" id="OTg-VQ-9dO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcH-1A-Wja">
                                 <rect key="frame" x="163.5" y="347.5" width="48" height="36"/>
@@ -331,6 +340,9 @@
                                 <state key="normal" title="try on">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="fourthTry:" destination="nFG-jk-vvE" eventType="touchUpInside" id="Yax-k4-AjY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZP-qK-J5I">
                                 <rect key="frame" x="163" y="404.5" width="48" height="36"/>
@@ -338,6 +350,9 @@
                                 <state key="normal" title="try on">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="fifthTry:" destination="nFG-jk-vvE" eventType="touchUpInside" id="Thd-Rb-VQD"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="tiY-Z9-ZzS">
                                 <rect key="frame" x="314" y="60" width="40" height="40"/>
@@ -462,6 +477,10 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poosCorner" translatesAutoresizingMaskIntoConstraints="NO" id="sEd-V3-kmx">
                                 <rect key="frame" x="192" y="506" width="183" height="161"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="183" id="Vpr-1D-L8r"/>
+                                    <constraint firstAttribute="height" constant="161" id="yHu-nw-LJP"/>
+                                </constraints>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gph-b2-O6F">
                                 <rect key="frame" x="62" y="207" width="250" height="183"/>
@@ -587,9 +606,11 @@
                     </view>
                     <connections>
                         <outlet property="confirmButton" destination="873-Xu-xdu" id="BAa-7G-QYT"/>
+                        <outlet property="cornerCat" destination="sEd-V3-kmx" id="6UE-u9-t7i"/>
                         <outlet property="currentCoins" destination="Zen-qP-XiF" id="laY-hF-lrx"/>
                         <outlet property="fifthBuyButton" destination="g5h-yg-zDm" id="5Yc-BZ-tWG"/>
                         <outlet property="fifthCoin" destination="BLk-cw-S7f" id="e0I-ap-Xgv"/>
+                        <outlet property="fifthTryButton" destination="CZP-qK-J5I" id="aqL-Ny-dLP"/>
                         <outlet property="firstBuyButton" destination="PAD-wz-Vct" id="QVU-aS-x2m"/>
                         <outlet property="firstCoin" destination="vv3-qG-3cD" id="swP-Pg-cE0"/>
                         <outlet property="fourthBuyButton" destination="v5f-jA-QT8" id="Gpr-CW-gfv"/>

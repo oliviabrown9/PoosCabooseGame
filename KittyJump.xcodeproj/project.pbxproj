@@ -15,6 +15,7 @@
 		755C59021F0484F70064472D /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755C59011F0484F70064472D /* background.mp3 */; };
 		756C74731F05663900EFF2FB /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 756C74721F05663900EFF2FB /* splash.gif */; };
 		75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */; };
+		75EF6CCD1F1569B7004AD11F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EF6CCC1F1569B7004AD11F /* StoreKit.framework */; };
 		A4892182E1E85A5DD8434DDA /* Pods_KittyJump.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170ABEBE832CE954F508ADBC /* Pods_KittyJump.framework */; };
 		D1C52BEF1EF5911200115764 /* Deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C52BEE1EF5911200115764 /* Deadline.swift */; };
 		D7C5EAB41EEB5C21007DA71A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 		755C59011F0484F70064472D /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 		756C74721F05663900EFF2FB /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		75EF6CCC1F1569B7004AD11F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C824AB0E7CB08042295979CA /* Pods-KittyJump.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KittyJump.release.xcconfig"; path = "Pods/Target Support Files/Pods-KittyJump/Pods-KittyJump.release.xcconfig"; sourceTree = "<group>"; };
 		D1C52BEE1EF5911200115764 /* Deadline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deadline.swift; sourceTree = "<group>"; };
 		D7C5EAB01EEB5C21007DA71A /* KittyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KittyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4892182E1E85A5DD8434DDA /* Pods_KittyJump.framework in Frameworks */,
+				75EF6CCD1F1569B7004AD11F /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +109,7 @@
 		7E205AA97C6877150B5D7836 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				75EF6CCC1F1569B7004AD11F /* StoreKit.framework */,
 				170ABEBE832CE954F508ADBC /* Pods_KittyJump.framework */,
 			);
 			name = Frameworks;
@@ -213,6 +217,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 8GEKYYW3CQ;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};

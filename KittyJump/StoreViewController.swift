@@ -15,6 +15,7 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var modalTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var cornerCat: UIImageView!
 
     var confirm: Bool = false
     var coins = SharingManager.sharedInstance.lifetimeScore
@@ -24,7 +25,14 @@ class StoreViewController: UIViewController {
     var coin: UIImageView? = nil
     var itemTitle: String = ""
     
+    var tryFirst: Bool = false
+    var trySecond: Bool = false
+    var tryThird: Bool = false
+    var tryFourth: Bool = false
+    
+    @IBOutlet weak var fifthTryButton: UIButton!
     @IBOutlet weak var startOver: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,6 +58,10 @@ class StoreViewController: UIViewController {
                 }
             }
         }
+        if coins >= 10 {
+            fifthTryButton.alpha = 1
+            fifthTryButton.isUserInteractionEnabled = true
+        }
     }
     
     @IBAction func confirmPressed(_ sender: Any) {
@@ -65,6 +77,96 @@ class StoreViewController: UIViewController {
         buyButton.setTitle("use", for: .normal)
         buyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
         coin.isHidden = true
+    }
+    @IBAction func firstTry(_ sender: Any) {
+        if tryFirst == true {
+            tryFirst = false
+        } else {
+        tryFirst = true
+        }
+        updateCatImage()
+    }
+    @IBAction func secondTry(_ sender: Any) {
+       if trySecond == true {
+            trySecond = false
+        } else {
+            trySecond = true
+        }
+        updateCatImage()
+    }
+    @IBAction func thirdTry(_ sender: Any) {
+        if tryThird == true {
+            tryThird = false
+        } else {
+            tryThird = true
+        }
+        updateCatImage()
+    }
+    @IBAction func fourthTry(_ sender: Any) {
+        if tryFourth == true {
+            tryFourth = false
+        } else {
+            tryFourth = true
+        }
+        updateCatImage()
+    }
+    @IBAction func fifthTry(_ sender: Any) {
+        if cornerCat.image != #imageLiteral(resourceName: "poos-poosrate") {
+            cornerCat.image = #imageLiteral(resourceName: "poos-poosrate")
+        } else {
+            cornerCat.image = #imageLiteral(resourceName: "poosCorner")
+        }
+    }
+    
+    func updateCatImage() {
+        if tryFirst && tryThird {
+            if cornerCat.image == #imageLiteral(resourceName: "poos-monocle") || cornerCat.image == #imageLiteral(resourceName: "poos-monocle-mustache") {
+                tryThird = false
+            }
+            else {
+                tryFirst = false
+            }
+            updateCatImage()
+        }
+        else if trySecond && tryThird {
+            if cornerCat.image == #imageLiteral(resourceName: "poos-monocle") || cornerCat.image == #imageLiteral(resourceName: "poos-monocle-mustache") {
+                tryThird = false
+            }
+            else {
+                trySecond = false
+            }
+            updateCatImage()
+        }
+        if tryFirst && !trySecond && !tryFourth {
+            cornerCat.image = #imageLiteral(resourceName: "poos-shades")
+        }
+        else if tryFirst && trySecond && !tryFourth {
+            cornerCat.image = #imageLiteral(resourceName: "poos-shades-chain")
+        }
+        else if tryFirst && trySecond && tryFourth {
+            cornerCat.image = #imageLiteral(resourceName: "poos-shades-chain-mustache")
+        }
+        else if tryFirst && !trySecond && tryFourth {
+            cornerCat.image = #imageLiteral(resourceName: "poos-shades-mustache")
+        }
+        else if !tryFirst && trySecond && !tryThird && !tryFourth {
+            cornerCat.image = #imageLiteral(resourceName: "poos-chain")
+        }
+        else if !tryFirst && trySecond && !tryThird && tryFourth {
+            cornerCat.image = #imageLiteral(resourceName: "poos-chain-mustache")
+        }
+        else if !tryFirst && !trySecond && tryThird && tryFourth {
+            cornerCat.image = #imageLiteral(resourceName: "poos-monocle-mustache")
+        }
+        else if !tryFirst && !trySecond && tryThird && !tryFourth {
+            cornerCat.image = #imageLiteral(resourceName: "poos-monocle")
+        }
+        else if !tryFirst && !trySecond && !tryThird && tryFourth {
+            cornerCat.image = #imageLiteral(resourceName: "poos-mustache")
+        }
+        else {
+            cornerCat.image = #imageLiteral(resourceName: "poosCorner")
+        }
     }
     
     // Buy or use items
