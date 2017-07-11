@@ -31,6 +31,11 @@ class SharingManager {
             userDefaults.set((lifetimeScore), forKey: "LifetimeScore")
         }
     }
+    var itemStates: [String] = ["inStore", "inStore", "inStore", "inStore", "inStore"] {
+        didSet {
+            userDefaults.set(itemStates, forKey: "itemStates")
+        }
+    }
     
     static let sharedInstance = SharingManager()
     
@@ -57,6 +62,13 @@ class SharingManager {
         }
         else {
             userDefaults.set(lifetimeScore, forKey: "LifetimeScore")
+        }
+        let storedItemStates = userDefaults.array(forKey: "itemStates")
+        if storedItemStates != nil {
+            itemStates = storedItemStates as! [String]
+        }
+        else {
+            userDefaults.set(itemStates, forKey: "itemStates")
         }
     }
     

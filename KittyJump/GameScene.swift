@@ -466,7 +466,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if isFirstTrain {
             let firsttrain = rightTrainArray[0]
             path.move(to: CGPoint(x: self.frame.minX + irWagon.size.width - firsttrain.size.width/2, y: yPositionC))
-            //            irWagon.position = CGPoint(x: self.frame.minX + irWagon.size.width - firsttrain.size.width/2, y: yPositionC)
             isFirstTrain = false
         } else {
             path.move(to: CGPoint(x: self.frame.minX - irWagon.size.width/2 - stepPos, y: yPositionC))
@@ -477,12 +476,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         path.addLine(to: CGPoint(x: self.frame.size.width, y: yPositionC))
         var followLine:SKAction!
-        //        if(irWagon.size.width > 400){
-        //            followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 3 - stepSpeed, upper: 4 - stepSpeed)))
-        //        }
-        //        else{
-        //            followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 5 - stepSpeed, upper: 6 - stepSpeed)))
-        //        }
         followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 4 - stepSpeed, upper: 5 - stepSpeed)))
         
         irWagon.run(SKAction.repeatForever(followLine))
@@ -511,12 +504,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         path.addLine(to: CGPoint(x: -self.frame.size.width, y: yPositionC))
         var followLine:SKAction!
-        //        if(ilTrain.size.width > 400){
-        //            followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 3 - stepSpeed, upper: 4 - stepSpeed)))
-        //        }
-        //        else {
-        //            followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 6 - stepSpeed, upper: 7 - stepSpeed)))
-        //        }
         followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: TimeInterval(randRange(lower: 4 - stepSpeed, upper: 5 - stepSpeed)))
         
         ilTrain.run(SKAction.repeatForever(followLine))
