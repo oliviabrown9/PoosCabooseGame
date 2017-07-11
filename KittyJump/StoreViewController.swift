@@ -30,6 +30,10 @@ class StoreViewController: UIViewController {
     var tryThird: Bool = false
     var tryFourth: Bool = false
     
+    @IBOutlet weak var firstTryButton: UIButton!
+    @IBOutlet weak var secondTryButton: UIButton!
+    @IBOutlet weak var thirdTryButton: UIButton!
+    @IBOutlet weak var fourthTryButton: UIButton!
     @IBOutlet weak var fifthTryButton: UIButton!
     @IBOutlet weak var startOver: UIImageView!
     
@@ -58,7 +62,7 @@ class StoreViewController: UIViewController {
                 }
             }
         }
-        if coins >= 10 {
+        if coins >= 100000 {
             fifthTryButton.alpha = 1
             fifthTryButton.isUserInteractionEnabled = true
         }
@@ -81,40 +85,50 @@ class StoreViewController: UIViewController {
     @IBAction func firstTry(_ sender: Any) {
         if tryFirst == true {
             tryFirst = false
+            firstTryButton.setTitle("try on", for: .normal)
         } else {
         tryFirst = true
+            firstTryButton.setTitle("take off", for: .normal)
         }
         updateCatImage()
     }
     @IBAction func secondTry(_ sender: Any) {
        if trySecond == true {
             trySecond = false
+            secondTryButton.setTitle("try on", for: .normal)
         } else {
             trySecond = true
+            secondTryButton.setTitle("take off", for: .normal)
         }
         updateCatImage()
     }
     @IBAction func thirdTry(_ sender: Any) {
         if tryThird == true {
             tryThird = false
+            thirdTryButton.setTitle("try on", for: .normal)
         } else {
             tryThird = true
+            thirdTryButton.setTitle("take off", for: .normal)
         }
         updateCatImage()
     }
     @IBAction func fourthTry(_ sender: Any) {
         if tryFourth == true {
             tryFourth = false
+            fourthTryButton.setTitle("try on", for: .normal)
         } else {
             tryFourth = true
+            fourthTryButton.setTitle("take off", for: .normal)
         }
         updateCatImage()
     }
     @IBAction func fifthTry(_ sender: Any) {
         if cornerCat.image != #imageLiteral(resourceName: "poos-poosrate") {
             cornerCat.image = #imageLiteral(resourceName: "poos-poosrate")
+            fifthTryButton.setTitle("take off", for: .normal)
         } else {
             cornerCat.image = #imageLiteral(resourceName: "poosCorner")
+            fifthTryButton.setTitle("try on", for: .normal)
         }
     }
     

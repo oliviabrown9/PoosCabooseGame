@@ -613,16 +613,20 @@
                         <outlet property="fifthTryButton" destination="CZP-qK-J5I" id="aqL-Ny-dLP"/>
                         <outlet property="firstBuyButton" destination="PAD-wz-Vct" id="QVU-aS-x2m"/>
                         <outlet property="firstCoin" destination="vv3-qG-3cD" id="swP-Pg-cE0"/>
+                        <outlet property="firstTryButton" destination="w6K-ZA-oRo" id="Moa-FW-GUr"/>
                         <outlet property="fourthBuyButton" destination="v5f-jA-QT8" id="Gpr-CW-gfv"/>
                         <outlet property="fourthCoin" destination="7KQ-Ox-cQ4" id="jZf-4M-boN"/>
+                        <outlet property="fourthTryButton" destination="EcH-1A-Wja" id="Sdt-kS-asL"/>
                         <outlet property="messageLabel" destination="oSg-PF-7P8" id="4B9-RT-j5q"/>
                         <outlet property="modalTopConstraint" destination="ZaN-D6-yUR" id="VV3-Oq-LHt"/>
                         <outlet property="modalView" destination="Gph-b2-O6F" id="91N-2E-4Rw"/>
                         <outlet property="secondBuyButton" destination="zlZ-Do-cB0" id="zCF-fa-pzR"/>
                         <outlet property="secondCoin" destination="ZpZ-ra-LRF" id="5uY-SJ-oke"/>
+                        <outlet property="secondTryButton" destination="4cj-GK-7q2" id="ol0-y4-7Mp"/>
                         <outlet property="startOver" destination="DKW-8B-26J" id="y4q-7k-BrR"/>
                         <outlet property="thirdBuyButton" destination="Ujc-LU-bOs" id="OLe-MQ-KCL"/>
                         <outlet property="thirdCoin" destination="u1e-X6-rjC" id="uGb-B3-JLh"/>
+                        <outlet property="thirdTryButton" destination="Vl9-uO-Oaa" id="b0Y-uf-2mX"/>
                         <segue destination="IZF-mN-TjC" kind="unwind" identifier="unwindToHomeView" unwindAction="unwindToHomeViewWithSender:" id="ILJ-jA-yyI"/>
                     </connections>
                 </viewController>
