@@ -14,44 +14,44 @@ class StoreViewController: UIViewController {
     
     var coins = SharingManager.sharedInstance.lifetimeScore
     
-    let items: [Int] = [0, 1, 2, 3, 4]
-    
     @IBOutlet weak var startOver: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         currentCoins.text = "\(coins)"
         
-        for i in items {
+        // Change display if item previously purchased
+        for i in 0...4 {
             if SharingManager.sharedInstance.itemStates[i] == "inCloset" {
-                if items[i] == 0 {
+                if i == 0 {
                     itemAlreadyPurchased(buyButton: firstBuyButton, coin: firstCoin)
                 }
-                if items[i] == 1 {
+                if i == 1 {
                     itemAlreadyPurchased(buyButton: secondBuyButton, coin: secondCoin)
                 }
-                if items[i] == 2 {
+                if i == 2 {
                     itemAlreadyPurchased(buyButton: thirdBuyButton, coin: thirdCoin)
                 }
-                if items[i] == 3 {
+                if i == 3 {
                     itemAlreadyPurchased(buyButton: fourthBuyButton, coin: fourthCoin)
                 }
-                if items[i] == 4 {
+                if i == 4 {
                     itemAlreadyPurchased(buyButton: fifthBuyButton, coin: fifthCoin)
                 }
             }
         }
     }
     
+    // Change display to use button
     func itemAlreadyPurchased(buyButton: UIButton, coin: UIImageView) {
         buyButton.setTitle("use", for: .normal)
         buyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
         coin.isHidden = true
     }
     
+    // Buy or use items
     @IBOutlet weak var firstBuyButton: UIButton!
     @IBOutlet weak var firstCoin: UIImageView!
-    @IBOutlet weak var firstUseButton: UIButton!
     @IBAction func firstBuy(_ sender: Any) {
         if SharingManager.sharedInstance.itemStates[0] == "inStore" {
             purchaseItem(cost: 1, place: 0, buyButton: firstBuyButton, coin: firstCoin)
@@ -60,10 +60,8 @@ class StoreViewController: UIViewController {
             print("use")
         }
     }
-    
     @IBOutlet weak var secondCoin: UIImageView!
     @IBOutlet weak var secondBuyButton: UIButton!
-    @IBOutlet weak var secondUseButton: UIButton!
     @IBAction func secondBuy(_ sender: Any) {
         if SharingManager.sharedInstance.itemStates[1] == "inStore" {
             purchaseItem(cost: 2000, place: 1, buyButton: secondBuyButton, coin: secondCoin)
@@ -72,10 +70,8 @@ class StoreViewController: UIViewController {
             print("use")
         }
     }
-
     @IBOutlet weak var thirdCoin: UIImageView!
     @IBOutlet weak var thirdBuyButton: UIButton!
-    @IBOutlet weak var thirdUseButton: UIButton!
     @IBAction func thirdBuy(_ sender: Any) {
         if SharingManager.sharedInstance.itemStates[3] == "inStore" {
             purchaseItem(cost: 5000, place: 2, buyButton: thirdBuyButton, coin: thirdCoin)
@@ -84,10 +80,8 @@ class StoreViewController: UIViewController {
             print("use")
         }
     }
-    
     @IBOutlet weak var fourthCoin: UIImageView!
     @IBOutlet weak var fourthBuyButton: UIButton!
-    @IBOutlet weak var fourthUseButton: UIButton!
     @IBAction func fourthBuy(_ sender: Any) {
         if SharingManager.sharedInstance.itemStates[3] == "inStore" {
             purchaseItem(cost: 10000, place: 3, buyButton: fourthBuyButton, coin: fourthCoin)
@@ -96,7 +90,6 @@ class StoreViewController: UIViewController {
             print("use")
         }
     }
-    
     @IBOutlet weak var fifthCoin: UIImageView!
     @IBOutlet weak var fifthBuyButton: UIButton!
     @IBAction func fifthBuy(_ sender: Any) {
