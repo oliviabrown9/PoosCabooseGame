@@ -39,6 +39,32 @@ class SharingManager {
             userDefaults.set(catImageString, forKey: "CatImageString")
         }
     }
+    var useFirst: Bool = false {
+        didSet {
+            userDefaults.set(useFirst, forKey: "UseFirst")
+        }
+    }
+    var useSecond: Bool = false {
+        didSet {
+            userDefaults.set(useSecond, forKey: "UseSecond")
+        }
+    }
+    var useThird: Bool = false {
+        didSet {
+            userDefaults.set(useThird, forKey: "UseThird")
+        }
+    }
+    var useFourth: Bool = false {
+        didSet {
+            userDefaults.set(useFourth, forKey: "UseFourth")
+        }
+    }
+    var useFifth: Bool = false {
+        didSet {
+            userDefaults.set(useFifth, forKey: "UseFifth")
+        }
+    }
+    
     static let sharedInstance = SharingManager()
     
     private init() {
@@ -77,6 +103,20 @@ class SharingManager {
         else {
             userDefaults.set(catImageString, forKey: "CatImageString")
         }
+        let storedUseFirst = userDefaults.bool(forKey: "UseFirst")
+            useFirst = storedUseFirst
+        
+        let storedUseSecond = userDefaults.bool(forKey: "UseSecond")
+        useSecond = storedUseSecond
+        
+        let storedUseThird = userDefaults.bool(forKey: "UseThird")
+        useThird = storedUseThird
+        
+        let storedUseFourth = userDefaults.bool(forKey: "UseFourth")
+        useFourth = storedUseFourth
+        
+        let storedUseFifth = userDefaults.bool(forKey: "UseFifth")
+        useFifth = storedUseFifth
     }
     
     func changeLastScores(score: Int) {

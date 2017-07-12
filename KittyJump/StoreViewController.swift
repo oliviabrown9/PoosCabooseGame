@@ -8,7 +8,7 @@
 
 import UIKit
 
-var useFirst: Bool = false
+var useFirst: Bool = SharingManager.sharedInstance.useFirst
 var useSecond: Bool = false
 var useThird: Bool = false
 var useFourth: Bool = false
@@ -30,6 +30,7 @@ class StoreViewController: UIViewController {
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
     var itemTitle: String = ""
+    var use: Bool = false
     
     var tryFirst: Bool = false
     var trySecond: Bool = false
@@ -52,19 +53,19 @@ class StoreViewController: UIViewController {
         for i in 0...4 {
             if SharingManager.sharedInstance.itemStates[i] == "inCloset" {
                 if i == 0 {
-                    itemAlreadyPurchased(buyButton: firstBuyButton, coin: firstCoin)
+                    itemAlreadyPurchased(buyButton: firstBuyButton, coin: firstCoin, use: useFirst)
                 }
                 if i == 1 {
-                    itemAlreadyPurchased(buyButton: secondBuyButton, coin: secondCoin)
+                    itemAlreadyPurchased(buyButton: secondBuyButton, coin: secondCoin, use: useSecond)
                 }
                 if i == 2 {
-                    itemAlreadyPurchased(buyButton: thirdBuyButton, coin: thirdCoin)
+                    itemAlreadyPurchased(buyButton: thirdBuyButton, coin: thirdCoin, use: useThird)
                 }
                 if i == 3 {
-                    itemAlreadyPurchased(buyButton: fourthBuyButton, coin: fourthCoin)
+                    itemAlreadyPurchased(buyButton: fourthBuyButton, coin: fourthCoin, use: useFourth)
                 }
                 if i == 4 {
-                    itemAlreadyPurchased(buyButton: fifthBuyButton, coin: fifthCoin)
+                    itemAlreadyPurchased(buyButton: fifthBuyButton, coin: fifthCoin, use: useFifth)
                 }
             }
         }
@@ -83,12 +84,12 @@ class StoreViewController: UIViewController {
     }
     
     // Change display to use button
-    func itemAlreadyPurchased(buyButton: UIButton, coin: UIImageView) {
+    func itemAlreadyPurchased(buyButton: UIButton, coin: UIImageView, use: Bool) {
         buyButton.setTitle("use", for: .normal)
         buyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
         coin.isHidden = true
         
-        if useFirst == true {
+        if use == true {
             buyButton.setTitle("remove", for: .normal)
         }
     }
@@ -206,9 +207,11 @@ class StoreViewController: UIViewController {
         if useFirst && useThird {
             if SharingManager.sharedInstance.catImageString == "poos-monocle" || SharingManager.sharedInstance.catImageString == "poos-monocle-mustache" {
                 useThird = false
+                SharingManager.sharedInstance.useThird = false
             }
             else {
                 useFirst = false
+                SharingManager.sharedInstance.useFirst = false
             }
             updateUsing()
         }
@@ -217,9 +220,11 @@ class StoreViewController: UIViewController {
         else if useSecond && useThird {
             if SharingManager.sharedInstance.catImageString == "poos-monocle" || SharingManager.sharedInstance.catImageString == "poos-monocle-mustache" {
                 useThird = false
+                SharingManager.sharedInstance.useThird = false
             }
             else {
                 useSecond = false
+                SharingManager.sharedInstance.useSecond = false
             }
             updateUsing()
         }
@@ -260,16 +265,18 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var firstCoin: UIImageView!
     @IBAction func firstBuy(_ sender: Any) {
         if SharingManager.sharedInstance.itemStates[0] == "inStore" {
-            purchaseItem(price: 1, num: 0, button: firstBuyButton, image: firstCoin, title: "shades")
+            purchaseItem(price: 1, num: 0, button: firstBuyButton, image: firstCoin, title: "shades", inUse: useFirst)
         }
         else {
             if useFirst == false {
             useFirst = true
+            SharingManager.sharedInstance.useFirst = true
                 print("using")
                 firstBuyButton.setTitle("remove", for: .normal)
             }
             else {
                 useFirst = false
+                SharingManager.sharedInstance.useFirst = false
                 firstBuyButton.setTitle("use", for: .normal)
                 print("removed")
             }
@@ -280,15 +287,17 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var secondBuyButton: UIButton!
     @IBAction func secondBuy(_ sender: Any) {
         if SharingManager.sharedInstance.itemStates[1] == "inStore" {
-            purchaseItem(price: 2000, num: 1, button: secondBuyButton, image: secondCoin, title: "chain")
+            purchaseItem(price: 2000, num: 1, button: secondBuyButton, image: secondCoin, title: "chain", inUse: useSecond)
         }
         else {
             if useSecond == false {
                 useSecond = true
+                SharingManager.sharedInstance.useSecond = true
                 secondBuyButton.setTitle("remove", for: .normal)
             }
             else {
                 useSecond = false
+                SharingManager.sharedInstance.useSecond = false
                 secondBuyButton.setTitle("use", for: .normal)
             }
           updateUsing()
@@ -298,15 +307,17 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var thirdBuyButton: UIButton!
     @IBAction func thirdBuy(_ sender: Any) {
         if SharingManager.sharedInstance.itemStates[3] == "inStore" {
-            purchaseItem(price: 5000, num: 2, button: thirdBuyButton, image: thirdCoin, title: "monocle")
+            purchaseItem(price: 5000, num: 2, button: thirdBuyButton, image: thirdCoin, title: "monocle", inUse: useThird)
         }
         else {
             if useThird == false {
                 useThird = true
+                SharingManager.sharedInstance.useThird = true
                 thirdBuyButton.setTitle("remove", for: .normal)
             }
             else {
                 useThird = false
+                SharingManager.sharedInstance.useThird = false
                 thirdBuyButton.setTitle("use", for: .normal)
             }
             updateUsing()
@@ -316,15 +327,17 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var fourthBuyButton: UIButton!
     @IBAction func fourthBuy(_ sender: Any) {
         if SharingManager.sharedInstance.itemStates[3] == "inStore" {
-            purchaseItem(price: 10000, num: 3, button: fourthBuyButton, image: fourthCoin, title: "mustache")
+            purchaseItem(price: 10000, num: 3, button: fourthBuyButton, image: fourthCoin, title: "mustache", inUse: useFourth)
         }
         else {
             if useFourth == false {
                 useFourth = true
+                SharingManager.sharedInstance.useFourth = true
                 fourthBuyButton.setTitle("remove", for: .normal)
             }
             else {
                 useFourth = false
+                SharingManager.sharedInstance.useFourth = false
                 fourthBuyButton.setTitle("use", for: .normal)
             }
             updateUsing()
@@ -334,16 +347,18 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var fifthBuyButton: UIButton!
     @IBAction func fifthBuy(_ sender: Any) {
         if SharingManager.sharedInstance.itemStates[4] == "inStore" {
-            purchaseItem(price: 100000, num: 4, button: fifthBuyButton, image: fifthCoin, title: "?????")
+            purchaseItem(price: 100000, num: 4, button: fifthBuyButton, image: fifthCoin, title: "?????", inUse: useFifth)
         }
         else {
             if useFifth == false {
                 useFifth = true
+                SharingManager.sharedInstance.useFifth = true
                 fifthBuyButton.setTitle("remove", for: .normal)
                 SharingManager.sharedInstance.catImageString = "poos-poosrate"
             }
             else {
                 useFifth = false
+                SharingManager.sharedInstance.useFifth = false
                 fifthBuyButton.setTitle("use", for: .normal)
                 SharingManager.sharedInstance.catImageString = "kitty"
             }
@@ -358,12 +373,13 @@ class StoreViewController: UIViewController {
     }
     
     // Try to buy something
-    func purchaseItem(price: Int, num: Int, button: UIButton, image: UIImageView, title: String) {
+    func purchaseItem(price: Int, num: Int, button: UIButton, image: UIImageView, title: String, inUse: Bool) {
         cost = price
         place = num
         buyButton = button
         coin = image
         itemTitle = title
+        use = inUse
         
         if cost <= coins {
             modalView.layer.cornerRadius = 15
@@ -408,7 +424,7 @@ class StoreViewController: UIViewController {
             currentCoins.text = "\(coins)"
             SharingManager.sharedInstance.lifetimeScore = coins
             SharingManager.sharedInstance.itemStates[place] = "inCloset"
-            itemAlreadyPurchased(buyButton: buyButton!, coin: coin!)
+            itemAlreadyPurchased(buyButton: buyButton!, coin: coin!, use: use)
         }
     }
     
