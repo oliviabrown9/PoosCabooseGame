@@ -551,7 +551,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 else {
                     stop()
-                    
                 }
             }
         }
@@ -708,15 +707,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             kittyCamera.position.y = 0
             addChild(kittyCamera)
             self.camera = kittyCamera
-            
-            
         }
         else {
         }
-        
     }
-    
-    
     
     // Game lost
     func stop() {
