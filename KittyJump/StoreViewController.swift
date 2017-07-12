@@ -24,7 +24,8 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var cornerCat: UIImageView!
 
     var confirm: Bool = false
-    var coins = SharingManager.sharedInstance.lifetimeScore
+//    var coins = SharingManager.sharedInstance.lifetimeScore
+    var coins = 1000000
     var cost: Int = 0
     var place: Int = 0
     var buyButton: UIButton? = nil
@@ -306,7 +307,7 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var thirdCoin: UIImageView!
     @IBOutlet weak var thirdBuyButton: UIButton!
     @IBAction func thirdBuy(_ sender: Any) {
-        if SharingManager.sharedInstance.itemStates[3] == "inStore" {
+        if SharingManager.sharedInstance.itemStates[2] == "inStore" {
             purchaseItem(price: 5000, num: 2, button: thirdBuyButton, image: thirdCoin, title: "monocle", inUse: useThird)
         }
         else {
