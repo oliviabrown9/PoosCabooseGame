@@ -8,14 +8,12 @@
 
 import SpriteKit
 
-var catImage: UIImage = #imageLiteral(resourceName: "kitty")
-
-class Kitty : SKSpriteNode {
+class Kitty: SKSpriteNode {
     
 
     // Init
     init() {
-        let texture = SKTexture(image: catImage)
+        let texture = SKTexture(imageNamed: SharingManager.sharedInstance.catImageString)
         super.init(texture: texture, color: UIColor.clear, size: CGSize(width: texture.size().width/2, height: texture.size().height/2))
         setup()
     }
@@ -26,11 +24,9 @@ class Kitty : SKSpriteNode {
     
     // Kitty setup
     func setup() {
-        
         name="Kitty"
         anchorPoint.x = 0.5
         anchorPoint.y = 0.5
-        
         zPosition=2
         let centerPoint = CGPoint(x: self.size.width / 2 - (self.size.width * self.anchorPoint.x), y: self.size.height / 2 - (self.size.height * self.anchorPoint.y))
         

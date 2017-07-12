@@ -8,6 +8,12 @@
 
 import UIKit
 
+var useFirst: Bool = false
+var useSecond: Bool = false
+var useThird: Bool = false
+var useFourth: Bool = false
+var useFifth: Bool = false
+
 class StoreViewController: UIViewController {
     
     @IBOutlet weak var currentCoins: UILabel!
@@ -29,12 +35,6 @@ class StoreViewController: UIViewController {
     var trySecond: Bool = false
     var tryThird: Bool = false
     var tryFourth: Bool = false
-    
-    var useFirst: Bool = false
-    var useSecond: Bool = false
-    var useThird: Bool = false
-    var useFourth: Bool = false
-    var useFifth: Bool = false
     
     @IBOutlet weak var firstTryButton: UIButton!
     @IBOutlet weak var secondTryButton: UIButton!
@@ -87,6 +87,10 @@ class StoreViewController: UIViewController {
         buyButton.setTitle("use", for: .normal)
         buyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
         coin.isHidden = true
+        
+        if useFirst == true {
+            buyButton.setTitle("remove", for: .normal)
+        }
     }
     
     // Try on
@@ -165,31 +169,31 @@ class StoreViewController: UIViewController {
             updateCornerCat()
         }
         if tryFirst && !trySecond && !tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "poos-shades")
+            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-shades")
         }
         else if tryFirst && trySecond && !tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "poos-shades-chain")
+            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-shades-chain")
         }
         else if tryFirst && trySecond && tryFourth {
             cornerCat.image = #imageLiteral(resourceName: "poos-shades-chain-mustache")
         }
         else if tryFirst && !trySecond && tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "poos-shades-mustache")
+            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-shades-mustache")
         }
         else if !tryFirst && trySecond && !tryThird && !tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "poos-chain")
+            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-chain")
         }
         else if !tryFirst && trySecond && !tryThird && tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "poos-chain-mustache")
+            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-chain-mustache")
         }
         else if !tryFirst && !trySecond && tryThird && tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "poos-monocle-mustache")
+            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-monocle-mustache")
         }
         else if !tryFirst && !trySecond && tryThird && !tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "poos-monocle")
+            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-monocle")
         }
         else if !tryFirst && !trySecond && !tryThird && tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "poos-mustache")
+            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-mustache")
         }
         else {
             cornerCat.image = #imageLiteral(resourceName: "poosCorner")
@@ -200,7 +204,7 @@ class StoreViewController: UIViewController {
         
         // Switch first & third since they cannot be used at the same time
         if useFirst && useThird {
-            if catImage == #imageLiteral(resourceName: "poos-monocle") || catImage == #imageLiteral(resourceName: "poos-monocle-mustache") {
+            if SharingManager.sharedInstance.catImageString == "poos-monocle" || SharingManager.sharedInstance.catImageString == "poos-monocle-mustache" {
                 useThird = false
             }
             else {
@@ -211,7 +215,7 @@ class StoreViewController: UIViewController {
             
         // Switch second & third since they cannot be displayed at the same time
         else if useSecond && useThird {
-            if catImage == #imageLiteral(resourceName: "poos-monocle") || catImage == #imageLiteral(resourceName: "poos-monocle-mustache") {
+            if SharingManager.sharedInstance.catImageString == "poos-monocle" || SharingManager.sharedInstance.catImageString == "poos-monocle-mustache" {
                 useThird = false
             }
             else {
@@ -220,34 +224,34 @@ class StoreViewController: UIViewController {
             updateUsing()
         }
         if useFirst && !useSecond && !useFourth {
-            catImage = #imageLiteral(resourceName: "poos-shades")
+            SharingManager.sharedInstance.catImageString = "poos-shades.png"
         }
         else if useFirst && useSecond && !useFourth {
-            catImage = #imageLiteral(resourceName: "poos-shades-chain")
+            SharingManager.sharedInstance.catImageString = "poos-shades-chain"
         }
         else if useFirst && useSecond && useFourth {
-            catImage = #imageLiteral(resourceName: "poos-shades-chain-mustache")
+            SharingManager.sharedInstance.catImageString = "poos-shades-chain-mustache"
         }
         else if useFirst && !useSecond && useFourth {
-            catImage = #imageLiteral(resourceName: "poos-shades-mustache")
+            SharingManager.sharedInstance.catImageString = "poos-shades-mustache"
         }
         else if !useFirst && useSecond && !useThird && !useFourth {
-            catImage = #imageLiteral(resourceName: "poos-chain")
+            SharingManager.sharedInstance.catImageString = "poos-chain"
         }
         else if !useFirst && useSecond && !useThird && useFourth {
-            catImage = #imageLiteral(resourceName: "poos-chain-mustache")
+            SharingManager.sharedInstance.catImageString = "poos-chain-mustache"
         }
         else if !useFirst && !useSecond && useThird && useFourth {
-            catImage = #imageLiteral(resourceName: "poos-monocle-mustache")
+            SharingManager.sharedInstance.catImageString = "poos-monocle-mustache"
         }
         else if !useFirst && !useSecond && useThird && !useFourth {
-            catImage = #imageLiteral(resourceName: "poos-monocle")
+            SharingManager.sharedInstance.catImageString = "poos-monocle"
         }
         else if !useFirst && !useSecond && !useThird && useFourth {
-            catImage = #imageLiteral(resourceName: "poos-mustache")
+            SharingManager.sharedInstance.catImageString = "poos-mustache"
         }
         else {
-            catImage = #imageLiteral(resourceName: "poosCorner")
+            SharingManager.sharedInstance.catImageString = "kitty"
         }
     }
     
@@ -336,12 +340,12 @@ class StoreViewController: UIViewController {
             if useFifth == false {
                 useFifth = true
                 fifthBuyButton.setTitle("remove", for: .normal)
-                catImage = #imageLiteral(resourceName: "poos-poosrate")
+                SharingManager.sharedInstance.catImageString = "poos-poosrate"
             }
             else {
                 useFifth = false
                 fifthBuyButton.setTitle("use", for: .normal)
-                catImage = #imageLiteral(resourceName: "kitty")
+                SharingManager.sharedInstance.catImageString = "kitty"
             }
         }
     }

@@ -19,13 +19,11 @@ class SharingManager {
             userDefaults.set(highScore, forKey: "HighScore")
         }
     }
-    
     var currentScore: Int = 0 {
         didSet {
             changeLastScores(score: currentScore)
         }
     }
-    
     var lifetimeScore: Int = 0 {
         didSet {
             userDefaults.set((lifetimeScore), forKey: "LifetimeScore")
@@ -36,7 +34,11 @@ class SharingManager {
             userDefaults.set(itemStates, forKey: "itemStates")
         }
     }
-    
+    var catImageString: String = "kitty.png" {
+        didSet {
+            userDefaults.set(catImageString, forKey: "CatImageString")
+        }
+    }
     static let sharedInstance = SharingManager()
     
     private init() {
@@ -47,7 +49,6 @@ class SharingManager {
         else {
             userDefaults.set(highScore, forKey: "HighScore")
         }
-        
         let storedLastScores = userDefaults.array(forKey: "LastScores") as? [Int]
         if storedLastScores != nil {
             lastScores = storedLastScores!
@@ -55,7 +56,6 @@ class SharingManager {
         else {
             userDefaults.set(lastScores, forKey: "LastScores")
         }
-        
         let storedLifetimeScore = userDefaults.integer(forKey: "LifetimeScore")
         if storedLifetimeScore != 0 {
             lifetimeScore = storedLifetimeScore
@@ -69,6 +69,13 @@ class SharingManager {
         }
         else {
             userDefaults.set(itemStates, forKey: "itemStates")
+        }
+        let storedCatImageString = userDefaults.string(forKey: "CatImageString")
+        if storedCatImageString != nil {
+            catImageString = storedCatImageString!
+        }
+        else {
+            userDefaults.set(catImageString, forKey: "CatImageString")
         }
     }
     
