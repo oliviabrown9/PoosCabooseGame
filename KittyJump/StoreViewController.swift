@@ -22,6 +22,7 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var cornerCat: UIImageView!
+    @IBOutlet weak var mysteryLabel: UILabel!
 
     var confirm: Bool = false
 //    var coins = SharingManager.sharedInstance.lifetimeScore
@@ -73,6 +74,7 @@ class StoreViewController: UIViewController {
         if coins >= 100000 {
             fifthTryButton.alpha = 1
             fifthTryButton.isUserInteractionEnabled = true
+            mysteryLabel.text = "poosrate"
         }
     }
     
@@ -137,8 +139,8 @@ class StoreViewController: UIViewController {
         updateCornerCat()
     }
     @IBAction func fifthTry(_ sender: Any) {
-        if cornerCat.image != #imageLiteral(resourceName: "poos-poosrate") {
-            cornerCat.image = #imageLiteral(resourceName: "poos-poosrate")
+        if cornerCat.image != #imageLiteral(resourceName: "cornerpoos-poosrate") {
+            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-poosrate")
             fifthTryButton.setTitle("take off", for: .normal)
         } else {
             cornerCat.image = #imageLiteral(resourceName: "poosCorner")
@@ -266,7 +268,7 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var firstCoin: UIImageView!
     @IBAction func firstBuy(_ sender: Any) {
         if SharingManager.sharedInstance.itemStates[0] == "inStore" {
-            purchaseItem(price: 1, num: 0, button: firstBuyButton, image: firstCoin, title: "shades", inUse: useFirst)
+            purchaseItem(price: 1000, num: 0, button: firstBuyButton, image: firstCoin, title: "shades", inUse: useFirst)
         }
         else {
             if useFirst == false {
@@ -348,7 +350,8 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var fifthBuyButton: UIButton!
     @IBAction func fifthBuy(_ sender: Any) {
         if SharingManager.sharedInstance.itemStates[4] == "inStore" {
-            purchaseItem(price: 100000, num: 4, button: fifthBuyButton, image: fifthCoin, title: "?????", inUse: useFifth)
+            purchaseItem(price: 100000, num: 4, button: fifthBuyButton, image: fifthCoin, title: "poosrate", inUse: useFifth)
+            
         }
         else {
             if useFifth == false {
@@ -403,7 +406,6 @@ class StoreViewController: UIViewController {
         UIView.animate(withDuration: 0.5, animations: {
             self.modalView.isHidden = false
             self.modalTopConstraint.constant -= self.view.bounds.height
-            
             self.view.layoutIfNeeded()
         })
     }

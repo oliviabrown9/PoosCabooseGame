@@ -91,6 +91,7 @@
                             <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="Fei-sO-NkU" secondAttribute="bottom" id="udq-ai-Leg"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="nh4-mf-xmR"/>
                     <connections>
                         <outlet property="animationEndImage" destination="KTu-L7-ZAE" id="coW-CE-DIm"/>
                         <outlet property="gifImageView" destination="Fei-sO-NkU" id="nD4-aQ-BBX"/>
@@ -620,6 +621,7 @@
                         <outlet property="messageLabel" destination="oSg-PF-7P8" id="4B9-RT-j5q"/>
                         <outlet property="modalTopConstraint" destination="ZaN-D6-yUR" id="VV3-Oq-LHt"/>
                         <outlet property="modalView" destination="Gph-b2-O6F" id="91N-2E-4Rw"/>
+                        <outlet property="mysteryLabel" destination="caM-2Q-Y5L" id="4nu-MH-BqV"/>
                         <outlet property="secondBuyButton" destination="zlZ-Do-cB0" id="zCF-fa-pzR"/>
                         <outlet property="secondCoin" destination="ZpZ-ra-LRF" id="5uY-SJ-oke"/>
                         <outlet property="secondTryButton" destination="4cj-GK-7q2" id="ol0-y4-7Mp"/>
