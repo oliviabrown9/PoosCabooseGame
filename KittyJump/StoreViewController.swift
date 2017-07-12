@@ -24,7 +24,8 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var cornerCat: UIImageView!
 
     var confirm: Bool = false
-    var coins = SharingManager.sharedInstance.lifetimeScore
+//    var coins = SharingManager.sharedInstance.lifetimeScore
+    var coins = 10000000
     var cost: Int = 0
     var place: Int = 0
     var buyButton: UIButton? = nil
@@ -139,6 +140,10 @@ class StoreViewController: UIViewController {
         if cornerCat.image != #imageLiteral(resourceName: "poos-poosrate") {
             cornerCat.image = #imageLiteral(resourceName: "poos-poosrate")
             fifthTryButton.setTitle("take off", for: .normal)
+            tryFirst = false
+            trySecond = false
+            tryThird = false
+            tryFourth = false
         } else {
             cornerCat.image = #imageLiteral(resourceName: "poosCorner")
             fifthTryButton.setTitle("try on", for: .normal)
@@ -204,7 +209,24 @@ class StoreViewController: UIViewController {
     func updateUsing() {
         
         // Switch first & third since they cannot be used at the same time
-        if useFirst && useThird {
+        if useFifth {
+            if SharingManager.sharedInstance.catImageString == "poos-poosrate" {
+                useFifth = false
+                SharingManager.sharedInstance.useFifth = false
+            }
+            else {
+                useFirst = false
+                SharingManager.sharedInstance.useFirst = false
+                useSecond = false
+                SharingManager.sharedInstance.useSecond = false
+                useThird = false
+                SharingManager.sharedInstance.useThird = false
+                useFourth = false
+                SharingManager.sharedInstance.useFourth = false
+            }
+            updateUsing()
+        }
+        else if useFirst && useThird {
             if SharingManager.sharedInstance.catImageString == "poos-monocle" || SharingManager.sharedInstance.catImageString == "poos-monocle-mustache" {
                 useThird = false
                 SharingManager.sharedInstance.useThird = false
@@ -255,9 +277,13 @@ class StoreViewController: UIViewController {
         else if !useFirst && !useSecond && !useThird && useFourth {
             SharingManager.sharedInstance.catImageString = "poos-mustache"
         }
+        else if useFifth {
+            SharingManager.sharedInstance.catImageString = "poos-poosrate"
+        }
         else {
             SharingManager.sharedInstance.catImageString = "kitty"
         }
+        updateButtons()
     }
     
     // Buy or use items
@@ -271,14 +297,10 @@ class StoreViewController: UIViewController {
             if useFirst == false {
             useFirst = true
             SharingManager.sharedInstance.useFirst = true
-                print("using")
-                firstBuyButton.setTitle("remove", for: .normal)
             }
             else {
                 useFirst = false
                 SharingManager.sharedInstance.useFirst = false
-                firstBuyButton.setTitle("use", for: .normal)
-                print("removed")
             }
             updateUsing()
         }
@@ -293,14 +315,12 @@ class StoreViewController: UIViewController {
             if useSecond == false {
                 useSecond = true
                 SharingManager.sharedInstance.useSecond = true
-                secondBuyButton.setTitle("remove", for: .normal)
             }
             else {
                 useSecond = false
                 SharingManager.sharedInstance.useSecond = false
-                secondBuyButton.setTitle("use", for: .normal)
             }
-          updateUsing()
+            updateUsing()
         }
     }
     @IBOutlet weak var thirdCoin: UIImageView!
@@ -313,12 +333,10 @@ class StoreViewController: UIViewController {
             if useThird == false {
                 useThird = true
                 SharingManager.sharedInstance.useThird = true
-                thirdBuyButton.setTitle("remove", for: .normal)
             }
             else {
                 useThird = false
                 SharingManager.sharedInstance.useThird = false
-                thirdBuyButton.setTitle("use", for: .normal)
             }
             updateUsing()
         }
@@ -333,12 +351,10 @@ class StoreViewController: UIViewController {
             if useFourth == false {
                 useFourth = true
                 SharingManager.sharedInstance.useFourth = true
-                fourthBuyButton.setTitle("remove", for: .normal)
             }
             else {
                 useFourth = false
                 SharingManager.sharedInstance.useFourth = false
-                fourthBuyButton.setTitle("use", for: .normal)
             }
             updateUsing()
         }
@@ -353,15 +369,50 @@ class StoreViewController: UIViewController {
             if useFifth == false {
                 useFifth = true
                 SharingManager.sharedInstance.useFifth = true
-                fifthBuyButton.setTitle("remove", for: .normal)
                 SharingManager.sharedInstance.catImageString = "poos-poosrate"
+                updateButtons()
+                
+                
             }
             else {
                 useFifth = false
                 SharingManager.sharedInstance.useFifth = false
-                fifthBuyButton.setTitle("use", for: .normal)
                 SharingManager.sharedInstance.catImageString = "kitty"
+                updateButtons()
             }
+        }
+    }
+    
+    func updateButtons() {
+        if SharingManager.sharedInstance.useFirst == false {
+            firstBuyButton.setTitle("use", for: .normal)
+        }
+        else {
+            firstBuyButton.setTitle("remove", for: .normal)
+        }
+        if SharingManager.sharedInstance.useSecond == false {
+            secondBuyButton.setTitle("use", for: .normal)
+        }
+        else {
+            secondBuyButton.setTitle("remove", for: .normal)
+        }
+        if SharingManager.sharedInstance.useThird == false {
+            thirdBuyButton.setTitle("use", for: .normal)
+        }
+        else {
+            thirdBuyButton.setTitle("remove", for: .normal)
+        }
+        if SharingManager.sharedInstance.useFourth == false {
+            fourthBuyButton.setTitle("use", for: .normal)
+        }
+        else {
+            fourthBuyButton.setTitle("remove", for: .normal)
+        }
+        if SharingManager.sharedInstance.useFifth == false {
+            fifthBuyButton.setTitle("use", for: .normal)
+        }
+        else {
+            fifthBuyButton.setTitle("remove", for: .normal)
         }
     }
     
