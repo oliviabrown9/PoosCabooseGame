@@ -103,6 +103,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         scene.viewController = self
         homeView.presentScene(scene)
         homeView.ignoresSiblingOrder = true
+        
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
