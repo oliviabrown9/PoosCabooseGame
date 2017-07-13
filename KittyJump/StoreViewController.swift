@@ -23,10 +23,11 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var cornerCat: UIImageView!
     @IBOutlet weak var mysteryLabel: UILabel!
-    @IBOutlet weak var blurView: UIView!
+    @IBOutlet weak var darkenedView: UIView!
 
     var confirm: Bool = false
-    var coins = SharingManager.sharedInstance.lifetimeScore
+//    var coins = SharingManager.sharedInstance.lifetimeScore
+    var coins = 1000000
     var cost: Int = 0
     var place: Int = 0
     var buyButton: UIButton? = nil
@@ -38,6 +39,9 @@ class StoreViewController: UIViewController {
     var trySecond: Bool = false
     var tryThird: Bool = false
     var tryFourth: Bool = false
+    
+//    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+    var blurEffectView = UIVisualEffectView(effect: nil)
     
     @IBOutlet weak var firstTryButton: UIButton!
     @IBOutlet weak var secondTryButton: UIButton!
@@ -83,6 +87,7 @@ class StoreViewController: UIViewController {
         hideModal()
     }
     @IBAction func cancelPressed(_ sender: Any) {
+        confirm = false
         hideModal()
     }
     
@@ -399,12 +404,10 @@ class StoreViewController: UIViewController {
         }
     }
     
+    
     func showModal() {
         
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = blurView.bounds
-        blurView.addSubview(blurEffectView)
+        darkenedView.isHidden = false
         
         modalTopConstraint.constant += self.view.bounds.height
         view.layoutIfNeeded()
@@ -418,6 +421,8 @@ class StoreViewController: UIViewController {
     
     func hideModal() {
         view.layoutIfNeeded()
+        
+        darkenedView.isHidden = true
         
         UIView.animate(withDuration: 0.5, animations: {
             self.modalTopConstraint.constant += self.view.bounds.height
