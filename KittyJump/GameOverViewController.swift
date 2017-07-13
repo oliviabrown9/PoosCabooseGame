@@ -33,7 +33,7 @@ class GameOverViewController: UIViewController {
         {
             String($0)
         }
-        pastScores.text = stringArray.joined(separator: " ")
+        pastScores.text = stringArray.joined(separator: "  ")
     }
     
     // Recognize if startOver image is tapped

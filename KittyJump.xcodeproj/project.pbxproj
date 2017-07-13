@@ -13,7 +13,7 @@
 		755820EE1F04126400A68A88 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755820ED1F04126400A68A88 /* jump.mp3 */; };
 		755C59001F0484E50064472D /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755C58FF1F0484E50064472D /* intro.mp3 */; };
 		755C59021F0484F70064472D /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755C59011F0484F70064472D /* background.mp3 */; };
-		756C74731F05663900EFF2FB /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 756C74721F05663900EFF2FB /* splash.gif */; };
+		759E541E1F182F33003B6B3C /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 759E541D1F182F33003B6B3C /* splash.gif */; };
 		75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */; };
 		75EF6CCD1F1569B7004AD11F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EF6CCC1F1569B7004AD11F /* StoreKit.framework */; };
 		A4892182E1E85A5DD8434DDA /* Pods_KittyJump.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170ABEBE832CE954F508ADBC /* Pods_KittyJump.framework */; };
@@ -46,7 +46,7 @@
 		755820ED1F04126400A68A88 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 		755C58FF1F0484E50064472D /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = intro.mp3; sourceTree = "<group>"; };
 		755C59011F0484F70064472D /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
-		756C74721F05663900EFF2FB /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
+		759E541D1F182F33003B6B3C /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		75EF6CCC1F1569B7004AD11F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C824AB0E7CB08042295979CA /* Pods-KittyJump.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KittyJump.release.xcconfig"; path = "Pods/Target Support Files/Pods-KittyJump/Pods-KittyJump.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 				750899C51F14201000D4227F /* StoreViewController.swift */,
 				D7C5EAB51EEB5C21007DA71A /* GameScene.sks */,
 				D7C5EAB71EEB5C21007DA71A /* Actions.sks */,
-				756C74721F05663900EFF2FB /* splash.gif */,
+				759E541D1F182F33003B6B3C /* splash.gif */,
 				D7C5EAE41EEC058C007DA71A /* Sprites */,
 				755820F11F0413D400A68A88 /* Audio */,
 				D7C5EAFB1EF0FA9E007DA71A /* SceneHelper */,
@@ -256,7 +256,7 @@
 				755C59021F0484F70064472D /* background.mp3 in Resources */,
 				753E80A61F058FAD001FEE97 /* stop.mp3 in Resources */,
 				D7C5EAB81EEB5C21007DA71A /* Actions.sks in Resources */,
-				756C74731F05663900EFF2FB /* splash.gif in Resources */,
+				759E541E1F182F33003B6B3C /* splash.gif in Resources */,
 				755C59001F0484E50064472D /* intro.mp3 in Resources */,
 				753E80A81F0593F2001FEE97 /* newHighScore.mp3 in Resources */,
 			);

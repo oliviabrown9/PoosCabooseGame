@@ -24,6 +24,7 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var cornerCat: UIImageView!
     @IBOutlet weak var mysteryLabel: UILabel!
     @IBOutlet weak var darkenedView: UIView!
+    @IBOutlet weak var modalHeightConstraint: NSLayoutConstraint!
 
     var confirm: Bool = false
     var coins = SharingManager.sharedInstance.lifetimeScore
@@ -46,6 +47,15 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var fourthTryButton: UIButton!
     @IBOutlet weak var fifthTryButton: UIButton!
     @IBOutlet weak var startOver: UIImageView!
+    
+    @IBOutlet weak var addCoinsView: UIView!
+    @IBOutlet weak var firstAddCoins: UIView!
+    @IBOutlet weak var addCoinsLabel: UILabel!
+    @IBOutlet weak var secondAddCoins: UIView!
+    @IBOutlet weak var thirdAddCoins: UIView!
+    @IBOutlet weak var fourthAddCoins: UIView!
+    @IBOutlet weak var fifthAddCoins: UIView!
+    @IBOutlet weak var addModalTopConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -422,29 +432,125 @@ class StoreViewController: UIViewController {
     func handleTap() {
         confirm = false
         hideModal()
+        hideAddCoinsModal()
     }
     
     func hideModal() {
         view.layoutIfNeeded()
         
-        darkenedView.isHidden = true
+        if confirm == false {
+            darkenedView.isHidden = true
+            UIView.animate(withDuration: 0.5, animations: {
+                self.modalTopConstraint.constant += self.view.bounds.height
+                self.view.layoutIfNeeded()
+            }, completion: { (finished: Bool) in
+                if finished {
+                    self.modalView.isHidden = true
+                    self.modalTopConstraint.constant -= self.view.bounds.height
+                }
+            })
+
+        }
         
-        UIView.animate(withDuration: 0.5, animations: {
-            self.modalTopConstraint.constant += self.view.bounds.height
-            self.view.layoutIfNeeded()
-        }, completion: { (finished: Bool) in
-            if finished {
-                self.modalView.isHidden = true
-                self.modalTopConstraint.constant -= self.view.bounds.height
-            }
-        })
         if confirm == true && coins >= cost {
+            darkenedView.isHidden = true
+            UIView.animate(withDuration: 0.5, animations: {
+                self.modalTopConstraint.constant += self.view.bounds.height
+                self.view.layoutIfNeeded()
+            }, completion: { (finished: Bool) in
+                if finished {
+                    self.modalView.isHidden = true
+                    self.modalTopConstraint.constant -= self.view.bounds.height
+                }
+            })
+            
             coins -= cost
             currentCoins.text = "\(coins)"
             SharingManager.sharedInstance.lifetimeScore = coins
             SharingManager.sharedInstance.itemStates[place] = "inCloset"
             itemAlreadyPurchased(buyButton: buyButton!, coin: coin!, use: use)
         }
+        else if confirm == true && cost >= coins {
+            modalView.isHidden = true
+            addCoinsView.layer.cornerRadius = 28
+            addCoinsLabel.text = "Pick your poos coin \n package"
+            addCoinsView.isHidden = false
+            addCoinsGestures()
+        }
+    }
+    
+    @IBAction func addButton(_ sender: Any) {
+        
+        addCoinsView.layer.cornerRadius = 28
+        addCoinsLabel.text = "Pick your poos coin \n package"
+        
+        darkenedView.isHidden = false
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        darkenedView.addGestureRecognizer(tap)
+        
+        addModalTopConstraint.constant += self.view.bounds.height
+        view.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.addCoinsView.isHidden = false
+            self.addModalTopConstraint.constant -= self.view.bounds.height
+            self.view.layoutIfNeeded()
+        })
+
+        addCoinsGestures()
+    }
+    
+    func addCoinsGestures() {
+        
+        
+        let firstTap = UITapGestureRecognizer(target: self, action: #selector(buyCoins))
+        firstAddCoins.addGestureRecognizer(firstTap)
+        let secondTap = UITapGestureRecognizer(target: self, action: #selector(buyCoins))
+        secondAddCoins.addGestureRecognizer(secondTap)
+        let thirdTap = UITapGestureRecognizer(target: self, action: #selector(buyCoins))
+        thirdAddCoins.addGestureRecognizer(thirdTap)
+        let fourthTap = UITapGestureRecognizer(target: self, action: #selector(buyCoins))
+        fourthAddCoins.addGestureRecognizer(fourthTap)
+        let fifthTap = UITapGestureRecognizer(target: self, action: #selector(buyCoins))
+        fifthAddCoins.addGestureRecognizer(fifthTap)
+    }
+    
+    func hideAddCoinsModal() {
+        view.layoutIfNeeded()
+        darkenedView.isHidden = true
+        UIView.animate(withDuration: 0.5, animations: {
+            self.addModalTopConstraint.constant += self.view.bounds.height
+            self.view.layoutIfNeeded()
+        }, completion: { (finished: Bool) in
+            if finished {
+                self.addCoinsView.isHidden = true
+                self.addModalTopConstraint.constant -= self.view.bounds.height
+            }
+        })
+    }
+   
+    @IBAction func cancelAddCoins(_ sender: Any) {
+        hideAddCoinsModal()
+    }
+    
+    func buyCoins(_ recognizer:UITapGestureRecognizer) {
+        
+        let viewTapped = recognizer.view
+        viewTapped?.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
+        
+        let alertController = UIAlertController(title: "Oops!", message: "You can't buy things in beta!", preferredStyle: .alert)
+
+        let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+            viewTapped?.backgroundColor = UIColor.white
+            alertController.dismiss(animated: true, completion: nil)
+
+        }
+        alertController.addAction(OKAction)
+        
+        self.present(alertController, animated: true) {
+        }
+        
     }
     
     // Unwind segue back to gameView
