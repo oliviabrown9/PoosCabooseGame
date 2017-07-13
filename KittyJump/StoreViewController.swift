@@ -23,10 +23,10 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var cornerCat: UIImageView!
     @IBOutlet weak var mysteryLabel: UILabel!
+    @IBOutlet weak var blurView: UIView!
 
     var confirm: Bool = false
-//    var coins = SharingManager.sharedInstance.lifetimeScore
-    var coins = 1000000
+    var coins = SharingManager.sharedInstance.lifetimeScore
     var cost: Int = 0
     var place: Int = 0
     var buyButton: UIButton? = nil
@@ -386,20 +386,26 @@ class StoreViewController: UIViewController {
         use = inUse
         
         if cost <= coins {
-            modalView.layer.cornerRadius = 15
-            confirmButton.layer.cornerRadius = 20
-            messageLabel.text = "Buy \(itemTitle) for \(cost) coins?"
+            modalView.layer.cornerRadius = 20
+            confirmButton.layer.cornerRadius = 25
+            messageLabel.text = "Buy \(itemTitle) for \n \(cost) coins?"
             showModal()
         }
         else {
-            modalView.layer.cornerRadius = 15
-            confirmButton.layer.cornerRadius = 20
-            messageLabel.text = "Oops! You don't have enough coins. Would you like to buy more?"
+            modalView.layer.cornerRadius = 20
+            confirmButton.layer.cornerRadius = 25
+            messageLabel.text = "Poos... You don't have enough poos coin. Would you like to buy more?"
             showModal()
         }
     }
     
     func showModal() {
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = blurView.bounds
+        blurView.addSubview(blurEffectView)
+        
         modalTopConstraint.constant += self.view.bounds.height
         view.layoutIfNeeded()
         
