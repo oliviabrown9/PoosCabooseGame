@@ -26,8 +26,8 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var darkenedView: UIView!
 
     var confirm: Bool = false
-//    var coins = SharingManager.sharedInstance.lifetimeScore
-    var coins = 1000000
+    var coins = SharingManager.sharedInstance.lifetimeScore
+//    var coins = 1000000
     var cost: Int = 0
     var place: Int = 0
     var buyButton: UIButton? = nil
@@ -39,9 +39,6 @@ class StoreViewController: UIViewController {
     var trySecond: Bool = false
     var tryThird: Bool = false
     var tryFourth: Bool = false
-    
-//    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-    var blurEffectView = UIVisualEffectView(effect: nil)
     
     @IBOutlet weak var firstTryButton: UIButton!
     @IBOutlet weak var secondTryButton: UIButton!
@@ -409,6 +406,9 @@ class StoreViewController: UIViewController {
         
         darkenedView.isHidden = false
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        darkenedView.addGestureRecognizer(tap)
+        
         modalTopConstraint.constant += self.view.bounds.height
         view.layoutIfNeeded()
         
@@ -417,6 +417,11 @@ class StoreViewController: UIViewController {
             self.modalTopConstraint.constant -= self.view.bounds.height
             self.view.layoutIfNeeded()
         })
+    }
+    
+    func handleTap() {
+        confirm = false
+        hideModal()
     }
     
     func hideModal() {
