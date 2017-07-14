@@ -726,6 +726,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func stop() {
         
         backgroundMusicPlayer.stop()
+        
         let failureGenerator = UINotificationFeedbackGenerator()
         failureGenerator.notificationOccurred(.error)
         

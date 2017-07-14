@@ -390,6 +390,8 @@ class StoreViewController: UIViewController {
     
     // Try to buy something
     func purchaseItem(price: Int, num: Int, button: UIButton, image: UIImageView, title: String, inUse: Bool) {
+        let failureGenerator = UINotificationFeedbackGenerator()
+        failureGenerator.prepare()
         cost = price
         place = num
         buyButton = button
@@ -404,6 +406,7 @@ class StoreViewController: UIViewController {
             showModal()
         }
         else {
+            failureGenerator.notificationOccurred(.error)
             modalView.layer.cornerRadius = 20
             confirmButton.layer.cornerRadius = 25
             messageLabel.text = "Poos... You don't have enough poos coin. Would you like to buy more?"
