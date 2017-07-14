@@ -155,7 +155,7 @@ class StoreViewController: UIViewController {
             cornerCat.image = #imageLiteral(resourceName: "cornerpoos-poosrate")
             fifthTryButton.setTitle("take off", for: .normal)
         } else {
-            cornerCat.image = #imageLiteral(resourceName: "poosCorner")
+            cornerCat.image = #imageLiteral(resourceName: "cornerpoos")
             fifthTryButton.setTitle("try on", for: .normal)
         }
     }
@@ -212,7 +212,7 @@ class StoreViewController: UIViewController {
             cornerCat.image = #imageLiteral(resourceName: "cornerpoos-mustache")
         }
         else {
-            cornerCat.image = #imageLiteral(resourceName: "poosCorner")
+            cornerCat.image = #imageLiteral(resourceName: "cornerpoos")
         }
     }
     
@@ -392,6 +392,7 @@ class StoreViewController: UIViewController {
     func purchaseItem(price: Int, num: Int, button: UIButton, image: UIImageView, title: String, inUse: Bool) {
         let failureGenerator = UINotificationFeedbackGenerator()
         failureGenerator.prepare()
+        
         cost = price
         place = num
         buyButton = button

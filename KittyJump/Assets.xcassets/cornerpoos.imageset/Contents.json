@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "cornerpoos.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "trainrightfacing1.png",
       "scale" : "2x"
     },
     {

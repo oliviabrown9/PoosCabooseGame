@@ -38,9 +38,6 @@ class RightTrain : SKSpriteNode {
             str_trainname = "trainrightfacing4.png"
             size_train = 600
         case 6:
-            str_trainname = "trainrightfacing1.png"
-            size_train = 240
-        case 7:
             str_trainname = "trainrightfacing5.png"
             size_train = 720
         default:

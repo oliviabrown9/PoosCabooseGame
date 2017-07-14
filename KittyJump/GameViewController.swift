@@ -21,6 +21,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var animationEndImage: UIImageView!
     
     @IBOutlet weak var gifImageView: UIImageView!
+    @IBOutlet weak var tapView: UIView!
     
     // Variables to run game
     var scene = GameScene()
@@ -54,10 +55,14 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         let gif = UIImage(gifName: "splash.gif")
         let gifManager = SwiftyGifManager(memoryLimit: 20)
         self.gifImageView.setGifImage(gif, manager: gifManager, loopCount: 1)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(gifDidLoop))
+        tapView.addGestureRecognizer(tap)
     }
     
     // Initial screen
     func initView() {
+        tapView.isHidden = true
         startButton?.isEnabled = true
         startButton?.isHidden = false
         startBackground?.isHidden = false

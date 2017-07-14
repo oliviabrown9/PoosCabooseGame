@@ -26,6 +26,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fei-sO-NkU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sb3-Jk-Bdy">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CaN-ce-hrA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
@@ -89,6 +93,7 @@
                         <outlet property="animationEndImage" destination="KTu-L7-ZAE" id="coW-CE-DIm"/>
                         <outlet property="gifImageView" destination="Fei-sO-NkU" id="nD4-aQ-BBX"/>
                         <outlet property="startBackground" destination="CaN-ce-hrA" id="SWs-9e-KKl"/>
+                        <outlet property="tapView" destination="Sb3-Jk-Bdy" id="f9d-s9-pSl"/>
                         <segue destination="doZ-1J-RsL" kind="show" identifier="toGameOver" id="5ND-GG-Cqs"/>
                     </connections>
                 </viewController>
@@ -167,7 +172,7 @@
                                     <constraint firstAttribute="width" constant="10" id="mn6-Pw-yIh"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poosCorner" translatesAutoresizingMaskIntoConstraints="NO" id="T9A-VY-ya6">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cornerpoos" translatesAutoresizingMaskIntoConstraints="NO" id="T9A-VY-ya6">
                                 <rect key="frame" x="192" y="502.5" width="187" height="164.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="T9A-VY-ya6" secondAttribute="height" multiplier="183:161" id="eXn-0o-2rD"/>
@@ -472,7 +477,7 @@
                                     <constraint firstAttribute="width" constant="32" id="AG5-Nt-jPa"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poosCorner" translatesAutoresizingMaskIntoConstraints="NO" id="sEd-V3-kmx">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cornerpoos" translatesAutoresizingMaskIntoConstraints="NO" id="sEd-V3-kmx">
                                 <rect key="frame" x="192" y="502.5" width="187" height="164.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="sEd-V3-kmx" secondAttribute="height" multiplier="183:161" id="wDr-D0-i5l"/>
@@ -930,7 +935,7 @@
         <image name="arrow" width="24" height="42"/>
         <image name="backgroundGradient" width="1125" height="2001"/>
         <image name="coin" width="189" height="168"/>
-        <image name="poosCorner" width="183" height="161"/>
+        <image name="cornerpoos" width="1647" height="1449"/>
         <image name="startOver" width="256" height="256"/>
         <image name="x" width="45" height="42"/>
     </resources>
