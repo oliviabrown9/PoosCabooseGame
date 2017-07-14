@@ -14,21 +14,21 @@ var useThird: Bool = false
 var useFourth: Bool = false
 var useFifth: Bool = false
 
-class StoreViewController: UIViewController {
+class StoreViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var currentCoins: UILabel!
     @IBOutlet weak var modalView: UIView!
     @IBOutlet weak var modalTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var cornerCat: UIImageView!
-    @IBOutlet weak var mysteryLabel: UILabel!
     @IBOutlet weak var darkenedView: UIView!
     @IBOutlet weak var modalHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var peek: UIImageView!
 
+    @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
-    var coins = SharingManager.sharedInstance.lifetimeScore
-//    var coins = 1000000
+//    var coins = SharingManager.sharedInstance.lifetimeScore
+    var coins = 1000000
     var cost: Int = 0
     var place: Int = 0
     var buyButton: UIButton? = nil
@@ -36,18 +36,7 @@ class StoreViewController: UIViewController {
     var itemTitle: String = ""
     var use: Bool = false
     
-    var tryFirst: Bool = false
-    var trySecond: Bool = false
-    var tryThird: Bool = false
-    var tryFourth: Bool = false
-    
-    @IBOutlet weak var firstTryButton: UIButton!
-    @IBOutlet weak var secondTryButton: UIButton!
-    @IBOutlet weak var thirdTryButton: UIButton!
-    @IBOutlet weak var fourthTryButton: UIButton!
-    @IBOutlet weak var fifthTryButton: UIButton!
-    @IBOutlet weak var startOver: UIImageView!
-    
+    // Connections for add coins popup
     @IBOutlet weak var addCoinsView: UIView!
     @IBOutlet weak var firstAddCoins: UIView!
     @IBOutlet weak var addCoinsLabel: UILabel!
@@ -56,9 +45,20 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var fourthAddCoins: UIView!
     @IBOutlet weak var fifthAddCoins: UIView!
     @IBOutlet weak var addModalTopConstraint: NSLayoutConstraint!
+
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let slides: [Slide] = createSlides()
+        setupScrollView(slides: slides)
+        
+        scrollView.delegate = self
+        pageControl.numberOfPages = slides.count
+        pageControl.currentPage = 0
+        view.bringSubview(toFront: pageControl)
         
         currentCoins.text = "\(coins)"
         
@@ -83,12 +83,48 @@ class StoreViewController: UIViewController {
             }
         }
         if coins >= 100000 {
-            fifthTryButton.alpha = 1
-            fifthTryButton.isUserInteractionEnabled = true
-            mysteryLabel.text = "poosrate"
+            // mysteries aren't mysteries?
         }
     }
     
+    func createSlides() -> [Slide] {
+        
+        let slide1 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        slide1.image.image = #imageLiteral(resourceName: "poos")
+        slide1.titleLabel.text = "OG Poos"
+        slide1.costLabel.text = "Free"
+        slide1.buyButton.layer.cornerRadius = 20
+        slide1.buyButton.layer.borderWidth = 3
+        slide1.buyButton.layer.borderColor = UIColor.white.cgColor
+        let slide2 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        slide2.image.image = #imageLiteral(resourceName: "trotterpoos")
+        let slide3 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        slide3.image.image = #imageLiteral(resourceName: "properpoos")
+        let slide4 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        slide4.image.image = #imageLiteral(resourceName: "poosrate")
+        let slide5 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        slide5.image.image = #imageLiteral(resourceName: "quapoos")
+        let slide6 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        slide6.image.image = #imageLiteral(resourceName: "trumpoos")
+        
+        return [slide1, slide2, slide3, slide4, slide5, slide6]
+    }
+    
+    func setupScrollView(slides: [Slide]) {
+        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
+        
+        for i in 0 ..< slides.count {
+            slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height)
+            
+            scrollView.addSubview(slides[i])
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
+        pageControl.currentPage = Int(pageIndex)
+    }
     @IBAction func confirmPressed(_ sender: Any) {
         confirm = true
         hideModal()
@@ -101,7 +137,6 @@ class StoreViewController: UIViewController {
     // Change display to use button
     func itemAlreadyPurchased(buyButton: UIButton, coin: UIImageView, use: Bool) {
         buyButton.setTitle("use", for: .normal)
-        buyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
         coin.isHidden = true
         
         if use == true {
@@ -109,140 +144,10 @@ class StoreViewController: UIViewController {
         }
     }
     
-    // Try on
-    @IBAction func firstTry(_ sender: Any) {
-        if tryFirst == true {
-            tryFirst = false
-            firstTryButton.setTitle("try on", for: .normal)
-        } else {
-        tryFirst = true
-            firstTryButton.setTitle("take off", for: .normal)
-        }
-        updateCornerCat()
-    }
-    @IBAction func secondTry(_ sender: Any) {
-       if trySecond == true {
-            trySecond = false
-            secondTryButton.setTitle("try on", for: .normal)
-        } else {
-            trySecond = true
-            secondTryButton.setTitle("take off", for: .normal)
-        }
-        updateCornerCat()
-    }
-    @IBAction func thirdTry(_ sender: Any) {
-        if tryThird == true {
-            tryThird = false
-            thirdTryButton.setTitle("try on", for: .normal)
-        } else {
-            tryThird = true
-            thirdTryButton.setTitle("take off", for: .normal)
-        }
-        updateCornerCat()
-    }
-    @IBAction func fourthTry(_ sender: Any) {
-        if tryFourth == true {
-            tryFourth = false
-            fourthTryButton.setTitle("try on", for: .normal)
-        } else {
-            tryFourth = true
-            fourthTryButton.setTitle("take off", for: .normal)
-        }
-        updateCornerCat()
-    }
-    @IBAction func fifthTry(_ sender: Any) {
-        if cornerCat.image != #imageLiteral(resourceName: "cornerpoos-poosrate") {
-            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-poosrate")
-            fifthTryButton.setTitle("take off", for: .normal)
-        } else {
-            cornerCat.image = #imageLiteral(resourceName: "cornerpoos")
-            fifthTryButton.setTitle("try on", for: .normal)
-        }
-    }
-    
-    // Change cat image depending on try on selections
-    func updateCornerCat() {
-        
-        // Switch first & third since they cannot be displayed at the same time
-        if tryFirst && tryThird {
-            if cornerCat.image == #imageLiteral(resourceName: "poos-monocle") || cornerCat.image == #imageLiteral(resourceName: "poos-monocle-mustache") {
-                tryThird = false
-            }
-            else {
-                tryFirst = false
-            }
-            updateCornerCat()
-        }
-        
-        // Switch second & third since they cannot be displayed at the same time
-        else if trySecond && tryThird {
-            if cornerCat.image == #imageLiteral(resourceName: "poos-monocle") || cornerCat.image == #imageLiteral(resourceName: "poos-monocle-mustache") {
-                tryThird = false
-            }
-            else {
-                trySecond = false
-            }
-            updateCornerCat()
-        }
-        if tryFirst && !trySecond && !tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-shades")
-        }
-        else if tryFirst && trySecond && !tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-shades-chain")
-        }
-        else if tryFirst && trySecond && tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "poos-shades-chain-mustache")
-        }
-        else if tryFirst && !trySecond && tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-shades-mustache")
-        }
-        else if !tryFirst && trySecond && !tryThird && !tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-chain")
-        }
-        else if !tryFirst && trySecond && !tryThird && tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-chain-mustache")
-        }
-        else if !tryFirst && !trySecond && tryThird && tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-monocle-mustache")
-        }
-        else if !tryFirst && !trySecond && tryThird && !tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-monocle")
-        }
-        else if !tryFirst && !trySecond && !tryThird && tryFourth {
-            cornerCat.image = #imageLiteral(resourceName: "cornerpoos-mustache")
-        }
-        else {
-            cornerCat.image = #imageLiteral(resourceName: "cornerpoos")
-        }
-    }
-    
     func updateUsing() {
         
-        // Switch first & third since they cannot be used at the same time
-        if useFirst && useThird {
-            if SharingManager.sharedInstance.catImageString == "poos-monocle" || SharingManager.sharedInstance.catImageString == "poos-monocle-mustache" {
-                useThird = false
-                SharingManager.sharedInstance.useThird = false
-            }
-            else {
-                useFirst = false
-                SharingManager.sharedInstance.useFirst = false
-            }
-            updateUsing()
-        }
-            
-        // Switch second & third since they cannot be displayed at the same time
-        else if useSecond && useThird {
-            if SharingManager.sharedInstance.catImageString == "poos-monocle" || SharingManager.sharedInstance.catImageString == "poos-monocle-mustache" {
-                useThird = false
-                SharingManager.sharedInstance.useThird = false
-            }
-            else {
-                useSecond = false
-                SharingManager.sharedInstance.useSecond = false
-            }
-            updateUsing()
-        }
+        // new function will check pageIndex?
+        
         if useFirst && !useSecond && !useFourth {
             SharingManager.sharedInstance.catImageString = "poos-shades.png"
         }
@@ -381,13 +286,6 @@ class StoreViewController: UIViewController {
         }
     }
     
-    // Recognize if startOver image is tapped
-    override func viewDidAppear(_ animated: Bool) {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        startOver.isUserInteractionEnabled = true
-        startOver.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
     // Try to buy something
     func purchaseItem(price: Int, num: Int, button: UIButton, image: UIImageView, title: String, inUse: Bool) {
         let failureGenerator = UINotificationFeedbackGenerator()
@@ -453,7 +351,6 @@ class StoreViewController: UIViewController {
                     self.modalTopConstraint.constant -= self.view.bounds.height
                 }
             })
-
         }
         
         if confirm == true && coins >= cost {
@@ -478,36 +375,14 @@ class StoreViewController: UIViewController {
             modalView.isHidden = true
             addCoinsView.layer.cornerRadius = 28
             addCoinsLabel.text = "Pick your poos coin \n package"
+            peek.isHidden = false
             addCoinsView.isHidden = false
             addCoinsGestures()
         }
     }
     
-    @IBAction func addButton(_ sender: Any) {
-        
-        addCoinsView.layer.cornerRadius = 28
-        addCoinsLabel.text = "Pick your poos coin \n package"
-        
-        darkenedView.isHidden = false
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        darkenedView.addGestureRecognizer(tap)
-        
-        addModalTopConstraint.constant += self.view.bounds.height
-        view.layoutIfNeeded()
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            self.addCoinsView.isHidden = false
-            self.addModalTopConstraint.constant -= self.view.bounds.height
-            self.view.layoutIfNeeded()
-        })
-
-        addCoinsGestures()
-    }
-    
     func addCoinsGestures() {
-        
-        
+
         let firstTap = UITapGestureRecognizer(target: self, action: #selector(buyCoins))
         firstAddCoins.addGestureRecognizer(firstTap)
         let secondTap = UITapGestureRecognizer(target: self, action: #selector(buyCoins))

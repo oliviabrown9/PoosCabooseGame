@@ -10,6 +10,7 @@ import SpriteKit
 import GameplayKit
 import Foundation
 import AVFoundation
+import SpriteKitEasingSwift
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -163,7 +164,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func switchJointL(iWagon :LeftTrain ) {
+    func switchJointL(iWagon :LeftTrain) {
         
         self.physicsWorld.removeAllJoints()
         
@@ -176,6 +177,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.physicsWorld.add(joint1)
             updateScore()
             kittyCurrentState = .onTrain
+            
+            
         }
     }
     
@@ -233,7 +236,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     if score != pastHighScore {
                     generator.impactOccurred()
                     }
-                    kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
+                    kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60))
                     if (!soundState) {
                         let jumpSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "jump", ofType: "mp3")!)
                         do {
@@ -246,7 +249,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         }
                     }
                     kittyCurrentState = .onAir
-                    
                     
                     if score == pastHighScore {
                         successGenerator.notificationOccurred(.success)

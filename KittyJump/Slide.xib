@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="Slide" customModule="KittyJump" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poos" translatesAutoresizingMaskIntoConstraints="NO" id="vVl-DT-ci7">
+                    <rect key="frame" x="72" y="198" width="230" height="271"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1r-pY-zWV">
+                    <rect key="frame" x="159" y="489" width="57.5" height="41"/>
+                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="30"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbA-pU-bLA">
+                    <rect key="frame" x="104" y="555" width="57" height="33"/>
+                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="24"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="poos coin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P44-gr-4hj">
+                    <rect key="frame" x="104" y="578" width="53" height="17"/>
+                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="nlP-8Y-08X">
+                    <rect key="frame" x="60" y="557" width="42" height="38"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="38" id="xAT-Bu-DuJ"/>
+                        <constraint firstAttribute="width" constant="42" id="zm4-cx-PHL"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzz-Nx-tLw">
+                    <rect key="frame" x="231" y="556" width="84" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="84" id="BMC-PE-FX2"/>
+                        <constraint firstAttribute="height" constant="40" id="vTy-Z1-ZcX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                    <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                    <state key="normal" title="buy">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Lzz-Nx-tLw" firstAttribute="centerY" secondItem="nlP-8Y-08X" secondAttribute="centerY" id="F4B-VW-lKR"/>
+                <constraint firstItem="P44-gr-4hj" firstAttribute="top" secondItem="FbA-pU-bLA" secondAttribute="bottom" constant="-10" id="REF-Fe-B6y"/>
+                <constraint firstAttribute="trailing" secondItem="Lzz-Nx-tLw" secondAttribute="trailing" constant="60" id="b9V-8x-aU2"/>
+                <constraint firstItem="FbA-pU-bLA" firstAttribute="leading" secondItem="nlP-8Y-08X" secondAttribute="trailing" constant="2" id="bWA-BC-i1N"/>
+                <constraint firstItem="nlP-8Y-08X" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="60" id="coP-ej-KzM"/>
+                <constraint firstItem="nlP-8Y-08X" firstAttribute="bottom" secondItem="P44-gr-4hj" secondAttribute="bottom" id="hUG-L2-Zle"/>
+                <constraint firstItem="J1r-pY-zWV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="opu-CF-V25"/>
+                <constraint firstItem="vVl-DT-ci7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pG3-Jn-dVx"/>
+                <constraint firstItem="vVl-DT-ci7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="qP4-HC-Nb5"/>
+                <constraint firstItem="FbA-pU-bLA" firstAttribute="top" secondItem="J1r-pY-zWV" secondAttribute="bottom" constant="25" id="qjE-nc-MTr"/>
+                <constraint firstItem="J1r-pY-zWV" firstAttribute="top" secondItem="vVl-DT-ci7" secondAttribute="bottom" constant="20" id="tyG-Dg-J5h"/>
+                <constraint firstItem="P44-gr-4hj" firstAttribute="leading" secondItem="FbA-pU-bLA" secondAttribute="leading" id="uxe-ZW-Rov"/>
+            </constraints>
+            <connections>
+                <outlet property="buyButton" destination="Lzz-Nx-tLw" id="Whf-vw-Zcu"/>
+                <outlet property="costLabel" destination="FbA-pU-bLA" id="KVS-L7-7Rg"/>
+                <outlet property="image" destination="vVl-DT-ci7" id="IHD-UF-abQ"/>
+                <outlet property="titleLabel" destination="J1r-pY-zWV" id="krD-xm-cHG"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="60.5"/>
+        </view>
+        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vR1-3c-n40">
+            <rect key="frame" x="0.0" y="0.0" width="76.5" height="41"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="30"/>
+            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <nil key="highlightedColor"/>
+        </label>
+    </objects>
+    <resources>
+        <image name="coin" width="189" height="168"/>
+        <image name="poos" width="230" height="271"/>
+    </resources>
+</document>

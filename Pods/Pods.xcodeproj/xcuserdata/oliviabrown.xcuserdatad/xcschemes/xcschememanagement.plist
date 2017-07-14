@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SpriteKitEasingSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftyGif.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>07F9AD689DB13D285EE91400F44FD66C</key>
+		<key>6EEE7159F83D966F7E6FCB5ACEAB1E34</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1AB02DC11A08EB1E2DA7F3261BF28A2</key>
+		<key>7430A4E04D9E23A00F92EBFB1068EE86</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>98B81AA45749AF8FED8B293972854272</key>
 		<dict>
 			<key>primary</key>
 			<true/>

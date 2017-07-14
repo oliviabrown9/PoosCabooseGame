@@ -12,6 +12,8 @@
 		755820EE1F04126400A68A88 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755820ED1F04126400A68A88 /* jump.mp3 */; };
 		755C59001F0484E50064472D /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755C58FF1F0484E50064472D /* intro.mp3 */; };
 		755C59021F0484F70064472D /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755C59011F0484F70064472D /* background.mp3 */; };
+		756C47A91F197A0D00B034C0 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 756C47A81F197A0D00B034C0 /* Slide.xib */; };
+		756C47AB1F197A3100B034C0 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756C47AA1F197A3100B034C0 /* Slide.swift */; };
 		759E541E1F182F33003B6B3C /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 759E541D1F182F33003B6B3C /* splash.gif */; };
 		759E54221F185E94003B6B3C /* newHighScore.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 759E54211F185E94003B6B3C /* newHighScore.mp3 */; };
 		75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */; };
@@ -45,6 +47,8 @@
 		755820ED1F04126400A68A88 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 		755C58FF1F0484E50064472D /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = intro.mp3; sourceTree = "<group>"; };
 		755C59011F0484F70064472D /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		756C47A81F197A0D00B034C0 /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
+		756C47AA1F197A3100B034C0 /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		759E541D1F182F33003B6B3C /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		759E54211F185E94003B6B3C /* newHighScore.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = newHighScore.mp3; sourceTree = "<group>"; };
 		75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				D7C5EABD1EEB5C21007DA71A /* Main.storyboard */,
+				756C47A81F197A0D00B034C0 /* Slide.xib */,
+				756C47AA1F197A3100B034C0 /* Slide.swift */,
 				D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */,
 				D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */,
 				D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */,
@@ -259,6 +265,7 @@
 				759E541E1F182F33003B6B3C /* splash.gif in Resources */,
 				755C59001F0484E50064472D /* intro.mp3 in Resources */,
 				759E54221F185E94003B6B3C /* newHighScore.mp3 in Resources */,
+				756C47A91F197A0D00B034C0 /* Slide.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +284,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		2598D25CE231E1511B41B4FC /* [CP] Copy Pods Resources */ = {
@@ -324,6 +331,7 @@
 				75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */,
 				750899C61F14201000D4227F /* StoreViewController.swift in Sources */,
 				D7C5EAE31EEBFB03007DA71A /* Grass.swift in Sources */,
+				756C47AB1F197A3100B034C0 /* Slide.swift in Sources */,
 				D7C5EAE61EEC07E5007DA71A /* LeftTrain.swift in Sources */,
 				D7C5EABC1EEB5C21007DA71A /* GameViewController.swift in Sources */,
 				D7C5EADA1EEB638E007DA71A /* TrainTrack.swift in Sources */,

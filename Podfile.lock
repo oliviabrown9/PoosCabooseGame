@@ -1,12 +1,15 @@
 PODS:
+  - SpriteKitEasingSwift (0.10)
   - SwiftyGif (3.0.3)
 
 DEPENDENCIES:
+  - SpriteKitEasingSwift
   - SwiftyGif
 
 SPEC CHECKSUMS:
+  SpriteKitEasingSwift: 511748b42a203e93a800dc6cd07f71e8b37c6401
   SwiftyGif: 89a0bb19709bdb6990e10405ad456d8bea804a65
 
-PODFILE CHECKSUM: 381aade872206e1603ec85a7b058644041ec18d8
+PODFILE CHECKSUM: dee3cde8d7cc1b0834afc47df6acc8299e840468
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

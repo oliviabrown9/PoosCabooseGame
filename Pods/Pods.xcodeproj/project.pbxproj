@@ -7,89 +7,125 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		088B86AC36443F460AF4D9A15869EBA5 /* Pods-KittyJump-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 70FA03948170CA6FEBD9DD3E99BB0815 /* Pods-KittyJump-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1847A79C828C99C2F654395163237BBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		27FE473BF499F714F27C8C38186DA443 /* Pods-KittyJump-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F84EB5870ABAFD40EB402A039283E7D /* Pods-KittyJump-dummy.m */; };
-		388BE1E3F741F1E7E4B5970FB5F35773 /* SwiftyGif-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D3923679871D476A1D85A269192F88F /* SwiftyGif-dummy.m */; };
-		3920669F73F54A4877EF63808D6BC866 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = AECA5800E34AB159B96FB033C505D504 /* Info.plist */; };
-		4DCACB9E7AD95D5F4AA7955C20EF1C06 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		545547DDD5D6E13D18B439934A8B11CB /* UIImageView+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D17E4C69C8FD43FCFEC033BDF588762 /* UIImageView+SwiftyGif.swift */; };
-		73B3B036337206F5ACFA7C22955B163D /* SwiftyGif-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DAF37DC14285E69129712584A0E1DA38 /* SwiftyGif-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		857A0DA1C4553B570D4C5567BDFCA876 /* SwiftyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFDCF9F6DB741A3EA518F439C2A1A1 /* SwiftyGifManager.swift */; };
-		BED597D225F2686574DE174439F2843A /* UIImage+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB0DCCA7744D85766EC4C06FE9021E /* UIImage+SwiftyGif.swift */; };
-		D67D87E6019CF4B0E34FCE36B2A19266 /* SwiftyGif.h in Headers */ = {isa = PBXBuildFile; fileRef = B4DDA4B449CD1276127F121F222E3991 /* SwiftyGif.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FB6E22A5C12133D7B64DA5B5BA4380C /* SKEase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4381D08D59ADCEB130EA9567AD64F463 /* SKEase.swift */; };
+		1DBBE5DF83D4BF206C777EED88E2C6DA /* Pods-KittyJump-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 70FA03948170CA6FEBD9DD3E99BB0815 /* Pods-KittyJump-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		272ACE95A8E651E496359360A7751DF7 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = EBBB48BFBA2A6DFA0576C361B1479C68 /* Info.plist */; };
+		385D1C9FAB3CEC3FCE20121EC1137F69 /* SwiftyGif.h in Headers */ = {isa = PBXBuildFile; fileRef = AB8841D9CA5DA04DF579098E0F22046E /* SwiftyGif.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		419CF7A3C89DB222F8C0A2E97C82D07B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		420B20479F77C689D58A05FB212E8EF7 /* SwiftyGif-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1637FDD54CC5E41A66025C33FD145A /* SwiftyGif-dummy.m */; };
+		448DD67E26771D7D3728C69EA16F1999 /* SwiftyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240101B75E26F5F887B4F777F8EBB9ED /* SwiftyGifManager.swift */; };
+		5849089A5DF413542147397F96A0AAFF /* SpriteKitEasingSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AADBB8241A673D04FC229571CE7587 /* SpriteKitEasingSwift-dummy.m */; };
+		5A3A59FDAD3F9EB949EE49FE7E7D99FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		6511A270AC392D020359935BA6A3401C /* EasingDeclarations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398242EB13CA5891D6900FC48BD32981 /* EasingDeclarations.swift */; };
+		70CBFDDD03563C00807F255C13CC22E6 /* UIImageView+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017EF0C11F6E210F2169FE6C360FD86 /* UIImageView+SwiftyGif.swift */; };
+		7DE37B9F4E8DE497023874E6194DCE9B /* easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A7AC410D1C86BEE9DD74A40250095F /* easing.swift */; };
+		91157D473EB816B711EAD89C5EC7EB18 /* SpriteKitEasingSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 285BCF9C8DA3F3DB97E34B2B094A5935 /* SpriteKitEasingSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		97E06CC78D867CBFA08744D8256EC956 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		998ED09ED268D84936BFB3D6506579E2 /* UIImage+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE2F0DC442DC74DA331F50232E04FC /* UIImage+SwiftyGif.swift */; };
+		B2B04C7217D34D9B0DE0E80A9073421B /* SwiftyGif-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B7F5097FE210796D31834C65B632E618 /* SwiftyGif-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF8FE2FCA3B475F3AF13973056CB6781 /* Pods-KittyJump-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F84EB5870ABAFD40EB402A039283E7D /* Pods-KittyJump-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9556AD63E7586513F4524D11ADACF045 /* PBXContainerItemProxy */ = {
+		602EE396DFC6E47C9252594FB05440C8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D1AB02DC11A08EB1E2DA7F3261BF28A2;
+			remoteGlobalIDString = 6EEE7159F83D966F7E6FCB5ACEAB1E34;
 			remoteInfo = SwiftyGif;
+		};
+		EE6CE50FDC2691A0DF3BF7F6FEA0BF7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 98B81AA45749AF8FED8B293972854272;
+			remoteInfo = SpriteKitEasingSwift;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		16349AD8E1ADB820E25E2E6040E551CF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14DD05024DF35B7BCE4567C0489E0C9F /* SpriteKitEasingSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SpriteKitEasingSwift.framework; path = SpriteKitEasingSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		240101B75E26F5F887B4F777F8EBB9ED /* SwiftyGifManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyGifManager.swift; path = SwiftyGif/SwiftyGifManager.swift; sourceTree = "<group>"; };
+		285BCF9C8DA3F3DB97E34B2B094A5935 /* SpriteKitEasingSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpriteKitEasingSwift-umbrella.h"; sourceTree = "<group>"; };
 		299582244938DA138F9A8689EE5ECC07 /* Pods-KittyJump-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KittyJump-acknowledgements.plist"; sourceTree = "<group>"; };
-		37CFDCF9F6DB741A3EA518F439C2A1A1 /* SwiftyGifManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyGifManager.swift; path = SwiftyGif/SwiftyGifManager.swift; sourceTree = "<group>"; };
+		373882CDF646BFD47FB007677B13EDD3 /* SpriteKitEasingSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpriteKitEasingSwift-prefix.pch"; sourceTree = "<group>"; };
+		398242EB13CA5891D6900FC48BD32981 /* EasingDeclarations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EasingDeclarations.swift; path = Pod/Classes/EasingDeclarations.swift; sourceTree = "<group>"; };
+		4306EC8BF25E37871B4A7688A82101EE /* SpriteKitEasingSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SpriteKitEasingSwift.modulemap; sourceTree = "<group>"; };
+		4381D08D59ADCEB130EA9567AD64F463 /* SKEase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKEase.swift; path = Pod/Classes/SKEase.swift; sourceTree = "<group>"; };
 		47D881BDB25EE20BF1D7712E6A0EB67F /* Pods-KittyJump-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KittyJump-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4BA582F0747DAB2183F1F1F15C48D610 /* Pods_KittyJump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KittyJump.framework; path = "Pods-KittyJump.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F84EB5870ABAFD40EB402A039283E7D /* Pods-KittyJump-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KittyJump-dummy.m"; sourceTree = "<group>"; };
-		5D17E4C69C8FD43FCFEC033BDF588762 /* UIImageView+SwiftyGif.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+SwiftyGif.swift"; path = "SwiftyGif/UIImageView+SwiftyGif.swift"; sourceTree = "<group>"; };
+		566527C09A144F679864605DD0596794 /* SpriteKitEasingSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SpriteKitEasingSwift.xcconfig; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6CDAE4A36EAAF4A7746A091A7B660DE1 /* SwiftyGif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyGif.framework; path = SwiftyGif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D1637FDD54CC5E41A66025C33FD145A /* SwiftyGif-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyGif-dummy.m"; sourceTree = "<group>"; };
 		70FA03948170CA6FEBD9DD3E99BB0815 /* Pods-KittyJump-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KittyJump-umbrella.h"; sourceTree = "<group>"; };
-		77599DC5F67291CFD242D3A5D6FB7E71 /* SwiftyGif.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyGif.xcconfig; sourceTree = "<group>"; };
 		7AA768B6C2A55CB062197CDA97CA8308 /* Pods-KittyJump.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-KittyJump.modulemap"; sourceTree = "<group>"; };
 		7C213A2D505F48B450E775D61CA51CB7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D3923679871D476A1D85A269192F88F /* SwiftyGif-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyGif-dummy.m"; sourceTree = "<group>"; };
-		8093A32F95E367DA3441D6F2F1F69DF0 /* SwiftyGif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyGif.framework; path = SwiftyGif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81BEC0790B3EFDB5DC20AB1E02137179 /* Pods-KittyJump.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KittyJump.debug.xcconfig"; sourceTree = "<group>"; };
 		84A38B70C2395953FB8E41DA6DCAC96C /* Pods-KittyJump.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KittyJump.release.xcconfig"; sourceTree = "<group>"; };
 		84B7D069DCC5C6317A240C8FA6683ADD /* Pods-KittyJump-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KittyJump-frameworks.sh"; sourceTree = "<group>"; };
 		8E7FE56C59FFCCB4811C26E9C30EDBE9 /* Pods-KittyJump-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KittyJump-resources.sh"; sourceTree = "<group>"; };
+		92A2477AC8C0D8D14E9C652A4A00B946 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9E0CF70F70CB57A0AC345246E3F0E658 /* SwiftyGif-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyGif-prefix.pch"; sourceTree = "<group>"; };
-		AECA5800E34AB159B96FB033C505D504 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = SwiftyGif/Info.plist; sourceTree = "<group>"; };
-		B4DDA4B449CD1276127F121F222E3991 /* SwiftyGif.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftyGif.h; path = SwiftyGif/SwiftyGif.h; sourceTree = "<group>"; };
-		CB42C13660DB5D5A9DC32D608CB36A1B /* SwiftyGif.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyGif.modulemap; sourceTree = "<group>"; };
-		D8EB0DCCA7744D85766EC4C06FE9021E /* UIImage+SwiftyGif.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+SwiftyGif.swift"; path = "SwiftyGif/UIImage+SwiftyGif.swift"; sourceTree = "<group>"; };
-		DAF37DC14285E69129712584A0E1DA38 /* SwiftyGif-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyGif-umbrella.h"; sourceTree = "<group>"; };
+		93B157212AEE76AC35DF1935DA7F9E5B /* SwiftyGif.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyGif.modulemap; sourceTree = "<group>"; };
+		AB3AA8BD3BA1655175923A27602F47F4 /* Pods_KittyJump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KittyJump.framework; path = "Pods-KittyJump.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB8841D9CA5DA04DF579098E0F22046E /* SwiftyGif.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftyGif.h; path = SwiftyGif/SwiftyGif.h; sourceTree = "<group>"; };
+		ACE4B59FFD7CB1FA56CBB9FA2935C033 /* SwiftyGif.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyGif.xcconfig; sourceTree = "<group>"; };
+		B3CE2F0DC442DC74DA331F50232E04FC /* UIImage+SwiftyGif.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+SwiftyGif.swift"; path = "SwiftyGif/UIImage+SwiftyGif.swift"; sourceTree = "<group>"; };
+		B7F5097FE210796D31834C65B632E618 /* SwiftyGif-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyGif-umbrella.h"; sourceTree = "<group>"; };
+		BA88CBE385657C4BAFBB18E8F94C896C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C106996895A063E2AC487631DD4113DB /* SwiftyGif-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyGif-prefix.pch"; sourceTree = "<group>"; };
+		D017EF0C11F6E210F2169FE6C360FD86 /* UIImageView+SwiftyGif.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+SwiftyGif.swift"; path = "SwiftyGif/UIImageView+SwiftyGif.swift"; sourceTree = "<group>"; };
+		E0A7AC410D1C86BEE9DD74A40250095F /* easing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = easing.swift; path = Pod/Classes/easing.swift; sourceTree = "<group>"; };
+		EBBB48BFBA2A6DFA0576C361B1479C68 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = SwiftyGif/Info.plist; sourceTree = "<group>"; };
+		F4AADBB8241A673D04FC229571CE7587 /* SpriteKitEasingSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SpriteKitEasingSwift-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		352F8612F2BE7A198E2C2609F4334890 /* Frameworks */ = {
+		08DABC4A6F06F7089F664912D7FCE364 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1847A79C828C99C2F654395163237BBD /* Foundation.framework in Frameworks */,
+				97E06CC78D867CBFA08744D8256EC956 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D683D5461402220BC36E054AD10CCC5E /* Frameworks */ = {
+		9348126F5CF9255D2F1951F5D4A9FAEE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DCACB9E7AD95D5F4AA7955C20EF1C06 /* Foundation.framework in Frameworks */,
+				5A3A59FDAD3F9EB949EE49FE7E7D99FE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C9858AAE39122DE6446701FC762738C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				419CF7A3C89DB222F8C0A2E97C82D07B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		19825D10D4DD9653E417C005EBE50363 /* SwiftyGif */ = {
+		09C59036F210ECE7DEBD7B3526F51199 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AECA5800E34AB159B96FB033C505D504 /* Info.plist */,
-				B4DDA4B449CD1276127F121F222E3991 /* SwiftyGif.h */,
-				37CFDCF9F6DB741A3EA518F439C2A1A1 /* SwiftyGifManager.swift */,
-				D8EB0DCCA7744D85766EC4C06FE9021E /* UIImage+SwiftyGif.swift */,
-				5D17E4C69C8FD43FCFEC033BDF588762 /* UIImageView+SwiftyGif.swift */,
-				58D53C60F5974AB15FB53FD173B3F75C /* Support Files */,
+				8C06CBB3208A437CED3188B50B6E4919 /* SpriteKitEasingSwift */,
+				368E0A8F3E95A5B350C54445CF2F6447 /* SwiftyGif */,
 			);
-			name = SwiftyGif;
-			path = SwiftyGif;
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		0A1A31368DBA0CD5AD69E8BB9396C6EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB3AA8BD3BA1655175923A27602F47F4 /* Pods_KittyJump.framework */,
+				14DD05024DF35B7BCE4567C0489E0C9F /* SpriteKitEasingSwift.framework */,
+				6CDAE4A36EAAF4A7746A091A7B660DE1 /* SwiftyGif.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		3355420C3BE9DF158E5EE71F01F85EDD /* Targets Support Files */ = {
@@ -100,18 +136,18 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		58D53C60F5974AB15FB53FD173B3F75C /* Support Files */ = {
+		368E0A8F3E95A5B350C54445CF2F6447 /* SwiftyGif */ = {
 			isa = PBXGroup;
 			children = (
-				16349AD8E1ADB820E25E2E6040E551CF /* Info.plist */,
-				CB42C13660DB5D5A9DC32D608CB36A1B /* SwiftyGif.modulemap */,
-				77599DC5F67291CFD242D3A5D6FB7E71 /* SwiftyGif.xcconfig */,
-				7D3923679871D476A1D85A269192F88F /* SwiftyGif-dummy.m */,
-				9E0CF70F70CB57A0AC345246E3F0E658 /* SwiftyGif-prefix.pch */,
-				DAF37DC14285E69129712584A0E1DA38 /* SwiftyGif-umbrella.h */,
+				EBBB48BFBA2A6DFA0576C361B1479C68 /* Info.plist */,
+				AB8841D9CA5DA04DF579098E0F22046E /* SwiftyGif.h */,
+				240101B75E26F5F887B4F777F8EBB9ED /* SwiftyGifManager.swift */,
+				B3CE2F0DC442DC74DA331F50232E04FC /* UIImage+SwiftyGif.swift */,
+				D017EF0C11F6E210F2169FE6C360FD86 /* UIImageView+SwiftyGif.swift */,
+				F5687A32D5A7DD48EE45A9416104B915 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftyGif";
+			name = SwiftyGif;
+			path = SwiftyGif;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -119,19 +155,36 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				FC21277D0D953B13BEE5EB25881A9C6A /* Pods */,
-				8B32A44BBE6C64A6EE0B520221B5F7E4 /* Products */,
+				09C59036F210ECE7DEBD7B3526F51199 /* Pods */,
+				0A1A31368DBA0CD5AD69E8BB9396C6EA /* Products */,
 				3355420C3BE9DF158E5EE71F01F85EDD /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8B32A44BBE6C64A6EE0B520221B5F7E4 /* Products */ = {
+		8926D67FF7200CA211DFB45FB02B6459 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				4BA582F0747DAB2183F1F1F15C48D610 /* Pods_KittyJump.framework */,
-				8093A32F95E367DA3441D6F2F1F69DF0 /* SwiftyGif.framework */,
+				92A2477AC8C0D8D14E9C652A4A00B946 /* Info.plist */,
+				4306EC8BF25E37871B4A7688A82101EE /* SpriteKitEasingSwift.modulemap */,
+				566527C09A144F679864605DD0596794 /* SpriteKitEasingSwift.xcconfig */,
+				F4AADBB8241A673D04FC229571CE7587 /* SpriteKitEasingSwift-dummy.m */,
+				373882CDF646BFD47FB007677B13EDD3 /* SpriteKitEasingSwift-prefix.pch */,
+				285BCF9C8DA3F3DB97E34B2B094A5935 /* SpriteKitEasingSwift-umbrella.h */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/SpriteKitEasingSwift";
+			sourceTree = "<group>";
+		};
+		8C06CBB3208A437CED3188B50B6E4919 /* SpriteKitEasingSwift */ = {
+			isa = PBXGroup;
+			children = (
+				E0A7AC410D1C86BEE9DD74A40250095F /* easing.swift */,
+				398242EB13CA5891D6900FC48BD32981 /* EasingDeclarations.swift */,
+				4381D08D59ADCEB130EA9567AD64F463 /* SKEase.swift */,
+				8926D67FF7200CA211DFB45FB02B6459 /* Support Files */,
+			);
+			name = SpriteKitEasingSwift;
+			path = SpriteKitEasingSwift;
 			sourceTree = "<group>";
 		};
 		B5E25DAA58BA80DC05BA88EA7A5C3297 /* Pods-KittyJump */ = {
@@ -168,62 +221,58 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		FC21277D0D953B13BEE5EB25881A9C6A /* Pods */ = {
+		F5687A32D5A7DD48EE45A9416104B915 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				19825D10D4DD9653E417C005EBE50363 /* SwiftyGif */,
+				BA88CBE385657C4BAFBB18E8F94C896C /* Info.plist */,
+				93B157212AEE76AC35DF1935DA7F9E5B /* SwiftyGif.modulemap */,
+				ACE4B59FFD7CB1FA56CBB9FA2935C033 /* SwiftyGif.xcconfig */,
+				6D1637FDD54CC5E41A66025C33FD145A /* SwiftyGif-dummy.m */,
+				C106996895A063E2AC487631DD4113DB /* SwiftyGif-prefix.pch */,
+				B7F5097FE210796D31834C65B632E618 /* SwiftyGif-umbrella.h */,
 			);
-			name = Pods;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyGif";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		77C6B3EB0C3F9A031DF8E7081F8C1040 /* Headers */ = {
+		6852FBB0B20FEBABE31CC3D5976102CA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73B3B036337206F5ACFA7C22955B163D /* SwiftyGif-umbrella.h in Headers */,
-				D67D87E6019CF4B0E34FCE36B2A19266 /* SwiftyGif.h in Headers */,
+				1DBBE5DF83D4BF206C777EED88E2C6DA /* Pods-KittyJump-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BAB4C7195EF5B76E11E730E51CF3DCE5 /* Headers */ = {
+		6DFA8E1E9D962A0FEB373DAEF2F0E0DA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				088B86AC36443F460AF4D9A15869EBA5 /* Pods-KittyJump-umbrella.h in Headers */,
+				B2B04C7217D34D9B0DE0E80A9073421B /* SwiftyGif-umbrella.h in Headers */,
+				385D1C9FAB3CEC3FCE20121EC1137F69 /* SwiftyGif.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9DDF3473CB38CBCF0246A6613188175 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91157D473EB816B711EAD89C5EC7EB18 /* SpriteKitEasingSwift-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		07F9AD689DB13D285EE91400F44FD66C /* Pods-KittyJump */ = {
+		6EEE7159F83D966F7E6FCB5ACEAB1E34 /* SwiftyGif */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 360E510B0FF82DA2EB1D97B1800D39C9 /* Build configuration list for PBXNativeTarget "Pods-KittyJump" */;
+			buildConfigurationList = C916903037C5E98CC6C589BBB7FB9628 /* Build configuration list for PBXNativeTarget "SwiftyGif" */;
 			buildPhases = (
-				CFD90A22F51173F7B99D1B9DDB86F828 /* Sources */,
-				D683D5461402220BC36E054AD10CCC5E /* Frameworks */,
-				BAB4C7195EF5B76E11E730E51CF3DCE5 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D03F302F7FF1E49F9F9F9FB900A157C5 /* PBXTargetDependency */,
-			);
-			name = "Pods-KittyJump";
-			productName = "Pods-KittyJump";
-			productReference = 4BA582F0747DAB2183F1F1F15C48D610 /* Pods_KittyJump.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		D1AB02DC11A08EB1E2DA7F3261BF28A2 /* SwiftyGif */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 577CE52855631357DE49AD0B0273DA66 /* Build configuration list for PBXNativeTarget "SwiftyGif" */;
-			buildPhases = (
-				C97AE0D8A3EBA17586ECA5D848F8FAE1 /* Sources */,
-				352F8612F2BE7A198E2C2609F4334890 /* Frameworks */,
-				77C6B3EB0C3F9A031DF8E7081F8C1040 /* Headers */,
+				0B512FE0872FA6DF9E8097D9D7FFF338 /* Sources */,
+				9348126F5CF9255D2F1951F5D4A9FAEE /* Frameworks */,
+				6DFA8E1E9D962A0FEB373DAEF2F0E0DA /* Headers */,
 			);
 			buildRules = (
 			);
@@ -231,7 +280,43 @@
 			);
 			name = SwiftyGif;
 			productName = SwiftyGif;
-			productReference = 8093A32F95E367DA3441D6F2F1F69DF0 /* SwiftyGif.framework */;
+			productReference = 6CDAE4A36EAAF4A7746A091A7B660DE1 /* SwiftyGif.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7430A4E04D9E23A00F92EBFB1068EE86 /* Pods-KittyJump */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 856E692227568F58850644EFEDEFBBDB /* Build configuration list for PBXNativeTarget "Pods-KittyJump" */;
+			buildPhases = (
+				7417F57D7F9635A4DD5B71C34411C201 /* Sources */,
+				08DABC4A6F06F7089F664912D7FCE364 /* Frameworks */,
+				6852FBB0B20FEBABE31CC3D5976102CA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3659AC24EED7D27C5E1336FDC18CADCF /* PBXTargetDependency */,
+				18046FE37BDB78C1D4396FAD2E6CFABC /* PBXTargetDependency */,
+			);
+			name = "Pods-KittyJump";
+			productName = "Pods-KittyJump";
+			productReference = AB3AA8BD3BA1655175923A27602F47F4 /* Pods_KittyJump.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		98B81AA45749AF8FED8B293972854272 /* SpriteKitEasingSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C394372CE374452A3CB85731D095D5F6 /* Build configuration list for PBXNativeTarget "SpriteKitEasingSwift" */;
+			buildPhases = (
+				E3A952D9F459CF3E13D1D1619C42C543 /* Sources */,
+				9C9858AAE39122DE6446701FC762738C /* Frameworks */,
+				B9DDF3473CB38CBCF0246A6613188175 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpriteKitEasingSwift;
+			productName = SpriteKitEasingSwift;
+			productReference = 14DD05024DF35B7BCE4567C0489E0C9F /* SpriteKitEasingSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -251,50 +336,176 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 8B32A44BBE6C64A6EE0B520221B5F7E4 /* Products */;
+			productRefGroup = 0A1A31368DBA0CD5AD69E8BB9396C6EA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				07F9AD689DB13D285EE91400F44FD66C /* Pods-KittyJump */,
-				D1AB02DC11A08EB1E2DA7F3261BF28A2 /* SwiftyGif */,
+				7430A4E04D9E23A00F92EBFB1068EE86 /* Pods-KittyJump */,
+				98B81AA45749AF8FED8B293972854272 /* SpriteKitEasingSwift */,
+				6EEE7159F83D966F7E6FCB5ACEAB1E34 /* SwiftyGif */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C97AE0D8A3EBA17586ECA5D848F8FAE1 /* Sources */ = {
+		0B512FE0872FA6DF9E8097D9D7FFF338 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3920669F73F54A4877EF63808D6BC866 /* Info.plist in Sources */,
-				388BE1E3F741F1E7E4B5970FB5F35773 /* SwiftyGif-dummy.m in Sources */,
-				857A0DA1C4553B570D4C5567BDFCA876 /* SwiftyGifManager.swift in Sources */,
-				BED597D225F2686574DE174439F2843A /* UIImage+SwiftyGif.swift in Sources */,
-				545547DDD5D6E13D18B439934A8B11CB /* UIImageView+SwiftyGif.swift in Sources */,
+				272ACE95A8E651E496359360A7751DF7 /* Info.plist in Sources */,
+				420B20479F77C689D58A05FB212E8EF7 /* SwiftyGif-dummy.m in Sources */,
+				448DD67E26771D7D3728C69EA16F1999 /* SwiftyGifManager.swift in Sources */,
+				998ED09ED268D84936BFB3D6506579E2 /* UIImage+SwiftyGif.swift in Sources */,
+				70CBFDDD03563C00807F255C13CC22E6 /* UIImageView+SwiftyGif.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFD90A22F51173F7B99D1B9DDB86F828 /* Sources */ = {
+		7417F57D7F9635A4DD5B71C34411C201 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27FE473BF499F714F27C8C38186DA443 /* Pods-KittyJump-dummy.m in Sources */,
+				BF8FE2FCA3B475F3AF13973056CB6781 /* Pods-KittyJump-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3A952D9F459CF3E13D1D1619C42C543 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DE37B9F4E8DE497023874E6194DCE9B /* easing.swift in Sources */,
+				6511A270AC392D020359935BA6A3401C /* EasingDeclarations.swift in Sources */,
+				0FB6E22A5C12133D7B64DA5B5BA4380C /* SKEase.swift in Sources */,
+				5849089A5DF413542147397F96A0AAFF /* SpriteKitEasingSwift-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D03F302F7FF1E49F9F9F9FB900A157C5 /* PBXTargetDependency */ = {
+		18046FE37BDB78C1D4396FAD2E6CFABC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyGif;
-			target = D1AB02DC11A08EB1E2DA7F3261BF28A2 /* SwiftyGif */;
-			targetProxy = 9556AD63E7586513F4524D11ADACF045 /* PBXContainerItemProxy */;
+			target = 6EEE7159F83D966F7E6FCB5ACEAB1E34 /* SwiftyGif */;
+			targetProxy = 602EE396DFC6E47C9252594FB05440C8 /* PBXContainerItemProxy */;
+		};
+		3659AC24EED7D27C5E1336FDC18CADCF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SpriteKitEasingSwift;
+			target = 98B81AA45749AF8FED8B293972854272 /* SpriteKitEasingSwift */;
+			targetProxy = EE6CE50FDC2691A0DF3BF7F6FEA0BF7E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		166E2CAC58E8608AD59A6F0B71C9C3E0 /* Debug */ = {
+		042073761A5CFC0486167C29DADA3970 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACE4B59FFD7CB1FA56CBB9FA2935C033 /* SwiftyGif.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyGif/SwiftyGif-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyGif/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyGif/SwiftyGif.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftyGif;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		138AA0A7454939AED0599672FB38872B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 566527C09A144F679864605DD0596794 /* SpriteKitEasingSwift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SpriteKitEasingSwift/SpriteKitEasingSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SpriteKitEasingSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SpriteKitEasingSwift/SpriteKitEasingSwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SpriteKitEasingSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		524ACFC02DB2892ABAA028113BC0CC63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81BEC0790B3EFDB5DC20AB1E02137179 /* Pods-KittyJump.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-KittyJump/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-KittyJump/Pods-KittyJump.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_KittyJump;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		643C76AA582046977B7877822ED7A258 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -334,7 +545,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -342,47 +553,9 @@
 			};
 			name = Debug;
 		};
-		703A5B991BC4B5C3F2F13290BA17725F /* Release */ = {
+		B3535874B2342F7B2A233D97910F3D8D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 84A38B70C2395953FB8E41DA6DCAC96C /* Pods-KittyJump.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-KittyJump/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-KittyJump/Pods-KittyJump.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_KittyJump;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		9A71F3DAE2F7F8BB21EB0DE2A428C424 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81BEC0790B3EFDB5DC20AB1E02137179 /* Pods-KittyJump.debug.xcconfig */;
+			baseConfigurationReference = 566527C09A144F679864605DD0596794 /* SpriteKitEasingSwift.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -396,18 +569,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-KittyJump/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SpriteKitEasingSwift/SpriteKitEasingSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SpriteKitEasingSwift/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-KittyJump/Pods-KittyJump.modulemap";
+				MODULEMAP_FILE = "Target Support Files/SpriteKitEasingSwift/SpriteKitEasingSwift.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_KittyJump;
+				PRODUCT_NAME = SpriteKitEasingSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -419,7 +588,7 @@
 			};
 			name = Debug;
 		};
-		AA0B5BDEB018901CD8F88AAD05F5B893 /* Release */ = {
+		C03B8870130C98D1B02B59D003687524 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -455,7 +624,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
@@ -463,9 +632,9 @@
 			};
 			name = Release;
 		};
-		ACA1627EEC375FFD15ED5AE7461740A4 /* Release */ = {
+		C12F943206844FA2428B15DBE4C9E680 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77599DC5F67291CFD242D3A5D6FB7E71 /* SwiftyGif.xcconfig */;
+			baseConfigurationReference = ACE4B59FFD7CB1FA56CBB9FA2935C033 /* SwiftyGif.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -497,40 +666,43 @@
 			};
 			name = Release;
 		};
-		D8AC1DAEC979B4BB3F319FE95E9A1345 /* Debug */ = {
+		D0DAD0A9962AD4F1A8E497C409020C7C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77599DC5F67291CFD242D3A5D6FB7E71 /* SwiftyGif.xcconfig */;
+			baseConfigurationReference = 84A38B70C2395953FB8E41DA6DCAC96C /* Pods-KittyJump.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyGif/SwiftyGif-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyGif/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-KittyJump/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftyGif/SwiftyGif.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SwiftyGif;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-KittyJump/Pods-KittyJump.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_KittyJump;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -538,26 +710,35 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				166E2CAC58E8608AD59A6F0B71C9C3E0 /* Debug */,
-				AA0B5BDEB018901CD8F88AAD05F5B893 /* Release */,
+				643C76AA582046977B7877822ED7A258 /* Debug */,
+				C03B8870130C98D1B02B59D003687524 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		360E510B0FF82DA2EB1D97B1800D39C9 /* Build configuration list for PBXNativeTarget "Pods-KittyJump" */ = {
+		856E692227568F58850644EFEDEFBBDB /* Build configuration list for PBXNativeTarget "Pods-KittyJump" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9A71F3DAE2F7F8BB21EB0DE2A428C424 /* Debug */,
-				703A5B991BC4B5C3F2F13290BA17725F /* Release */,
+				524ACFC02DB2892ABAA028113BC0CC63 /* Debug */,
+				D0DAD0A9962AD4F1A8E497C409020C7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		577CE52855631357DE49AD0B0273DA66 /* Build configuration list for PBXNativeTarget "SwiftyGif" */ = {
+		C394372CE374452A3CB85731D095D5F6 /* Build configuration list for PBXNativeTarget "SpriteKitEasingSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D8AC1DAEC979B4BB3F319FE95E9A1345 /* Debug */,
-				ACA1627EEC375FFD15ED5AE7461740A4 /* Release */,
+				B3535874B2342F7B2A233D97910F3D8D /* Debug */,
+				138AA0A7454939AED0599672FB38872B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C916903037C5E98CC6C589BBB7FB9628 /* Build configuration list for PBXNativeTarget "SwiftyGif" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				042073761A5CFC0486167C29DADA3970 /* Debug */,
+				C12F943206844FA2428B15DBE4C9E680 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
