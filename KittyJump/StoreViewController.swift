@@ -27,14 +27,15 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
-//    var coins = SharingManager.sharedInstance.lifetimeScore
-    var coins = 1000000
+    var coins = SharingManager.sharedInstance.lifetimeScore
+//    var coins = 1000000
     var cost: Int = 0
     var place: Int = 0
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
     var itemTitle: String = ""
     var use: Bool = false
+    var pageIndex: Int = 0
     
     // Connections for add coins popup
     @IBOutlet weak var addCoinsView: UIView!
@@ -62,50 +63,74 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         
         currentCoins.text = "\(coins)"
         
-        // Change display if item previously purchased
-        for i in 0...4 {
-            if SharingManager.sharedInstance.itemStates[i] == "inCloset" {
-                if i == 0 {
-                    itemAlreadyPurchased(buyButton: firstBuyButton, coin: firstCoin, use: useFirst)
-                }
-                if i == 1 {
-                    itemAlreadyPurchased(buyButton: secondBuyButton, coin: secondCoin, use: useSecond)
-                }
-                if i == 2 {
-                    itemAlreadyPurchased(buyButton: thirdBuyButton, coin: thirdCoin, use: useThird)
-                }
-                if i == 3 {
-                    itemAlreadyPurchased(buyButton: fourthBuyButton, coin: fourthCoin, use: useFourth)
-                }
-                if i == 4 {
-                    itemAlreadyPurchased(buyButton: fifthBuyButton, coin: fifthCoin, use: useFifth)
-                }
-            }
-        }
-        if coins >= 100000 {
-            // mysteries aren't mysteries?
-        }
+//        // Change display if item previously purchased
+//        for i in 0...4 {
+//            if SharingManager.sharedInstance.itemStates[i] == "inCloset" {
+//                if i == 0 {
+//                    itemAlreadyPurchased(buyButton: firstBuyButton, coin: firstCoin, use: useFirst)
+//                }
+//            }
+//        }
+//        if coins >= 100000 {
+//            // mysteries aren't mysteries?
+//        }
     }
     
     func createSlides() -> [Slide] {
         
         let slide1 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide1.image.image = #imageLiteral(resourceName: "poos")
-        slide1.titleLabel.text = "OG Poos"
-        slide1.costLabel.text = "Free"
+        slide1.titleLabel.text = "og poos"
+        slide1.costLabel.text = "0"
         slide1.buyButton.layer.cornerRadius = 20
         slide1.buyButton.layer.borderWidth = 3
         slide1.buyButton.layer.borderColor = UIColor.white.cgColor
+        slide1.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
+        
         let slide2 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide2.image.image = #imageLiteral(resourceName: "trotterpoos")
+        slide2.titleLabel.text = "trotter poos"
+        slide2.costLabel.text = "1,000"
+        slide2.buyButton.layer.cornerRadius = 20
+        slide2.buyButton.layer.borderWidth = 3
+        slide2.buyButton.layer.borderColor = UIColor.white.cgColor
+        slide2.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
+        
         let slide3 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide3.image.image = #imageLiteral(resourceName: "properpoos")
+        slide3.titleLabel.text = "proper poos"
+        slide3.costLabel.text = "2,000"
+        slide3.buyButton.layer.cornerRadius = 20
+        slide3.buyButton.layer.borderWidth = 3
+        slide3.buyButton.layer.borderColor = UIColor.white.cgColor
+        slide3.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
+        
         let slide4 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide4.image.image = #imageLiteral(resourceName: "poosrate")
+        slide4.titleLabel.text = "poosrate"
+        slide4.costLabel.text = "5,000"
+        slide4.buyButton.layer.cornerRadius = 20
+        slide4.buyButton.layer.borderWidth = 3
+        slide4.buyButton.layer.borderColor = UIColor.white.cgColor
+        slide4.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
+        
         let slide5 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide5.image.image = #imageLiteral(resourceName: "quapoos")
+        slide5.titleLabel.text = "quapoos"
+        slide5.costLabel.text = "10,000"
+        slide5.buyButton.layer.cornerRadius = 20
+        slide5.buyButton.layer.borderWidth = 3
+        slide5.buyButton.layer.borderColor = UIColor.white.cgColor
+        slide5.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
+        
         let slide6 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide6.image.image = #imageLiteral(resourceName: "trumpoos")
+        slide6.titleLabel.text = "trumpoos"
+        slide6.costLabel.text = "100,000"
+        slide6.buyButton.layer.cornerRadius = 20
+        slide6.buyButton.layer.borderWidth = 3
+        slide6.buyButton.layer.borderColor = UIColor.white.cgColor
+        slide6.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
         
         return [slide1, slide2, slide3, slide4, slide5, slide6]
     }
@@ -122,8 +147,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
-        pageControl.currentPage = Int(pageIndex)
+        pageIndex = Int(round(scrollView.contentOffset.x/view.frame.width))
+        pageControl.currentPage = pageIndex
     }
     @IBAction func confirmPressed(_ sender: Any) {
         confirm = true
@@ -146,157 +171,73 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     
     func updateUsing() {
         
-        // new function will check pageIndex?
-        
-        if useFirst && !useSecond && !useFourth {
-            SharingManager.sharedInstance.catImageString = "poos-shades.png"
+        if pageIndex == 0 {
+            SharingManager.sharedInstance.catImageString = "poos"
         }
-        else if useFirst && useSecond && !useFourth {
-            SharingManager.sharedInstance.catImageString = "poos-shades-chain"
+        else if pageIndex == 1 {
+            SharingManager.sharedInstance.catImageString = "trotterpoos"
         }
-        else if useFirst && useSecond && useFourth {
-            SharingManager.sharedInstance.catImageString = "poos-shades-chain-mustache"
+        else if pageIndex == 2 {
+            SharingManager.sharedInstance.catImageString = "properpoos"
         }
-        else if useFirst && !useSecond && useFourth {
-            SharingManager.sharedInstance.catImageString = "poos-shades-mustache"
+        else if pageIndex == 3 {
+            SharingManager.sharedInstance.catImageString = "poosrate"
         }
-        else if !useFirst && useSecond && !useThird && !useFourth {
-            SharingManager.sharedInstance.catImageString = "poos-chain"
+        else if pageIndex == 4 {
+            SharingManager.sharedInstance.catImageString = "quapoos"
         }
-        else if !useFirst && useSecond && !useThird && useFourth {
-            SharingManager.sharedInstance.catImageString = "poos-chain-mustache"
-        }
-        else if !useFirst && !useSecond && useThird && useFourth {
-            SharingManager.sharedInstance.catImageString = "poos-monocle-mustache"
-        }
-        else if !useFirst && !useSecond && useThird && !useFourth {
-            SharingManager.sharedInstance.catImageString = "poos-monocle"
-        }
-        else if !useFirst && !useSecond && !useThird && useFourth {
-            SharingManager.sharedInstance.catImageString = "poos-mustache"
-        }
-        else {
-            SharingManager.sharedInstance.catImageString = "kitty"
+        else if pageIndex == 5 {
+            SharingManager.sharedInstance.catImageString = "trumpoos"
         }
     }
     
     // Buy or use items
-    @IBOutlet weak var firstBuyButton: UIButton!
-    @IBOutlet weak var firstCoin: UIImageView!
-    @IBAction func firstBuy(_ sender: Any) {
-        if SharingManager.sharedInstance.itemStates[0] == "inStore" {
-            purchaseItem(price: 1000, num: 0, button: firstBuyButton, image: firstCoin, title: "shades", inUse: useFirst)
-        }
-        else {
-            if useFirst == false {
-            useFirst = true
-            SharingManager.sharedInstance.useFirst = true
-                print("using")
-                firstBuyButton.setTitle("remove", for: .normal)
-            }
-            else {
-                useFirst = false
-                SharingManager.sharedInstance.useFirst = false
-                firstBuyButton.setTitle("use", for: .normal)
-                print("removed")
-            }
-            updateUsing()
-        }
-    }
-    @IBOutlet weak var secondCoin: UIImageView!
-    @IBOutlet weak var secondBuyButton: UIButton!
-    @IBAction func secondBuy(_ sender: Any) {
-        if SharingManager.sharedInstance.itemStates[1] == "inStore" {
-            purchaseItem(price: 2000, num: 1, button: secondBuyButton, image: secondCoin, title: "chain", inUse: useSecond)
-        }
-        else {
-            if useSecond == false {
-                useSecond = true
-                SharingManager.sharedInstance.useSecond = true
-                secondBuyButton.setTitle("remove", for: .normal)
-            }
-            else {
-                useSecond = false
-                SharingManager.sharedInstance.useSecond = false
-                secondBuyButton.setTitle("use", for: .normal)
-            }
-          updateUsing()
-        }
-    }
-    @IBOutlet weak var thirdCoin: UIImageView!
-    @IBOutlet weak var thirdBuyButton: UIButton!
-    @IBAction func thirdBuy(_ sender: Any) {
-        if SharingManager.sharedInstance.itemStates[2] == "inStore" {
-            purchaseItem(price: 5000, num: 2, button: thirdBuyButton, image: thirdCoin, title: "monocle", inUse: useThird)
-        }
-        else {
-            if useThird == false {
-                useThird = true
-                SharingManager.sharedInstance.useThird = true
-                thirdBuyButton.setTitle("remove", for: .normal)
-            }
-            else {
-                useThird = false
-                SharingManager.sharedInstance.useThird = false
-                thirdBuyButton.setTitle("use", for: .normal)
-            }
-            updateUsing()
-        }
-    }
-    @IBOutlet weak var fourthCoin: UIImageView!
-    @IBOutlet weak var fourthBuyButton: UIButton!
-    @IBAction func fourthBuy(_ sender: Any) {
-        if SharingManager.sharedInstance.itemStates[3] == "inStore" {
-            purchaseItem(price: 10000, num: 3, button: fourthBuyButton, image: fourthCoin, title: "mustache", inUse: useFourth)
-        }
-        else {
-            if useFourth == false {
-                useFourth = true
-                SharingManager.sharedInstance.useFourth = true
-                fourthBuyButton.setTitle("remove", for: .normal)
-            }
-            else {
-                useFourth = false
-                SharingManager.sharedInstance.useFourth = false
-                fourthBuyButton.setTitle("use", for: .normal)
-            }
-            updateUsing()
-        }
-    }
-    @IBOutlet weak var fifthCoin: UIImageView!
-    @IBOutlet weak var fifthBuyButton: UIButton!
-    @IBAction func fifthBuy(_ sender: Any) {
-        if SharingManager.sharedInstance.itemStates[4] == "inStore" {
-            purchaseItem(price: 100000, num: 4, button: fifthBuyButton, image: fifthCoin, title: "poosrate", inUse: useFifth)
-            
-        }
-        else {
-            if useFifth == false {
-                useFifth = true
-                SharingManager.sharedInstance.useFifth = true
-                fifthBuyButton.setTitle("remove", for: .normal)
-                SharingManager.sharedInstance.catImageString = "poos-poosrate"
-            }
-            else {
-                useFifth = false
-                SharingManager.sharedInstance.useFifth = false
-                fifthBuyButton.setTitle("use", for: .normal)
-                SharingManager.sharedInstance.catImageString = "kitty"
-            }
-        }
-    }
-    
+//    @IBOutlet weak var firstBuyButton: UIButton!
+//    @IBOutlet weak var firstCoin: UIImageView!
+//    @IBAction func firstBuy(_ sender: Any) {
+//        if SharingManager.sharedInstance.itemStates[0] == "inStore" {
+//            purchaseItem(price: 1000, num: 0, button: firstBuyButton, image: firstCoin, title: "shades", inUse: useFirst)
+//        }
+//        else {
+//            if useFirst == false {
+//            useFirst = true
+//            SharingManager.sharedInstance.useFirst = true
+//                print("using")
+//                firstBuyButton.setTitle("remove", for: .normal)
+//            }
+//            else {
+//                useFirst = false
+//                SharingManager.sharedInstance.useFirst = false
+//                firstBuyButton.setTitle("use", for: .normal)
+//                print("removed")
+//            }
+//            updateUsing()
+//        }
+//    }
+
     // Try to buy something
-    func purchaseItem(price: Int, num: Int, button: UIButton, image: UIImageView, title: String, inUse: Bool) {
+    func purchaseItem() {
         let failureGenerator = UINotificationFeedbackGenerator()
         failureGenerator.prepare()
         
-        cost = price
-        place = num
-        buyButton = button
-        coin = image
-        itemTitle = title
-        use = inUse
+        if pageIndex == 0 {
+            cost = 0
+        }
+        else if pageIndex == 1 {
+            cost = 1000
+        }
+        else if pageIndex == 2 {
+            cost = 2000
+        }
+        else if pageIndex == 3 {
+            cost = 5000
+        }
+        else if pageIndex == 4 {
+            cost = 10000
+        }
+        else if pageIndex == 5 {
+            cost = 100000
+        }
         
         if cost <= coins {
             modalView.layer.cornerRadius = 20
@@ -405,6 +346,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
             if finished {
                 self.addCoinsView.isHidden = true
                 self.addModalTopConstraint.constant -= self.view.bounds.height
+                self.peek.isHidden = true
             }
         })
     }

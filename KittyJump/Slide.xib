@@ -16,35 +16,35 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poos" translatesAutoresizingMaskIntoConstraints="NO" id="vVl-DT-ci7">
-                    <rect key="frame" x="72" y="198" width="230" height="271"/>
+                    <rect key="frame" x="72" y="186" width="230" height="271"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1r-pY-zWV">
-                    <rect key="frame" x="159" y="489" width="57.5" height="41"/>
+                    <rect key="frame" x="159" y="477" width="57.5" height="41"/>
                     <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="30"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbA-pU-bLA">
-                    <rect key="frame" x="104" y="555" width="57" height="33"/>
+                    <rect key="frame" x="104" y="543" width="57" height="33"/>
                     <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="24"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="poos coin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P44-gr-4hj">
-                    <rect key="frame" x="104" y="578" width="53" height="17"/>
+                    <rect key="frame" x="104" y="566" width="53" height="17"/>
                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="nlP-8Y-08X">
-                    <rect key="frame" x="60" y="557" width="42" height="38"/>
+                    <rect key="frame" x="60" y="545" width="42" height="38"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="38" id="xAT-Bu-DuJ"/>
                         <constraint firstAttribute="width" constant="42" id="zm4-cx-PHL"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzz-Nx-tLw">
-                    <rect key="frame" x="231" y="556" width="84" height="40"/>
+                    <rect key="frame" x="231" y="544" width="84" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="84" id="BMC-PE-FX2"/>
                         <constraint firstAttribute="height" constant="40" id="vTy-Z1-ZcX"/>
@@ -65,13 +65,13 @@
                 <constraint firstItem="nlP-8Y-08X" firstAttribute="bottom" secondItem="P44-gr-4hj" secondAttribute="bottom" id="hUG-L2-Zle"/>
                 <constraint firstItem="J1r-pY-zWV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="opu-CF-V25"/>
                 <constraint firstItem="vVl-DT-ci7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pG3-Jn-dVx"/>
-                <constraint firstItem="vVl-DT-ci7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="qP4-HC-Nb5"/>
                 <constraint firstItem="FbA-pU-bLA" firstAttribute="top" secondItem="J1r-pY-zWV" secondAttribute="bottom" constant="25" id="qjE-nc-MTr"/>
+                <constraint firstAttribute="bottom" secondItem="vVl-DT-ci7" secondAttribute="bottom" constant="210" id="rvC-jh-AnR"/>
                 <constraint firstItem="J1r-pY-zWV" firstAttribute="top" secondItem="vVl-DT-ci7" secondAttribute="bottom" constant="20" id="tyG-Dg-J5h"/>
                 <constraint firstItem="P44-gr-4hj" firstAttribute="leading" secondItem="FbA-pU-bLA" secondAttribute="leading" id="uxe-ZW-Rov"/>
             </constraints>
             <connections>
-                <outlet property="buyButton" destination="Lzz-Nx-tLw" id="Whf-vw-Zcu"/>
+                <outlet property="buyButton" destination="Lzz-Nx-tLw" id="nk3-LT-8aB"/>
                 <outlet property="costLabel" destination="FbA-pU-bLA" id="KVS-L7-7Rg"/>
                 <outlet property="image" destination="vVl-DT-ci7" id="IHD-UF-abQ"/>
                 <outlet property="titleLabel" destination="J1r-pY-zWV" id="krD-xm-cHG"/>
