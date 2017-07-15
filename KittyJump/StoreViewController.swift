@@ -87,13 +87,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     
     func createSlides() -> [Slide] {
         
-        slide0.image.image = #imageLiteral(resourceName: "poos")
-        slide0.titleLabel.text = "og poos"
-        
-        slide1.image.image = #imageLiteral(resourceName: "trotterpoos")
-        slide1.titleLabel.text = "trotter poos"
-        slide1.costLabel.text = "1,000"
-        
         let slideArray = [slide0, slide1, slide2, slide3, slide4, slide5]
         
         var x = 0
@@ -106,6 +99,13 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
             }
             x += 1
         }
+        
+        slide0.image.image = #imageLiteral(resourceName: "poos")
+        slide0.titleLabel.text = "og poos"
+        
+        slide1.image.image = #imageLiteral(resourceName: "trotterpoos")
+        slide1.titleLabel.text = "trotter poos"
+        slide1.costLabel.text = "1,000"
         
         slide2.image.image = #imageLiteral(resourceName: "properpoos")
         slide2.titleLabel.text = "proper poos"
@@ -171,14 +171,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
             currentSlide = slide5
         }
         
-        currentSlide.costLabel.isHidden = true
-        currentSlide.buyButton.isHidden = true
-        currentSlide.coinImage.isHidden = true
-        currentSlide.coinLabel.isHidden = true
-        currentSlide.useButton.isHidden = false
-        currentSlide.useButton.layer.cornerRadius = 20
-        currentSlide.useButton.layer.borderWidth = 3
-        currentSlide.useButton.layer.borderColor = UIColor.white.cgColor
+        setupInCloset(slide: currentSlide)
     }
     
     func updateUsing() {

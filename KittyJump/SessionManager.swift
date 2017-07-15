@@ -34,7 +34,7 @@ class SharingManager {
             userDefaults.set(itemStates, forKey: "itemStates")
         }
     }
-    var catImageString: String = "kitty.png" {
+    var catImageString: String = "poos.png" {
         didSet {
             userDefaults.set(catImageString, forKey: "CatImageString")
         }
