@@ -14,4 +14,7 @@ class Slide: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var coinImage: UIImageView!
+    @IBOutlet weak var coinLabel: UILabel!
+    @IBOutlet weak var useButton: UIButton!
 }

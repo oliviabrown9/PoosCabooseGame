@@ -8,11 +8,7 @@
 
 import UIKit
 
-var useFirst: Bool = SharingManager.sharedInstance.useFirst
-var useSecond: Bool = false
-var useThird: Bool = false
-var useFourth: Bool = false
-var useFifth: Bool = false
+var using: Int = 0
 
 class StoreViewController: UIViewController, UIScrollViewDelegate {
     
@@ -24,11 +20,19 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var darkenedView: UIView!
     @IBOutlet weak var modalHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var peek: UIImageView!
+    
+    // Slides
+    let slide1 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+    let slide2 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+    let slide3 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+    let slide4 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+    let slide5 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+    let slide6 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
 
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
-    var coins = SharingManager.sharedInstance.lifetimeScore
-//    var coins = 1000000
+//    var coins = SharingManager.sharedInstance.lifetimeScore
+    var coins = 1000000
     var cost: Int = 0
     var place: Int = 0
     var buyButton: UIButton? = nil
@@ -49,7 +53,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var pageControl: UIPageControl!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,32 +65,24 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         view.bringSubview(toFront: pageControl)
         
         currentCoins.text = "\(coins)"
-        
-//        // Change display if item previously purchased
-//        for i in 0...4 {
-//            if SharingManager.sharedInstance.itemStates[i] == "inCloset" {
-//                if i == 0 {
-//                    itemAlreadyPurchased(buyButton: firstBuyButton, coin: firstCoin, use: useFirst)
-//                }
-//            }
-//        }
 //        if coins >= 100000 {
 //            // mysteries aren't mysteries?
-//        }
-    }
+//      }
+        }
     
     func createSlides() -> [Slide] {
         
-        let slide1 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide1.image.image = #imageLiteral(resourceName: "poos")
         slide1.titleLabel.text = "og poos"
-        slide1.costLabel.text = "0"
-        slide1.buyButton.layer.cornerRadius = 20
-        slide1.buyButton.layer.borderWidth = 3
-        slide1.buyButton.layer.borderColor = UIColor.white.cgColor
-        slide1.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
+        slide1.buyButton.isHidden = true
+        slide1.coinImage.isHidden = true
+        slide1.costLabel.isHidden = true
+        slide1.coinLabel.isHidden = true
+        slide1.useButton.isHidden = false
+        slide1.useButton.layer.cornerRadius = 20
+        slide1.useButton.layer.borderWidth = 3
+        slide1.useButton.layer.borderColor = UIColor.white.cgColor
         
-        let slide2 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide2.image.image = #imageLiteral(resourceName: "trotterpoos")
         slide2.titleLabel.text = "trotter poos"
         slide2.costLabel.text = "1,000"
@@ -96,7 +91,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         slide2.buyButton.layer.borderColor = UIColor.white.cgColor
         slide2.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
         
-        let slide3 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide3.image.image = #imageLiteral(resourceName: "properpoos")
         slide3.titleLabel.text = "proper poos"
         slide3.costLabel.text = "2,000"
@@ -105,7 +99,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         slide3.buyButton.layer.borderColor = UIColor.white.cgColor
         slide3.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
         
-        let slide4 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide4.image.image = #imageLiteral(resourceName: "poosrate")
         slide4.titleLabel.text = "poosrate"
         slide4.costLabel.text = "5,000"
@@ -114,7 +107,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         slide4.buyButton.layer.borderColor = UIColor.white.cgColor
         slide4.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
         
-        let slide5 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide5.image.image = #imageLiteral(resourceName: "quapoos")
         slide5.titleLabel.text = "quapoos"
         slide5.costLabel.text = "10,000"
@@ -123,7 +115,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         slide5.buyButton.layer.borderColor = UIColor.white.cgColor
         slide5.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
         
-        let slide6 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide6.image.image = #imageLiteral(resourceName: "trumpoos")
         slide6.titleLabel.text = "trumpoos"
         slide6.costLabel.text = "100,000"
@@ -160,13 +151,33 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     }
     
     // Change display to use button
-    func itemAlreadyPurchased(buyButton: UIButton, coin: UIImageView, use: Bool) {
-        buyButton.setTitle("use", for: .normal)
-        coin.isHidden = true
+    func itemAlreadyPurchased() {
         
-        if use == true {
-            buyButton.setTitle("remove", for: .normal)
+        var currentSlide: Slide = slide2
+        
+        if pageIndex == 1 {
+            currentSlide = slide2
         }
+        else if pageIndex == 2 {
+            currentSlide = slide3
+        }
+        else if pageIndex == 3 {
+            currentSlide = slide4
+        }
+        else if pageIndex == 4 {
+            currentSlide = slide5
+        }
+        else if pageIndex == 5 {
+            currentSlide = slide6
+        }
+        currentSlide.costLabel.isHidden = true
+        currentSlide.buyButton.isHidden = true
+        currentSlide.coinImage.isHidden = true
+        currentSlide.coinLabel.isHidden = true
+        currentSlide.useButton.isHidden = false
+        currentSlide.useButton.layer.cornerRadius = 20
+        currentSlide.useButton.layer.borderWidth = 3
+        currentSlide.useButton.layer.borderColor = UIColor.white.cgColor
     }
     
     func updateUsing() {
@@ -310,7 +321,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
             currentCoins.text = "\(coins)"
             SharingManager.sharedInstance.lifetimeScore = coins
             SharingManager.sharedInstance.itemStates[place] = "inCloset"
-            itemAlreadyPurchased(buyButton: buyButton!, coin: coin!, use: use)
+            itemAlreadyPurchased()
         }
         else if confirm == true && cost >= coins {
             modalView.isHidden = true
