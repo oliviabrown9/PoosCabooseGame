@@ -34,7 +34,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
 //    var coins = SharingManager.sharedInstance.lifetimeScore
     var coins = 1000000
     var cost: Int = 0
-    var place: Int = 0
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
     var itemTitle: String = ""
@@ -65,69 +64,64 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         view.bringSubview(toFront: pageControl)
         
         currentCoins.text = "\(coins)"
-//        if coins >= 100000 {
-//            // mysteries aren't mysteries?
-//      }
         }
+    
+    func setupInCloset(slide: Slide) {
+        slide.buyButton.isHidden = true
+        slide.coinImage.isHidden = true
+        slide.costLabel.isHidden = true
+        slide.coinLabel.isHidden = true
+        slide.useButton.isHidden = false
+        slide.useButton.layer.cornerRadius = 20
+        slide.useButton.layer.borderWidth = 3
+        slide.useButton.layer.borderColor = UIColor.white.cgColor
+        slide.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
+    }
+    
+    func setupInStore(slide: Slide) {
+        slide.buyButton.layer.cornerRadius = 20
+        slide.buyButton.layer.borderWidth = 3
+        slide.buyButton.layer.borderColor = UIColor.white.cgColor
+        slide.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
+    }
     
     func createSlides() -> [Slide] {
         
         slide0.image.image = #imageLiteral(resourceName: "poos")
         slide0.titleLabel.text = "og poos"
-        slide0.buyButton.isHidden = true
-        slide0.coinImage.isHidden = true
-        slide0.costLabel.isHidden = true
-        slide0.coinLabel.isHidden = true
-        slide0.useButton.isHidden = false
-        slide0.useButton.layer.cornerRadius = 20
-        slide0.useButton.layer.borderWidth = 3
-        slide0.useButton.layer.borderColor = UIColor.white.cgColor
-        slide0.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
         
         slide1.image.image = #imageLiteral(resourceName: "trotterpoos")
         slide1.titleLabel.text = "trotter poos"
         slide1.costLabel.text = "1,000"
-        slide1.buyButton.layer.cornerRadius = 20
-        slide1.buyButton.layer.borderWidth = 3
-        slide1.buyButton.layer.borderColor = UIColor.white.cgColor
-        slide1.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
-        slide1.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
+        
+        let slideArray = [slide0, slide1, slide2, slide3, slide4, slide5]
+        
+        var x = 0
+        for i in slideArray {
+            if SharingManager.sharedInstance.itemStates[x] == "inCloset" {
+                setupInCloset(slide: i)
+            }
+            else {
+                setupInStore(slide: i)
+            }
+            x += 1
+        }
         
         slide2.image.image = #imageLiteral(resourceName: "properpoos")
         slide2.titleLabel.text = "proper poos"
         slide2.costLabel.text = "2,000"
-        slide2.buyButton.layer.cornerRadius = 20
-        slide2.buyButton.layer.borderWidth = 3
-        slide2.buyButton.layer.borderColor = UIColor.white.cgColor
-        slide2.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
-        slide2.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
         
         slide3.image.image = #imageLiteral(resourceName: "poosrate")
         slide3.titleLabel.text = "poosrate"
         slide3.costLabel.text = "5,000"
-        slide3.buyButton.layer.cornerRadius = 20
-        slide3.buyButton.layer.borderWidth = 3
-        slide3.buyButton.layer.borderColor = UIColor.white.cgColor
-        slide3.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
-        slide3.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
         
         slide4.image.image = #imageLiteral(resourceName: "quapoos")
         slide4.titleLabel.text = "quapoos"
         slide4.costLabel.text = "10,000"
-        slide4.buyButton.layer.cornerRadius = 20
-        slide4.buyButton.layer.borderWidth = 3
-        slide4.buyButton.layer.borderColor = UIColor.white.cgColor
-        slide4.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
-        slide4.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
         
         slide5.image.image = #imageLiteral(resourceName: "trumpoos")
         slide5.titleLabel.text = "trumpoos"
         slide5.costLabel.text = "100,000"
-        slide5.buyButton.layer.cornerRadius = 20
-        slide5.buyButton.layer.borderWidth = 3
-        slide5.buyButton.layer.borderColor = UIColor.white.cgColor
-        slide5.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
-        slide5.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
         
         return [slide0, slide1, slide2, slide3, slide4, slide5]
     }
@@ -176,6 +170,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         else if pageIndex == 5 {
             currentSlide = slide5
         }
+        
         currentSlide.costLabel.isHidden = true
         currentSlide.buyButton.isHidden = true
         currentSlide.coinImage.isHidden = true
@@ -213,30 +208,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
             SharingManager.sharedInstance.catImageString = "trumpoos"
         }
     }
-    
-    // Buy or use items
-//    @IBOutlet weak var firstBuyButton: UIButton!
-//    @IBOutlet weak var firstCoin: UIImageView!
-//    @IBAction func firstBuy(_ sender: Any) {
-//        if SharingManager.sharedInstance.itemStates[0] == "inStore" {
-//            purchaseItem(price: 1000, num: 0, button: firstBuyButton, image: firstCoin, title: "shades", inUse: useFirst)
-//        }
-//        else {
-//            if useFirst == false {
-//            useFirst = true
-//            SharingManager.sharedInstance.useFirst = true
-//                print("using")
-//                firstBuyButton.setTitle("remove", for: .normal)
-//            }
-//            else {
-//                useFirst = false
-//                SharingManager.sharedInstance.useFirst = false
-//                firstBuyButton.setTitle("use", for: .normal)
-//                print("removed")
-//            }
-//            updateUsing()
-//        }
-//    }
 
     // Try to buy something
     func purchaseItem() {
@@ -332,7 +303,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
             coins -= cost
             currentCoins.text = "\(coins)"
             SharingManager.sharedInstance.lifetimeScore = coins
-            SharingManager.sharedInstance.itemStates[place] = "inCloset"
+            SharingManager.sharedInstance.itemStates[pageIndex] = "inCloset"
             itemAlreadyPurchased()
         }
         else if confirm == true && cost >= coins {

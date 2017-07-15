@@ -29,7 +29,7 @@ class SharingManager {
             userDefaults.set((lifetimeScore), forKey: "LifetimeScore")
         }
     }
-    var itemStates: [String] = ["inStore", "inStore", "inStore", "inStore", "inStore"] {
+    var itemStates: [String] = ["inStore", "inStore", "inStore", "inStore", "inStore", "inStore"] {
         didSet {
             userDefaults.set(itemStates, forKey: "itemStates")
         }
