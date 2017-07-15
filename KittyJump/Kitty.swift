@@ -13,9 +13,7 @@ class Kitty: SKSpriteNode {
 
     // Init
     init() {
-//        SharingManager.sharedInstance.catImageString = "testCat"
-//        let texture = SKTexture(imageNamed: SharingManager.sharedInstance.catImageString)
-        let texture = SKTexture(imageNamed: "poos")
+        let texture = SKTexture(imageNamed: SharingManager.sharedInstance.catImageString)
         super.init(texture: texture, color: UIColor.clear, size: CGSize(width: texture.size().width/2, height: texture.size().height/2))
         setup()
     }

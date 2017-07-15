@@ -22,12 +22,12 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var peek: UIImageView!
     
     // Slides
+    let slide0 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     let slide1 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     let slide2 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     let slide3 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     let slide4 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     let slide5 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-    let slide6 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
 
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
@@ -72,58 +72,64 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     
     func createSlides() -> [Slide] {
         
-        slide1.image.image = #imageLiteral(resourceName: "poos")
-        slide1.titleLabel.text = "og poos"
-        slide1.buyButton.isHidden = true
-        slide1.coinImage.isHidden = true
-        slide1.costLabel.isHidden = true
-        slide1.coinLabel.isHidden = true
-        slide1.useButton.isHidden = false
-        slide1.useButton.layer.cornerRadius = 20
-        slide1.useButton.layer.borderWidth = 3
-        slide1.useButton.layer.borderColor = UIColor.white.cgColor
+        slide0.image.image = #imageLiteral(resourceName: "poos")
+        slide0.titleLabel.text = "og poos"
+        slide0.buyButton.isHidden = true
+        slide0.coinImage.isHidden = true
+        slide0.costLabel.isHidden = true
+        slide0.coinLabel.isHidden = true
+        slide0.useButton.isHidden = false
+        slide0.useButton.layer.cornerRadius = 20
+        slide0.useButton.layer.borderWidth = 3
+        slide0.useButton.layer.borderColor = UIColor.white.cgColor
+        slide0.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
         
-        slide2.image.image = #imageLiteral(resourceName: "trotterpoos")
-        slide2.titleLabel.text = "trotter poos"
-        slide2.costLabel.text = "1,000"
+        slide1.image.image = #imageLiteral(resourceName: "trotterpoos")
+        slide1.titleLabel.text = "trotter poos"
+        slide1.costLabel.text = "1,000"
+        slide1.buyButton.layer.cornerRadius = 20
+        slide1.buyButton.layer.borderWidth = 3
+        slide1.buyButton.layer.borderColor = UIColor.white.cgColor
+        slide1.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
+        slide1.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
+        
+        slide2.image.image = #imageLiteral(resourceName: "properpoos")
+        slide2.titleLabel.text = "proper poos"
+        slide2.costLabel.text = "2,000"
         slide2.buyButton.layer.cornerRadius = 20
         slide2.buyButton.layer.borderWidth = 3
         slide2.buyButton.layer.borderColor = UIColor.white.cgColor
         slide2.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
+        slide2.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
         
-        slide3.image.image = #imageLiteral(resourceName: "properpoos")
-        slide3.titleLabel.text = "proper poos"
-        slide3.costLabel.text = "2,000"
+        slide3.image.image = #imageLiteral(resourceName: "poosrate")
+        slide3.titleLabel.text = "poosrate"
+        slide3.costLabel.text = "5,000"
         slide3.buyButton.layer.cornerRadius = 20
         slide3.buyButton.layer.borderWidth = 3
         slide3.buyButton.layer.borderColor = UIColor.white.cgColor
         slide3.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
+        slide3.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
         
-        slide4.image.image = #imageLiteral(resourceName: "poosrate")
-        slide4.titleLabel.text = "poosrate"
-        slide4.costLabel.text = "5,000"
+        slide4.image.image = #imageLiteral(resourceName: "quapoos")
+        slide4.titleLabel.text = "quapoos"
+        slide4.costLabel.text = "10,000"
         slide4.buyButton.layer.cornerRadius = 20
         slide4.buyButton.layer.borderWidth = 3
         slide4.buyButton.layer.borderColor = UIColor.white.cgColor
         slide4.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
+        slide4.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
         
-        slide5.image.image = #imageLiteral(resourceName: "quapoos")
-        slide5.titleLabel.text = "quapoos"
-        slide5.costLabel.text = "10,000"
+        slide5.image.image = #imageLiteral(resourceName: "trumpoos")
+        slide5.titleLabel.text = "trumpoos"
+        slide5.costLabel.text = "100,000"
         slide5.buyButton.layer.cornerRadius = 20
         slide5.buyButton.layer.borderWidth = 3
         slide5.buyButton.layer.borderColor = UIColor.white.cgColor
         slide5.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
+        slide5.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
         
-        slide6.image.image = #imageLiteral(resourceName: "trumpoos")
-        slide6.titleLabel.text = "trumpoos"
-        slide6.costLabel.text = "100,000"
-        slide6.buyButton.layer.cornerRadius = 20
-        slide6.buyButton.layer.borderWidth = 3
-        slide6.buyButton.layer.borderColor = UIColor.white.cgColor
-        slide6.buyButton.addTarget(self, action: #selector(purchaseItem), for: .touchUpInside)
-        
-        return [slide1, slide2, slide3, slide4, slide5, slide6]
+        return [slide0, slide1, slide2, slide3, slide4, slide5]
     }
     
     func setupScrollView(slides: [Slide]) {
@@ -153,22 +159,22 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     // Change display to use button
     func itemAlreadyPurchased() {
         
-        var currentSlide: Slide = slide2
+        var currentSlide: Slide = slide1
         
         if pageIndex == 1 {
-            currentSlide = slide2
+            currentSlide = slide1
         }
         else if pageIndex == 2 {
-            currentSlide = slide3
+            currentSlide = slide2
         }
         else if pageIndex == 3 {
-            currentSlide = slide4
+            currentSlide = slide3
         }
         else if pageIndex == 4 {
-            currentSlide = slide5
+            currentSlide = slide4
         }
         else if pageIndex == 5 {
-            currentSlide = slide6
+            currentSlide = slide5
         }
         currentSlide.costLabel.isHidden = true
         currentSlide.buyButton.isHidden = true
@@ -183,21 +189,27 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     func updateUsing() {
         
         if pageIndex == 0 {
+            SharingManager.sharedInstance.using = 0
             SharingManager.sharedInstance.catImageString = "poos"
         }
         else if pageIndex == 1 {
+            SharingManager.sharedInstance.using = 1
             SharingManager.sharedInstance.catImageString = "trotterpoos"
         }
         else if pageIndex == 2 {
+            SharingManager.sharedInstance.using = 2
             SharingManager.sharedInstance.catImageString = "properpoos"
         }
         else if pageIndex == 3 {
+            SharingManager.sharedInstance.using = 3
             SharingManager.sharedInstance.catImageString = "poosrate"
         }
         else if pageIndex == 4 {
+            SharingManager.sharedInstance.using = 4
             SharingManager.sharedInstance.catImageString = "quapoos"
         }
         else if pageIndex == 5 {
+            SharingManager.sharedInstance.using = 5
             SharingManager.sharedInstance.catImageString = "trumpoos"
         }
     }
