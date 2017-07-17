@@ -69,20 +69,21 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         currentCoins.text = "\(coins)"
         }
     
-    func setupInCloset(slide: Slide) {
+    func setupInCloset(slide: Slide, x: Int) {
         slide.buyButton.isHidden = true
         slide.coinImage.isHidden = true
         slide.costLabel.isHidden = true
         slide.coinLabel.isHidden = true
+        if SharingManager.sharedInstance.using == x {
+            slide.useButton.isHidden = true
+        }
+        else {
         slide.useButton.isHidden = false
+        }
         slide.useButton.layer.cornerRadius = 20
         slide.useButton.layer.borderWidth = 3
         slide.useButton.layer.borderColor = UIColor.white.cgColor
         slide.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
-        
-        if using == pageIndex {
-            slide.useButton.isHidden = true
-        }
     }
     
     func setupInStore(slide: Slide) {
@@ -99,7 +100,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         var x = 0
         for i in slideArray {
             if SharingManager.sharedInstance.itemStates[x] == "inCloset" {
-                setupInCloset(slide: i)
+                setupInCloset(slide: i, x: x)
             }
             else {
                 setupInStore(slide: i)
@@ -177,7 +178,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         else if pageIndex == 5 {
             currentSlide = slide5
         }
-        setupInCloset(slide: currentSlide)
+        setupInCloset(slide: currentSlide, x: pageIndex)
     }
     
     func updateUseButton() {
