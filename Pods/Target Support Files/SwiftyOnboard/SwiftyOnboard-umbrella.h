@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "SwiftyOnboard.h"
 
-FOUNDATION_EXPORT double SpriteKitEasingSwiftVersionNumber;
-FOUNDATION_EXPORT const unsigned char SpriteKitEasingSwiftVersionString[];
+FOUNDATION_EXPORT double SwiftyOnboardVersionNumber;
+FOUNDATION_EXPORT const unsigned char SwiftyOnboardVersionString[];
 
