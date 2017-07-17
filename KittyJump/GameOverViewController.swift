@@ -57,6 +57,10 @@ class GameOverViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func unwindToGameOver(sender: UIStoryboardSegue) {
+    }
+    
     // Hide status bar
     override var prefersStatusBarHidden: Bool {
         return true

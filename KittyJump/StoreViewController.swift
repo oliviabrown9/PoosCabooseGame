@@ -20,6 +20,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var darkenedView: UIView!
     @IBOutlet weak var modalHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var peek: UIImageView!
+    @IBAction func backButtonPressed(_ sender: Any) {
+        print("pressed")
+        performSegue(withIdentifier: "unwindToGameOver", sender: self)
+    }
     
     // Slides
     let slide0 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
@@ -170,7 +174,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         else if pageIndex == 5 {
             currentSlide = slide5
         }
-        
         setupInCloset(slide: currentSlide)
     }
     
@@ -359,21 +362,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         self.present(alertController, animated: true) {
         }
         
-    }
-    
-    // Unwind segue back to gameView
-    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        performSegue(withIdentifier: "unwindToHomeView", sender: self)
-    }
-    
-    // Replay game with unwind segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "unwindToHomeView" {
-            if let gameViewController = segue.destination as? GameViewController {
-                gameViewController.isReplayGame = true
-            }
-        }
     }
     
     // Hide status bar
