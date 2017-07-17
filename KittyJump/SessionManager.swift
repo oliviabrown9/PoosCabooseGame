@@ -45,6 +45,12 @@ class SharingManager {
         }
     }
     
+    var onboardingFinished: Bool = false {
+        didSet {
+            userDefaults.set(onboardingFinished, forKey: "OnboardingFinished")
+        }
+    }
+    
     static let sharedInstance = SharingManager()
     
     private init() {
@@ -85,6 +91,10 @@ class SharingManager {
         }
         let storedUsing = userDefaults.integer(forKey: "Using")
         using = storedUsing
+        
+        let storedOnboardingFinished = userDefaults.bool(forKey: "OnboardingFinished")
+        onboardingFinished = storedOnboardingFinished
+
     }
     
     func changeLastScores(score: Int) {

@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Storyboard Example View Controller-->
+        <!--Onboarding View Controller-->
         <scene sceneID="6jw-5b-dPn">
             <objects>
-                <viewController id="kec-dj-4aX" customClass="StoryboardExampleViewController" customModule="KittyJump" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingViewController" id="kec-dj-4aX" customClass="OnboardingViewController" customModule="KittyJump" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RnZ-6P-MXS"/>
                         <viewControllerLayoutGuide type="bottom" id="ojs-kU-9O2"/>

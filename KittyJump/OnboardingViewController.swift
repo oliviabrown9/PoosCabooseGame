@@ -2,14 +2,15 @@
 //  StoryboardExampleViewController.swift
 //  SwiftyOnboardExample
 //
-//  Created by Jay on 3/27/17.
-//  Copyright © 2017 Juan Pablo Fernandez. All rights reserved.
-//
+//  Created by Olivia Brown on 7/17/17.
+//  
+//  SwiftyOnboarding Copyright © 2017 Juan Pablo Fernandez. All rights reserved.
+//  All other code Copyright © 2017 Olivia Brown. All rights reserved.
 
 import UIKit
 import SwiftyOnboard
 
-class StoryboardExampleViewController: UIViewController {
+class OnboardingViewController: UIViewController {
 
     @IBOutlet weak var swiftyOnboard: SwiftyOnboard!
     
@@ -30,7 +31,7 @@ class StoryboardExampleViewController: UIViewController {
     }
 }
 
-extension StoryboardExampleViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
+extension OnboardingViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
     
     func swiftyOnboardNumberOfPages(_ swiftyOnboard: SwiftyOnboard) -> Int {
         return 4
@@ -61,6 +62,7 @@ extension StoryboardExampleViewController: SwiftyOnboardDelegate, SwiftyOnboardD
     }
     
     func moveOn() {
+        SharingManager.sharedInstance.onboardingFinished = true
         performSegue(withIdentifier: "toGame", sender: self)
     }
     
