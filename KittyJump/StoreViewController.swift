@@ -35,8 +35,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
-        var coins = SharingManager.sharedInstance.lifetimeScore
-//    var coins = 1000000
+    var coins = SharingManager.sharedInstance.lifetimeScore
+//    var coins = 99999
     var cost: Int = 0
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
@@ -127,16 +127,22 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         slide4.image.image = #imageLiteral(resourceName: "quapoos")
         slide4.titleLabel.text = "quapoos"
         slide4.costLabel.text = "10,000"
-        
+    
         slide5.image.image = #imageLiteral(resourceName: "pous")
         slide5.titleLabel.text = "pous"
         slide5.costLabel.text = "25,000"
         
+        if coins >= 100000 {
         slide6.image.image = #imageLiteral(resourceName: "trumpoos")
         slide6.titleLabel.text = "trumpoos"
-        slide5.costLabel.text = "100,000"
+        }
+        else {
+            slide6.image.image = #imageLiteral(resourceName: "mysterypoos")
+            slide6.titleLabel.text = "?????"
+        }
+        slide6.costLabel.text = "100,000"
         
-        return [slide0, slide1, slide2, slide3, slide4, slide5]
+        return [slide0, slide1, slide2, slide3, slide4, slide5, slide6]
     }
     
     func setupScrollView(slides: [Slide]) {
@@ -183,11 +189,14 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         else if pageIndex == 5 {
             currentSlide = slide5
         }
+        else if pageIndex == 6 {
+            currentSlide = slide6
+        }
         setupInCloset(slide: currentSlide, x: pageIndex)
     }
     
     func updateUseButton() {
-        let allSlides = [slide0, slide1, slide2, slide3, slide4, slide5]
+        let allSlides = [slide0, slide1, slide2, slide3, slide4, slide5, slide6]
         
         var x = 0
         for i in allSlides {
@@ -235,6 +244,11 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         }
         else if pageIndex == 5 {
             SharingManager.sharedInstance.using = 5
+            SharingManager.sharedInstance.catImageString = "pous"
+            updateUseButton()
+        }
+        else if pageIndex == 5 {
+            SharingManager.sharedInstance.using = 6
             SharingManager.sharedInstance.catImageString = "trumpoos"
             updateUseButton()
         }
@@ -259,6 +273,9 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         }
         else if pageIndex == 4 {
             cost = 10000
+        }
+        else if pageIndex == 5 {
+            cost = 25000
         }
         else if pageIndex == 5 {
             cost = 100000

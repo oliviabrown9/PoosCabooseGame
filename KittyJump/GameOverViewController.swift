@@ -21,7 +21,7 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var pastScores: UILabel!
     
     // Start over image
-    @IBOutlet weak var startOver: UIImageView
+    @IBOutlet weak var startOver: UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +39,8 @@ class GameOverViewController: UIViewController {
     // Recognize if startOver image is tapped
     override func viewDidAppear(_ animated: Bool) {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        startOver.isUserInteractionEnabled = true
-        startOver.addGestureRecognizer(tapGestureRecognizer)
+        startOver?.isUserInteractionEnabled = true
+        startOver?.addGestureRecognizer(tapGestureRecognizer)
     }
     
     // Unwind segue back to gameView
