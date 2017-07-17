@@ -21,7 +21,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var modalHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var peek: UIImageView!
     @IBAction func backButtonPressed(_ sender: Any) {
-        print("pressed")
         performSegue(withIdentifier: "unwindToGameOver", sender: self)
     }
     
@@ -80,6 +79,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         slide.useButton.layer.borderWidth = 3
         slide.useButton.layer.borderColor = UIColor.white.cgColor
         slide.useButton.addTarget(self, action: #selector(updateUsing), for: .touchUpInside)
+        
+        if using == pageIndex {
+            slide.useButton.isHidden = true
+        }
     }
     
     func setupInStore(slide: Slide) {
@@ -177,31 +180,57 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         setupInCloset(slide: currentSlide)
     }
     
+    func updateUseButton() {
+        let allSlides = [slide0, slide1, slide2, slide3, slide4, slide5]
+        
+        var x = 0
+        for i in allSlides {
+            if SharingManager.sharedInstance.using == x {
+                i.useButton.isHidden = true
+            }
+            else {
+                if SharingManager.sharedInstance.itemStates[x] == "inCloset" {
+                    i.useButton.isHidden = false
+                }
+                else {
+                    i.useButton.isHidden = true
+                }
+            }
+            x += 1
+        }
+    }
+    
     func updateUsing() {
         
         if pageIndex == 0 {
             SharingManager.sharedInstance.using = 0
             SharingManager.sharedInstance.catImageString = "poos"
+            updateUseButton()
         }
         else if pageIndex == 1 {
             SharingManager.sharedInstance.using = 1
             SharingManager.sharedInstance.catImageString = "trotterpoos"
+            updateUseButton()
         }
         else if pageIndex == 2 {
             SharingManager.sharedInstance.using = 2
             SharingManager.sharedInstance.catImageString = "properpoos"
+            updateUseButton()
         }
         else if pageIndex == 3 {
             SharingManager.sharedInstance.using = 3
             SharingManager.sharedInstance.catImageString = "poosrate"
+            updateUseButton()
         }
         else if pageIndex == 4 {
             SharingManager.sharedInstance.using = 4
             SharingManager.sharedInstance.catImageString = "quapoos"
+            updateUseButton()
         }
         else if pageIndex == 5 {
             SharingManager.sharedInstance.using = 5
             SharingManager.sharedInstance.catImageString = "trumpoos"
+            updateUseButton()
         }
     }
 

@@ -294,10 +294,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frr-ag-Thf">
-                                <rect key="frame" x="16" y="623" width="12" height="24"/>
+                                <rect key="frame" x="16" y="612.5" width="16" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="12" id="kyx-ey-itY"/>
-                                    <constraint firstAttribute="height" constant="24" id="yvc-tO-zTO"/>
+                                    <constraint firstAttribute="width" constant="16" id="kyx-ey-itY"/>
+                                    <constraint firstAttribute="height" constant="32" id="yvc-tO-zTO"/>
                                 </constraints>
                                 <state key="normal" image="backArrow"/>
                                 <connections>
@@ -650,6 +650,7 @@
                             <constraint firstItem="frr-ag-Thf" firstAttribute="leading" secondItem="hD9-Wa-hV6" secondAttribute="leadingMargin" id="SQi-v8-9wj"/>
                             <constraint firstItem="kvS-AW-G8Y" firstAttribute="bottom" secondItem="tiY-Z9-ZzS" secondAttribute="bottom" id="Tdu-R4-TCi"/>
                             <constraint firstItem="nWy-aB-ild" firstAttribute="top" secondItem="hD9-Wa-hV6" secondAttribute="top" id="VGa-7h-zIp"/>
+                            <constraint firstItem="frr-ag-Thf" firstAttribute="centerY" secondItem="Ac6-36-gLV" secondAttribute="centerY" id="Vto-j0-o7v"/>
                             <constraint firstItem="Ac6-36-gLV" firstAttribute="leading" secondItem="hD9-Wa-hV6" secondAttribute="leading" constant="80" id="YxP-yr-19f"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tiY-Z9-ZzS" secondAttribute="trailing" constant="5" id="aoe-57-m7e"/>
                             <constraint firstItem="Mgl-uL-ipJ" firstAttribute="top" secondItem="nWy-aB-ild" secondAttribute="bottom" id="b4y-ry-BPb"/>
@@ -663,7 +664,6 @@
                             <constraint firstItem="Zen-qP-XiF" firstAttribute="top" secondItem="tiY-Z9-ZzS" secondAttribute="top" id="l7C-DT-j5b"/>
                             <constraint firstAttribute="trailing" secondItem="8rs-gI-rOO" secondAttribute="trailing" id="lJg-an-EXF"/>
                             <constraint firstItem="9WO-lb-QKa" firstAttribute="centerX" secondItem="hD9-Wa-hV6" secondAttribute="centerX" id="lk0-4H-hzm"/>
-                            <constraint firstItem="Mgl-uL-ipJ" firstAttribute="top" secondItem="frr-ag-Thf" secondAttribute="bottom" constant="20" id="mvy-Gx-4Cd"/>
                             <constraint firstItem="Mgl-uL-ipJ" firstAttribute="top" secondItem="CkV-Lz-Jbm" secondAttribute="bottom" id="oM4-aE-RtU"/>
                             <constraint firstItem="CkV-Lz-Jbm" firstAttribute="leading" secondItem="hD9-Wa-hV6" secondAttribute="leading" id="ouF-FF-DzJ"/>
                             <constraint firstItem="8rs-gI-rOO" firstAttribute="top" secondItem="hD9-Wa-hV6" secondAttribute="top" id="rHk-m2-fJf"/>
