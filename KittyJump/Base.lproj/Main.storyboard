@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kec-dj-4aX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,6 +11,51 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Storyboard Example View Controller-->
+        <scene sceneID="6jw-5b-dPn">
+            <objects>
+                <viewController id="kec-dj-4aX" customClass="StoryboardExampleViewController" customModule="KittyJump" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RnZ-6P-MXS"/>
+                        <viewControllerLayoutGuide type="bottom" id="ojs-kU-9O2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ucj-3m-Zxu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w9K-nZ-PXz" customClass="SwiftyOnboard" customModule="SwiftyOnboard">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundGradient" translatesAutoresizingMaskIntoConstraints="NO" id="lcC-Eo-eeh">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="lcC-Eo-eeh" secondAttribute="trailing" id="I4T-wA-TZj"/>
+                                    <constraint firstItem="lcC-Eo-eeh" firstAttribute="top" secondItem="w9K-nZ-PXz" secondAttribute="top" id="RrD-6R-F2D"/>
+                                    <constraint firstItem="lcC-Eo-eeh" firstAttribute="leading" secondItem="w9K-nZ-PXz" secondAttribute="leading" id="Slo-nd-fi3"/>
+                                    <constraint firstAttribute="bottom" secondItem="lcC-Eo-eeh" secondAttribute="bottom" id="qVR-Wc-PR1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="w9K-nZ-PXz" firstAttribute="leading" secondItem="Ucj-3m-Zxu" secondAttribute="leading" id="9aN-Im-PVL"/>
+                            <constraint firstItem="ojs-kU-9O2" firstAttribute="top" secondItem="w9K-nZ-PXz" secondAttribute="bottom" id="GlW-rL-uSp"/>
+                            <constraint firstAttribute="trailing" secondItem="w9K-nZ-PXz" secondAttribute="trailing" id="LXg-WK-7CD"/>
+                            <constraint firstItem="w9K-nZ-PXz" firstAttribute="top" secondItem="Ucj-3m-Zxu" secondAttribute="top" id="ZlG-Ug-CWa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="swiftyOnboard" destination="w9K-nZ-PXz" id="ss7-v0-fNl"/>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="toGame" id="H8b-tx-f9J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e78-0A-g3D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1794.4000000000001" y="138.98050974512745"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
@@ -104,7 +149,6 @@
         <!--Navigation Controller-->
         <scene sceneID="DI7-Dd-mjA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="78r-Os-kUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController navigationBarHidden="YES" id="If7-Og-xTS" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="d5k-mf-gep">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -114,6 +158,7 @@
                         <segue destination="doZ-1J-RsL" kind="relationship" relationship="rootViewController" id="zei-wL-bIv"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="78r-Os-kUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-287" y="139"/>
         </scene>
@@ -133,25 +178,25 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Poos Caboose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="wPL-dS-eOZ">
-                                <rect key="frame" x="21" y="145" width="118" height="25"/>
+                                <rect key="frame" x="21" y="101" width="118" height="25"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="aPX-hV-qxj">
-                                <rect key="frame" x="21" y="99" width="196" height="50"/>
+                                <rect key="frame" x="21" y="55" width="196" height="50"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="36"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="75" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="rAM-9b-1Uj">
-                                <rect key="frame" x="16" y="170" width="343" height="192"/>
+                                <rect key="frame" x="16" y="126" width="343" height="192"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="140"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I1j-K6-rVR">
-                                <rect key="frame" x="111" y="332" width="154" height="35"/>
+                                <rect key="frame" x="111" y="288" width="154" height="35"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -164,19 +209,19 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last 9 Lives" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="6DS-U8-LL5">
-                                <rect key="frame" x="120" y="422.5" width="135" height="35"/>
+                                <rect key="frame" x="120" y="378.5" width="135" height="35"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 20 30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tnq-gu-eye">
-                                <rect key="frame" x="16" y="457.5" width="343" height="35"/>
+                                <rect key="frame" x="16" y="413.5" width="343" height="35"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best: 123" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="EPO-0P-T3r">
-                                <rect key="frame" x="141" y="367" width="93" height="30.5"/>
+                                <rect key="frame" x="141" y="323" width="93" height="30.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>

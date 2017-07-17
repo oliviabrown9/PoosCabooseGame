@@ -10,7 +10,6 @@ import SpriteKit
 import GameplayKit
 import Foundation
 import AVFoundation
-import SpriteKitEasingSwift
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
