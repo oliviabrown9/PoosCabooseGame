@@ -36,7 +36,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
     var coins = SharingManager.sharedInstance.lifetimeScore
-//    var coins = 99999
     var cost: Int = 0
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
@@ -247,7 +246,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
             SharingManager.sharedInstance.catImageString = "pous"
             updateUseButton()
         }
-        else if pageIndex == 5 {
+        else if pageIndex == 6 {
             SharingManager.sharedInstance.using = 6
             SharingManager.sharedInstance.catImageString = "trumpoos"
             updateUseButton()
@@ -277,7 +276,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         else if pageIndex == 5 {
             cost = 25000
         }
-        else if pageIndex == 5 {
+        else if pageIndex == 6 {
             cost = 100000
         }
         
