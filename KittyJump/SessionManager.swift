@@ -10,7 +10,6 @@ import UIKit
 
 class SharingManager {
     
-    // Local Variable
     var lastScores = [Int](repeating: 0, count: 9)
     var userDefaults: UserDefaults = UserDefaults.standard
     
