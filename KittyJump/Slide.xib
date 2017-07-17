@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poos" translatesAutoresizingMaskIntoConstraints="NO" id="vVl-DT-ci7">
-                    <rect key="frame" x="72" y="186" width="230" height="271"/>
+                    <rect key="frame" x="95.5" y="241" width="183" height="216"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1r-pY-zWV">
                     <rect key="frame" x="159" y="477" width="57.5" height="41"/>
@@ -24,8 +24,8 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbA-pU-bLA">
-                    <rect key="frame" x="104" y="543" width="57" height="33"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="FbA-pU-bLA">
+                    <rect key="frame" x="104" y="543" width="119" height="33"/>
                     <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="24"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -75,6 +75,7 @@
                 <constraint firstAttribute="trailing" secondItem="Lzz-Nx-tLw" secondAttribute="trailing" constant="60" id="b9V-8x-aU2"/>
                 <constraint firstItem="FbA-pU-bLA" firstAttribute="leading" secondItem="nlP-8Y-08X" secondAttribute="trailing" constant="2" id="bWA-BC-i1N"/>
                 <constraint firstItem="nlP-8Y-08X" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="60" id="coP-ej-KzM"/>
+                <constraint firstItem="Lzz-Nx-tLw" firstAttribute="leading" secondItem="FbA-pU-bLA" secondAttribute="trailing" constant="8" id="fsL-SW-Lei"/>
                 <constraint firstItem="VIk-NQ-2LA" firstAttribute="centerY" secondItem="Lzz-Nx-tLw" secondAttribute="centerY" id="gsp-C0-mZ9"/>
                 <constraint firstItem="nlP-8Y-08X" firstAttribute="bottom" secondItem="P44-gr-4hj" secondAttribute="bottom" id="hUG-L2-Zle"/>
                 <constraint firstItem="J1r-pY-zWV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="opu-CF-V25"/>
@@ -105,6 +106,6 @@
     </objects>
     <resources>
         <image name="coin" width="189" height="168"/>
-        <image name="poos" width="230" height="271"/>
+        <image name="poos" width="183" height="216"/>
     </resources>
 </document>
