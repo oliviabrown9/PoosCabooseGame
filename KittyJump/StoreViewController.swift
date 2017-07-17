@@ -31,12 +31,11 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     let slide3 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     let slide4 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     let slide5 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-    let slide6 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-    
+
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
-        var coins = SharingManager.sharedInstance.lifetimeScore
-//    var coins = 1000000
+//    var coins = SharingManager.sharedInstance.lifetimeScore
+    var coins = 1000000
     var cost: Int = 0
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
@@ -53,7 +52,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var fourthAddCoins: UIView!
     @IBOutlet weak var fifthAddCoins: UIView!
     @IBOutlet weak var addModalTopConstraint: NSLayoutConstraint!
-    
+
     @IBOutlet weak var pageControl: UIPageControl!
     
     override func viewDidLoad() {
@@ -68,7 +67,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         view.bringSubview(toFront: pageControl)
         
         currentCoins.text = "\(coins)"
-    }
+        }
     
     func setupInCloset(slide: Slide, x: Int) {
         slide.buyButton.isHidden = true
@@ -79,7 +78,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
             slide.useButton.isHidden = true
         }
         else {
-            slide.useButton.isHidden = false
+        slide.useButton.isHidden = false
         }
         slide.useButton.layer.cornerRadius = 20
         slide.useButton.layer.borderWidth = 3
@@ -96,7 +95,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     
     func createSlides() -> [Slide] {
         
-        let slideArray = [slide0, slide1, slide2, slide3, slide4, slide5, slide6]
+        let slideArray = [slide0, slide1, slide2, slide3, slide4, slide5]
         
         var x = 0
         for i in slideArray {
@@ -128,12 +127,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         slide4.titleLabel.text = "quapoos"
         slide4.costLabel.text = "10,000"
         
-        slide5.image.image = #imageLiteral(resourceName: "pous")
-        slide5.titleLabel.text = "pous"
-        slide5.costLabel.text = "25,000"
-        
-        slide6.image.image = #imageLiteral(resourceName: "trumpoos")
-        slide6.titleLabel.text = "trumpoos"
+        slide5.image.image = #imageLiteral(resourceName: "trumpoos")
+        slide5.titleLabel.text = "trumpoos"
         slide5.costLabel.text = "100,000"
         
         return [slide0, slide1, slide2, slide3, slide4, slide5]
@@ -239,7 +234,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
             updateUseButton()
         }
     }
-    
+
     // Try to buy something
     func purchaseItem() {
         let failureGenerator = UINotificationFeedbackGenerator()
@@ -348,7 +343,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func addCoinsGestures() {
-        
+
         let firstTap = UITapGestureRecognizer(target: self, action: #selector(buyCoins))
         firstAddCoins.addGestureRecognizer(firstTap)
         let secondTap = UITapGestureRecognizer(target: self, action: #selector(buyCoins))
@@ -375,7 +370,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
             }
         })
     }
-    
+   
     @IBAction func cancelAddCoins(_ sender: Any) {
         hideAddCoinsModal()
     }
@@ -386,11 +381,11 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         viewTapped?.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
         
         let alertController = UIAlertController(title: "Oops!", message: "You can't buy things in beta!", preferredStyle: .alert)
-        
+
         let OKAction = UIAlertAction(title: "OK", style: .default) { action in
             viewTapped?.backgroundColor = UIColor.white
             alertController.dismiss(animated: true, completion: nil)
-            
+
         }
         alertController.addAction(OKAction)
         

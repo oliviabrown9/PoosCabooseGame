@@ -234,7 +234,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.physicsWorld.removeAllJoints()
                     
                     if score != pastHighScore {
-                        generator.impactOccurred()
+                    generator.impactOccurred()
                     }
                     kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60))
                     if (!soundState) {

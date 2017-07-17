@@ -84,8 +84,8 @@ class SharingManager {
             userDefaults.set(catImageString, forKey: "CatImageString")
         }
         let storedUsing = userDefaults.integer(forKey: "Using")
-        using = storedUsing
-    }
+            using = storedUsing
+        }
     
     func changeLastScores(score: Int) {
         var temp1, temp2: Int
