@@ -52,12 +52,22 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         startButton?.isHidden = true
         startBackground?.isHidden = true
         
-        let gif = UIImage(gifName: "splash.gif")
-        let gifManager = SwiftyGifManager(memoryLimit: 20)
-        self.gifImageView.setGifImage(gif, manager: gifManager, loopCount: 1)
+        if SharingManager.sharedInstance.onboardingFinished == false {
+            SharingManager.sharedInstance.onboardingFinished = true
+            gifImageView.isHidden = true
+            animationEndImage.isHidden = false
+            animationEndImage.fadeOut()
+            showIntro = true
+            initView()
+        }
+        else {
+            let gif = UIImage(gifName: "splash.gif")
+            let gifManager = SwiftyGifManager(memoryLimit: 20)
+            self.gifImageView.setGifImage(gif, manager: gifManager, loopCount: 1)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(gifDidLoop))
-        tapView.addGestureRecognizer(tap)
+            let tap = UITapGestureRecognizer(target: self, action: #selector(gifDidLoop))
+            tapView.addGestureRecognizer(tap)
+        }
     }
     
     // Initial screen

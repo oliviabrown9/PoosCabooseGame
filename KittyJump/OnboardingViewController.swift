@@ -5,10 +5,12 @@
 //  Created by Olivia Brown on 7/17/17.
 //  
 //  SwiftyOnboarding Copyright © 2017 Juan Pablo Fernandez. All rights reserved.
-//  All other code Copyright © 2017 Olivia Brown. All rights reserved.
+//  All Other Code Copyright © 2017 Olivia Brown. All rights reserved.
 
 import UIKit
 import SwiftyOnboard
+
+var showIntro: Bool = false
 
 class OnboardingViewController: UIViewController {
 
@@ -62,7 +64,6 @@ extension OnboardingViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSour
     }
     
     func moveOn() {
-        SharingManager.sharedInstance.onboardingFinished = true
         performSegue(withIdentifier: "toGame", sender: self)
     }
     
