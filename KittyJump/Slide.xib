@@ -25,7 +25,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="FbA-pU-bLA">
-                    <rect key="frame" x="104" y="523" width="119" height="33"/>
+                    <rect key="frame" x="104" y="523" width="103" height="33"/>
                     <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="24"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -44,9 +44,9 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzz-Nx-tLw">
-                    <rect key="frame" x="231" y="524" width="84" height="40"/>
+                    <rect key="frame" x="215" y="524" width="100" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="84" id="BMC-PE-FX2"/>
+                        <constraint firstAttribute="width" constant="100" id="BMC-PE-FX2"/>
                         <constraint firstAttribute="height" constant="40" id="vTy-Z1-ZcX"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
@@ -56,10 +56,10 @@
                     </state>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIk-NQ-2LA">
-                    <rect key="frame" x="145" y="524" width="84" height="40"/>
+                    <rect key="frame" x="137" y="524" width="100" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="06f-9d-NpD"/>
-                        <constraint firstAttribute="width" constant="84" id="aoI-jR-Uzm"/>
+                        <constraint firstAttribute="width" constant="100" id="aoI-jR-Uzm"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                     <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>

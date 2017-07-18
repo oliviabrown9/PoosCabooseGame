@@ -70,16 +70,29 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         currentCoins.text = "\(coins)"
     }
     
+    func buttonInUse(button: UIButton) {
+        button.backgroundColor = UIColor.white
+        button.setTitleColor(UIColor(red:0.21, green:0.81, blue:0.85, alpha:1.0), for: .normal)
+        button.setTitle("in use", for: .normal)
+    }
+    
+    func buttonNotInUse(button: UIButton) {
+        button.backgroundColor = UIColor.clear
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitle("use", for: .normal)
+    }
+    
     func setupInCloset(slide: Slide, x: Int) {
         slide.buyButton.isHidden = true
         slide.coinImage.isHidden = true
         slide.costLabel.isHidden = true
         slide.coinLabel.isHidden = true
+        slide.useButton.isHidden = false
         if SharingManager.sharedInstance.using == x {
-            slide.useButton.isHidden = true
+            buttonInUse(button: slide.useButton)
         }
         else {
-            slide.useButton.isHidden = false
+            buttonNotInUse(button: slide.useButton)
         }
         slide.useButton.layer.cornerRadius = 20
         slide.useButton.layer.borderWidth = 3
@@ -88,6 +101,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupInStore(slide: Slide) {
+        slide.useButton.isHidden = true
         slide.buyButton.layer.cornerRadius = 20
         slide.buyButton.layer.borderWidth = 3
         slide.buyButton.layer.borderColor = UIColor.white.cgColor
@@ -201,14 +215,14 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         var x = 0
         for i in allSlides {
             if SharingManager.sharedInstance.using == x {
-                i.useButton.isHidden = true
+                buttonInUse(button: i.useButton)
             }
             else {
                 if SharingManager.sharedInstance.itemStates[x] == "inCloset" {
-                    i.useButton.isHidden = false
+                    buttonNotInUse(button: i.useButton)
                 }
                 else {
-                    i.useButton.isHidden = true
+                    buttonInUse(button: i.useButton)
                 }
             }
             x += 1
