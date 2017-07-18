@@ -16,7 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var soundEffectPlayer: AVAudioPlayer = AVAudioPlayer()
     
     var viewController: UIViewController?
-    let background = SKSpriteNode(imageNamed: "background")
+    let background = SKSpriteNode(imageNamed: "gameBackground")
     
     // Variables for position
     let trainYPosition: CGFloat = -600.0
