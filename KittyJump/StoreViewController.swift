@@ -31,7 +31,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     let slide3 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     let slide4 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     let slide5 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-    let slide6 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+    let slide6 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)? .first as! Slide
     
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false

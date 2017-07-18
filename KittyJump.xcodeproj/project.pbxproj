@@ -23,6 +23,7 @@
 		75F3FE3B1F1D608B001E0C0D /* CustomOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F3FE371F1D608B001E0C0D /* CustomOverlay.xib */; };
 		75F3FE3C1F1D608B001E0C0D /* CustomOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3FE381F1D608B001E0C0D /* CustomOverlay.swift */; };
 		75F3FE3E1F1D617A001E0C0D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3FE3D1F1D617A001E0C0D /* OnboardingViewController.swift */; };
+		75F3FE401F1EA5AA001E0C0D /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3FE3F1F1EA5AA001E0C0D /* GameSettings.swift */; };
 		A4892182E1E85A5DD8434DDA /* Pods_KittyJump.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170ABEBE832CE954F508ADBC /* Pods_KittyJump.framework */; };
 		D1C52BEF1EF5911200115764 /* Deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C52BEE1EF5911200115764 /* Deadline.swift */; };
 		D7C5EAB41EEB5C21007DA71A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */; };
@@ -63,6 +64,7 @@
 		75F3FE371F1D608B001E0C0D /* CustomOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlay.xib; sourceTree = "<group>"; };
 		75F3FE381F1D608B001E0C0D /* CustomOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlay.swift; sourceTree = "<group>"; };
 		75F3FE3D1F1D617A001E0C0D /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		75F3FE3F1F1EA5AA001E0C0D /* GameSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		C824AB0E7CB08042295979CA /* Pods-KittyJump.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KittyJump.release.xcconfig"; path = "Pods/Target Support Files/Pods-KittyJump/Pods-KittyJump.release.xcconfig"; sourceTree = "<group>"; };
 		D1C52BEE1EF5911200115764 /* Deadline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deadline.swift; sourceTree = "<group>"; };
 		D7C5EAB01EEB5C21007DA71A /* KittyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KittyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +172,7 @@
 				D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */,
 				D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */,
 				D7C5EAB91EEB5C21007DA71A /* GameScene.swift */,
+				75F3FE3F1F1EA5AA001E0C0D /* GameSettings.swift */,
 				75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */,
 				750899C51F14201000D4227F /* StoreViewController.swift */,
 				D7C5EAB51EEB5C21007DA71A /* GameScene.sks */,
@@ -361,6 +364,7 @@
 				D7C5EABC1EEB5C21007DA71A /* GameViewController.swift in Sources */,
 				D7C5EADA1EEB638E007DA71A /* TrainTrack.swift in Sources */,
 				75F3FE3C1F1D608B001E0C0D /* CustomOverlay.swift in Sources */,
+				75F3FE401F1EA5AA001E0C0D /* GameSettings.swift in Sources */,
 				D7C5EAB41EEB5C21007DA71A /* AppDelegate.swift in Sources */,
 				D7C5EAEE1EEC0AC0007DA71A /* Kitty.swift in Sources */,
 				D1C52BEF1EF5911200115764 /* Deadline.swift in Sources */,

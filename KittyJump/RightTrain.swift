@@ -10,6 +10,7 @@ import SpriteKit
 
 class RightTrain : SKSpriteNode {
     
+    var timeOfTrain : Double = 4.0
     
     // Init
     init() {

@@ -10,6 +10,8 @@ import SpriteKit
 
 class LeftTrain : SKSpriteNode {
     
+    var timeOfTrain : Double = 4.0
+    
     // Init
     init() {
         let randomNum:UInt32 = arc4random_uniform(100)
