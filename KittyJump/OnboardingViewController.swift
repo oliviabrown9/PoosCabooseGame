@@ -24,7 +24,7 @@ class OnboardingViewController: UIViewController {
     }
     
     func handleSkip() {
-        swiftyOnboard?.goToPage(index: 3, animated: true)
+        swiftyOnboard?.goToPage(index: 2, animated: true)
     }
     
     func handleContinue(sender: UIButton) {
@@ -36,7 +36,7 @@ class OnboardingViewController: UIViewController {
 extension OnboardingViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
     
     func swiftyOnboardNumberOfPages(_ swiftyOnboard: SwiftyOnboard) -> Int {
-        return 4
+        return 3
     }
     
     func swiftyOnboardPageForIndex(_ swiftyOnboard: SwiftyOnboard, index: Int) -> SwiftyOnboardPage? {
@@ -50,15 +50,10 @@ extension OnboardingViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSour
             //On the second page, change the text in the labels to say the following:
             view?.titleLabel.text = "Each successful jump \n counts as 1 point."
             view?.image.image = #imageLiteral(resourceName: "onTwo")
-        } else if index == 2 {
+        } else {
             //On the third page, change the text in the labels to say the following:
-            view?.titleLabel.text = "Points become poos \n coin after each game."
+            view?.titleLabel.text = "Poos coin unlocks \n more pooses."
             view?.image.image = #imageLiteral(resourceName: "onThree")
-        }
-        else {
-            //On the third page, change the text in the labels to say the following:
-            view?.titleLabel.text = "Poos coins unlocks \n swag."
-            view?.image.image = #imageLiteral(resourceName: "onFour")
         }
         return view
     }
@@ -79,7 +74,7 @@ extension OnboardingViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSour
         let currentPage = round(position)
         overlay.pageControl.currentPage = Int(currentPage)
         overlay.buttonContinue.tag = Int(position)
-        if currentPage == 0.0 || currentPage == 1.0 || currentPage == 2.0 {
+        if currentPage == 0.0 || currentPage == 1.0 {
             overlay.buttonContinue.isHidden = true
             overlay.skip.isHidden = false
         } else {

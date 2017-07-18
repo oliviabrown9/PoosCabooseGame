@@ -57,7 +57,6 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
             gifImageView.isHidden = true
             animationEndImage.isHidden = false
             animationEndImage.fadeOut()
-            showIntro = true
             initView()
         }
         else {
