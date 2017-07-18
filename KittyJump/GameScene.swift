@@ -300,8 +300,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pauseButton = SKSpriteNode(imageNamed: "pause")
         // Put it in the center of the scene
         pauseButton.name = "pause"
-        pauseButton.size.height = 50
-        pauseButton.size.width = 60
+        pauseButton.size.height = 40
+        pauseButton.size.width = 40
         pauseButton.position = CGPoint(x:-(hud.size.width/2)+50, y: 130)
         
         hud.name = "hud"
@@ -310,12 +310,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         soundButton = SKSpriteNode(imageNamed: "mute")
         // Put it in the center of the scene
         soundButton.name = "sound"
-        soundButton.size.height = 60
+        soundButton.size.height = 44
         soundButton.size.width = 60
         soundButton.position = CGPoint(x:-(hud.size.width/2)+130, y: 130)
         
         hud.addChild(soundButton)
-        
     }
     
     // Train Track & Grass

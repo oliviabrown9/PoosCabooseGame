@@ -35,7 +35,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
-    var coins = SharingManager.sharedInstance.lifetimeScore
+//    var coins = SharingManager.sharedInstance.lifetimeScore
+    var coins = 1000000
     var cost: Int = 0
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
@@ -396,7 +397,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         hideAddCoinsModal()
     }
     
-    func buyCoins(_ recognizer:UITapGestureRecognizer) {
+    func buyCoins(_ recognizer: UITapGestureRecognizer) {
         
         let viewTapped = recognizer.view
         viewTapped?.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)

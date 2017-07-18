@@ -42,21 +42,21 @@ extension OnboardingViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSour
         view?.image.image = UIImage(named: "")
         if index == 0 {
             //On the first page, change the text in the labels to say the following:
-            view?.titleLabel.text = "test"
-            view?.subTitleLabel.text = "test"
+            view?.titleLabel.text = "Tap when your Poos \n lines up with the next \n caboose."
+            view?.image.image = #imageLiteral(resourceName: "onOne")
         } else if index == 1 {
             //On the second page, change the text in the labels to say the following:
-            view?.titleLabel.text = "test2"
-            view?.subTitleLabel.text = "test2"
+            view?.titleLabel.text = "Each successful jump \n counts as 1 point."
+            view?.image.image = #imageLiteral(resourceName: "onTwo")
         } else if index == 2 {
             //On the third page, change the text in the labels to say the following:
-            view?.titleLabel.text = "test3"
-            view?.subTitleLabel.text = "test3"
+            view?.titleLabel.text = "Points become poos \n coin after each game."
+            view?.image.image = #imageLiteral(resourceName: "onThree")
         }
         else {
             //On the third page, change the text in the labels to say the following:
-            view?.titleLabel.text = "test4"
-            view?.subTitleLabel.text = "test4"
+            view?.titleLabel.text = "Poos coins unlocks \n swag."
+            view?.image.image = #imageLiteral(resourceName: "onFour")
         }
         return view
     }
@@ -79,13 +79,16 @@ extension OnboardingViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSour
         overlay.pageControl.currentPage = Int(currentPage)
         overlay.buttonContinue.tag = Int(position)
         if currentPage == 0.0 || currentPage == 1.0 || currentPage == 2.0 {
-            overlay.buttonContinue.setTitle("Continue", for: .normal)
-            overlay.skip.setTitle("Skip", for: .normal)
+            overlay.buttonContinue.isHidden = true
             overlay.skip.isHidden = false
         } else {
-            overlay.buttonContinue.setTitle("Get Started!", for: .normal)
             overlay.buttonContinue.addTarget(self, action: #selector(moveOn), for: .touchUpInside)
+            overlay.buttonContinue.isHidden = false
             overlay.skip.isHidden = true
         }
+    }
+    // Hide status bar
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
 }

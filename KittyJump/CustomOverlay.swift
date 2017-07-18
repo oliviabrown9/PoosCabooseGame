@@ -19,7 +19,7 @@ class CustomOverlay: SwiftyOnboardOverlay {
         super.awakeFromNib()
         
         buttonContinue.layer.borderColor = UIColor.white.cgColor
-        buttonContinue.layer.borderWidth = 1
+        buttonContinue.layer.borderWidth = 2
         buttonContinue.layer.cornerRadius = buttonContinue.bounds.height / 2
     }
     
