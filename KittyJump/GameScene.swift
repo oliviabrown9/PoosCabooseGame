@@ -79,6 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let countTrainArray = 8
     let timeOfTrain: Double = 3.5
     var isStop = false
+    var nFailTime:Int = 0;
     
     
     // Starting score label set to zero & changes with current score
@@ -213,8 +214,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         else {
-            if name == "hud"
-            {
+            if name == "hud" {
                 return
             }
             if (!pauseState) {
@@ -389,7 +389,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rightTrain.zPosition = 2
             rightTrain.addChild(wagon)
             self.addChild(rightTrain)
-            
             rightTrainArray.append(rightTrain);
             
             // Left train
@@ -463,9 +462,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var posTo = CGPoint.zero
         
         if isFirstTrain {
-            
             let firsttrain = rightTrainArray[0]
-            
             posInit = CGPoint(x: self.frame.minX + firsttrain.size.width/2,
                               y: yPositionC)
             posTo = CGPoint(x: self.frame.maxX + irWagon.size.width/2,
@@ -473,7 +470,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             isFirstTrain = false
         }
         else {
-            
             posInit = CGPoint(x: self.frame.minX + irWagon.size.width/2 - stepPos,
                               y: yPositionC)
             posTo = CGPoint(x: self.frame.maxX + irWagon.size.width/2 + stepPos,
@@ -488,7 +484,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         irWagon.run(act)
         irWagon.timeOfTrain = timeOfTrain
         newTrainPosY += trainDiffPosition
-        
     }
     
     func moveLeftTrain2() {
@@ -508,126 +503,78 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let posTo = CGPoint(x: self.frame.minX - ilTrain.size.width/2,
                             y: yPositionC)
-        
         ilTrain.position = posInit
         
         let act1 = SKAction.move(to: posInit, duration: 0.0)
-        
         let act2 = SKAction.move(to: posTo, duration: timeOfTrain)
-        
         let act = SKAction.sequence([act1, act2])
-        
         ilTrain.run(act)
-        
         ilTrain.timeOfTrain = timeOfTrain
-        
-        //        resetMoveRightTrain()
-        
         newTrainPosY += trainDiffPosition
-        
     }
     
-    //re-set the moving of right train from current position to purposefull position
-    func resetMoveRightTrain()
-    {
+    // Reset the moving of right train from current position to purposeful position
+    func resetMoveRightTrain() {
         let irWagon = rightTrainArray[newRightTrainIndex]
-        
         let posInitR = CGPoint(x: irWagon.position.x - stepPos,
                                y: irWagon.position.y)
         
         let posToR = CGPoint(x: self.frame.maxX + irWagon.size.width/2 + stepPos,
                              y: irWagon.position.y)
-        
         irWagon.position = posInitR
         
         let actR1 = SKAction.move(to: posInitR, duration: 0.0)
-        
         let actR2 = SKAction.move(to: posToR, duration: timeOfTrain)
-        
         let actR = SKAction.sequence([actR1, actR2])
-        
         irWagon.run(actR)
-        
     }
     
-    func resetMoveRightTrainWhenRestartGame()
-    {
-        
+    func resetMoveRightTrainWhenRestartGame() {
         for i in 0..<rightTrainArray.count {
-            
             let irWagon = rightTrainArray[i]
-            
             let posInitR = CGPoint(x: irWagon.position.x - stepPos,
                                    y: irWagon.position.y)
-            
             let posToR = CGPoint(x: self.frame.maxX + irWagon.size.width + posInitR.x + stepPos,
                                  y: irWagon.position.y)
-            
             irWagon.position = posInitR
             
             let actR1 = SKAction.move(to: posInitR, duration: 0.0)
-            
-            //            let timeOfT = Double( (posToR.x - posInitR.x) / posToR.x ) * timeOfTrain
-            
             let actR2 = SKAction.move(to: posToR, duration: timeOfTrain)
-            
             let actR = SKAction.sequence([actR1, actR2])
-            
             irWagon.run(actR)
-            
         }
-        
     }
     
-    //re-set the moving of left train from current position to purposefull position
-    func resetMoveLeftTrain()
-    {
+    // Reset the moving of left train from current position to purposeful position
+    func resetMoveLeftTrain() {
         let ilTrain = leftTrainArray[newLeftTrainIndex]
-        
         let posInitL = CGPoint(x: ilTrain.position.x - stepPos,
                                y: ilTrain.position.y)
-        
         let posToL = CGPoint(x: self.frame.minX - ilTrain.size.width/2,
                              y: ilTrain.position.y)
-        
         ilTrain.position = posInitL
         
         let act1 = SKAction.move(to: posInitL, duration: 0.0)
-        
         let act2 = SKAction.move(to: posToL, duration: timeOfTrain)
-        
         let act = SKAction.sequence([act1, act2])
-        
         ilTrain.run(act)
     }
     
-    func resetMoveLeftTrainWhenRestartGame()
-    {
+    func resetMoveLeftTrainWhenRestartGame() {
         
         for i in 0..<leftTrainArray.count {
-            
             let ilTrain = leftTrainArray[i]
-            
             let posInitL = CGPoint(x: ilTrain.position.x - stepPos,
                                    y: ilTrain.position.y)
-            
             let posToL = CGPoint(x: posInitL.x - (self.frame.maxX + ilTrain.size.width),
                                  y: ilTrain.position.y)
-            
             ilTrain.position = posInitL
             
             let act1 = SKAction.move(to: posInitL, duration: 0.0)
-            
-            //            let timeOfT = Double( (posInitL.x - posToL.x) / self.frame.maxX ) * timeOfTrain
-            
             let act2 = SKAction.move(to: posToL, duration: timeOfTrain)
-            
             let act = SKAction.sequence([act1, act2])
-            
             ilTrain.run(act)
-            
         }
-        
     }
     
     // Contact delegate functions
@@ -639,7 +586,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
             firstBody = contact.bodyA
             secondBody = contact.bodyB
-        } else {
+        }
+        else {
             firstBody = contact.bodyB
             secondBody = contact.bodyA
         }
@@ -649,9 +597,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if isStop {
-            
             return
-            
         }
         
         // Handles left train & creates a right train
@@ -661,9 +607,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if (contact.contactPoint.x > (secondBody.node!.frame.maxX - 100)) {
                     
-                    if g_bFinishJump {
+                    if finishJump {
                         
-                        g_bFinishJump = false
+                        finishJump = false
+                        nFailTime = 0
                         
                         switchJointL(iWagon: secondBody.node! as! LeftTrain)
                         changeTrackAndGrassInNewLocation()
@@ -675,35 +622,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         // Remove old deadline & add new deadline
                         newDeadlinePosY += trainDiffPosition
                         setNewDeadline()
-                        
-                        // camera
                         isUpdateCameraPosY = true
-                        
                     }
-                    
                 }
                 else {
                     stop()
-                    
                 }
             }
         }
         
-        // Handles right train and creates a left train
+        // Handles right train & creates a left train
         if kittyPosition == .LeftTrain {
             if firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryWagon {
                 
                 if (contact.contactPoint.x < (secondBody.node!.frame.minX + 100)) {
                     
-                    if g_bFinishJump {
-                        
-                        g_bFinishJump = false
+                    if finishJump {
+                        finishJump = false
+                        nFailTime = 0
                         
                         switchJoint(iWagon:secondBody.node! as! RightTrain)
                         changeTrackAndGrassInNewLocation()
-                        
                         moveLeftTrain2()
-                        
                         kittyPosition = .RightTrain
                         
                         // Remove old deadline & add new deadline
@@ -712,13 +652,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         
                         // Camera
                         isUpdateCameraPosY = true
-                        
                     }
-                    
                 }
                 else {
                     stop()
-                    
                 }
             }
         }
@@ -741,7 +678,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let newCurrentTrainPosY = trainTrackArray[lastTrain].position.y + trainDiffPosition
         setupNewTrack(index: currentTrain, posY: newCurrentTrainPosY)
-        
         grassArray[currentTrain].position.y = grassArray[lastTrain].position.y + trainDiffPosition
     }
     
@@ -761,8 +697,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             action.timingMode = .easeInEaseOut
             kittyCamera.run(action)
             background.run(action)
-            
             isUpdateCameraPosY = false
+        }
+        if finishJump {
+            
+            nFailTime += 1
+            
+            if nFailTime == 5 {
+                
+                stop()
+                
+                finishJump = false
+                
+                nFailTime = 0
+            }
         }
     }
     
@@ -801,7 +749,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node.removeFromParent();
             }
             rightTrainArray[i].position.y -= temp
-            
             self.addChild(rightTrainArray[i])
             
             // Left train
@@ -829,7 +776,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.physicsWorld.removeAllJoints()
             self.removeAllActions()
-            
             self.physicsWorld.contactDelegate = self
             
             // Move the first 2 trains
@@ -848,26 +794,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             kittyCamera.position.y = 0
             addChild(kittyCamera)
             self.camera = kittyCamera
-            
-            
         }
         else {
         }
-        
     }
-    
-    
     
     // Game lost
     func stop() {
         
+        kitty.removeAllActions()
         isStop = true
+        
+         finishJump = false
         
         let failureGenerator = UINotificationFeedbackGenerator()
         failureGenerator.notificationOccurred(.error)
-        
-        kitty.removeAllActions()
-        
         backgroundMusicPlayer.stop()
         
         if (!soundState) {
@@ -907,6 +848,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.viewController?.performSegue(withIdentifier: "toGameOver", sender: self.viewController)
         }
     }
+    
     func pauseGame() {
         
         backgroundMusicPlayer.stop()
@@ -914,33 +856,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Stop the game
         self.gamePaused = true
         self.isPaused = true
-        
-        g_bPause = true
-        
+        savePause = true
         setPauseState()
         
         for i in 0..<rightTrainArray.count {
-            
             let righttrain = rightTrainArray[i]
-            
             righttrain.removeAllActions()
-            
         }
         
         for i in 0..<leftTrainArray.count {
-            
             let righttrain = leftTrainArray[i]
-            
             righttrain.removeAllActions()
-            
         }
-        
-        
     }
+    
     func muteSound() {
         
         backgroundMusicPlayer.stop()
     }
+    
     func playSound() {
         
         backgroundMusicPlayer.play()
@@ -948,8 +882,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func playGame() {
         
-        g_bPause = false
-        
+        savePause = false
         setPauseState()
         
         backgroundMusicPlayer.stop()
@@ -969,8 +902,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Play the game
         self.gamePaused = false
         self.isPaused = false
-        
-        
     }
 }
 

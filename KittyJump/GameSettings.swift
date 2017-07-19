@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-var g_bPause : Bool = false
-var g_bFinishJump : Bool = false;
+var savePause : Bool = false
+var finishJump : Bool = false;
 
 func load()
 {
@@ -19,25 +19,25 @@ func load()
     
     if (!bLoad) {
         userDefault.set(true, forKey: "kittykittykitty")
-        g_bPause = false
-        userDefault.set(g_bPause, forKey: "kitty_game_pause")
+        savePause = false
+        userDefault.set(savePause, forKey: "gamePaused")
         userDefault.synchronize()
         
     }
     else {
-        g_bPause = userDefault.bool(forKey: "kitty_game_pause")
+        savePause = userDefault.bool(forKey: "gamePaused")
     }
 }
 
 func setPauseState()
 {
     let userDefault = UserDefaults.standard
-    userDefault.set(g_bPause, forKey: "kitty_game_pause")
+    userDefault.set(savePause, forKey: "gamePaused")
     userDefault.synchronize()
 }
 
 func getPauseState()
 {
     let userDefault = UserDefaults.standard
-    g_bPause = userDefault.bool(forKey: "kitty_game_pause")
+    savePause = userDefault.bool(forKey: "gamePaused")
 }
