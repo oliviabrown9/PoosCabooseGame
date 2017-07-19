@@ -1,9 +1,9 @@
 //
 //  GameSettings.swift
-//  Mookie
+//  Olivia
 //
-//  Created by osc_mac on 9/22/16.
-//  Copyright © 2016 com.scrape.clone. All rights reserved.
+//  Created by Olivia Brown on 7/19/17.
+//  Copyright © 2016 Olivia Brown. All rights reserved.
 //
 
 import Foundation
@@ -15,22 +15,16 @@ var g_bFinishJump : Bool = false;
 func load()
 {
     let userDefault = UserDefaults.standard
+    let bLoad: Bool = userDefault.bool(forKey: "kittykittykitty")
     
-    let bLoad : Bool = userDefault.bool(forKey: "kittykittykitty")
-    
-    if ( !bLoad ) {
-        
+    if (!bLoad) {
         userDefault.set(true, forKey: "kittykittykitty")
-        
         g_bPause = false
-        
         userDefault.set(g_bPause, forKey: "kitty_game_pause")
-        
         userDefault.synchronize()
         
     }
     else {
-        
         g_bPause = userDefault.bool(forKey: "kitty_game_pause")
     }
 }

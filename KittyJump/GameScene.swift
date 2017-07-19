@@ -61,35 +61,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let leftTrain1 = LeftTrain()
     let rightTrain1 = RightTrain()
-    
     var currentLeftTrain:LeftTrain!
     var currentRightTrain:RightTrain!
-    
     var leftTrainArray = [LeftTrain]()
     var isFirstTrain = true
     var newLeftTrainIndex = -1
-    
     var rightTrainArray = [RightTrain]()
     var newRightTrainIndex = -1
-    
     var newTrainPosY: CGFloat = -600.0
-    
     let kitty = Kitty()
-    
     var joint1: SKPhysicsJointPin!
-    
     var currentTrain: Int = 2
     var currentTrainNumber: Int = 0
-    
     var stepSpeed: Int = 0
     var stepPos: CGFloat = 0
-    
     var beforeColorIndex = -1
-    
-    let countTrainArray = 8                  //count total trains
-    
-    let timeOfTrain : Double = 3.5          //time from left to right, or from right to left of train
-    
+    let countTrainArray = 8
+    let timeOfTrain: Double = 3.5
     var isStop = false
     
     
@@ -202,32 +190,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (name == "pause") {
             pauseState = !pauseState
-            if(pauseState) {
-                
+            if (pauseState) {
                 pauseGame()
-                
                 pauseButton.texture = SKTexture(imageNamed: "play")
-                
             }
             else {
-                
                 playGame()
-                
                 resetMoveRightTrainWhenRestartGame()
-                
                 resetMoveLeftTrainWhenRestartGame()
-                
                 pauseButton.texture = SKTexture(imageNamed: "pause")
-                
             }
         }
         else if (name == "sound") {
             soundState = !soundState
-            if(soundState) {
+            if (soundState) {
                 muteSound()
                 soundButton.texture = SKTexture(imageNamed: "sound")
             }
-            else{
+            else {
                 playSound()
                 soundButton.texture = SKTexture(imageNamed: "mute")
             }
@@ -244,7 +224,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 successGenerator.prepare()
                 if kittyCurrentState == .onTrain {
                     self.physicsWorld.removeAllJoints()
-                    //                    kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
                     kitty.animateShape(destPos: CGPoint(x: kitty.position.x,
                                                         y: kitty.position.y + 150))
                     if score != pastHighScore {
@@ -279,7 +258,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-        
     }
     
     // Init functions to build screen
@@ -313,24 +291,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Label.highScoreLabel.position = CGPoint(x: self.frame.maxX - 30 , y: 130)
         hud.addChild(Label.highScoreLabel)
         pauseButton = SKSpriteNode(imageNamed: "pause")
-        // Put it in the center of the scene
         pauseButton.name = "pause"
-        pauseButton.size.height = 50
-        pauseButton.size.width = 60
+        pauseButton.size.height = 40
+        pauseButton.size.width = 40
         pauseButton.position = CGPoint(x:-(hud.size.width/2)+50, y: 130)
-        
-        hud.name = "hud"
         hud.addChild(pauseButton)
         
         soundButton = SKSpriteNode(imageNamed: "mute")
-        // Put it in the center of the scene
         soundButton.name = "sound"
-        soundButton.size.height = 60
+        soundButton.size.height = 40
         soundButton.size.width = 60
         soundButton.position = CGPoint(x:-(hud.size.width/2)+130, y: 130)
-        
         hud.addChild(soundButton)
-        
     }
     
     // Train Track & Grass
@@ -487,9 +459,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         let irWagon = rightTrainArray[newRightTrainIndex]
-        
         var posInit = CGPoint.zero
-        
         var posTo = CGPoint.zero
         
         if isFirstTrain {
@@ -498,36 +468,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             posInit = CGPoint(x: self.frame.minX + firsttrain.size.width/2,
                               y: yPositionC)
-            
             posTo = CGPoint(x: self.frame.maxX + irWagon.size.width/2,
                             y: yPositionC)
-            
             isFirstTrain = false
-            
-        } else {
+        }
+        else {
             
             posInit = CGPoint(x: self.frame.minX + irWagon.size.width/2 - stepPos,
                               y: yPositionC)
-            
             posTo = CGPoint(x: self.frame.maxX + irWagon.size.width/2 + stepPos,
                             y: yPositionC)
-            
-            //            resetMoveLeftTrain()
-            
         }
         
         irWagon.position = posInit
-        
         let act1 = SKAction.move(to: posInit, duration: 0.0)
-        
         let act2 = SKAction.move(to: posTo, duration: timeOfTrain)
-        
         let act = SKAction.sequence([act1, act2])
         
         irWagon.run(act)
-        
         irWagon.timeOfTrain = timeOfTrain
-        
         newTrainPosY += trainDiffPosition
         
     }
