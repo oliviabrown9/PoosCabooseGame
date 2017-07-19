@@ -26,6 +26,10 @@ class GameOverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameOverViewController.swiped(_:)))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
+        
         highScoreLabel.text = "Best: \(highScore)"
         // Setting text of labels to stored value
         mostRecentScore.text = "\(lastNineScores[0])"
@@ -34,6 +38,10 @@ class GameOverViewController: UIViewController {
             String($0)
         }
         pastScores.text = stringArray.joined(separator: "  ")
+    }
+    
+    func swiped(_ gesture: UIGestureRecognizer) {
+        performSegue(withIdentifier: "toStore", sender: self)
     }
     
     // Recognize if startOver image is tapped
