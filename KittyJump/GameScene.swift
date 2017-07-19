@@ -238,11 +238,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 return
             }
             if (!pauseState) {
+                let generator = UIImpactFeedbackGenerator(style: .medium)
+                let successGenerator = UINotificationFeedbackGenerator()
+                generator.prepare()
+                successGenerator.prepare()
                 if kittyCurrentState == .onTrain {
                     self.physicsWorld.removeAllJoints()
                     //                    kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
                     kitty.animateShape(destPos: CGPoint(x: kitty.position.x,
                                                         y: kitty.position.y + 150))
+                    if score != pastHighScore {
+                        generator.impactOccurred()
+                    }
                     
                     if (!soundState) {
                         let jumpSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "jump", ofType: "mp3")!)
@@ -258,6 +265,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     kittyCurrentState = .onAir
                     
                     if score == pastHighScore {
+                        successGenerator.notificationOccurred(.success)
                         let newHighScoreSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "newHighScore", ofType: "mp3")!)
                         do {
                             soundEffectPlayer = try AVAudioPlayer(contentsOf: newHighScoreSound as URL)
@@ -896,6 +904,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func stop() {
         
         isStop = true
+        
+        let failureGenerator = UINotificationFeedbackGenerator()
+        failureGenerator.notificationOccurred(.error)
         
         kitty.removeAllActions()
         
