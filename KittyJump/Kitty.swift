@@ -17,9 +17,9 @@ class Kitty: SKSpriteNode {
         case kill
     }
     
-    let timeJumping :   Double  = 0.2
-    let hJumping :      CGFloat = 150
-    let hHJumping :     CGFloat = 300
+    let timeJumping: Double  = 0.2
+    let hJumping: CGFloat = 150
+    let hHJumping: CGFloat = 300
     
     var kittyFState : kittyFlyingState = .normal
     // Init
@@ -87,7 +87,6 @@ class Kitty: SKSpriteNode {
         let actCallBack3 = SKAction.run {
             
             self.kittyFState = .kill
-            
         }
         
         let actSeq1 = SKAction.sequence([actCallBack1, actUp, actCallBack2, actDown, actCallBack3])
@@ -113,7 +112,6 @@ class Kitty: SKSpriteNode {
         let actCallBack4 = SKAction.run {
             
             self.kittyFState = .kill
-            
         }
         
         let actScalS = SKAction.sequence([actG1, actG2, actG3, actCallBack4])
@@ -124,7 +122,7 @@ class Kitty: SKSpriteNode {
         
     }
     
-    func resetStateToNomal()
+    func resetStateToNormal()
     {
         self.removeAllActions()
         

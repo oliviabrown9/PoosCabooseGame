@@ -21,22 +21,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="staticBackground" translatesAutoresizingMaskIntoConstraints="NO" id="tRG-Ok-Wyv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundGradient" translatesAutoresizingMaskIntoConstraints="NO" id="92R-7c-VYg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tRG-Ok-Wyv" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="POi-v7-miR"/>
-                            <constraint firstItem="tRG-Ok-Wyv" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="SNL-gM-sTO"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="tRG-Ok-Wyv" secondAttribute="bottom" id="W8B-dt-UsE"/>
-                            <constraint firstAttribute="trailing" secondItem="tRG-Ok-Wyv" secondAttribute="trailing" id="Wvv-Mk-dlK"/>
-                            <constraint firstItem="tRG-Ok-Wyv" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="bJe-6x-YmU"/>
-                            <constraint firstItem="tRG-Ok-Wyv" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="fVE-WK-7fx"/>
-                            <constraint firstItem="tRG-Ok-Wyv" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="hBd-NQ-La9"/>
-                            <constraint firstAttribute="trailing" secondItem="tRG-Ok-Wyv" secondAttribute="trailing" id="oPu-0h-a3a"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="tRG-Ok-Wyv" secondAttribute="bottom" id="vLP-9k-GwD"/>
-                            <constraint firstItem="tRG-Ok-Wyv" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vfK-BU-iUi"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="92R-7c-VYg" secondAttribute="bottom" id="6dW-mg-QyI"/>
+                            <constraint firstItem="92R-7c-VYg" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="7ub-oY-dsW"/>
+                            <constraint firstItem="92R-7c-VYg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="dXU-Tp-V5B"/>
+                            <constraint firstAttribute="trailing" secondItem="92R-7c-VYg" secondAttribute="trailing" id="iQ3-IB-aSo"/>
+                            <constraint firstItem="92R-7c-VYg" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="upX-9A-aUp"/>
+                            <constraint firstItem="92R-7c-VYg" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="wnp-z3-UOV"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -46,6 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="staticBackground" width="1125" height="2001"/>
+        <image name="backgroundGradient" width="1125" height="2001"/>
     </resources>
 </document>
