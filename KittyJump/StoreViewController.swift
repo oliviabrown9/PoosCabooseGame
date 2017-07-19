@@ -123,36 +123,44 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
             x += 1
         }
         
-        slide0.image.image = #imageLiteral(resourceName: "poos")
+        slide0.image.image = #imageLiteral(resourceName: "ogStore")
         slide0.titleLabel.text = "og poos"
+        slide0.imageHeight.constant = 216
         
-        slide1.image.image = #imageLiteral(resourceName: "trotterpoos")
+        slide1.image.image = #imageLiteral(resourceName: "trotterStore")
         slide1.titleLabel.text = "trotter poos"
         slide1.costLabel.text = "1,000"
+        slide1.imageHeight.constant = 245
         
-        slide2.image.image = #imageLiteral(resourceName: "properpoos")
+        slide2.image.image = #imageLiteral(resourceName: "properStore")
         slide2.titleLabel.text = "proper poos"
         slide2.costLabel.text = "2,000"
+        slide2.imageHeight.constant = 230
         
-        slide3.image.image = #imageLiteral(resourceName: "poosrate")
+        slide3.image.image = #imageLiteral(resourceName: "rateStore")
         slide3.titleLabel.text = "poosrate"
         slide3.costLabel.text = "5,000"
+        slide3.imageHeight.constant = 217
         
-        slide4.image.image = #imageLiteral(resourceName: "quapoos")
+        slide4.image.image = #imageLiteral(resourceName: "quaStore")
         slide4.titleLabel.text = "quapoos"
         slide4.costLabel.text = "10,000"
+        slide4.imageHeight.constant = 217
     
-        slide5.image.image = #imageLiteral(resourceName: "pous")
-        slide5.titleLabel.text = "pous"
+        slide5.image.image = #imageLiteral(resourceName: "pousStore")
+        slide5.titleLabel.text = "le pous"
         slide5.costLabel.text = "25,000"
+        slide5.imageHeight.constant = 208
         
         if coins >= 100000 {
-        slide6.image.image = #imageLiteral(resourceName: "trumpoos")
+        slide6.image.image = #imageLiteral(resourceName: "trumpStore")
         slide6.titleLabel.text = "trumpoos"
+        slide6.imageHeight.constant = 216
         }
         else {
-            slide6.image.image = #imageLiteral(resourceName: "mysterypoos")
+            slide6.image.image = #imageLiteral(resourceName: "mysteryStore")
             slide6.titleLabel.text = "?????"
+            slide6.imageHeight.constant = 207
         }
         slide6.costLabel.text = "100,000"
         

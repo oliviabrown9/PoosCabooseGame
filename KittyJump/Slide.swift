@@ -17,4 +17,5 @@ class Slide: UIView {
     @IBOutlet weak var coinImage: UIImageView!
     @IBOutlet weak var coinLabel: UILabel!
     @IBOutlet weak var useButton: UIButton!
+    @IBOutlet weak var imageHeight: NSLayoutConstraint!
 }
