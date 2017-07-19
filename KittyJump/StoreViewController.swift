@@ -10,7 +10,7 @@ import UIKit
 
 var using: Int = 0
 
-class StoreViewController: UIViewController, UIScrollViewDelegate {
+class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var currentCoins: UILabel!
     @IBOutlet weak var modalView: UIView!
@@ -56,6 +56,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var pageControl: UIPageControl!
     
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,6 +72,21 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         view.bringSubview(toFront: pageControl)
         
         currentCoins.text = "\(coins)"
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        swipeRight.delegate = self
+        self.view.addGestureRecognizer(swipeRight)
+    }
+    
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if pageIndex == 0 {
+            performSegue(withIdentifier: "unwindToGameOver", sender: self)
+        }
+        }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return true
     }
     
     func buttonInUse(button: UIButton) {
