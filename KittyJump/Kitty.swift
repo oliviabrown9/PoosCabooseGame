@@ -17,9 +17,9 @@ class Kitty: SKSpriteNode {
         case kill
     }
     
-    let timeJumping: Double  = 0.2
+    let timeJumping: Double  = 0.3
     let hJumping: CGFloat = 150
-    let hHJumping: CGFloat = 300
+    let hHJumping: CGFloat = 240
     
     var kittyFState : kittyFlyingState = .normal
     // Init
