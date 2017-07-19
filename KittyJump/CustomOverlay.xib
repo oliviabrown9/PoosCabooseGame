@@ -24,6 +24,9 @@
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thy-MX-zfS">
                     <rect key="frame" x="115" y="563" width="145" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="145" id="Nhg-hY-GXB"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                     <state key="normal" title="Get Started">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,14 +39,13 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Nzm-rP-scd" firstAttribute="top" secondItem="thy-MX-zfS" secondAttribute="bottom" constant="22" id="1Fm-v5-3Ht"/>
-                <constraint firstAttribute="trailing" secondItem="thy-MX-zfS" secondAttribute="trailing" constant="115" id="Ag1-sO-gdA"/>
                 <constraint firstAttribute="trailing" secondItem="Nzm-rP-scd" secondAttribute="trailing" constant="10" id="BIT-9Z-Yuk"/>
+                <constraint firstItem="thy-MX-zfS" firstAttribute="centerX" secondItem="qRh-M2-ev8" secondAttribute="centerX" id="Ff1-zZ-X0B"/>
                 <constraint firstItem="Nzm-rP-scd" firstAttribute="leading" secondItem="qRh-M2-ev8" secondAttribute="leading" constant="10" id="JiP-0X-nls"/>
                 <constraint firstItem="aMw-dt-lF7" firstAttribute="top" secondItem="qRh-M2-ev8" secondAttribute="top" constant="20" id="Tpw-MV-U78"/>
                 <constraint firstAttribute="bottom" secondItem="Nzm-rP-scd" secondAttribute="bottom" constant="5" id="Un1-z3-Lbn"/>
                 <constraint firstAttribute="trailing" secondItem="aMw-dt-lF7" secondAttribute="trailing" constant="10" id="VcU-xR-tDj"/>
                 <constraint firstItem="aMw-dt-lF7" firstAttribute="leading" secondItem="qRh-M2-ev8" secondAttribute="leading" constant="10" id="Z2I-Rd-sye"/>
-                <constraint firstItem="thy-MX-zfS" firstAttribute="leading" secondItem="qRh-M2-ev8" secondAttribute="leading" constant="115" id="e1M-W6-TiA"/>
             </constraints>
             <connections>
                 <outlet property="buttonContinue" destination="thy-MX-zfS" id="0rk-4C-MtC"/>

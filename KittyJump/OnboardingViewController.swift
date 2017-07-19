@@ -44,15 +44,15 @@ extension OnboardingViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSour
         view?.image.image = UIImage(named: "")
         if index == 0 {
             //On the first page, change the text in the labels to say the following:
-            view?.titleLabel.text = "Tap when your Poos \n lines up with the next \n caboose."
+            view?.titleLabel.text = "Tap when your Poos lines up with the next caboose."
             view?.image.image = #imageLiteral(resourceName: "onOne")
         } else if index == 1 {
             //On the second page, change the text in the labels to say the following:
-            view?.titleLabel.text = "Each successful jump \n counts as 1 point."
+            view?.titleLabel.text = "Each successful jump counts as 1 point."
             view?.image.image = #imageLiteral(resourceName: "onTwo")
         } else {
             //On the third page, change the text in the labels to say the following:
-            view?.titleLabel.text = "Poos coin unlocks \n more pooses."
+            view?.titleLabel.text = "Poos coin unlocks more pooses."
             view?.image.image = #imageLiteral(resourceName: "onThree")
         }
         return view
