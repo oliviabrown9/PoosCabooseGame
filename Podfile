@@ -8,4 +8,5 @@ target 'KittyJump' do
   # Pods for KittyJump
 pod 'SwiftyGif'
 pod 'SwiftyOnboard'
+pod ‘SpriteKitEasingSwift’
 end

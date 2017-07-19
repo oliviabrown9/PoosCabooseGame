@@ -1,15 +1,16 @@
 //
 //  GameSettings.swift
-//  KittyJump
+//  Mookie
 //
-//  Created by Olivia Brown on 7/18/17.
-//  Copyright © 2017 Olivia Brown. All rights reserved.
+//  Created by osc_mac on 9/22/16.
+//  Copyright © 2016 com.scrape.clone. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
 var g_bPause : Bool = false
+var g_bFinishJump : Bool = false;
 
 func load()
 {
@@ -17,11 +18,14 @@ func load()
     
     let bLoad : Bool = userDefault.bool(forKey: "kittykittykitty")
     
-    if (!bLoad) {
+    if ( !bLoad ) {
         
         userDefault.set(true, forKey: "kittykittykitty")
+        
         g_bPause = false
+        
         userDefault.set(g_bPause, forKey: "kitty_game_pause")
+        
         userDefault.synchronize()
         
     }

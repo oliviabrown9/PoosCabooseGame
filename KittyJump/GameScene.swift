@@ -57,7 +57,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var trainTrackArray = [TrainTrack]()
     var grassArray = [Grass]()
     let deadline = Deadline()
-    var newDeadlinePosY: CGFloat = 0
+    var newDeadlinePosY:CGFloat = 0
     
     let leftTrain1 = LeftTrain()
     let rightTrain1 = RightTrain()
@@ -88,7 +88,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let countTrainArray = 8                  //count total trains
     
-    let timeOfTrain : Double = 4.0          //time from left to right, or from right to left of train
+    let timeOfTrain : Double = 3.5          //time from left to right, or from right to left of train
+    
+    var isStop = false
     
     
     // Starting score label set to zero & changes with current score
@@ -238,8 +240,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if (!pauseState) {
                 if kittyCurrentState == .onTrain {
                     self.physicsWorld.removeAllJoints()
-//                    kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
-                    kitty.runFlying()
+                    //                    kitty.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 60.0))
+                    kitty.animateShape(destPos: CGPoint(x: kitty.position.x,
+                                                        y: kitty.position.y + 150))
                     
                     if (!soundState) {
                         let jumpSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "jump", ofType: "mp3")!)
@@ -304,8 +307,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pauseButton = SKSpriteNode(imageNamed: "pause")
         // Put it in the center of the scene
         pauseButton.name = "pause"
-        pauseButton.size.height = 40
-        pauseButton.size.width = 40
+        pauseButton.size.height = 50
+        pauseButton.size.width = 60
         pauseButton.position = CGPoint(x:-(hud.size.width/2)+50, y: 130)
         
         hud.name = "hud"
@@ -314,7 +317,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         soundButton = SKSpriteNode(imageNamed: "mute")
         // Put it in the center of the scene
         soundButton.name = "sound"
-        soundButton.size.height = 44
+        soundButton.size.height = 60
         soundButton.size.width = 60
         soundButton.position = CGPoint(x:-(hud.size.width/2)+130, y: 130)
         
@@ -495,13 +498,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         } else {
             
-            posInit = CGPoint(x: self.frame.minX - irWagon.size.width/2 - stepPos,
+            posInit = CGPoint(x: self.frame.minX + irWagon.size.width/2 - stepPos,
                               y: yPositionC)
             
             posTo = CGPoint(x: self.frame.maxX + irWagon.size.width/2 + stepPos,
                             y: yPositionC)
             
-            resetMoveLeftTrain()
+            //            resetMoveLeftTrain()
             
         }
         
@@ -518,6 +521,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         irWagon.timeOfTrain = timeOfTrain
         
         newTrainPosY += trainDiffPosition
+        
     }
     
     func moveLeftTrain2() {
@@ -532,7 +536,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let ilTrain = leftTrainArray[newLeftTrainIndex]
         
-        let posInit = CGPoint(x: self.frame.maxX + ilTrain.size.width/2 - stepPos,
+        let posInit = CGPoint(x: self.frame.maxX - ilTrain.size.width/2 - stepPos,
                               y: yPositionC)
         
         let posTo = CGPoint(x: self.frame.minX - ilTrain.size.width/2,
@@ -550,13 +554,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         ilTrain.timeOfTrain = timeOfTrain
         
-        resetMoveRightTrain()
+        //        resetMoveRightTrain()
         
         newTrainPosY += trainDiffPosition
         
     }
     
-    // reset the moving of right train from current position to purposeful position
+    //re-set the moving of right train from current position to purposefull position
     func resetMoveRightTrain()
     {
         let irWagon = rightTrainArray[newRightTrainIndex]
@@ -589,16 +593,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let posInitR = CGPoint(x: irWagon.position.x - stepPos,
                                    y: irWagon.position.y)
             
-            let posToR = CGPoint(x: self.frame.maxX + irWagon.size.width/2 + stepPos,
+            let posToR = CGPoint(x: self.frame.maxX + irWagon.size.width + posInitR.x + stepPos,
                                  y: irWagon.position.y)
             
             irWagon.position = posInitR
             
             let actR1 = SKAction.move(to: posInitR, duration: 0.0)
             
-            let timeOfT = Double( (posToR.x - posInitR.x) / posToR.x ) * timeOfTrain
+            //            let timeOfT = Double( (posToR.x - posInitR.x) / posToR.x ) * timeOfTrain
             
-            let actR2 = SKAction.move(to: posToR, duration: timeOfT)
+            let actR2 = SKAction.move(to: posToR, duration: timeOfTrain)
             
             let actR = SKAction.sequence([actR1, actR2])
             
@@ -608,7 +612,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    // reset the moving of left train from current position to purposeful position
+    //re-set the moving of left train from current position to purposefull position
     func resetMoveLeftTrain()
     {
         let ilTrain = leftTrainArray[newLeftTrainIndex]
@@ -640,16 +644,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let posInitL = CGPoint(x: ilTrain.position.x - stepPos,
                                    y: ilTrain.position.y)
             
-            let posToL = CGPoint(x: self.frame.minX - ilTrain.size.width/2,
+            let posToL = CGPoint(x: posInitL.x - (self.frame.maxX + ilTrain.size.width),
                                  y: ilTrain.position.y)
             
             ilTrain.position = posInitL
             
             let act1 = SKAction.move(to: posInitL, duration: 0.0)
             
-            let timeOfT = Double( (posInitL.x - posToL.x) / self.frame.maxX ) * timeOfTrain
+            //            let timeOfT = Double( (posInitL.x - posToL.x) / self.frame.maxX ) * timeOfTrain
             
-            let act2 = SKAction.move(to: posToL, duration: timeOfT)
+            let act2 = SKAction.move(to: posToL, duration: timeOfTrain)
             
             let act = SKAction.sequence([act1, act2])
             
@@ -673,6 +677,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
+        if (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryBorder) || (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryDeadline) {
+            
+            self.stop()
+        }
+        
+        if isStop {
+            
+            return
+            
+        }
+        
         // Handles left train & creates a right train
         if kittyPosition == .RightTrain {
             
@@ -680,9 +695,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if (contact.contactPoint.x > (secondBody.node!.frame.maxX - 100)) {
                     
-                    if kitty.kittyFState == .onDown {
+                    if g_bFinishJump {
                         
-                        kitty.resetStateToNormal()
+                        g_bFinishJump = false
                         
                         switchJointL(iWagon: secondBody.node! as! LeftTrain)
                         changeTrackAndGrassInNewLocation()
@@ -702,6 +717,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
                 else {
+                    stop()
                     
                 }
             }
@@ -713,9 +729,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if (contact.contactPoint.x < (secondBody.node!.frame.minX + 100)) {
                     
-                    if kitty.kittyFState == .onDown {
+                    if g_bFinishJump {
                         
-                        kitty.resetStateToNormal()
+                        g_bFinishJump = false
                         
                         switchJoint(iWagon:secondBody.node! as! RightTrain)
                         changeTrackAndGrassInNewLocation()
@@ -735,6 +751,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
                 else {
+                    stop()
                     
                 }
             }
@@ -780,16 +797,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             background.run(action)
             
             isUpdateCameraPosY = false
-        }
-        
-        if kitty.kittyFState == .kill
-        {
-            stop()
-        }
-        
-        if (kitty.position.x < self.frame.minX + kitty.size.width/2) || (kitty.position.x > self.frame.maxX - kitty.size.width/2)
-        {
-            stop()
         }
     }
     
@@ -887,6 +894,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Game lost
     func stop() {
+        
+        isStop = true
+        
+        kitty.removeAllActions()
         
         backgroundMusicPlayer.stop()
         

@@ -10,7 +10,7 @@ import SpriteKit
 
 class RightTrain : SKSpriteNode {
     
-    var timeOfTrain: Double = 4.0
+    var timeOfTrain : Double = 4.0
     
     // Init
     init() {
@@ -19,13 +19,13 @@ class RightTrain : SKSpriteNode {
         let trainnumber:Int = Int(randomNum)
         var str_trainname:String!
         var size_train:Int!
-        switch (trainnumber % 9) {
+        switch (trainnumber % 8) {
         case 0:
             str_trainname = "trainrightfacing3.png"
             size_train = 480
         case 1:
-            str_trainname = "trainrightfacing2.png"
-            size_train = 360
+            str_trainname = "trainrightfacing4.png"
+            size_train = 600
         case 2:
             str_trainname = "trainrightfacing3.png"
             size_train = 480
@@ -39,11 +39,14 @@ class RightTrain : SKSpriteNode {
             str_trainname = "trainrightfacing4.png"
             size_train = 600
         case 6:
+            str_trainname = "trainrightfacing3.png"
+            size_train = 480
+        case 7:
             str_trainname = "trainrightfacing5.png"
             size_train = 720
         default:
-            str_trainname = "trainrightfacing2.png"
-            size_train = 360
+            str_trainname = "trainrightfacing4.png"
+            size_train = 600
         }
         let texture = SKTexture(imageNamed: str_trainname)
         super.init(texture: texture, color: UIColor.black, size: CGSize(width: size_train, height: 90))

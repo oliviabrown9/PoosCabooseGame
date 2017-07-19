@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import SpriteKitEasingSwift
 
 class Kitty: SKSpriteNode {
     
@@ -17,9 +18,9 @@ class Kitty: SKSpriteNode {
         case kill
     }
     
-    let timeJumping: Double  = 0.3
-    let hJumping: CGFloat = 150
-    let hHJumping: CGFloat = 240
+    let timeJumping :   Double  = 0.1
+    let hJumping :      CGFloat = 110
+    let hHJumping :     CGFloat = 110
     
     var kittyFState : kittyFlyingState = .normal
     // Init
@@ -54,83 +55,95 @@ class Kitty: SKSpriteNode {
         physicsBody!.isDynamic = true
     }
     
-    func runFlying()
-    {
-        let posy1 = self.position.y + hHJumping
+    func animateShape(destPos : CGPoint) {
         
-        let posy2 = self.position.y + hJumping
+        let destP = destPos
         
-        let actCallBack1 = SKAction.run {
-            
-            self.kittyFState = .onUp
-            
-            self.zPosition = 3
-            
-        }
-        
-        let actUp = SKAction.move(to: CGPoint(x: self.position.x,
-                                              y: posy1),
-                                  duration: timeJumping)
-        
-        let actCallBack2 = SKAction.run {
-            
-            self.kittyFState = .onDown
-            
-            self.zPosition = 2
-            
-        }
-        
-        let actDown = SKAction.move(to: CGPoint(x: self.position.x,
-                                                y: posy2),
-                                    duration: timeJumping)
-        
-        let actCallBack3 = SKAction.run {
-            
-            self.kittyFState = .kill
-        }
-        
-        let actSeq1 = SKAction.sequence([actCallBack1, actUp, actCallBack2, actDown, actCallBack3])
-        
-        let actScalX = SKAction.scaleX(to: 0.8, duration: timeJumping)
-        
-        let actScalY = SKAction.scaleY(to: 1.2, duration: timeJumping)
-        
-        let actG1 = SKAction.group([actScalX, actScalY])
-        
-        let actScalXDown = SKAction.scaleX(to: 1.2, duration: timeJumping)
-        
-        let actScalYDown = SKAction.scaleY(to: 0.8, duration: timeJumping)
-        
-        let actG2 = SKAction.group([actScalXDown, actScalYDown])
-        
-        let actScalXN = SKAction.scaleX(to: 1.0, duration: timeJumping/2)
-        
-        let actScalYN = SKAction.scaleY(to: 1.0, duration: timeJumping/2)
-        
-        let actG3 = SKAction.group([actScalXN, actScalYN])
-        
-        let actCallBack4 = SKAction.run {
-            
-            self.kittyFState = .kill
-        }
-        
-        let actScalS = SKAction.sequence([actG1, actG2, actG3, actCallBack4])
-        
-        let actGroup = SKAction.group([actSeq1, actScalS])
-        
-        self.run(actGroup)
-        
+        self.run(SKEase.move(easeFunction: .curveTypeQuartic,
+                             easeType: EaseType.easeTypeOut,
+                             time: 0.2,
+                             from: self.position ,
+                             to: destP),
+                 completion: { () -> Void in
+                    g_bFinishJump = true
+        })
     }
     
-    func resetStateToNormal()
-    {
-        self.removeAllActions()
-        
-        self.kittyFState = .normal
-        
-        self.xScale = 1.0
-        
-        self.yScale = 1.0
-        
-    }
+    //    func runFlying()
+    //    {
+    //        let posy1 = self.position.y + hHJumping
+    //
+    //        let posy2 = self.position.y + hJumping
+    //
+    //        let actCallBack1 = SKAction.run {
+    //
+    //            self.kittyFState = .onUp
+    //
+    //        }
+    //
+    //        let actUp = SKAction.move(to: CGPoint(x: self.position.x,
+    //                                              y: posy1),
+    //                                  duration: timeJumping)
+    //
+    //        let actCallBack2 = SKAction.run {
+    //
+    //            self.kittyFState = .onDown
+    //
+    //        }
+    //
+    //        let actDown = SKAction.move(to: CGPoint(x: self.position.x,
+    //                                                y: posy2),
+    //                                    duration: timeJumping)
+    //
+    //        let actCallBack3 = SKAction.run {
+    //
+    //            self.kittyFState = .kill
+    //
+    //        }
+    //
+    //        let actSeq1 = SKAction.sequence([actCallBack1, actUp, actCallBack2, actDown, actCallBack3])
+    //
+    //        let actScalX = SKAction.scaleX(to: 1.0, duration: timeJumping)
+    //
+    //        let actScalY = SKAction.scaleY(to: 1.0, duration: timeJumping)
+    //
+    //        let actG1 = SKAction.group([actScalX, actScalY])
+    //
+    //        let actScalXDown = SKAction.scaleX(to: 1.0, duration: timeJumping)
+    //
+    //        let actScalYDown = SKAction.scaleY(to: 1.0, duration: timeJumping)
+    //
+    //        let actG2 = SKAction.group([actScalXDown, actScalYDown])
+    //
+    //        let actScalXN = SKAction.scaleX(to: 1.0, duration: timeJumping)
+    //
+    //        let actScalYN = SKAction.scaleY(to: 1.0, duration: timeJumping)
+    //
+    //        let actG3 = SKAction.group([actScalXN, actScalYN])
+    //
+    //        let actCallBack4 = SKAction.run {
+    //
+    //            self.kittyFState = .kill
+    //
+    //        }
+    //
+    //        let actScalS = SKAction.sequence([actG1, actG2, actG3, actCallBack4])
+    //
+    //        let actGroup = SKAction.group([actSeq1, actScalS])
+    //
+    //        self.run(actGroup)
+    //        
+    //    }
+    //    
+    //    func resetStateToNomal()
+    //    {
+    //        self.removeAllActions()
+    //        
+    //        self.kittyFState = .normal
+    //        
+    //        self.xScale = 1.0
+    //        
+    //        self.yScale = 1.0
+    //        
+    //    }
 }
