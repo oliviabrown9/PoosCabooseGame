@@ -25,6 +25,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     @IBAction func backButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "unwindToGameOver", sender: self)
     }
+    @IBOutlet weak var inviteFriendsView: UIView!
     
     // Slides
     let slide0 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
@@ -410,9 +411,15 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
     }
     
+    func inviteFriends() {
+        inviteFriendsView.layer.cornerRadius = 28
+        inviteFriendsView.isHidden = false
+        addCoinsView.isHidden = true
+    }
+    
     func addCoinsGestures() {
         
-        let firstTap = UITapGestureRecognizer(target: self, action: #selector(buyCoins))
+        let firstTap = UITapGestureRecognizer(target: self, action: #selector(inviteFriends))
         firstAddCoins.addGestureRecognizer(firstTap)
         let secondTap = UITapGestureRecognizer(target: self, action: #selector(buyCoins))
         secondAddCoins.addGestureRecognizer(secondTap)
@@ -591,12 +598,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             // get the full name
             
             let name = CNContactFormatter.string(from: contact, style: .fullName) ?? "NO NAME"
-            print("name: \(name)")
             strName?.pointee = name
             
             for phoneNumber:CNLabeledValue in contact.phoneNumbers {
                 let number  = phoneNumber.value
-                print("\(number.stringValue)")
                 
                 let tempNumString = "0123456789"
                 
