@@ -11,6 +11,8 @@ import UIKit
 class ContactsTableViewCell: UITableViewCell {
 
  @IBOutlet weak var nameLabel: UILabel!
+
+    var viewController: UIViewController?
     
     override func awakeFromNib() {
         super.awakeFromNib()

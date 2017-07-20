@@ -525,6 +525,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: kCellID, for: indexPath) as! ContactsTableViewCell
+            
+            cell.viewController = self
             let contact = contacts[indexPath.row]
             
             // get the full name
@@ -594,8 +596,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let contact = contacts[indexPath.row]
-            // get the full name
-            
             selectedPhoneNumber = ""
             
             for phoneNumber:CNLabeledValue in contact.phoneNumbers {
@@ -609,6 +609,19 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                     }
                 }
                 break
+            }
+            
+            let messageComposer = MessageComposer()
+            
+            if (messageComposer.canSendText()) {
+                
+                // Obtain a configured MFMessageComposeViewController
+                let messageComposeVC = messageComposer.configuredMessageComposeViewController()
+                self.present(messageComposeVC, animated: true, completion: nil)
+            } else {
+                let errorAlert = UIAlertController(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+                self.present(errorAlert, animated: true){}
             }
         }
     
