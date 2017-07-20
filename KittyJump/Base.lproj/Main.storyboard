@@ -751,25 +751,26 @@
                                             <constraint firstItem="Ws1-xm-H8O" firstAttribute="centerX" secondItem="yf0-mT-b7O" secondAttribute="centerX" constant="-30.5" id="m9f-XQ-fpT"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Frc-fu-qgl">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Frc-fu-qgl">
                                         <rect key="frame" x="20" y="282" width="285" height="268"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactsTableViewCell" rowHeight="30" id="F5F-zV-Is5" customClass="ContactsTableViewCell" customModule="KittyJump" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="285" height="30"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactsTableViewCell" rowHeight="50" id="F5F-zV-Is5" customClass="ContactsTableViewCell" customModule="KittyJump" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="285" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F5F-zV-Is5" id="SXe-UJ-mLX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="285" height="29.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="285" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="invite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbP-Wc-ri2">
-                                                            <rect key="frame" x="242" y="4" width="43" height="22"/>
+                                                            <rect key="frame" x="242" y="14" width="43" height="22"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsK-sI-XVz">
-                                                            <rect key="frame" x="0.0" y="4" width="40" height="22"/>
+                                                            <rect key="frame" x="0.0" y="14" width="40" height="22"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -800,6 +801,9 @@
                                         </constraints>
                                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="nFG-jk-vvE" id="6Ch-nd-HuP"/>
+                                        </connections>
                                     </searchBar>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
