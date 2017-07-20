@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import Contacts
 
 var using: Int = 0
 
-class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
+class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var currentCoins: UILabel!
     @IBOutlet weak var coinImage: UIImageView!
@@ -65,6 +66,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         let slides: [Slide] = createSlides()
         setupScrollView(slides: slides)
+        
+        checkAuthorization()
+        
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         scrollView.delegate = self
         pageControl.numberOfPages = slides.count
@@ -147,7 +152,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         slide0.imageHeight.constant = 216
         
         slide1.image.image = #imageLiteral(resourceName: "trotterStore")
-        slide1.titleLabel.text = "trotter poos"
+        slide1.titleLabel.text = "poos trotter"
         slide1.costLabel.text = "1,000"
         slide1.imageHeight.constant = 245
         
@@ -456,8 +461,168 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
     }
     
+    // CONTACTS
+
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+        var strName : UnsafeMutablePointer<String>? = nil
+        var strNumber : UnsafeMutablePointer<String>? = nil
+        
+        var contacts = [CNContact]()
+        var authStatus: CNAuthorizationStatus = .denied {
+            didSet {
+                searchBar.isUserInteractionEnabled = authStatus == .authorized
+                
+                if authStatus == .authorized { // all search
+                    contacts = fetchContacts("")
+                    tableView.reloadData()
+                }
+            }
+        }
+        
+        fileprivate let kCellID = "ContactsTableViewCell"
+    
+        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            contacts = fetchContacts(searchText)
+            tableView.reloadData()
+        }
+        
+        func numberOfSections(in tableView: UITableView) -> Int {
+            return 1
+        }
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return contacts.count
+        }
+    
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: kCellID, for: indexPath) as! ContactsTableViewCell
+            let contact = contacts[indexPath.row]
+            
+            // get the full name
+            let fullName = CNContactFormatter.string(from: contact, style: .fullName) ?? "NO NAME"
+            cell.nameLabel?.text = fullName.lowercased()
+            
+            return cell
+        }
+        
+        fileprivate func checkAuthorization() {
+            // get current status
+            let status = CNContactStore.authorizationStatus(for: .contacts)
+            authStatus = status
+            
+            switch status {
+            case .notDetermined: // case of first access
+                CNContactStore().requestAccess(for: .contacts) { [unowned self] (granted, error) in
+                    if granted {
+                        NSLog("Permission allowed")
+                        self.authStatus = .authorized
+                    } else {
+                        NSLog("Permission denied")
+                        self.authStatus = .denied
+                    }
+                }
+            case .restricted, .denied:
+                NSLog("Unauthorized")
+                
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { (action: UIAlertAction) in
+                    let url = URL(string: UIApplicationOpenSettingsURLString)
+                    UIApplication.shared.openURL(url!)
+                })
+                showAlert(
+                    title: "Permission Denied",
+                    message: "You have not permission to access contacts. Please allow the access the Settings screen.",
+                    actions: [okAction, settingsAction])
+            case .authorized:
+                NSLog("Authorized")
+            }
+        }
+        
+        
+        // fetch the contact of matching names
+        fileprivate func fetchContacts(_ name: String) -> [CNContact] {
+            let store = CNContactStore()
+            
+            do {
+                let request = CNContactFetchRequest(keysToFetch: [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor])
+                if name.isEmpty { // all search
+                    request.predicate = nil
+                } else {
+                    request.predicate = CNContact.predicateForContacts(matchingName: name)
+                }
+                
+                var contacts = [CNContact]()
+                try store.enumerateContacts(with: request, usingBlock: { (contact, error) in
+                    contacts.append(contact)
+                })
+                
+                return contacts
+            } catch let error as NSError {
+                NSLog("Fetch error \(error.localizedDescription)")
+                return []
+            }
+        }
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let contact = contacts[indexPath.row]
+            // get the full name
+            
+            let name = CNContactFormatter.string(from: contact, style: .fullName) ?? "NO NAME"
+            print("name: \(name)")
+            strName?.pointee = name
+            
+            for phoneNumber:CNLabeledValue in contact.phoneNumbers {
+                let number  = phoneNumber.value
+                print("\(number.stringValue)")
+                
+                let tempNumString = "0123456789"
+                
+                var selectedPhoneNumber = ""
+                
+                for c in number.stringValue.characters {
+                    if tempNumString.characters.contains(c) {
+                        selectedPhoneNumber.append(c)
+                    }
+                }
+                
+                strNumber?.pointee = selectedPhoneNumber
+                
+                break
+            }
+        }
+    
+        fileprivate func showAlert(title: String, message: String, actions: [UIAlertAction]) {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            
+            for action in actions {
+                alert.addAction(action)
+            }
+            
+            DispatchQueue.main.async(execute: { [unowned self] () in
+                self.present(alert, animated: true, completion: nil)
+            })
+        }
+    
     // Hide status bar
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+}
+extension String {
+    
+    subscript (i: Int) -> Character {
+        return self[self.characters.index(self.startIndex, offsetBy: i)]
+    }
+    
+    subscript (i: Int) -> String {
+        return String(self[i] as Character)
+    }
+    
+    subscript (r: Range<Int>) -> String {
+        let start = characters.index(startIndex, offsetBy: r.lowerBound)
+        let end = characters.index(start, offsetBy: r.upperBound - r.lowerBound)
+        return self[Range(start ..< end)]
     }
 }

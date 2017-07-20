@@ -16,6 +16,7 @@
 		756C47AB1F197A3100B034C0 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756C47AA1F197A3100B034C0 /* Slide.swift */; };
 		759E541E1F182F33003B6B3C /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 759E541D1F182F33003B6B3C /* splash.gif */; };
 		759E54221F185E94003B6B3C /* newHighScore.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 759E54211F185E94003B6B3C /* newHighScore.mp3 */; };
+		75B5B1711F2140F6008D8584 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5B1701F2140F6008D8584 /* ContactsTableViewCell.swift */; };
 		75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */; };
 		75EF6CCD1F1569B7004AD11F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EF6CCC1F1569B7004AD11F /* StoreKit.framework */; };
 		75F3FE391F1D608B001E0C0D /* CustomPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F3FE351F1D608B001E0C0D /* CustomPage.xib */; };
@@ -57,6 +58,7 @@
 		756C47AA1F197A3100B034C0 /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		759E541D1F182F33003B6B3C /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		759E54211F185E94003B6B3C /* newHighScore.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = newHighScore.mp3; sourceTree = "<group>"; };
+		75B5B1701F2140F6008D8584 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		75EF6CCC1F1569B7004AD11F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		75F3FE351F1D608B001E0C0D /* CustomPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPage.xib; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				756C47A81F197A0D00B034C0 /* Slide.xib */,
 				756C47AA1F197A3100B034C0 /* Slide.swift */,
 				D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */,
+				75B5B1701F2140F6008D8584 /* ContactsTableViewCell.swift */,
 				D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */,
 				D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */,
 				D7C5EAB91EEB5C21007DA71A /* GameScene.swift */,
@@ -366,6 +369,7 @@
 				75F3FE3C1F1D608B001E0C0D /* CustomOverlay.swift in Sources */,
 				75F3FE401F1EA5AA001E0C0D /* GameSettings.swift in Sources */,
 				D7C5EAB41EEB5C21007DA71A /* AppDelegate.swift in Sources */,
+				75B5B1711F2140F6008D8584 /* ContactsTableViewCell.swift in Sources */,
 				D7C5EAEE1EEC0AC0007DA71A /* Kitty.swift in Sources */,
 				D1C52BEF1EF5911200115764 /* Deadline.swift in Sources */,
 				75F3FE3E1F1D617A001E0C0D /* OnboardingViewController.swift in Sources */,
