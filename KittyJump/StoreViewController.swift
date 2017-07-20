@@ -13,6 +13,7 @@ var using: Int = 0
 class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var currentCoins: UILabel!
+    @IBOutlet weak var coinImage: UIImageView!
     @IBOutlet weak var modalView: UIView!
     @IBOutlet weak var modalTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var confirmButton: UIButton!
@@ -35,8 +36,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
-//    var coins = SharingManager.sharedInstance.lifetimeScore
-    var coins = 1000000
+    var coins = SharingManager.sharedInstance.lifetimeScore
     var cost: Int = 0
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
@@ -454,7 +454,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         self.present(alertController, animated: true) {
         }
-        
     }
     
     // Hide status bar

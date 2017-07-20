@@ -732,6 +732,7 @@
                         <outlet property="addCoinsLabel" destination="dzl-ob-8to" id="Cne-mB-Di3"/>
                         <outlet property="addCoinsView" destination="12T-x0-6aE" id="aRQ-ka-x5D"/>
                         <outlet property="addModalTopConstraint" destination="4vo-f8-fua" id="vlT-ju-aDB"/>
+                        <outlet property="coinImage" destination="tiY-Z9-ZzS" id="hgs-Oq-M9w"/>
                         <outlet property="confirmButton" destination="873-Xu-xdu" id="BAa-7G-QYT"/>
                         <outlet property="currentCoins" destination="Zen-qP-XiF" id="laY-hF-lrx"/>
                         <outlet property="darkenedView" destination="CkV-Lz-Jbm" id="P8g-y0-tNl"/>

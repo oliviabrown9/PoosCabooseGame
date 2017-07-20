@@ -79,7 +79,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let countTrainArray = 8
     let timeOfTrain: Double = 3.5
     var isStop = false
-    var nFailTime:Int = 0;
     
     
     // Starting score label set to zero & changes with current score
@@ -610,7 +609,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     if finishJump {
                         
                         finishJump = false
-                        nFailTime = 0
                         
                         switchJointL(iWagon: secondBody.node! as! LeftTrain)
                         changeTrackAndGrassInNewLocation()
@@ -639,7 +637,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     if finishJump {
                         finishJump = false
-                        nFailTime = 0
                         
                         switchJoint(iWagon:secondBody.node! as! RightTrain)
                         changeTrackAndGrassInNewLocation()
@@ -698,19 +695,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             kittyCamera.run(action)
             background.run(action)
             isUpdateCameraPosY = false
-        }
-        if finishJump {
-            
-            nFailTime += 1
-            
-            if nFailTime == 5 {
-                
-                stop()
-                
-                finishJump = false
-                
-                nFailTime = 0
-            }
         }
     }
     
@@ -804,8 +788,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         kitty.removeAllActions()
         isStop = true
-        
-         finishJump = false
         
         let failureGenerator = UINotificationFeedbackGenerator()
         failureGenerator.notificationOccurred(.error)
