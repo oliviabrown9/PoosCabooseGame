@@ -439,6 +439,27 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         })
     }
     
+    @IBOutlet weak var shareTopConstraint: NSLayoutConstraint!
+    
+    func hideShareModal() {
+        view.layoutIfNeeded()
+        darkenedView.isHidden = true
+        UIView.animate(withDuration: 0.5, animations: {
+            self.shareTopConstraint.constant += self.view.bounds.height
+            self.view.layoutIfNeeded()
+        }, completion: { (finished: Bool) in
+            if finished {
+                self.addCoinsView.isHidden = true
+                self.addModalTopConstraint.constant -= self.view.bounds.height
+                self.peek.isHidden = true
+            }
+        })
+    }
+
+    @IBAction func cancelShare(_ sender: Any) {
+        hideShareModal()
+    }
+    
     @IBAction func cancelAddCoins(_ sender: Any) {
         hideAddCoinsModal()
     }
