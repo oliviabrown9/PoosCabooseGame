@@ -10,6 +10,7 @@ import UIKit
 import Contacts
 
 var using: Int = 0
+var selectedPhoneNumber: String = ""
 
 class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate {
     
@@ -494,8 +495,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-        var strName : UnsafeMutablePointer<String>? = nil
-        var strNumber : UnsafeMutablePointer<String>? = nil
         
         var contacts = [CNContact]()
         var authStatus: CNAuthorizationStatus = .denied {
@@ -597,24 +596,18 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             let contact = contacts[indexPath.row]
             // get the full name
             
-            let name = CNContactFormatter.string(from: contact, style: .fullName) ?? "NO NAME"
-            strName?.pointee = name
+            selectedPhoneNumber = ""
             
             for phoneNumber:CNLabeledValue in contact.phoneNumbers {
                 let number  = phoneNumber.value
                 
                 let tempNumString = "0123456789"
                 
-                var selectedPhoneNumber = ""
-                
                 for c in number.stringValue.characters {
                     if tempNumString.characters.contains(c) {
                         selectedPhoneNumber.append(c)
                     }
                 }
-                
-                strNumber?.pointee = selectedPhoneNumber
-                
                 break
             }
         }
