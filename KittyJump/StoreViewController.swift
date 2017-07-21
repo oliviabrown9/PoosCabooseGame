@@ -8,11 +8,12 @@
 
 import UIKit
 import Contacts
+import StoreKit
 
 var using: Int = 0
 var selectedPhoneNumber: String = ""
 
-class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate {
+class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     @IBOutlet weak var currentCoins: UILabel!
     @IBOutlet weak var coinImage: UIImageView!
@@ -84,7 +85,19 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         swipeRight.delegate = self
         self.view.addGestureRecognizer(swipeRight)
-    }
+        
+        if (SKPaymentQueue.canMakePayments()) {
+            print("IAP enabled")
+            let productID: NSSet = NSSet(objects: "com.pooscaboose.onek", "com.pooscaboose.fivek", "com.pooscaboose.tenk", "com.pooscaboose.hundredk")
+            let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+            
+            request.delegate = self
+            request.start()
+        }
+            else {
+                print("please enable IAPS")
+            }
+        }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if pageIndex == 0 {
@@ -472,21 +485,126 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         hideAddCoinsModal()
     }
     
+    var coinsToAdd: Int = 0
+    
     func buyCoins(_ recognizer: UITapGestureRecognizer) {
         
         let viewTapped = recognizer.view
         viewTapped?.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
         
-        let alertController = UIAlertController(title: "Oops!", message: "You can't buy things in beta!", preferredStyle: .alert)
-        
-        let OKAction = UIAlertAction(title: "OK", style: .default) { action in
-            viewTapped?.backgroundColor = UIColor.white
-            alertController.dismiss(animated: true, completion: nil)
+        if viewTapped == secondAddCoins {
             
+            print(list)
+            for product in list {
+                let prodID = product.productIdentifier
+                if prodID == "com.pooscaboose.onek" {
+                    p = product
+                    buyProduct()
+                }
+            }
         }
-        alertController.addAction(OKAction)
+        else if viewTapped == thirdAddCoins {
+            for product in list {
+                let prodID = product.productIdentifier
+                if prodID == "com.pooscaboose.fivek" {
+                    p = product
+                    buyProduct()
+                }
+            }
+        }
+        else if viewTapped == fourthAddCoins {
+            for product in list {
+                let prodID = product.productIdentifier
+                if prodID == "com.pooscaboose.tenk" {
+                    p = product
+                    buyProduct()
+                }
+            }
+        }
+        else if viewTapped == fifthAddCoins {
+            for product in list {
+                let prodID = product.productIdentifier
+                if prodID == "com.pooscaboose.hundredk" {
+                    p = product
+                    buyProduct()
+                }
+            }
+        }
+    }
+    
+    func buyProduct() {
+        print("buy " + p.productIdentifier)
+        let pay = SKPayment(product: p)
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().add(pay as SKPayment)
         
-        self.present(alertController, animated: true) {
+    }
+    
+    func addPurchasedCoins(amount: Int) {
+        coins += coinsToAdd
+        SharingManager.sharedInstance.lifetimeScore += coinsToAdd
+        currentCoins.text = "\(coins)"
+    }
+    
+    var list = [SKProduct]()
+    var p = SKProduct()
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        print("product request")
+        let myProduct = response.products
+        for product in myProduct {
+            print(product.productIdentifier)
+            print(product.localizedTitle)
+            print(product.price)
+            
+            list.append(product)
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print("add payment")
+        
+        for transaction: AnyObject in transactions {
+            let trans = transaction as! SKPaymentTransaction
+            print(trans.error as Any)
+            
+            switch trans.transactionState {
+            case .purchased:
+                print("buy ok, unlock IAP here")
+                print(p.productIdentifier)
+                
+                let prodID = p.productIdentifier
+                switch prodID {
+                    case "com.pooscaboose.onek":
+                    print("1k")
+                    addPurchasedCoins(amount: 1000)
+                    
+                    case "com.pooscaboose.fivek":
+                    print("5k")
+                    addPurchasedCoins(amount: 5000)
+                    
+                    case "com.pooscaboose.tenk":
+                    print("10k")
+                    addPurchasedCoins(amount: 10000)
+                    
+                    case "com.pooscaboose.hundredk":
+                    print("1k")
+                    addPurchasedCoins(amount: 100000)
+                    
+                    default:
+                    print("IAP not found")
+                }
+                queue.finishTransaction(trans)
+                
+            case .failed:
+                print("buy error")
+                queue.finishTransaction(trans)
+                break
+            
+            default:
+                print("default")
+                break
+            }
         }
     }
     
@@ -558,7 +676,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { (action: UIAlertAction) in
                     let url = URL(string: UIApplicationOpenSettingsURLString)
-                    UIApplication.shared.openURL(url!)
+                    self.open(link: String(describing: url))
                 })
                 showAlert(
                     title: "Permission Denied",
@@ -568,6 +686,21 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 NSLog("Authorized")
             }
         }
+    // Opening URLs with iOS 10 & below
+    func open(link: String) {
+        if let url = URL(string: link) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:],
+                                          completionHandler: {
+                                            (success) in
+                                            print("Open \(link): \(success)")
+                })
+            } else {
+                let success = UIApplication.shared.openURL(url)
+                print("Open \(link): \(success)")
+            }
+        }
+    }
         
         
         // fetch the contact of matching names
@@ -627,6 +760,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
         fileprivate func showAlert(title: String, message: String, actions: [UIAlertAction]) {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            
             
             for action in actions {
                 alert.addAction(action)
