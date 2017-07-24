@@ -67,9 +67,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         _ = tapGestureRecognizer.view as! UIImageView
-        
-        // Your action
-        print("Clicked");
     }
     
     override func viewDidLoad() {
@@ -101,7 +98,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         self.view.addGestureRecognizer(swipeRight)
         
         if (SKPaymentQueue.canMakePayments()) {
-            print("IAP enabled")
             let productID: NSSet = NSSet(objects: "com.pooscaboose.onek", "com.pooscaboose.fivek", "com.pooscaboose.tenk", "com.pooscaboose.hundredk")
             let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
             
@@ -109,7 +105,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             request.start()
         }
         else {
-            print("please enable IAPS")
         }
     }
     
@@ -438,7 +433,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         view.layoutIfNeeded()
         
         darkenedView.isHidden = false
-        print("Coin view clicked");
         modalView.isHidden = true
         addCoinsView.layer.cornerRadius = 28
         addCoinsLabel.text = "Pick your poos coin \n package"
@@ -514,8 +508,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         viewTapped?.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
         
         if viewTapped == secondAddCoins {
-            
-            print(list)
             for product in list {
                 let prodID = product.productIdentifier
                 if prodID == "com.pooscaboose.onek" {
@@ -554,7 +546,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     
     func buyProduct() {
-        print("buy " + p.productIdentifier)
         let pay = SKPayment(product: p)
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().add(pay as SKPayment)
@@ -572,45 +563,30 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     var p = SKProduct()
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print("product request")
         let myProduct = response.products
         for product in myProduct {
-            print(product.productIdentifier)
-            print(product.localizedTitle)
-            print(product.price)
-            
             list.append(product)
         }
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        print("add payment")
-        
         for transaction: AnyObject in transactions {
             let trans = transaction as! SKPaymentTransaction
-            print(trans.error as Any)
             
             switch trans.transactionState {
             case .purchased:
-                print("buy ok, unlock IAP here")
-                print(p.productIdentifier)
-                
                 let prodID = p.productIdentifier
                 switch prodID {
                 case "com.pooscaboose.onek":
-                    print("1k")
                     addPurchasedCoins(amount: 1000)
                     
                 case "com.pooscaboose.fivek":
-                    print("5k")
                     addPurchasedCoins(amount: 5000)
                     
                 case "com.pooscaboose.tenk":
-                    print("10k")
                     addPurchasedCoins(amount: 10000)
                     
                 case "com.pooscaboose.hundredk":
-                    print("1k")
                     addPurchasedCoins(amount: 100000)
                     
                 default:
@@ -619,12 +595,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 queue.finishTransaction(trans)
                 
             case .failed:
-                print("buy error")
                 queue.finishTransaction(trans)
                 break
                 
             default:
-                print("default")
                 break
             }
         }
@@ -769,7 +743,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         let messageComposer = MessageComposer()
         
         let textMessageRecipients = ["\(selectedPhoneNumber)"]
-        print("\(textMessageRecipients)")
         if (messageComposer.canSendText()) {
             let messageVC = MFMessageComposeViewController()
             
@@ -789,13 +762,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         switch (result.rawValue) {
         case MessageComposeResult.cancelled.rawValue:
-            print("Message was cancelled")
             controller.dismiss(animated: true, completion: nil)
         case MessageComposeResult.failed.rawValue:
-            print("Message failed")
             controller.dismiss(animated: true, completion: nil)
         case MessageComposeResult.sent.rawValue:
-            print("Message was sent")
             addPurchasedCoins(amount: 250)
             controller.dismiss(animated: true, completion: nil)
         default:
