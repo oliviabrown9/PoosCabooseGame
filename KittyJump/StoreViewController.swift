@@ -15,7 +15,7 @@ import SwiftyGif
 var using: Int = 0
 var selectedPhoneNumber: String = ""
 
-class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver ,MFMessageComposeViewControllerDelegate {
+class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, MFMessageComposeViewControllerDelegate {
     
     @IBOutlet weak var currentCoins: UILabel!
     @IBOutlet weak var coinImage: UIImageView!
@@ -482,6 +482,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         darkenedView.isHidden = true
         UIView.animate(withDuration: 0.5, animations: {
             self.shareTopConstraint.constant += self.view.bounds.height
+            self.view.endEditing(true)
             self.view.layoutIfNeeded()
         }, completion: { (finished: Bool) in
             if finished {
@@ -548,11 +549,12 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         let pay = SKPayment(product: p)
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().add(pay as SKPayment)
-        
     }
     
     @IBOutlet weak var gifView: UIImageView!
     func addPurchasedCoins(amount: Int) {
+        
+        gifView.isHidden = false
         
         let gif = UIImage(gifName: "coin.gif")
         let gifManager = SwiftyGifManager(memoryLimit: 20)
@@ -560,6 +562,11 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         coins += amount
         SharingManager.sharedInstance.lifetimeScore += amount
+        
+        if coins >= 100000 {
+            slide6.image.image = #imageLiteral(resourceName: "trumpStore")
+            slide6.titleLabel.text = "trumpoos"
+        }
         currentCoins.text = "\(coins)"
         hideAddCoinsModal()
     }

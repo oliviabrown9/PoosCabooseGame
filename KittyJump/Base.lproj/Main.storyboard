@@ -83,9 +83,8 @@
                                     <action selector="startGame:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Goo-OH-sFn"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundGradient" translatesAutoresizingMaskIntoConstraints="NO" id="KTu-L7-ZAE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundGradient" translatesAutoresizingMaskIntoConstraints="NO" id="KTu-L7-ZAE">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fei-sO-NkU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -99,6 +98,7 @@
                         <constraints>
                             <constraint firstItem="CaN-ce-hrA" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="0m8-kq-Anq"/>
                             <constraint firstItem="Fei-sO-NkU" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="1qg-Ld-Rjg"/>
+                            <constraint firstItem="KTu-L7-ZAE" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" id="3qP-2o-XEo"/>
                             <constraint firstItem="Fei-sO-NkU" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" id="6zb-qy-2r4"/>
                             <constraint firstAttribute="trailing" secondItem="jCz-KS-ByN" secondAttribute="trailing" id="74x-St-PxU"/>
                             <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="CaN-ce-hrA" secondAttribute="bottom" id="D86-jm-XPs"/>
@@ -106,10 +106,13 @@
                             <constraint firstItem="CaN-ce-hrA" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" id="G3A-AM-9rz"/>
                             <constraint firstItem="jCz-KS-ByN" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" id="IwL-IY-xVW"/>
                             <constraint firstItem="jCz-KS-ByN" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="Kvu-pG-mvo"/>
+                            <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="KTu-L7-ZAE" secondAttribute="bottom" id="Pg2-zr-vTJ"/>
+                            <constraint firstItem="KTu-L7-ZAE" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="Xqx-ND-z1w"/>
                             <constraint firstItem="CaN-ce-hrA" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="a77-Wu-lSK"/>
                             <constraint firstItem="Fei-sO-NkU" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="e1C-kJ-7Xm"/>
                             <constraint firstItem="Fei-sO-NkU" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" id="eqP-uY-rry"/>
                             <constraint firstAttribute="trailing" secondItem="Fei-sO-NkU" secondAttribute="trailing" id="prt-GA-u98"/>
+                            <constraint firstAttribute="trailing" secondItem="KTu-L7-ZAE" secondAttribute="trailing" id="qTn-gQ-Wlg"/>
                             <constraint firstAttribute="trailing" secondItem="CaN-ce-hrA" secondAttribute="trailing" id="tn9-vp-Hg5"/>
                             <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="Fei-sO-NkU" secondAttribute="bottom" id="udq-ai-Leg"/>
                             <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="jCz-KS-ByN" secondAttribute="bottom" id="vzn-RZ-WGY"/>
