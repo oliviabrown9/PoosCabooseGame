@@ -9,6 +9,8 @@
 import Foundation
 import MessageUI
 
+var sent = false
+
 let textMessageRecipients = ["\(selectedPhoneNumber)"]
 
 class MessageComposer: NSObject, MFMessageComposeViewControllerDelegate {
@@ -30,14 +32,12 @@ class MessageComposer: NSObject, MFMessageComposeViewControllerDelegate {
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         switch (result.rawValue) {
         case MessageComposeResult.cancelled.rawValue:
-            print("Message was cancelled")
             controller.dismiss(animated: true, completion: nil)
         case MessageComposeResult.failed.rawValue:
-            print("Message failed")
             controller.dismiss(animated: true, completion: nil)
         case MessageComposeResult.sent.rawValue:
-            print("Message was sent")
             controller.dismiss(animated: true, completion: nil)
+            
         default:
             break;
         }

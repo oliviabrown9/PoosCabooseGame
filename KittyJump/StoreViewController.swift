@@ -75,8 +75,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         //Add coin button click
         
         let addCoinBtnClick = UITapGestureRecognizer(target: self, action: #selector(showAddCoinsView))
@@ -510,8 +508,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         hideAddCoinsModal() // no prob
     }
     
-    var coinsToAdd: Int = 0
-    
     func buyCoins(_ recognizer: UITapGestureRecognizer) {
         
         let viewTapped = recognizer.view
@@ -566,9 +562,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     
     func addPurchasedCoins(amount: Int) {
-        coins += coinsToAdd
-        SharingManager.sharedInstance.lifetimeScore += coinsToAdd
+        coins += amount
+        SharingManager.sharedInstance.lifetimeScore += amount
         currentCoins.text = "\(coins)"
+        hideAddCoinsModal()
     }
     
     var list = [SKProduct]()
@@ -774,12 +771,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         let textMessageRecipients = ["\(selectedPhoneNumber)"]
         print("\(textMessageRecipients)")
         if (messageComposer.canSendText()) {
-            
-//            // Obtain a configured MFMessageComposeViewController
-//            let messageComposeVC = messageComposer.configuredMessageComposeViewController()
-//            self.present(messageComposeVC, animated: true, completion: nil)
-            
-            
             let messageVC = MFMessageComposeViewController()
             
             messageVC.body = "Download this app.";
@@ -794,11 +785,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             self.present(errorAlert, animated: true){}
         }
     }
-    
-    
-    
-    
-    
+
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         switch (result.rawValue) {
         case MessageComposeResult.cancelled.rawValue:
@@ -809,14 +796,12 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             controller.dismiss(animated: true, completion: nil)
         case MessageComposeResult.sent.rawValue:
             print("Message was sent")
+            addPurchasedCoins(amount: 250)
             controller.dismiss(animated: true, completion: nil)
         default:
             break;
         }
     }
-    
-
-    
     
     fileprivate func showAlert(title: String, message: String, actions: [UIAlertAction]) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
