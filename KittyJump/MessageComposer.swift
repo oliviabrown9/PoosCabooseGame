@@ -26,6 +26,22 @@ class MessageComposer: NSObject, MFMessageComposeViewControllerDelegate {
         return messageComposeVC
     }
     // Dismisses the view controller when the user is finished with it
+    
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        controller.dismiss(animated: true, completion: nil)}
+        switch (result.rawValue) {
+        case MessageComposeResult.cancelled.rawValue:
+            print("Message was cancelled")
+            controller.dismiss(animated: true, completion: nil)
+        case MessageComposeResult.failed.rawValue:
+            print("Message failed")
+            controller.dismiss(animated: true, completion: nil)
+        case MessageComposeResult.sent.rawValue:
+            print("Message was sent")
+            controller.dismiss(animated: true, completion: nil)
+        default:
+            break;
+        }
+    }
+    
+    
 }

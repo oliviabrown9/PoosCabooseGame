@@ -8,12 +8,13 @@
 
 import UIKit
 import Contacts
+import MessageUI
 import StoreKit
 
 var using: Int = 0
 var selectedPhoneNumber: String = ""
 
-class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver ,MFMessageComposeViewControllerDelegate {
     
     @IBOutlet weak var currentCoins: UILabel!
     @IBOutlet weak var coinImage: UIImageView!
@@ -63,9 +64,27 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        _ = tapGestureRecognizer.view as! UIImageView
+        
+        // Your action
+        print("Clicked");
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        //Add coin button click
+        
+        //        let addCoinBtnClick = UITapGestureRecognizer(target: self, action: #selector(showAddCoinsView))
+        //        coinImage.addGestureRecognizer(addCoinBtnClick)
+        
+        let addCoinBtnClick = UITapGestureRecognizer(target: self, action: #selector(showAddCoinsView))
+        coinImage.isUserInteractionEnabled = true
+        coinImage.addGestureRecognizer(addCoinBtnClick)
         
         let slides: [Slide] = createSlides()
         setupScrollView(slides: slides)
@@ -94,16 +113,16 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             request.delegate = self
             request.start()
         }
-            else {
-                print("please enable IAPS")
-            }
+        else {
+            print("please enable IAPS")
         }
+    }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if pageIndex == 0 {
             performSegue(withIdentifier: "unwindToGameOver", sender: self)
         }
-        }
+    }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return true
@@ -185,16 +204,16 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         slide4.titleLabel.text = "quapoos"
         slide4.costLabel.text = "10,000"
         slide4.imageHeight.constant = 217
-    
+        
         slide5.image.image = #imageLiteral(resourceName: "pousStore")
         slide5.titleLabel.text = "le pous"
         slide5.costLabel.text = "25,000"
         slide5.imageHeight.constant = 208
         
         if coins >= 100000 {
-        slide6.image.image = #imageLiteral(resourceName: "trumpStore")
-        slide6.titleLabel.text = "trumpoos"
-        slide6.imageHeight.constant = 216
+            slide6.image.image = #imageLiteral(resourceName: "trumpStore")
+            slide6.titleLabel.text = "trumpoos"
+            slide6.imageHeight.constant = 216
         }
         else {
             slide6.image.image = #imageLiteral(resourceName: "mysteryStore")
@@ -416,19 +435,27 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             itemAlreadyPurchased()
         }
         else if confirm == true && cost >= coins {
-            modalView.isHidden = true
-            addCoinsView.layer.cornerRadius = 28
-            addCoinsLabel.text = "Pick your poos coin \n package"
-            peek.isHidden = false
-            addCoinsView.isHidden = false
-            addCoinsGestures()
+            showAddCoinsView();
         }
+    }
+    
+    func showAddCoinsView(){
+        view.layoutIfNeeded()
+        
+        darkenedView.isHidden = false
+        print("Coin view clicked");
+        modalView.isHidden = true
+        addCoinsView.layer.cornerRadius = 28
+        addCoinsLabel.text = "Pick your poos coin \n package"
+        peek.isHidden = false
+        addCoinsView.isHidden = false
+        addCoinsGestures()
     }
     
     func inviteFriends() {
         inviteFriendsView.layer.cornerRadius = 28
         inviteFriendsView.isHidden = false
-        addCoinsView.isHidden = true
+//        addCoinsView.isHidden = true
     }
     
     func addCoinsGestures() {
@@ -471,18 +498,19 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }, completion: { (finished: Bool) in
             if finished {
                 self.addCoinsView.isHidden = true
-                self.addModalTopConstraint.constant -= self.view.bounds.height
+                self.shareTopConstraint.constant -= self.view.bounds.height
                 self.peek.isHidden = true
+                self.inviteFriendsView.isHidden = true
             }
         })
     }
-
+    
     @IBAction func cancelShare(_ sender: Any) {
         hideShareModal()
     }
     
     @IBAction func cancelAddCoins(_ sender: Any) {
-        hideAddCoinsModal()
+        hideAddCoinsModal() // no prob
     }
     
     var coinsToAdd: Int = 0
@@ -575,23 +603,23 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 
                 let prodID = p.productIdentifier
                 switch prodID {
-                    case "com.pooscaboose.onek":
+                case "com.pooscaboose.onek":
                     print("1k")
                     addPurchasedCoins(amount: 1000)
                     
-                    case "com.pooscaboose.fivek":
+                case "com.pooscaboose.fivek":
                     print("5k")
                     addPurchasedCoins(amount: 5000)
                     
-                    case "com.pooscaboose.tenk":
+                case "com.pooscaboose.tenk":
                     print("10k")
                     addPurchasedCoins(amount: 10000)
                     
-                    case "com.pooscaboose.hundredk":
+                case "com.pooscaboose.hundredk":
                     print("1k")
                     addPurchasedCoins(amount: 100000)
                     
-                    default:
+                default:
                     print("IAP not found")
                 }
                 queue.finishTransaction(trans)
@@ -600,7 +628,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 print("buy error")
                 queue.finishTransaction(trans)
                 break
-            
+                
             default:
                 print("default")
                 break
@@ -609,83 +637,83 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     
     // CONTACTS
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-        
-        var contacts = [CNContact]()
-        var authStatus: CNAuthorizationStatus = .denied {
-            didSet {
-                searchBar.isUserInteractionEnabled = authStatus == .authorized
-                
-                if authStatus == .authorized { // all search
-                    contacts = fetchContacts("")
-                    tableView.reloadData()
-                }
+    
+    var contacts = [CNContact]()
+    var authStatus: CNAuthorizationStatus = .denied {
+        didSet {
+            searchBar.isUserInteractionEnabled = authStatus == .authorized
+            
+            if authStatus == .authorized { // all search
+                contacts = fetchContacts("")
+                tableView.reloadData()
             }
         }
-        
-        fileprivate let kCellID = "ContactsTableViewCell"
+    }
     
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            contacts = fetchContacts(searchText)
-            tableView.reloadData()
-        }
-        
-        func numberOfSections(in tableView: UITableView) -> Int {
-            return 1
-        }
-        
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return contacts.count
-        }
+    fileprivate let kCellID = "ContactsTableViewCell"
     
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: kCellID, for: indexPath) as! ContactsTableViewCell
-            
-            cell.viewController = self
-            let contact = contacts[indexPath.row]
-            
-            // get the full name
-            let fullName = CNContactFormatter.string(from: contact, style: .fullName) ?? "NO NAME"
-            cell.nameLabel?.text = fullName.lowercased()
-            
-            return cell
-        }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        contacts = fetchContacts(searchText)
+        tableView.reloadData()
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return contacts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: kCellID, for: indexPath) as! ContactsTableViewCell
         
-        fileprivate func checkAuthorization() {
-            // get current status
-            let status = CNContactStore.authorizationStatus(for: .contacts)
-            authStatus = status
-            
-            switch status {
-            case .notDetermined: // case of first access
-                CNContactStore().requestAccess(for: .contacts) { [unowned self] (granted, error) in
-                    if granted {
-                        NSLog("Permission allowed")
-                        self.authStatus = .authorized
-                    } else {
-                        NSLog("Permission denied")
-                        self.authStatus = .denied
-                    }
+        cell.viewController = self
+        let contact = contacts[indexPath.row]
+        
+        // get the full name
+        let fullName = CNContactFormatter.string(from: contact, style: .fullName) ?? "NO NAME"
+        cell.nameLabel?.text = fullName.lowercased()
+        
+        return cell
+    }
+    
+    fileprivate func checkAuthorization() {
+        // get current status
+        let status = CNContactStore.authorizationStatus(for: .contacts)
+        authStatus = status
+        
+        switch status {
+        case .notDetermined: // case of first access
+            CNContactStore().requestAccess(for: .contacts) { [unowned self] (granted, error) in
+                if granted {
+                    NSLog("Permission allowed")
+                    self.authStatus = .authorized
+                } else {
+                    NSLog("Permission denied")
+                    self.authStatus = .denied
                 }
-            case .restricted, .denied:
-                NSLog("Unauthorized")
-                
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { (action: UIAlertAction) in
-                    let url = URL(string: UIApplicationOpenSettingsURLString)
-                    self.open(link: String(describing: url))
-                })
-                showAlert(
-                    title: "Permission Denied",
-                    message: "You have not permission to access contacts. Please allow the access the Settings screen.",
-                    actions: [okAction, settingsAction])
-            case .authorized:
-                NSLog("Authorized")
             }
+        case .restricted, .denied:
+            NSLog("Unauthorized")
+            
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { (action: UIAlertAction) in
+                let url = URL(string: UIApplicationOpenSettingsURLString)
+                self.open(link: String(describing: url))
+            })
+            showAlert(
+                title: "Permission Denied",
+                message: "You have not permission to access contacts. Please allow the access the Settings screen.",
+                actions: [okAction, settingsAction])
+        case .authorized:
+            NSLog("Authorized")
         }
+    }
     // Opening URLs with iOS 10 & below
     func open(link: String) {
         if let url = URL(string: link) {
@@ -701,75 +729,110 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             }
         }
     }
-        
-        
-        // fetch the contact of matching names
-        fileprivate func fetchContacts(_ name: String) -> [CNContact] {
-            let store = CNContactStore()
-            
-            do {
-                let request = CNContactFetchRequest(keysToFetch: [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor])
-                if name.isEmpty { // all search
-                    request.predicate = nil
-                } else {
-                    request.predicate = CNContact.predicateForContacts(matchingName: name)
-                }
-                
-                var contacts = [CNContact]()
-                try store.enumerateContacts(with: request, usingBlock: { (contact, error) in
-                    contacts.append(contact)
-                })
-                
-                return contacts
-            } catch let error as NSError {
-                NSLog("Fetch error \(error.localizedDescription)")
-                return []
-            }
-        }
-        
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let contact = contacts[indexPath.row]
-            selectedPhoneNumber = ""
-            
-            for phoneNumber:CNLabeledValue in contact.phoneNumbers {
-                let number  = phoneNumber.value
-                
-                let tempNumString = "0123456789"
-                
-                for c in number.stringValue.characters {
-                    if tempNumString.characters.contains(c) {
-                        selectedPhoneNumber.append(c)
-                    }
-                }
-                break
-            }
-            
-            let messageComposer = MessageComposer()
-            
-            if (messageComposer.canSendText()) {
-                
-                // Obtain a configured MFMessageComposeViewController
-                let messageComposeVC = messageComposer.configuredMessageComposeViewController()
-                self.present(messageComposeVC, animated: true, completion: nil)
-            } else {
-                let errorAlert = UIAlertController(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", preferredStyle: .alert)
-                errorAlert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
-                self.present(errorAlert, animated: true){}
-            }
-        }
     
-        fileprivate func showAlert(title: String, message: String, actions: [UIAlertAction]) {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            
-            
-            for action in actions {
-                alert.addAction(action)
+    
+    // fetch the contact of matching names
+    fileprivate func fetchContacts(_ name: String) -> [CNContact] {
+        let store = CNContactStore()
+        
+        do {
+            let request = CNContactFetchRequest(keysToFetch: [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor])
+            if name.isEmpty { // all search
+                request.predicate = nil
+            } else {
+                request.predicate = CNContact.predicateForContacts(matchingName: name)
             }
             
-            DispatchQueue.main.async(execute: { [unowned self] () in
-                self.present(alert, animated: true, completion: nil)
+            var contacts = [CNContact]()
+            try store.enumerateContacts(with: request, usingBlock: { (contact, error) in
+                contacts.append(contact)
             })
+            
+            return contacts
+        } catch let error as NSError {
+            NSLog("Fetch error \(error.localizedDescription)")
+            return []
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contact = contacts[indexPath.row]
+        selectedPhoneNumber = ""
+        
+        for phoneNumber:CNLabeledValue in contact.phoneNumbers {
+            let number  = phoneNumber.value
+            
+            let tempNumString = "0123456789"
+            
+            for c in number.stringValue.characters {
+                if tempNumString.characters.contains(c) {
+                    selectedPhoneNumber.append(c)
+                }
+            }
+            break
+        }
+        
+        let messageComposer = MessageComposer()
+        
+        let textMessageRecipients = ["\(selectedPhoneNumber)"]
+        print("\(textMessageRecipients)")
+        if (messageComposer.canSendText()) {
+            
+//            // Obtain a configured MFMessageComposeViewController
+//            let messageComposeVC = messageComposer.configuredMessageComposeViewController()
+//            self.present(messageComposeVC, animated: true, completion: nil)
+            
+            
+            let messageVC = MFMessageComposeViewController()
+            
+            messageVC.body = "Download this app.";
+            messageVC.recipients = textMessageRecipients
+            messageVC.messageComposeDelegate = self;
+            
+            self.present(messageVC, animated: false, completion: nil)
+            
+        } else {
+            let errorAlert = UIAlertController(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+            self.present(errorAlert, animated: true){}
+        }
+    }
+    
+    
+    
+    
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        switch (result.rawValue) {
+        case MessageComposeResult.cancelled.rawValue:
+            print("Message was cancelled")
+            controller.dismiss(animated: true, completion: nil)
+        case MessageComposeResult.failed.rawValue:
+            print("Message failed")
+            controller.dismiss(animated: true, completion: nil)
+        case MessageComposeResult.sent.rawValue:
+            print("Message was sent")
+            controller.dismiss(animated: true, completion: nil)
+        default:
+            break;
+        }
+    }
+    
+
+    
+    
+    fileprivate func showAlert(title: String, message: String, actions: [UIAlertAction]) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        
+        for action in actions {
+            alert.addAction(action)
+        }
+        
+        DispatchQueue.main.async(execute: { [unowned self] () in
+            self.present(alert, animated: true, completion: nil)
+        })
+    }
     
     // Hide status bar
     override var prefersStatusBarHidden: Bool {

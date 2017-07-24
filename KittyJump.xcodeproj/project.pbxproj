@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		750899C61F14201000D4227F /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750899C51F14201000D4227F /* StoreViewController.swift */; };
-		753487BE1F2158E4001DA8F0 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753487BD1F2158E4001DA8F0 /* MessageComposer.swift */; };
+		75149F291F25B2B800B70B59 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75149F281F25B2B800B70B59 /* StoreViewController.swift */; };
+		75149F2B1F25B2CB00B70B59 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75149F2A1F25B2CB00B70B59 /* MessageComposer.swift */; };
 		753E80A61F058FAD001FEE97 /* stop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 753E80A51F058FAD001FEE97 /* stop.mp3 */; };
 		755820EE1F04126400A68A88 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755820ED1F04126400A68A88 /* jump.mp3 */; };
 		755C59001F0484E50064472D /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755C58FF1F0484E50064472D /* intro.mp3 */; };
@@ -50,8 +50,8 @@
 /* Begin PBXFileReference section */
 		170ABEBE832CE954F508ADBC /* Pods_KittyJump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KittyJump.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5783ACE75A3B97ED65A81BCD /* Pods-KittyJump.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KittyJump.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KittyJump/Pods-KittyJump.debug.xcconfig"; sourceTree = "<group>"; };
-		750899C51F14201000D4227F /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
-		753487BD1F2158E4001DA8F0 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
+		75149F281F25B2B800B70B59 /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		75149F2A1F25B2CB00B70B59 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
 		753E80A51F058FAD001FEE97 /* stop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stop.mp3; sourceTree = "<group>"; };
 		755820ED1F04126400A68A88 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 		755C58FF1F0484E50064472D /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = intro.mp3; sourceTree = "<group>"; };
@@ -179,8 +179,8 @@
 				D7C5EAB91EEB5C21007DA71A /* GameScene.swift */,
 				75F3FE3F1F1EA5AA001E0C0D /* GameSettings.swift */,
 				75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */,
-				750899C51F14201000D4227F /* StoreViewController.swift */,
-				753487BD1F2158E4001DA8F0 /* MessageComposer.swift */,
+				75149F2A1F25B2CB00B70B59 /* MessageComposer.swift */,
+				75149F281F25B2B800B70B59 /* StoreViewController.swift */,
 				D7C5EAB51EEB5C21007DA71A /* GameScene.sks */,
 				D7C5EAB71EEB5C21007DA71A /* Actions.sks */,
 				759E541D1F182F33003B6B3C /* splash.gif */,
@@ -360,10 +360,10 @@
 			files = (
 				D7C5EAFF1EF24469007DA71A /* KCamera.swift in Sources */,
 				D7C5EADC1EEB76D7007DA71A /* CommonSpriteNode.swift in Sources */,
+				75149F291F25B2B800B70B59 /* StoreViewController.swift in Sources */,
 				D7C5EABA1EEB5C21007DA71A /* GameScene.swift in Sources */,
 				D7C5EAFA1EF0F638007DA71A /* Label.swift in Sources */,
 				75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */,
-				750899C61F14201000D4227F /* StoreViewController.swift in Sources */,
 				D7C5EAE31EEBFB03007DA71A /* Grass.swift in Sources */,
 				756C47AB1F197A3100B034C0 /* Slide.swift in Sources */,
 				D7C5EAE61EEC07E5007DA71A /* LeftTrain.swift in Sources */,
@@ -379,7 +379,7 @@
 				D7C5EAEA1EEC0993007DA71A /* RightTrain.swift in Sources */,
 				75F3FE3A1F1D608B001E0C0D /* CustomPage.swift in Sources */,
 				D7C5EAF61EEF3ACC007DA71A /* SessionManager.swift in Sources */,
-				753487BE1F2158E4001DA8F0 /* MessageComposer.swift in Sources */,
+				75149F2B1F25B2CB00B70B59 /* MessageComposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
