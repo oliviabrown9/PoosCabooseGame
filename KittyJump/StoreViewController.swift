@@ -388,6 +388,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         confirm = false
         hideModal()
         hideAddCoinsModal()
+        hideShareModal()
     }
     
     func hideModal() {
@@ -444,7 +445,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     func inviteFriends() {
         inviteFriendsView.layer.cornerRadius = 28
         inviteFriendsView.isHidden = false
-//        addCoinsView.isHidden = true
     }
     
     func addCoinsGestures() {
@@ -486,10 +486,9 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             self.view.layoutIfNeeded()
         }, completion: { (finished: Bool) in
             if finished {
-                self.addCoinsView.isHidden = true
+                self.inviteFriendsView.isHidden = true
                 self.shareTopConstraint.constant -= self.view.bounds.height
                 self.peek.isHidden = true
-                self.inviteFriendsView.isHidden = true
             }
         })
     }
@@ -499,7 +498,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     
     @IBAction func cancelAddCoins(_ sender: Any) {
-        hideAddCoinsModal() // no prob
+        hideAddCoinsModal()
     }
     
     func buyCoins(_ recognizer: UITapGestureRecognizer) {
@@ -543,6 +542,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 }
             }
         }
+        viewTapped?.backgroundColor = UIColor(red:1, green:1, blue:1, alpha:1.0)
     }
     
     func buyProduct() {
@@ -751,11 +751,13 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             messageVC.messageComposeDelegate = self;
             
             self.present(messageVC, animated: false, completion: nil)
+            tableView.deselectRow(at: indexPath, animated: true)
             
         } else {
             let errorAlert = UIAlertController(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", preferredStyle: .alert)
             errorAlert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
             self.present(errorAlert, animated: true){}
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
 
