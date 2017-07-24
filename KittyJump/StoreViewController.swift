@@ -568,7 +568,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             slide6.titleLabel.text = "trumpoos"
         }
         currentCoins.text = "\(coins)"
-        hideAddCoinsModal()
+        
+        if amount > 250 {
+            hideAddCoinsModal()
+        }
     }
     
     var list = [SKProduct]()
