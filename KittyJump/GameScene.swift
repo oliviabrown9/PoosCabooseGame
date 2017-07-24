@@ -216,15 +216,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if name == "hud" {
                 return
             }
-            if (!pauseState) {
+            else if (!pauseState) {
                 let generator = UIImpactFeedbackGenerator(style: .medium)
                 let successGenerator = UINotificationFeedbackGenerator()
                 generator.prepare()
                 successGenerator.prepare()
                 if kittyCurrentState == .onTrain {
                     self.physicsWorld.removeAllJoints()
-                    
-                    //                    kitty.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 80))
                     kitty.animateShape(destPos: CGPoint(x: kitty.position.x,
                                                         y: kitty.position.y + 200))
                     kitty.zPosition = 3
@@ -259,6 +257,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         }
                     }
                 }
+            }
+            else if(pauseState) {
+                pauseState = false
+                playGame()
+                resetMoveRightTrainWhenRestartGame()
+                resetMoveLeftTrainWhenRestartGame()
+                pauseButton.texture = SKTexture(imageNamed: "pause")
             }
         }
     }

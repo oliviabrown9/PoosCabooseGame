@@ -84,8 +84,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         let slides: [Slide] = createSlides()
         setupScrollView(slides: slides)
         
-        checkAuthorization()
-        
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         scrollView.delegate = self
@@ -331,11 +329,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     func purchaseItem() {
         let failureGenerator = UINotificationFeedbackGenerator()
         failureGenerator.prepare()
-        
-        if pageIndex == 0 {
-            cost = 0
-        }
-        else if pageIndex == 1 {
+
+        if pageIndex == 1 {
             cost = 1000
         }
         else if pageIndex == 2 {
@@ -446,6 +441,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     
     func inviteFriends() {
+        checkAuthorization()
         inviteFriendsView.layer.cornerRadius = 28
         inviteFriendsView.isHidden = false
     }
@@ -617,13 +613,11 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    
+
     var contacts = [CNContact]()
     var authStatus: CNAuthorizationStatus = .denied {
         didSet {
             searchBar.isUserInteractionEnabled = authStatus == .authorized
-            
             if authStatus == .authorized { // all search
                 contacts = fetchContacts("")
                 tableView.reloadData()
@@ -668,16 +662,12 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         case .notDetermined: // case of first access
             CNContactStore().requestAccess(for: .contacts) { [unowned self] (granted, error) in
                 if granted {
-                    NSLog("Permission allowed")
                     self.authStatus = .authorized
                 } else {
-                    NSLog("Permission denied")
                     self.authStatus = .denied
                 }
             }
         case .restricted, .denied:
-            NSLog("Unauthorized")
-            
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { (action: UIAlertAction) in
                 let url = URL(string: UIApplicationOpenSettingsURLString)
@@ -688,7 +678,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 message: "You have not permission to access contacts. Please allow the access the Settings screen.",
                 actions: [okAction, settingsAction])
         case .authorized:
-            NSLog("Authorized")
+            print("Authorized")
         }
     }
     // Opening URLs with iOS 10 & below
@@ -755,7 +745,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         if (messageComposer.canSendText()) {
             let messageVC = MFMessageComposeViewController()
             
-            messageVC.body = "Download this app.";
+            messageVC.body = "Yo hop on the Caboose, Poos! http://pooscaboose.com/download";
             messageVC.recipients = textMessageRecipients
             messageVC.messageComposeDelegate = self;
             
