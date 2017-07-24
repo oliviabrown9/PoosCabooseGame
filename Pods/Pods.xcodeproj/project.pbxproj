@@ -7,258 +7,181 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0269910150B116A05C96DE5705D86E6E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDCDE491CF8D0A8DE275D800546BC955 /* MediaPlayer.framework */; };
-		07536256C4DE2B36FE3CC7C25A7357DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B65E1C65F0D19787A113F063F1038B /* Foundation.framework */; };
-		077EF40170508519E664FAB5A5D5EAC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B65E1C65F0D19787A113F063F1038B /* Foundation.framework */; };
-		0859C12B1124FE44EA4C955F14273FF5 /* FlurryAdBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = AEA90A5EF7DCA5BA91DE6631FFD17F2E /* FlurryAdBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BD96CA4D51406AA28B4A8AA53563A2F /* UIImage+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85A862ACBFAA795513FB5251F7B9C03 /* UIImage+SwiftyGif.swift */; };
-		1B22C557B98A05D959CA6B58ADE049C0 /* FlurryEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = D84681D9384B87B3C833A8C754ED65D6 /* FlurryEmpty.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		316D17352B9A7575D33D3D7452D90D37 /* Pods-KittyJump-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F84EB5870ABAFD40EB402A039283E7D /* Pods-KittyJump-dummy.m */; };
-		4507304E60A15A91CF25FA19F5B7D883 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F622FE12166851EB3158AFE26ED4E7E9 /* AVFoundation.framework */; };
-		460E9AC55F44A381FE7596DC9BCA0957 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F593BC42DE06C3067CF994DC41B0C1 /* CoreMedia.framework */; };
-		46D243D0B702C098A62A9EBDC1CE1832 /* Flurry.h in Headers */ = {isa = PBXBuildFile; fileRef = E35D38D577526386BFC6C58310C786F7 /* Flurry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		46D42FEED6DFAB942760B333ED3FB33B /* SKEase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827E99C55D7385D39342005B5EDEDE1 /* SKEase.swift */; };
-		4F86D5E09D36C6A6B02E98BF4AF5EC0F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0C8A48990DA788E3A4964F51B897032 /* CoreTelephony.framework */; };
-		513E98FE7869A7F42A20A2A83DB99AE8 /* easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3E8C72451F33D1327B907E3D037FD /* easing.swift */; };
-		5140FE2EFBB6E603F5B59A595B351B00 /* UIImageView+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD2B52C931B904A0E7C35CEB78B9F5E /* UIImageView+SwiftyGif.swift */; };
-		5161F939F2E6FF07029F266179B84CDE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B65E1C65F0D19787A113F063F1038B /* Foundation.framework */; };
-		5BCA17E9A1DD66EAD9C064B4B853A24D /* SwiftyOnboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E65473A9E1EA5DAB2B217BA73624B04 /* SwiftyOnboardPage.swift */; };
-		61D9211E5F54653681AA9D9606289D03 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 109A6CFED6753B45106F20BCF5D0473D /* Info.plist */; };
-		6324E6CD8E80A8DF149DA96F1651DEED /* FlurryAdInterstitial.h in Headers */ = {isa = PBXBuildFile; fileRef = E2A1DB1E4D0D45D9DDE20EE251CD1BC5 /* FlurryAdInterstitial.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		68894D889915B1B55BCC6F1E2EFBEF34 /* FlurryAdError.h in Headers */ = {isa = PBXBuildFile; fileRef = C64426A03AACCA12901AC51086488775 /* FlurryAdError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6FC8060D5402BC0439CA8187C73B73F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B65E1C65F0D19787A113F063F1038B /* Foundation.framework */; };
-		73620244228AB7DE2A4476803551A28D /* FlurrySessionBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5308FC692F28FBECF6D603BFC04D09E8 /* FlurrySessionBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76AAF7C917302B69387673165A0EADAE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B65E1C65F0D19787A113F063F1038B /* Foundation.framework */; };
-		76E5792456FB86EF26C18ABC450798FC /* FlurryAdNativeDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E75639F36B28C4F63040370F4718180A /* FlurryAdNativeDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		804479F3B8C5117B94B2976F65C0E801 /* SwiftyOnboard-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E3DA14BC13969BFD78F9AB81E9EAE696 /* SwiftyOnboard-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		810961B8CACE96463274BC7A2552427D /* FlurryAdBannerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 59D4A443F55414079F6ABD7BAD8BD3A0 /* FlurryAdBannerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		88AAF361A82AEC9AC21C3F6B9B463798 /* FlurryAdTargeting.h in Headers */ = {isa = PBXBuildFile; fileRef = 0886CD5795186F8004EF3D195CC66842 /* FlurryAdTargeting.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8A903089A2CF5FC151FFD9C3655F70E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A5F9A734F40E98E0209F312C61791C /* UIKit.framework */; };
-		8ADAF5ECC796952D3D495F0B5600EDBE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AA7BEE42E702CA0EE53224BACD7B529 /* CoreGraphics.framework */; };
-		8BC13ACCDFFB8AC7C36F658D08C41D2D /* FlurryAdDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C28FBE77B63586B868D44E96724E971 /* FlurryAdDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8BE79AF61EB82E4B89F38913600CE36B /* SwiftyOnboardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E088813A18EDA2F4BBBFBE2F5673ECF /* SwiftyOnboardOverlay.swift */; };
-		8C2692617E027FD6DA40C24CC16BC7E4 /* FlurryAdInterstitialDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = CAD7D2903CBC27F7270F56E166C66BCC /* FlurryAdInterstitialDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FC12321F830DA1590EB9C3693FB1B83 /* Pods-KittyJump-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 70FA03948170CA6FEBD9DD3E99BB0815 /* Pods-KittyJump-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		922159C37646F454E233A4C93F58814A /* SwiftyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0AAC710C71F451156BA03E82793C8 /* SwiftyGifManager.swift */; };
-		96F008D493F2E6536EE561CFC8A8E285 /* SwiftyOnboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 97E46E7A96C61AFD7ACD698A78DC6F8B /* SwiftyOnboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9710036441958AC06335B84CB3CA8D7E /* Flurry-iOS-SDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B84DB4049D58EE6E58BC2378EC94FE1 /* Flurry-iOS-SDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A6B78D58A1185F3A5AA7451A1C63B19C /* SwiftyOnboard-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B92A8C4D73E78AB591CE0F23042223 /* SwiftyOnboard-dummy.m */; };
-		ACB0E36FA7AF344AAEB5F4C9C2E60588 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF6A6AA7C3BB33B2945E4A6DA73A1D20 /* Security.framework */; };
-		AE4175A0BB65B4D8E1C3C28CBDC3598D /* FlurryAdsEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED43C44737BF5779FB5B2A79B17187 /* FlurryAdsEmpty.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B1DC8C05B8692466D44181FED55D0A69 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184D18F96D203C2D39BA67D54D5EEF1D /* SystemConfiguration.framework */; };
-		BB343B08DE0B9EEBEC4A5B3C740D8DDF /* SpriteKitEasingSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C6774C08B0A7600E6E55FE4CE27708 /* SpriteKitEasingSwift-dummy.m */; };
-		DC546718E404EF6D8FF2B9BC48A0BC17 /* SpriteKitEasingSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C218137AF3566D95BAB8A7B7A26BC01 /* SpriteKitEasingSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E213A88E17694B5848BF593B6367BC7E /* SwiftyGif-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 278015D60877CA749533C7CDA806740F /* SwiftyGif-dummy.m */; };
-		E2B6FB27AFED53E9913296ACC695F382 /* Flurry-iOS-SDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9321EF8144063864A7E15FB317C15C10 /* Flurry-iOS-SDK-dummy.m */; };
-		E39A2B780C8BFF6BB9E7F8109F300094 /* SwiftyGif.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C209105B3E1704F689D0F6A351F1559 /* SwiftyGif.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E4075E7138C0B56BB8B4831265C954FC /* FlurryAdNative.h in Headers */ = {isa = PBXBuildFile; fileRef = E9B4F3AF7DA3AE630FF199C6162CC12B /* FlurryAdNative.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ED421716839F3497C472FC6E97D8DAAA /* EasingDeclarations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCBCB6DE89AB94DE8B0ACAD8234EBE4 /* EasingDeclarations.swift */; };
-		F19B318DAB02275A39C85827CA107652 /* SwiftyGif-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BA38C6C0014D71E0493818FF65F356 /* SwiftyGif-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FB20F47B17A0C7BB67492A74E46E9D47 /* SwiftyOnboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9083E78E35ED2463B86F4CF3ED3C26BC /* SwiftyOnboard.swift */; };
-		FCE1BF07DEE07E6A1AF2A0AB828FE423 /* FlurryAdNativeStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 258E4A5A0B3020F1C8B7D22CFAA4C65E /* FlurryAdNativeStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FF5C5715FE89AE8E66459872752B815B /* FlurryAdNativeAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 82B4A35E784DEBED5286BD88D51E90F8 /* FlurryAdNativeAsset.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0500C3C03306DC9C7A068EA0BCF8F30C /* SwiftyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EEF01FD45E25897914CF357989105 /* SwiftyGifManager.swift */; };
+		14941C3140DE96B18C7B91BFEEE34C17 /* SwiftyGif-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 98542BFEDB3245EBCE9D483F946874F1 /* SwiftyGif-dummy.m */; };
+		32E0F33B5604F78B2CF99D99FBDC17AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		37B7D7B094277FE64A7E5BC9CC123DDA /* Pods-KittyJump-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F84EB5870ABAFD40EB402A039283E7D /* Pods-KittyJump-dummy.m */; };
+		4691A0E9CAF26B258D14383410E5EE6D /* SwiftyOnboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE4D1D3A3ADA926EB7718F75714B0ED /* SwiftyOnboard.swift */; };
+		4A955473E5365F642FD7F2A246A44AD5 /* UIImage+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB4F360425870B40F86D879F6311A3 /* UIImage+SwiftyGif.swift */; };
+		4D57F267467379FCE7A0BBBC385BF5D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		563B1112FEC55C9D5109A4ECDEFD94EB /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = ADB7C954DD39808631B22967CB09C9AD /* Info.plist */; };
+		612614E1A4E0DE0BB618BBAEADF2A457 /* SwiftyOnboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD487296E5830FEE7056F9DA492A772E /* SwiftyOnboardPage.swift */; };
+		6B66E31DA1E4D449A0E22CAFEE48A93C /* SwiftyOnboard.h in Headers */ = {isa = PBXBuildFile; fileRef = F7FADE06D64CE52674CC0628196E4BB1 /* SwiftyOnboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		824F66BF49AA9C9DD25D24F5A58FD675 /* SwiftyOnboardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336F1E0183032462211510B3A62BDE54 /* SwiftyOnboardOverlay.swift */; };
+		A360E75A32A725E4F6DE137AFFA9BC6D /* SpriteKitEasingSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DEE05084FA9E0BA0277C155F3F146C0 /* SpriteKitEasingSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A8F43F3760065656E1C7EC2CA228498E /* SwiftyOnboard-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E1FAD24527E6D2D4833A75B00F315A00 /* SwiftyOnboard-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9DEEA4BE4BD9C6F19F33675C672D051 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		AA2380870DBBA448815E5355A2A6F71F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		B114E41FAC0EDDE0FAF3AA4220E71E98 /* SpriteKitEasingSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6005C9959CA17AEED4F63952A688347D /* SpriteKitEasingSwift-dummy.m */; };
+		B471C522A8F75A497A3F1CD32BC43E49 /* SwiftyGif-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E422C2C46913963CA7481C53A52714 /* SwiftyGif-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B76BEB63CB0A05E85FC0ECE3BAB4ED65 /* SwiftyGif.h in Headers */ = {isa = PBXBuildFile; fileRef = EC71FD1BEFDE2B2E4EF467F6B14F7337 /* SwiftyGif.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E648FEE5F89550303EFB18839C241B72 /* Pods-KittyJump-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 70FA03948170CA6FEBD9DD3E99BB0815 /* Pods-KittyJump-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6DAB45235F508B01B36F924F0C81362 /* easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADB32D3561BE2D1FACFC78D1FA8D651 /* easing.swift */; };
+		E9A0111B30120586011AB12CA8EC519C /* SKEase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACD3223503FD67598591C0534DAC0E6 /* SKEase.swift */; };
+		F383FE83A3BBC6EB4B822577400185FA /* EasingDeclarations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4724CA22709EF394DE4C7D6C3B5B233 /* EasingDeclarations.swift */; };
+		F8A54BAEC117BBB0D6EF937FC63D2124 /* UIImageView+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A68983799B868D17129D5FEE4540205 /* UIImageView+SwiftyGif.swift */; };
+		FAEADFE9C580905EB93C85B1C4E88936 /* SwiftyOnboard-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8BE7BBA7F9EB340DE42DD69265CE27 /* SwiftyOnboard-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3119999A22B5B2B70C265DB2111FC03C /* PBXContainerItemProxy */ = {
+		29723761C87D642EBBFC763CFDF3DFD7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = ABB9F5080B827139D07061DF00D9620F;
+			remoteGlobalIDString = D359D91E523A45B3275B1CF70A1F5CD7;
 			remoteInfo = SpriteKitEasingSwift;
 		};
-		5C3DC3BE9E78125B1959FAE405886F51 /* PBXContainerItemProxy */ = {
+		7884DEAAB6D4B42F29D82625E8A1C0D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 77C5F2A59B06D71164CDD71C211CB87E;
+			remoteGlobalIDString = F19B92E446CA197B030B953F781B4AD6;
 			remoteInfo = SwiftyGif;
 		};
-		619F6A5BDB536BA85BB030DDFB69CCAB /* PBXContainerItemProxy */ = {
+		D42E1470ABE017B797342F39E7FA90B6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 378CB025CABFE23CACDC2CF6B8C6C0AD;
+			remoteGlobalIDString = 9F7DFADA5AFBE2F15F50D4722484C4C5;
 			remoteInfo = SwiftyOnboard;
-		};
-		A142FE6D1BB0E833B356901E8F7B951D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 35235DC0C35253D8CB719010AEC670AC;
-			remoteInfo = "Flurry-iOS-SDK";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0886CD5795186F8004EF3D195CC66842 /* FlurryAdTargeting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdTargeting.h; path = FlurryAds/Shared/FlurryAdTargeting.h; sourceTree = "<group>"; };
-		089442D37DB479C3342FA3DECF439E2F /* Flurry-iOS-SDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Flurry-iOS-SDK.xcconfig"; sourceTree = "<group>"; };
-		109A6CFED6753B45106F20BCF5D0473D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = SwiftyGif/Info.plist; sourceTree = "<group>"; };
-		1130DE7D03DF17F30AA4C8935ED25C55 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1293FBB22F2C4FEDF75E84617CEC1306 /* SpriteKitEasingSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SpriteKitEasingSwift.xcconfig; sourceTree = "<group>"; };
-		184D18F96D203C2D39BA67D54D5EEF1D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		1890D6256BA6A8E0CD419C05C11AE0DA /* Pods_KittyJump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KittyJump.framework; path = "Pods-KittyJump.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B84DB4049D58EE6E58BC2378EC94FE1 /* Flurry-iOS-SDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Flurry-iOS-SDK-umbrella.h"; sourceTree = "<group>"; };
-		1E088813A18EDA2F4BBBFBE2F5673ECF /* SwiftyOnboardOverlay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyOnboardOverlay.swift; path = SwiftyOnboard/SwiftyOnboardOverlay.swift; sourceTree = "<group>"; };
-		219841A85F8D94686BBC0765D50C5A07 /* SwiftyGif.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyGif.modulemap; sourceTree = "<group>"; };
-		258E4A5A0B3020F1C8B7D22CFAA4C65E /* FlurryAdNativeStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdNativeStyle.h; path = FlurryAds/FlurryAdNative/FlurryAdNativeStyle.h; sourceTree = "<group>"; };
-		2714CC1BE0A40333C7C79687ACADBA9B /* SwiftyOnboard.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyOnboard.modulemap; sourceTree = "<group>"; };
-		278015D60877CA749533C7CDA806740F /* SwiftyGif-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyGif-dummy.m"; sourceTree = "<group>"; };
+		03D0DDC697D471203807DDBCBDDED68F /* SwiftyOnboard.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyOnboard.xcconfig; sourceTree = "<group>"; };
+		102E9F46ECB4B84031CC3342B9A4DB5B /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
+		1C5EEF01FD45E25897914CF357989105 /* SwiftyGifManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyGifManager.swift; path = SwiftyGif/SwiftyGifManager.swift; sourceTree = "<group>"; };
 		299582244938DA138F9A8689EE5ECC07 /* Pods-KittyJump-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KittyJump-acknowledgements.plist"; sourceTree = "<group>"; };
-		2C218137AF3566D95BAB8A7B7A26BC01 /* SpriteKitEasingSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpriteKitEasingSwift-umbrella.h"; sourceTree = "<group>"; };
-		38B65E1C65F0D19787A113F063F1038B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		3C209105B3E1704F689D0F6A351F1559 /* SwiftyGif.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftyGif.h; path = SwiftyGif/SwiftyGif.h; sourceTree = "<group>"; };
-		42ADBEBCE69716289D765FA7A00B7EBC /* SpriteKitEasingSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SpriteKitEasingSwift.modulemap; sourceTree = "<group>"; };
-		46072414B154D64E7438A586979E8017 /* SwiftyGif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyGif.framework; path = SwiftyGif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		47C82F20E47D52B34ED05EA6A1129D61 /* libFlurry_8.1.0.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libFlurry_8.1.0.a; path = Flurry/libFlurry_8.1.0.a; sourceTree = "<group>"; };
+		336F1E0183032462211510B3A62BDE54 /* SwiftyOnboardOverlay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyOnboardOverlay.swift; path = SwiftyOnboard/SwiftyOnboardOverlay.swift; sourceTree = "<group>"; };
+		3BBC4F52E5A808C4117B4AD1B9C4500B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		427A60EE8C5BD63CD258F57F1999588D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4492A3D3F09766CCA02A46C05F0B16F6 /* SwiftyGif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyGif.framework; path = SwiftyGif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47D881BDB25EE20BF1D7712E6A0EB67F /* Pods-KittyJump-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KittyJump-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4DAC42888FD821E5D86890052D6760B2 /* SpriteKitEasingSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SpriteKitEasingSwift.framework; path = SpriteKitEasingSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DD54B92484BB7447E67E7BCDE06A4CE /* Flurry-iOS-SDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Flurry-iOS-SDK.modulemap"; sourceTree = "<group>"; };
+		4ACD3223503FD67598591C0534DAC0E6 /* SKEase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKEase.swift; path = Pod/Classes/SKEase.swift; sourceTree = "<group>"; };
+		4ADB32D3561BE2D1FACFC78D1FA8D651 /* easing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = easing.swift; path = Pod/Classes/easing.swift; sourceTree = "<group>"; };
 		4F84EB5870ABAFD40EB402A039283E7D /* Pods-KittyJump-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KittyJump-dummy.m"; sourceTree = "<group>"; };
-		52FE092F74A35E6818CA8DE2D9E24A81 /* Flurry-iOS-SDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Flurry-iOS-SDK-prefix.pch"; sourceTree = "<group>"; };
-		5308FC692F28FBECF6D603BFC04D09E8 /* FlurrySessionBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurrySessionBuilder.h; path = Flurry/FlurrySessionBuilder.h; sourceTree = "<group>"; };
-		59D4A443F55414079F6ABD7BAD8BD3A0 /* FlurryAdBannerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdBannerDelegate.h; path = FlurryAds/FlurryAdBanner/FlurryAdBannerDelegate.h; sourceTree = "<group>"; };
-		5BED43C44737BF5779FB5B2A79B17187 /* FlurryAdsEmpty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FlurryAdsEmpty.m; path = FlurryAds/FlurryAdsEmpty.m; sourceTree = "<group>"; };
-		66F2B028318E24CA38F70B0E7A1944EF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6AA7BEE42E702CA0EE53224BACD7B529 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		6E6B03D2B9D0C82B82A4C1F03AA56CC9 /* SwiftyOnboard.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyOnboard.xcconfig; sourceTree = "<group>"; };
-		6EED9F3258A096C3C2FC6451E367B55E /* SwiftyGif-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyGif-prefix.pch"; sourceTree = "<group>"; };
+		55912177CF4C776E5085ADDA880835B3 /* SpriteKitEasingSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SpriteKitEasingSwift.modulemap; sourceTree = "<group>"; };
+		5C8BE7BBA7F9EB340DE42DD69265CE27 /* SwiftyOnboard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyOnboard-dummy.m"; sourceTree = "<group>"; };
+		5F8A3EE122DF63EE26446CB5275FF116 /* SwiftyGif-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyGif-prefix.pch"; sourceTree = "<group>"; };
+		6005C9959CA17AEED4F63952A688347D /* SpriteKitEasingSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SpriteKitEasingSwift-dummy.m"; sourceTree = "<group>"; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6BC4F27498B43A6ADDAB2ADF8AAFA4AF /* SwiftyOnboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyOnboard.framework; path = SwiftyOnboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70FA03948170CA6FEBD9DD3E99BB0815 /* Pods-KittyJump-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KittyJump-umbrella.h"; sourceTree = "<group>"; };
+		763E3E2F93739DC5DCE1A528084C997E /* SwiftyOnboard.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyOnboard.modulemap; sourceTree = "<group>"; };
+		7A68983799B868D17129D5FEE4540205 /* UIImageView+SwiftyGif.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+SwiftyGif.swift"; path = "SwiftyGif/UIImageView+SwiftyGif.swift"; sourceTree = "<group>"; };
 		7AA768B6C2A55CB062197CDA97CA8308 /* Pods-KittyJump.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-KittyJump.modulemap"; sourceTree = "<group>"; };
 		7C213A2D505F48B450E775D61CA51CB7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CE4D1D3A3ADA926EB7718F75714B0ED /* SwiftyOnboard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyOnboard.swift; path = SwiftyOnboard/SwiftyOnboard.swift; sourceTree = "<group>"; };
+		7DEE05084FA9E0BA0277C155F3F146C0 /* SpriteKitEasingSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpriteKitEasingSwift-umbrella.h"; sourceTree = "<group>"; };
 		81BEC0790B3EFDB5DC20AB1E02137179 /* Pods-KittyJump.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KittyJump.debug.xcconfig"; sourceTree = "<group>"; };
-		82B4A35E784DEBED5286BD88D51E90F8 /* FlurryAdNativeAsset.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdNativeAsset.h; path = FlurryAds/FlurryAdNative/FlurryAdNativeAsset.h; sourceTree = "<group>"; };
 		84A38B70C2395953FB8E41DA6DCAC96C /* Pods-KittyJump.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KittyJump.release.xcconfig"; sourceTree = "<group>"; };
 		84B7D069DCC5C6317A240C8FA6683ADD /* Pods-KittyJump-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KittyJump-frameworks.sh"; sourceTree = "<group>"; };
-		84BA38C6C0014D71E0493818FF65F356 /* SwiftyGif-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyGif-umbrella.h"; sourceTree = "<group>"; };
-		8C28FBE77B63586B868D44E96724E971 /* FlurryAdDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdDelegate.h; path = FlurryAds/StaticAPI/FlurryAdDelegate.h; sourceTree = "<group>"; };
-		8DC3E8C72451F33D1327B907E3D037FD /* easing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = easing.swift; path = Pod/Classes/easing.swift; sourceTree = "<group>"; };
-		8E65473A9E1EA5DAB2B217BA73624B04 /* SwiftyOnboardPage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyOnboardPage.swift; path = SwiftyOnboard/SwiftyOnboardPage.swift; sourceTree = "<group>"; };
+		86087D575F93C8B11F4B566CB42F747A /* SwiftyGif.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyGif.xcconfig; sourceTree = "<group>"; };
+		8D73AC04543A32C3C0585DDD3CCD126C /* SpriteKitEasingSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpriteKitEasingSwift-prefix.pch"; sourceTree = "<group>"; };
 		8E7FE56C59FFCCB4811C26E9C30EDBE9 /* Pods-KittyJump-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KittyJump-resources.sh"; sourceTree = "<group>"; };
-		9083E78E35ED2463B86F4CF3ED3C26BC /* SwiftyOnboard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyOnboard.swift; path = SwiftyOnboard/SwiftyOnboard.swift; sourceTree = "<group>"; };
-		9321EF8144063864A7E15FB317C15C10 /* Flurry-iOS-SDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Flurry-iOS-SDK-dummy.m"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		96A5F9A734F40E98E0209F312C61791C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		97E46E7A96C61AFD7ACD698A78DC6F8B /* SwiftyOnboard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftyOnboard.h; path = SwiftyOnboard/SwiftyOnboard.h; sourceTree = "<group>"; };
-		9ADC4315448D0E53895844FEB6B719E3 /* Flurry_iOS_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Flurry_iOS_SDK.framework; path = "Flurry-iOS-SDK.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC07E1D17E81E136FC823902DBF9C414 /* SwiftyOnboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyOnboard.framework; path = SwiftyOnboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AEA90A5EF7DCA5BA91DE6631FFD17F2E /* FlurryAdBanner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdBanner.h; path = FlurryAds/FlurryAdBanner/FlurryAdBanner.h; sourceTree = "<group>"; };
-		AFA649525582B7011EEC10A05FF93685 /* SwiftyOnboard-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyOnboard-prefix.pch"; sourceTree = "<group>"; };
-		BF3CC1E6925AC9DC6491F12A77B02F9D /* SwiftyGif.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyGif.xcconfig; sourceTree = "<group>"; };
-		BFBAB8636C9C985D305109CFC131392D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFCBCB6DE89AB94DE8B0ACAD8234EBE4 /* EasingDeclarations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EasingDeclarations.swift; path = Pod/Classes/EasingDeclarations.swift; sourceTree = "<group>"; };
-		C0F593BC42DE06C3067CF994DC41B0C1 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
-		C2CC862BBAB1839C86A3EF6E1EF5291E /* libFlurryAds_8.1.0.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libFlurryAds_8.1.0.a; path = FlurryAds/libFlurryAds_8.1.0.a; sourceTree = "<group>"; };
-		C64426A03AACCA12901AC51086488775 /* FlurryAdError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdError.h; path = FlurryAds/Shared/FlurryAdError.h; sourceTree = "<group>"; };
-		CAD7D2903CBC27F7270F56E166C66BCC /* FlurryAdInterstitialDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdInterstitialDelegate.h; path = FlurryAds/FlurryAdInterstitial/FlurryAdInterstitialDelegate.h; sourceTree = "<group>"; };
-		D0B0AAC710C71F451156BA03E82793C8 /* SwiftyGifManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyGifManager.swift; path = SwiftyGif/SwiftyGifManager.swift; sourceTree = "<group>"; };
-		D827E99C55D7385D39342005B5EDEDE1 /* SKEase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKEase.swift; path = Pod/Classes/SKEase.swift; sourceTree = "<group>"; };
-		D84681D9384B87B3C833A8C754ED65D6 /* FlurryEmpty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FlurryEmpty.m; path = Flurry/FlurryEmpty.m; sourceTree = "<group>"; };
-		D8C6774C08B0A7600E6E55FE4CE27708 /* SpriteKitEasingSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SpriteKitEasingSwift-dummy.m"; sourceTree = "<group>"; };
-		DDCDE491CF8D0A8DE275D800546BC955 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
-		DFD2B52C931B904A0E7C35CEB78B9F5E /* UIImageView+SwiftyGif.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+SwiftyGif.swift"; path = "SwiftyGif/UIImageView+SwiftyGif.swift"; sourceTree = "<group>"; };
-		E0C8A48990DA788E3A4964F51B897032 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
-		E2A1DB1E4D0D45D9DDE20EE251CD1BC5 /* FlurryAdInterstitial.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdInterstitial.h; path = FlurryAds/FlurryAdInterstitial/FlurryAdInterstitial.h; sourceTree = "<group>"; };
-		E35D38D577526386BFC6C58310C786F7 /* Flurry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = "<group>"; };
-		E3DA14BC13969BFD78F9AB81E9EAE696 /* SwiftyOnboard-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyOnboard-umbrella.h"; sourceTree = "<group>"; };
-		E75639F36B28C4F63040370F4718180A /* FlurryAdNativeDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdNativeDelegate.h; path = FlurryAds/FlurryAdNative/FlurryAdNativeDelegate.h; sourceTree = "<group>"; };
-		E9B4F3AF7DA3AE630FF199C6162CC12B /* FlurryAdNative.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdNative.h; path = FlurryAds/FlurryAdNative/FlurryAdNative.h; sourceTree = "<group>"; };
-		EA414710EDE23F098AEFBAAFE6439941 /* SpriteKitEasingSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpriteKitEasingSwift-prefix.pch"; sourceTree = "<group>"; };
-		EDF5D43AFA886F164EF234DD5698A15E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F622FE12166851EB3158AFE26ED4E7E9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
-		F85A862ACBFAA795513FB5251F7B9C03 /* UIImage+SwiftyGif.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+SwiftyGif.swift"; path = "SwiftyGif/UIImage+SwiftyGif.swift"; sourceTree = "<group>"; };
-		F8B92A8C4D73E78AB591CE0F23042223 /* SwiftyOnboard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyOnboard-dummy.m"; sourceTree = "<group>"; };
-		FF6A6AA7C3BB33B2945E4A6DA73A1D20 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		98542BFEDB3245EBCE9D483F946874F1 /* SwiftyGif-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyGif-dummy.m"; sourceTree = "<group>"; };
+		9E028F7025621EFC38129D18D5F6AE6E /* Pods_KittyJump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KittyJump.framework; path = "Pods-KittyJump.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADB7C954DD39808631B22967CB09C9AD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = SwiftyGif/Info.plist; sourceTree = "<group>"; };
+		AEECD7E96D2F4452C2958343E79DA690 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFDD0BA7A405A52ED6A8E2B0A4FE30B5 /* SwiftyOnboard-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyOnboard-prefix.pch"; sourceTree = "<group>"; };
+		B4724CA22709EF394DE4C7D6C3B5B233 /* EasingDeclarations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EasingDeclarations.swift; path = Pod/Classes/EasingDeclarations.swift; sourceTree = "<group>"; };
+		C3E422C2C46913963CA7481C53A52714 /* SwiftyGif-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyGif-umbrella.h"; sourceTree = "<group>"; };
+		C788A7A7E053362E5B27E2BA48503A42 /* SpriteKitEasingSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SpriteKitEasingSwift.xcconfig; sourceTree = "<group>"; };
+		CA12BB1EDA00369B18680694B8275FA4 /* SpriteKitEasingSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SpriteKitEasingSwift.framework; path = SpriteKitEasingSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0E913574E0C72F47C36134B26511FC0 /* SwiftyGif.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyGif.modulemap; sourceTree = "<group>"; };
+		E1FAD24527E6D2D4833A75B00F315A00 /* SwiftyOnboard-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyOnboard-umbrella.h"; sourceTree = "<group>"; };
+		EC71FD1BEFDE2B2E4EF467F6B14F7337 /* SwiftyGif.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftyGif.h; path = SwiftyGif/SwiftyGif.h; sourceTree = "<group>"; };
+		F7FADE06D64CE52674CC0628196E4BB1 /* SwiftyOnboard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftyOnboard.h; path = SwiftyOnboard/SwiftyOnboard.h; sourceTree = "<group>"; };
+		FD487296E5830FEE7056F9DA492A772E /* SwiftyOnboardPage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyOnboardPage.swift; path = SwiftyOnboard/SwiftyOnboardPage.swift; sourceTree = "<group>"; };
+		FDDB4F360425870B40F86D879F6311A3 /* UIImage+SwiftyGif.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+SwiftyGif.swift"; path = "SwiftyGif/UIImage+SwiftyGif.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		03AFED1C161946EBDA41ED96834CF261 /* Frameworks */ = {
+		198B22F170D65B1B074FF0F5882AEAE0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				077EF40170508519E664FAB5A5D5EAC1 /* Foundation.framework in Frameworks */,
+				A9DEEA4BE4BD9C6F19F33675C672D051 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		16DFC4FEC4F636E9EE1C35E52D00AADF /* Frameworks */ = {
+		77570BAD8624CF5336A83AAD8D2A0F86 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FC8060D5402BC0439CA8187C73B73F0 /* Foundation.framework in Frameworks */,
+				32E0F33B5604F78B2CF99D99FBDC17AE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		23C1C2E6ADDC6E5386F74646B15C4439 /* Frameworks */ = {
+		7F51F0C2DB854FFD1512238779E173F9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5161F939F2E6FF07029F266179B84CDE /* Foundation.framework in Frameworks */,
+				AA2380870DBBA448815E5355A2A6F71F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		34A9E89499DB5C358712B8BCEC370CAE /* Frameworks */ = {
+		B841971ACF3DD43BA4037566FCAE2E40 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07536256C4DE2B36FE3CC7C25A7357DC /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8CEC3D433D41A8298666AB9F8F726AA2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4507304E60A15A91CF25FA19F5B7D883 /* AVFoundation.framework in Frameworks */,
-				8ADAF5ECC796952D3D495F0B5600EDBE /* CoreGraphics.framework in Frameworks */,
-				460E9AC55F44A381FE7596DC9BCA0957 /* CoreMedia.framework in Frameworks */,
-				4F86D5E09D36C6A6B02E98BF4AF5EC0F /* CoreTelephony.framework in Frameworks */,
-				76AAF7C917302B69387673165A0EADAE /* Foundation.framework in Frameworks */,
-				0269910150B116A05C96DE5705D86E6E /* MediaPlayer.framework in Frameworks */,
-				ACB0E36FA7AF344AAEB5F4C9C2E60588 /* Security.framework in Frameworks */,
-				B1DC8C05B8692466D44181FED55D0A69 /* SystemConfiguration.framework in Frameworks */,
-				8A903089A2CF5FC151FFD9C3655F70E6 /* UIKit.framework in Frameworks */,
+				4D57F267467379FCE7A0BBBC385BF5D7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		01869B4629FB9DF3E3519EA2DBB568E4 /* Frameworks */ = {
+		203D815477E9C2108C2AD7F192D30721 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				47C82F20E47D52B34ED05EA6A1129D61 /* libFlurry_8.1.0.a */,
+				3BBC4F52E5A808C4117B4AD1B9C4500B /* Info.plist */,
+				763E3E2F93739DC5DCE1A528084C997E /* SwiftyOnboard.modulemap */,
+				03D0DDC697D471203807DDBCBDDED68F /* SwiftyOnboard.xcconfig */,
+				5C8BE7BBA7F9EB340DE42DD69265CE27 /* SwiftyOnboard-dummy.m */,
+				AFDD0BA7A405A52ED6A8E2B0A4FE30B5 /* SwiftyOnboard-prefix.pch */,
+				E1FAD24527E6D2D4833A75B00F315A00 /* SwiftyOnboard-umbrella.h */,
 			);
-			name = Frameworks;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyOnboard";
 			sourceTree = "<group>";
 		};
-		0502868A7BD985E9582A71984175AFCC /* Support Files */ = {
+		2A3B2A2BA823CE00A0F5132BA4D53CB4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				EDF5D43AFA886F164EF234DD5698A15E /* Info.plist */,
-				219841A85F8D94686BBC0765D50C5A07 /* SwiftyGif.modulemap */,
-				BF3CC1E6925AC9DC6491F12A77B02F9D /* SwiftyGif.xcconfig */,
-				278015D60877CA749533C7CDA806740F /* SwiftyGif-dummy.m */,
-				6EED9F3258A096C3C2FC6451E367B55E /* SwiftyGif-prefix.pch */,
-				84BA38C6C0014D71E0493818FF65F356 /* SwiftyGif-umbrella.h */,
+				AEECD7E96D2F4452C2958343E79DA690 /* Info.plist */,
+				D0E913574E0C72F47C36134B26511FC0 /* SwiftyGif.modulemap */,
+				86087D575F93C8B11F4B566CB42F747A /* SwiftyGif.xcconfig */,
+				98542BFEDB3245EBCE9D483F946874F1 /* SwiftyGif-dummy.m */,
+				5F8A3EE122DF63EE26446CB5275FF116 /* SwiftyGif-prefix.pch */,
+				C3E422C2C46913963CA7481C53A52714 /* SwiftyGif-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SwiftyGif";
 			sourceTree = "<group>";
 		};
-		1861E116738DCBE07B934CF030937EC0 /* Frameworks */ = {
+		2C7D77D8CFA5B72ACA1A1315B7E14AD2 /* SwiftyOnboard */ = {
 			isa = PBXGroup;
 			children = (
-				C2CC862BBAB1839C86A3EF6E1EF5291E /* libFlurryAds_8.1.0.a */,
+				F7FADE06D64CE52674CC0628196E4BB1 /* SwiftyOnboard.h */,
+				7CE4D1D3A3ADA926EB7718F75714B0ED /* SwiftyOnboard.swift */,
+				336F1E0183032462211510B3A62BDE54 /* SwiftyOnboardOverlay.swift */,
+				FD487296E5830FEE7056F9DA492A772E /* SwiftyOnboardPage.swift */,
+				203D815477E9C2108C2AD7F192D30721 /* Support Files */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		24002A6670E6882ECD6250D3E60F9CB2 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E70FA68742178F6FA766C407152ED68E /* iOS */,
-			);
-			name = Frameworks;
+			name = SwiftyOnboard;
+			path = SwiftyOnboard;
 			sourceTree = "<group>";
 		};
 		3355420C3BE9DF158E5EE71F01F85EDD /* Targets Support Files */ = {
@@ -269,124 +192,60 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		364A2295A6EBBF922C49FEBAE312B4A4 /* Support Files */ = {
+		3667121DDE019141A356486A410BF064 /* SpriteKitEasingSwift */ = {
 			isa = PBXGroup;
 			children = (
-				1130DE7D03DF17F30AA4C8935ED25C55 /* Info.plist */,
-				42ADBEBCE69716289D765FA7A00B7EBC /* SpriteKitEasingSwift.modulemap */,
-				1293FBB22F2C4FEDF75E84617CEC1306 /* SpriteKitEasingSwift.xcconfig */,
-				D8C6774C08B0A7600E6E55FE4CE27708 /* SpriteKitEasingSwift-dummy.m */,
-				EA414710EDE23F098AEFBAAFE6439941 /* SpriteKitEasingSwift-prefix.pch */,
-				2C218137AF3566D95BAB8A7B7A26BC01 /* SpriteKitEasingSwift-umbrella.h */,
+				4ADB32D3561BE2D1FACFC78D1FA8D651 /* easing.swift */,
+				B4724CA22709EF394DE4C7D6C3B5B233 /* EasingDeclarations.swift */,
+				4ACD3223503FD67598591C0534DAC0E6 /* SKEase.swift */,
+				8A9BAEB8DD0D5E298A6EF771563580C9 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SpriteKitEasingSwift";
+			name = SpriteKitEasingSwift;
+			path = SpriteKitEasingSwift;
 			sourceTree = "<group>";
 		};
-		3AC2478D4E050FFBEEB4557CEB2AE457 /* FlurrySDK */ = {
+		44340B29025D3B4D7EFA696ED9F19844 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E35D38D577526386BFC6C58310C786F7 /* Flurry.h */,
-				D84681D9384B87B3C833A8C754ED65D6 /* FlurryEmpty.m */,
-				5308FC692F28FBECF6D603BFC04D09E8 /* FlurrySessionBuilder.h */,
-				01869B4629FB9DF3E3519EA2DBB568E4 /* Frameworks */,
+				102E9F46ECB4B84031CC3342B9A4DB5B /* GoogleMobileAds.framework */,
 			);
-			name = FlurrySDK;
-			sourceTree = "<group>";
-		};
-		6A29135EE2912BF5E26948E3E2BC48DD /* SwiftyOnboard */ = {
-			isa = PBXGroup;
-			children = (
-				97E46E7A96C61AFD7ACD698A78DC6F8B /* SwiftyOnboard.h */,
-				9083E78E35ED2463B86F4CF3ED3C26BC /* SwiftyOnboard.swift */,
-				1E088813A18EDA2F4BBBFBE2F5673ECF /* SwiftyOnboardOverlay.swift */,
-				8E65473A9E1EA5DAB2B217BA73624B04 /* SwiftyOnboardPage.swift */,
-				9A3E1AE8D2D574890CB861A5FAD25014 /* Support Files */,
-			);
-			name = SwiftyOnboard;
-			path = SwiftyOnboard;
-			sourceTree = "<group>";
-		};
-		7636FEDCC2D943166F5BA874B3F9CFEC /* FlurryAds */ = {
-			isa = PBXGroup;
-			children = (
-				AEA90A5EF7DCA5BA91DE6631FFD17F2E /* FlurryAdBanner.h */,
-				59D4A443F55414079F6ABD7BAD8BD3A0 /* FlurryAdBannerDelegate.h */,
-				8C28FBE77B63586B868D44E96724E971 /* FlurryAdDelegate.h */,
-				C64426A03AACCA12901AC51086488775 /* FlurryAdError.h */,
-				E2A1DB1E4D0D45D9DDE20EE251CD1BC5 /* FlurryAdInterstitial.h */,
-				CAD7D2903CBC27F7270F56E166C66BCC /* FlurryAdInterstitialDelegate.h */,
-				E9B4F3AF7DA3AE630FF199C6162CC12B /* FlurryAdNative.h */,
-				82B4A35E784DEBED5286BD88D51E90F8 /* FlurryAdNativeAsset.h */,
-				E75639F36B28C4F63040370F4718180A /* FlurryAdNativeDelegate.h */,
-				258E4A5A0B3020F1C8B7D22CFAA4C65E /* FlurryAdNativeStyle.h */,
-				5BED43C44737BF5779FB5B2A79B17187 /* FlurryAdsEmpty.m */,
-				0886CD5795186F8004EF3D195CC66842 /* FlurryAdTargeting.h */,
-				1861E116738DCBE07B934CF030937EC0 /* Frameworks */,
-			);
-			name = FlurryAds;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				24002A6670E6882ECD6250D3E60F9CB2 /* Frameworks */,
-				F52C6DDC3DB57F6D99F51FEA034EA50C /* Pods */,
-				9D679217FDE3E09FD3C8ABCC635E3AF7 /* Products */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				CEA7ADBE41786F71414DABF880013640 /* Pods */,
+				9B816C205456EBB1E5F658CB0515DA39 /* Products */,
 				3355420C3BE9DF158E5EE71F01F85EDD /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		9A3E1AE8D2D574890CB861A5FAD25014 /* Support Files */ = {
+		8A9BAEB8DD0D5E298A6EF771563580C9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				66F2B028318E24CA38F70B0E7A1944EF /* Info.plist */,
-				2714CC1BE0A40333C7C79687ACADBA9B /* SwiftyOnboard.modulemap */,
-				6E6B03D2B9D0C82B82A4C1F03AA56CC9 /* SwiftyOnboard.xcconfig */,
-				F8B92A8C4D73E78AB591CE0F23042223 /* SwiftyOnboard-dummy.m */,
-				AFA649525582B7011EEC10A05FF93685 /* SwiftyOnboard-prefix.pch */,
-				E3DA14BC13969BFD78F9AB81E9EAE696 /* SwiftyOnboard-umbrella.h */,
+				427A60EE8C5BD63CD258F57F1999588D /* Info.plist */,
+				55912177CF4C776E5085ADDA880835B3 /* SpriteKitEasingSwift.modulemap */,
+				C788A7A7E053362E5B27E2BA48503A42 /* SpriteKitEasingSwift.xcconfig */,
+				6005C9959CA17AEED4F63952A688347D /* SpriteKitEasingSwift-dummy.m */,
+				8D73AC04543A32C3C0585DDD3CCD126C /* SpriteKitEasingSwift-prefix.pch */,
+				7DEE05084FA9E0BA0277C155F3F146C0 /* SpriteKitEasingSwift-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/SwiftyOnboard";
+			path = "../Target Support Files/SpriteKitEasingSwift";
 			sourceTree = "<group>";
 		};
-		9B3A5D6182DC527F2F7436A2D104E5A5 /* Flurry-iOS-SDK */ = {
+		9B816C205456EBB1E5F658CB0515DA39 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7636FEDCC2D943166F5BA874B3F9CFEC /* FlurryAds */,
-				3AC2478D4E050FFBEEB4557CEB2AE457 /* FlurrySDK */,
-				F1F2EAA39D638CDB2326EE0782ADB0F3 /* Support Files */,
-			);
-			name = "Flurry-iOS-SDK";
-			path = "Flurry-iOS-SDK";
-			sourceTree = "<group>";
-		};
-		9D679217FDE3E09FD3C8ABCC635E3AF7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9ADC4315448D0E53895844FEB6B719E3 /* Flurry_iOS_SDK.framework */,
-				1890D6256BA6A8E0CD419C05C11AE0DA /* Pods_KittyJump.framework */,
-				4DAC42888FD821E5D86890052D6760B2 /* SpriteKitEasingSwift.framework */,
-				46072414B154D64E7438A586979E8017 /* SwiftyGif.framework */,
-				AC07E1D17E81E136FC823902DBF9C414 /* SwiftyOnboard.framework */,
+				9E028F7025621EFC38129D18D5F6AE6E /* Pods_KittyJump.framework */,
+				CA12BB1EDA00369B18680694B8275FA4 /* SpriteKitEasingSwift.framework */,
+				4492A3D3F09766CCA02A46C05F0B16F6 /* SwiftyGif.framework */,
+				6BC4F27498B43A6ADDAB2ADF8AAFA4AF /* SwiftyOnboard.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B5AE24DFBD5BF1E911D3A3EBB58308F2 /* SwiftyGif */ = {
-			isa = PBXGroup;
-			children = (
-				109A6CFED6753B45106F20BCF5D0473D /* Info.plist */,
-				3C209105B3E1704F689D0F6A351F1559 /* SwiftyGif.h */,
-				D0B0AAC710C71F451156BA03E82793C8 /* SwiftyGifManager.swift */,
-				F85A862ACBFAA795513FB5251F7B9C03 /* UIImage+SwiftyGif.swift */,
-				DFD2B52C931B904A0E7C35CEB78B9F5E /* UIImageView+SwiftyGif.swift */,
-				0502868A7BD985E9582A71984175AFCC /* Support Files */,
-			);
-			name = SwiftyGif;
-			path = SwiftyGif;
 			sourceTree = "<group>";
 		};
 		B5E25DAA58BA80DC05BA88EA7A5C3297 /* Pods-KittyJump */ = {
@@ -407,144 +266,123 @@
 			path = "Target Support Files/Pods-KittyJump";
 			sourceTree = "<group>";
 		};
-		E70FA68742178F6FA766C407152ED68E /* iOS */ = {
+		BB6C9F448756AFB7C460F190821391AA /* Google-Mobile-Ads-SDK */ = {
 			isa = PBXGroup;
 			children = (
-				F622FE12166851EB3158AFE26ED4E7E9 /* AVFoundation.framework */,
-				6AA7BEE42E702CA0EE53224BACD7B529 /* CoreGraphics.framework */,
-				C0F593BC42DE06C3067CF994DC41B0C1 /* CoreMedia.framework */,
-				E0C8A48990DA788E3A4964F51B897032 /* CoreTelephony.framework */,
-				38B65E1C65F0D19787A113F063F1038B /* Foundation.framework */,
-				DDCDE491CF8D0A8DE275D800546BC955 /* MediaPlayer.framework */,
-				FF6A6AA7C3BB33B2945E4A6DA73A1D20 /* Security.framework */,
-				184D18F96D203C2D39BA67D54D5EEF1D /* SystemConfiguration.framework */,
-				96A5F9A734F40E98E0209F312C61791C /* UIKit.framework */,
+				44340B29025D3B4D7EFA696ED9F19844 /* Frameworks */,
 			);
-			name = iOS;
+			name = "Google-Mobile-Ads-SDK";
+			path = "Google-Mobile-Ads-SDK";
 			sourceTree = "<group>";
 		};
-		F1F2EAA39D638CDB2326EE0782ADB0F3 /* Support Files */ = {
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4DD54B92484BB7447E67E7BCDE06A4CE /* Flurry-iOS-SDK.modulemap */,
-				089442D37DB479C3342FA3DECF439E2F /* Flurry-iOS-SDK.xcconfig */,
-				9321EF8144063864A7E15FB317C15C10 /* Flurry-iOS-SDK-dummy.m */,
-				52FE092F74A35E6818CA8DE2D9E24A81 /* Flurry-iOS-SDK-prefix.pch */,
-				1B84DB4049D58EE6E58BC2378EC94FE1 /* Flurry-iOS-SDK-umbrella.h */,
-				BFBAB8636C9C985D305109CFC131392D /* Info.plist */,
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/Flurry-iOS-SDK";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F52C6DDC3DB57F6D99F51FEA034EA50C /* Pods */ = {
+		CEA7ADBE41786F71414DABF880013640 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9B3A5D6182DC527F2F7436A2D104E5A5 /* Flurry-iOS-SDK */,
-				FD6DC5386067D49E7C6258928941777D /* SpriteKitEasingSwift */,
-				B5AE24DFBD5BF1E911D3A3EBB58308F2 /* SwiftyGif */,
-				6A29135EE2912BF5E26948E3E2BC48DD /* SwiftyOnboard */,
+				BB6C9F448756AFB7C460F190821391AA /* Google-Mobile-Ads-SDK */,
+				3667121DDE019141A356486A410BF064 /* SpriteKitEasingSwift */,
+				E910786A7A8F2537FB406DF6B2E2E80F /* SwiftyGif */,
+				2C7D77D8CFA5B72ACA1A1315B7E14AD2 /* SwiftyOnboard */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		FD6DC5386067D49E7C6258928941777D /* SpriteKitEasingSwift */ = {
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				8DC3E8C72451F33D1327B907E3D037FD /* easing.swift */,
-				BFCBCB6DE89AB94DE8B0ACAD8234EBE4 /* EasingDeclarations.swift */,
-				D827E99C55D7385D39342005B5EDEDE1 /* SKEase.swift */,
-				364A2295A6EBBF922C49FEBAE312B4A4 /* Support Files */,
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
 			);
-			name = SpriteKitEasingSwift;
-			path = SpriteKitEasingSwift;
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		E910786A7A8F2537FB406DF6B2E2E80F /* SwiftyGif */ = {
+			isa = PBXGroup;
+			children = (
+				ADB7C954DD39808631B22967CB09C9AD /* Info.plist */,
+				EC71FD1BEFDE2B2E4EF467F6B14F7337 /* SwiftyGif.h */,
+				1C5EEF01FD45E25897914CF357989105 /* SwiftyGifManager.swift */,
+				FDDB4F360425870B40F86D879F6311A3 /* UIImage+SwiftyGif.swift */,
+				7A68983799B868D17129D5FEE4540205 /* UIImageView+SwiftyGif.swift */,
+				2A3B2A2BA823CE00A0F5132BA4D53CB4 /* Support Files */,
+			);
+			name = SwiftyGif;
+			path = SwiftyGif;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0FCBA39D4826286F4021033FBF7682A5 /* Headers */ = {
+		61500E7125079C943303E1A129527925 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				804479F3B8C5117B94B2976F65C0E801 /* SwiftyOnboard-umbrella.h in Headers */,
-				96F008D493F2E6536EE561CFC8A8E285 /* SwiftyOnboard.h in Headers */,
+				A8F43F3760065656E1C7EC2CA228498E /* SwiftyOnboard-umbrella.h in Headers */,
+				6B66E31DA1E4D449A0E22CAFEE48A93C /* SwiftyOnboard.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		562A893EA62A3914E7673119677ED6F6 /* Headers */ = {
+		77BBDA2C0712F45509E54C6CD2217FDE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FC12321F830DA1590EB9C3693FB1B83 /* Pods-KittyJump-umbrella.h in Headers */,
+				B471C522A8F75A497A3F1CD32BC43E49 /* SwiftyGif-umbrella.h in Headers */,
+				B76BEB63CB0A05E85FC0ECE3BAB4ED65 /* SwiftyGif.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		97F54316B4039EABBA46F00A8B4A14B3 /* Headers */ = {
+		AA7018E45B6A6BA7BF9682CBE92F5CF3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F19B318DAB02275A39C85827CA107652 /* SwiftyGif-umbrella.h in Headers */,
-				E39A2B780C8BFF6BB9E7F8109F300094 /* SwiftyGif.h in Headers */,
+				E648FEE5F89550303EFB18839C241B72 /* Pods-KittyJump-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2F9F4C078375BABCFE93F0781A8A01F /* Headers */ = {
+		D2D4E84D77CEB69F300950DB9A567190 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC546718E404EF6D8FF2B9BC48A0BC17 /* SpriteKitEasingSwift-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EC89ADC921D443BDEB69BBDC24768CB8 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9710036441958AC06335B84CB3CA8D7E /* Flurry-iOS-SDK-umbrella.h in Headers */,
-				46D243D0B702C098A62A9EBDC1CE1832 /* Flurry.h in Headers */,
-				0859C12B1124FE44EA4C955F14273FF5 /* FlurryAdBanner.h in Headers */,
-				810961B8CACE96463274BC7A2552427D /* FlurryAdBannerDelegate.h in Headers */,
-				8BC13ACCDFFB8AC7C36F658D08C41D2D /* FlurryAdDelegate.h in Headers */,
-				68894D889915B1B55BCC6F1E2EFBEF34 /* FlurryAdError.h in Headers */,
-				6324E6CD8E80A8DF149DA96F1651DEED /* FlurryAdInterstitial.h in Headers */,
-				8C2692617E027FD6DA40C24CC16BC7E4 /* FlurryAdInterstitialDelegate.h in Headers */,
-				E4075E7138C0B56BB8B4831265C954FC /* FlurryAdNative.h in Headers */,
-				FF5C5715FE89AE8E66459872752B815B /* FlurryAdNativeAsset.h in Headers */,
-				76E5792456FB86EF26C18ABC450798FC /* FlurryAdNativeDelegate.h in Headers */,
-				FCE1BF07DEE07E6A1AF2A0AB828FE423 /* FlurryAdNativeStyle.h in Headers */,
-				88AAF361A82AEC9AC21C3F6B9B463798 /* FlurryAdTargeting.h in Headers */,
-				73620244228AB7DE2A4476803551A28D /* FlurrySessionBuilder.h in Headers */,
+				A360E75A32A725E4F6DE137AFFA9BC6D /* SpriteKitEasingSwift-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		35235DC0C35253D8CB719010AEC670AC /* Flurry-iOS-SDK */ = {
+		1262D04DC8E151E499798C538B331263 /* Pods-KittyJump */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B82DA455E174EFA59A1A69D71F4EB1CC /* Build configuration list for PBXNativeTarget "Flurry-iOS-SDK" */;
+			buildConfigurationList = 27D93EC8276B988E636E30898B4D4E47 /* Build configuration list for PBXNativeTarget "Pods-KittyJump" */;
 			buildPhases = (
-				F80F14895FC11989A2A363C3CD11F204 /* Sources */,
-				8CEC3D433D41A8298666AB9F8F726AA2 /* Frameworks */,
-				EC89ADC921D443BDEB69BBDC24768CB8 /* Headers */,
+				D17ACD28732AA405FC9BF4AAA60A31E9 /* Sources */,
+				77570BAD8624CF5336A83AAD8D2A0F86 /* Frameworks */,
+				AA7018E45B6A6BA7BF9682CBE92F5CF3 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8B43041BA621334D55E16E20CDFB0414 /* PBXTargetDependency */,
+				2C232D1CB19391C6E589C89A6308B197 /* PBXTargetDependency */,
+				B2F2E598424421F594F5A59930292959 /* PBXTargetDependency */,
 			);
-			name = "Flurry-iOS-SDK";
-			productName = "Flurry-iOS-SDK";
-			productReference = 9ADC4315448D0E53895844FEB6B719E3 /* Flurry_iOS_SDK.framework */;
+			name = "Pods-KittyJump";
+			productName = "Pods-KittyJump";
+			productReference = 9E028F7025621EFC38129D18D5F6AE6E /* Pods_KittyJump.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		378CB025CABFE23CACDC2CF6B8C6C0AD /* SwiftyOnboard */ = {
+		9F7DFADA5AFBE2F15F50D4722484C4C5 /* SwiftyOnboard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44D2A71D8F89B069C761416955E16A36 /* Build configuration list for PBXNativeTarget "SwiftyOnboard" */;
+			buildConfigurationList = BA482E61DE8E0CA6D0B7EB1BDAE1E5AA /* Build configuration list for PBXNativeTarget "SwiftyOnboard" */;
 			buildPhases = (
-				C1ED0A2D4168771303BA21BEF2D2FBE0 /* Sources */,
-				16DFC4FEC4F636E9EE1C35E52D00AADF /* Frameworks */,
-				0FCBA39D4826286F4021033FBF7682A5 /* Headers */,
+				4B0DC1ABE652272805265E1FAC9EFAF1 /* Sources */,
+				7F51F0C2DB854FFD1512238779E173F9 /* Frameworks */,
+				61500E7125079C943303E1A129527925 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -552,33 +390,16 @@
 			);
 			name = SwiftyOnboard;
 			productName = SwiftyOnboard;
-			productReference = AC07E1D17E81E136FC823902DBF9C414 /* SwiftyOnboard.framework */;
+			productReference = 6BC4F27498B43A6ADDAB2ADF8AAFA4AF /* SwiftyOnboard.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		77C5F2A59B06D71164CDD71C211CB87E /* SwiftyGif */ = {
+		D359D91E523A45B3275B1CF70A1F5CD7 /* SpriteKitEasingSwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A56C67EFA92F2177C138FD49FCC7EC46 /* Build configuration list for PBXNativeTarget "SwiftyGif" */;
+			buildConfigurationList = 97320CCD16F11FC49BA079D34840DB5F /* Build configuration list for PBXNativeTarget "SpriteKitEasingSwift" */;
 			buildPhases = (
-				6238DD8F33172E07A3E667279B3606E4 /* Sources */,
-				03AFED1C161946EBDA41ED96834CF261 /* Frameworks */,
-				97F54316B4039EABBA46F00A8B4A14B3 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SwiftyGif;
-			productName = SwiftyGif;
-			productReference = 46072414B154D64E7438A586979E8017 /* SwiftyGif.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		ABB9F5080B827139D07061DF00D9620F /* SpriteKitEasingSwift */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9BB7A7DA8B84B4DEB0EF70B963D2ECF5 /* Build configuration list for PBXNativeTarget "SpriteKitEasingSwift" */;
-			buildPhases = (
-				B4245EBE6B7935B2607C7179E6151D75 /* Sources */,
-				23C1C2E6ADDC6E5386F74646B15C4439 /* Frameworks */,
-				B2F9F4C078375BABCFE93F0781A8A01F /* Headers */,
+				E1CA73FD4AA753809F7E154ACD27B573 /* Sources */,
+				198B22F170D65B1B074FF0F5882AEAE0 /* Frameworks */,
+				D2D4E84D77CEB69F300950DB9A567190 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -586,28 +407,24 @@
 			);
 			name = SpriteKitEasingSwift;
 			productName = SpriteKitEasingSwift;
-			productReference = 4DAC42888FD821E5D86890052D6760B2 /* SpriteKitEasingSwift.framework */;
+			productReference = CA12BB1EDA00369B18680694B8275FA4 /* SpriteKitEasingSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		EA66FA2D3006B003AF4A3EB2A8694FF4 /* Pods-KittyJump */ = {
+		F19B92E446CA197B030B953F781B4AD6 /* SwiftyGif */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 121FF9522300CF038927A8ACAB2D12E0 /* Build configuration list for PBXNativeTarget "Pods-KittyJump" */;
+			buildConfigurationList = 870F7D9D375F9155FE61963AFA21FB03 /* Build configuration list for PBXNativeTarget "SwiftyGif" */;
 			buildPhases = (
-				FD9748F2B5895C0166960922173774D3 /* Sources */,
-				34A9E89499DB5C358712B8BCEC370CAE /* Frameworks */,
-				562A893EA62A3914E7673119677ED6F6 /* Headers */,
+				B885C583D4D94144E066DAD969B3158C /* Sources */,
+				B841971ACF3DD43BA4037566FCAE2E40 /* Frameworks */,
+				77BBDA2C0712F45509E54C6CD2217FDE /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				753E1350366B96C7374C9F41CD1EA405 /* PBXTargetDependency */,
-				720FCF8A8525F0BBE3659E5E9D7FE6D8 /* PBXTargetDependency */,
-				613A77DBF1F33A6C562154F5B77DCF84 /* PBXTargetDependency */,
-				2DA3C06990EC949C922323F06F99DF2D /* PBXTargetDependency */,
 			);
-			name = "Pods-KittyJump";
-			productName = "Pods-KittyJump";
-			productReference = 1890D6256BA6A8E0CD419C05C11AE0DA /* Pods_KittyJump.framework */;
+			name = SwiftyGif;
+			productName = SwiftyGif;
+			productReference = 4492A3D3F09766CCA02A46C05F0B16F6 /* SwiftyGif.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -627,137 +444,86 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 9D679217FDE3E09FD3C8ABCC635E3AF7 /* Products */;
+			productRefGroup = 9B816C205456EBB1E5F658CB0515DA39 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				35235DC0C35253D8CB719010AEC670AC /* Flurry-iOS-SDK */,
-				EA66FA2D3006B003AF4A3EB2A8694FF4 /* Pods-KittyJump */,
-				ABB9F5080B827139D07061DF00D9620F /* SpriteKitEasingSwift */,
-				77C5F2A59B06D71164CDD71C211CB87E /* SwiftyGif */,
-				378CB025CABFE23CACDC2CF6B8C6C0AD /* SwiftyOnboard */,
+				1262D04DC8E151E499798C538B331263 /* Pods-KittyJump */,
+				D359D91E523A45B3275B1CF70A1F5CD7 /* SpriteKitEasingSwift */,
+				F19B92E446CA197B030B953F781B4AD6 /* SwiftyGif */,
+				9F7DFADA5AFBE2F15F50D4722484C4C5 /* SwiftyOnboard */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6238DD8F33172E07A3E667279B3606E4 /* Sources */ = {
+		4B0DC1ABE652272805265E1FAC9EFAF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61D9211E5F54653681AA9D9606289D03 /* Info.plist in Sources */,
-				E213A88E17694B5848BF593B6367BC7E /* SwiftyGif-dummy.m in Sources */,
-				922159C37646F454E233A4C93F58814A /* SwiftyGifManager.swift in Sources */,
-				0BD96CA4D51406AA28B4A8AA53563A2F /* UIImage+SwiftyGif.swift in Sources */,
-				5140FE2EFBB6E603F5B59A595B351B00 /* UIImageView+SwiftyGif.swift in Sources */,
+				FAEADFE9C580905EB93C85B1C4E88936 /* SwiftyOnboard-dummy.m in Sources */,
+				4691A0E9CAF26B258D14383410E5EE6D /* SwiftyOnboard.swift in Sources */,
+				824F66BF49AA9C9DD25D24F5A58FD675 /* SwiftyOnboardOverlay.swift in Sources */,
+				612614E1A4E0DE0BB618BBAEADF2A457 /* SwiftyOnboardPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B4245EBE6B7935B2607C7179E6151D75 /* Sources */ = {
+		B885C583D4D94144E066DAD969B3158C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				513E98FE7869A7F42A20A2A83DB99AE8 /* easing.swift in Sources */,
-				ED421716839F3497C472FC6E97D8DAAA /* EasingDeclarations.swift in Sources */,
-				46D42FEED6DFAB942760B333ED3FB33B /* SKEase.swift in Sources */,
-				BB343B08DE0B9EEBEC4A5B3C740D8DDF /* SpriteKitEasingSwift-dummy.m in Sources */,
+				563B1112FEC55C9D5109A4ECDEFD94EB /* Info.plist in Sources */,
+				14941C3140DE96B18C7B91BFEEE34C17 /* SwiftyGif-dummy.m in Sources */,
+				0500C3C03306DC9C7A068EA0BCF8F30C /* SwiftyGifManager.swift in Sources */,
+				4A955473E5365F642FD7F2A246A44AD5 /* UIImage+SwiftyGif.swift in Sources */,
+				F8A54BAEC117BBB0D6EF937FC63D2124 /* UIImageView+SwiftyGif.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C1ED0A2D4168771303BA21BEF2D2FBE0 /* Sources */ = {
+		D17ACD28732AA405FC9BF4AAA60A31E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6B78D58A1185F3A5AA7451A1C63B19C /* SwiftyOnboard-dummy.m in Sources */,
-				FB20F47B17A0C7BB67492A74E46E9D47 /* SwiftyOnboard.swift in Sources */,
-				8BE79AF61EB82E4B89F38913600CE36B /* SwiftyOnboardOverlay.swift in Sources */,
-				5BCA17E9A1DD66EAD9C064B4B853A24D /* SwiftyOnboardPage.swift in Sources */,
+				37B7D7B094277FE64A7E5BC9CC123DDA /* Pods-KittyJump-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F80F14895FC11989A2A363C3CD11F204 /* Sources */ = {
+		E1CA73FD4AA753809F7E154ACD27B573 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2B6FB27AFED53E9913296ACC695F382 /* Flurry-iOS-SDK-dummy.m in Sources */,
-				AE4175A0BB65B4D8E1C3C28CBDC3598D /* FlurryAdsEmpty.m in Sources */,
-				1B22C557B98A05D959CA6B58ADE049C0 /* FlurryEmpty.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FD9748F2B5895C0166960922173774D3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				316D17352B9A7575D33D3D7452D90D37 /* Pods-KittyJump-dummy.m in Sources */,
+				E6DAB45235F508B01B36F924F0C81362 /* easing.swift in Sources */,
+				F383FE83A3BBC6EB4B822577400185FA /* EasingDeclarations.swift in Sources */,
+				E9A0111B30120586011AB12CA8EC519C /* SKEase.swift in Sources */,
+				B114E41FAC0EDDE0FAF3AA4220E71E98 /* SpriteKitEasingSwift-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2DA3C06990EC949C922323F06F99DF2D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftyOnboard;
-			target = 378CB025CABFE23CACDC2CF6B8C6C0AD /* SwiftyOnboard */;
-			targetProxy = 619F6A5BDB536BA85BB030DDFB69CCAB /* PBXContainerItemProxy */;
-		};
-		613A77DBF1F33A6C562154F5B77DCF84 /* PBXTargetDependency */ = {
+		2C232D1CB19391C6E589C89A6308B197 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyGif;
-			target = 77C5F2A59B06D71164CDD71C211CB87E /* SwiftyGif */;
-			targetProxy = 5C3DC3BE9E78125B1959FAE405886F51 /* PBXContainerItemProxy */;
+			target = F19B92E446CA197B030B953F781B4AD6 /* SwiftyGif */;
+			targetProxy = 7884DEAAB6D4B42F29D82625E8A1C0D8 /* PBXContainerItemProxy */;
 		};
-		720FCF8A8525F0BBE3659E5E9D7FE6D8 /* PBXTargetDependency */ = {
+		8B43041BA621334D55E16E20CDFB0414 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SpriteKitEasingSwift;
-			target = ABB9F5080B827139D07061DF00D9620F /* SpriteKitEasingSwift */;
-			targetProxy = 3119999A22B5B2B70C265DB2111FC03C /* PBXContainerItemProxy */;
+			target = D359D91E523A45B3275B1CF70A1F5CD7 /* SpriteKitEasingSwift */;
+			targetProxy = 29723761C87D642EBBFC763CFDF3DFD7 /* PBXContainerItemProxy */;
 		};
-		753E1350366B96C7374C9F41CD1EA405 /* PBXTargetDependency */ = {
+		B2F2E598424421F594F5A59930292959 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Flurry-iOS-SDK";
-			target = 35235DC0C35253D8CB719010AEC670AC /* Flurry-iOS-SDK */;
-			targetProxy = A142FE6D1BB0E833B356901E8F7B951D /* PBXContainerItemProxy */;
+			name = SwiftyOnboard;
+			target = 9F7DFADA5AFBE2F15F50D4722484C4C5 /* SwiftyOnboard */;
+			targetProxy = D42E1470ABE017B797342F39E7FA90B6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		21AA7D2580A67C27B7A77F4C2937D4E0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E6B03D2B9D0C82B82A4C1F03AA56CC9 /* SwiftyOnboard.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyOnboard/SwiftyOnboard-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyOnboard/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftyOnboard/SwiftyOnboard.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SwiftyOnboard;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		2A7C75EF97813CA1794D3074F4D81A62 /* Debug */ = {
+		17808835FC57152813C4614C64937E0D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 81BEC0790B3EFDB5DC20AB1E02137179 /* Pods-KittyJump.debug.xcconfig */;
 			buildSettings = {
@@ -796,44 +562,9 @@
 			};
 			name = Debug;
 		};
-		317D09BAC606E2E810714A4F86BA86A2 /* Debug */ = {
+		4A4702711CF76953B9DF3AE3F27648AB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1293FBB22F2C4FEDF75E84617CEC1306 /* SpriteKitEasingSwift.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SpriteKitEasingSwift/SpriteKitEasingSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SpriteKitEasingSwift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SpriteKitEasingSwift/SpriteKitEasingSwift.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SpriteKitEasingSwift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		5923B4B3FE9E4A869BBE0E3FB0572F8B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 84A38B70C2395953FB8E41DA6DCAC96C /* Pods-KittyJump.release.xcconfig */;
+			baseConfigurationReference = C788A7A7E053362E5B27E2BA48503A42 /* SpriteKitEasingSwift.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -847,18 +578,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-KittyJump/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SpriteKitEasingSwift/SpriteKitEasingSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SpriteKitEasingSwift/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-KittyJump/Pods-KittyJump.modulemap";
+				MODULEMAP_FILE = "Target Support Files/SpriteKitEasingSwift/SpriteKitEasingSwift.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_KittyJump;
+				PRODUCT_NAME = SpriteKitEasingSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -868,6 +595,41 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		4AAC7C0C722F610899381C9AA9EA42BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86087D575F93C8B11F4B566CB42F747A /* SwiftyGif.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyGif/SwiftyGif-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyGif/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyGif/SwiftyGif.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftyGif;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		643C76AA582046977B7877822ED7A258 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -917,9 +679,9 @@
 			};
 			name = Debug;
 		};
-		9C575B7F763FB07C051C3C3859B62C11 /* Debug */ = {
+		BD621F29360B23A3CFC8F9BFA48C92A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 089442D37DB479C3342FA3DECF439E2F /* Flurry-iOS-SDK.xcconfig */;
+			baseConfigurationReference = C788A7A7E053362E5B27E2BA48503A42 /* SpriteKitEasingSwift.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -933,16 +695,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Flurry-iOS-SDK/Flurry-iOS-SDK-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Flurry-iOS-SDK/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SpriteKitEasingSwift/SpriteKitEasingSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SpriteKitEasingSwift/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Flurry-iOS-SDK/Flurry-iOS-SDK.modulemap";
+				MODULEMAP_FILE = "Target Support Files/SpriteKitEasingSwift/SpriteKitEasingSwift.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Flurry_iOS_SDK;
+				PRODUCT_NAME = SpriteKitEasingSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -950,76 +714,9 @@
 			};
 			name = Debug;
 		};
-		A4F338B326A61D748E9A38A12C4DEA58 /* Release */ = {
+		BFDFEA434AC09CF680E57E90807436C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1293FBB22F2C4FEDF75E84617CEC1306 /* SpriteKitEasingSwift.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SpriteKitEasingSwift/SpriteKitEasingSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SpriteKitEasingSwift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SpriteKitEasingSwift/SpriteKitEasingSwift.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SpriteKitEasingSwift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		BF3EA50BB4F6243962828C9925D335F2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 089442D37DB479C3342FA3DECF439E2F /* Flurry-iOS-SDK.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Flurry-iOS-SDK/Flurry-iOS-SDK-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Flurry-iOS-SDK/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Flurry-iOS-SDK/Flurry-iOS-SDK.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Flurry_iOS_SDK;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C01838EE42120D8B109635D61922D40A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E6B03D2B9D0C82B82A4C1F03AA56CC9 /* SwiftyOnboard.xcconfig */;
+			baseConfigurationReference = 03D0DDC697D471203807DDBCBDDED68F /* SwiftyOnboard.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1096,9 +793,47 @@
 			};
 			name = Release;
 		};
-		E6CA685549921DCD3DB8DF9342A89EC1 /* Release */ = {
+		C92FD5EB6A4BA4428E3412F66B51D960 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF3CC1E6925AC9DC6491F12A77B02F9D /* SwiftyGif.xcconfig */;
+			baseConfigurationReference = 84A38B70C2395953FB8E41DA6DCAC96C /* Pods-KittyJump.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-KittyJump/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-KittyJump/Pods-KittyJump.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_KittyJump;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DD02162F3F1847A181A3AAD711AA7CD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86087D575F93C8B11F4B566CB42F747A /* SwiftyGif.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1130,49 +865,48 @@
 			};
 			name = Release;
 		};
-		F8E7D9EE6C1F6020078F73FA1ABCC762 /* Debug */ = {
+		E0023B47CD839145ABE157A8BE992881 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF3CC1E6925AC9DC6491F12A77B02F9D /* SwiftyGif.xcconfig */;
+			baseConfigurationReference = 03D0DDC697D471203807DDBCBDDED68F /* SwiftyOnboard.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyGif/SwiftyGif-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyGif/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyOnboard/SwiftyOnboard-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyOnboard/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftyGif/SwiftyGif.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SwiftyGif;
+				MODULEMAP_FILE = "Target Support Files/SwiftyOnboard/SwiftyOnboard.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftyOnboard;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		121FF9522300CF038927A8ACAB2D12E0 /* Build configuration list for PBXNativeTarget "Pods-KittyJump" */ = {
+		27D93EC8276B988E636E30898B4D4E47 /* Build configuration list for PBXNativeTarget "Pods-KittyJump" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2A7C75EF97813CA1794D3074F4D81A62 /* Debug */,
-				5923B4B3FE9E4A869BBE0E3FB0572F8B /* Release */,
+				17808835FC57152813C4614C64937E0D /* Debug */,
+				C92FD5EB6A4BA4428E3412F66B51D960 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1186,38 +920,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44D2A71D8F89B069C761416955E16A36 /* Build configuration list for PBXNativeTarget "SwiftyOnboard" */ = {
+		870F7D9D375F9155FE61963AFA21FB03 /* Build configuration list for PBXNativeTarget "SwiftyGif" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C01838EE42120D8B109635D61922D40A /* Debug */,
-				21AA7D2580A67C27B7A77F4C2937D4E0 /* Release */,
+				4AAC7C0C722F610899381C9AA9EA42BE /* Debug */,
+				DD02162F3F1847A181A3AAD711AA7CD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9BB7A7DA8B84B4DEB0EF70B963D2ECF5 /* Build configuration list for PBXNativeTarget "SpriteKitEasingSwift" */ = {
+		97320CCD16F11FC49BA079D34840DB5F /* Build configuration list for PBXNativeTarget "SpriteKitEasingSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				317D09BAC606E2E810714A4F86BA86A2 /* Debug */,
-				A4F338B326A61D748E9A38A12C4DEA58 /* Release */,
+				BD621F29360B23A3CFC8F9BFA48C92A1 /* Debug */,
+				4A4702711CF76953B9DF3AE3F27648AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A56C67EFA92F2177C138FD49FCC7EC46 /* Build configuration list for PBXNativeTarget "SwiftyGif" */ = {
+		BA482E61DE8E0CA6D0B7EB1BDAE1E5AA /* Build configuration list for PBXNativeTarget "SwiftyOnboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F8E7D9EE6C1F6020078F73FA1ABCC762 /* Debug */,
-				E6CA685549921DCD3DB8DF9342A89EC1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B82DA455E174EFA59A1A69D71F4EB1CC /* Build configuration list for PBXNativeTarget "Flurry-iOS-SDK" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9C575B7F763FB07C051C3C3859B62C11 /* Debug */,
-				BF3EA50BB4F6243962828C9925D335F2 /* Release */,
+				BFDFEA434AC09CF680E57E90807436C7 /* Debug */,
+				E0023B47CD839145ABE157A8BE992881 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

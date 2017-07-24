@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Flurry_iOS_SDK
+// import Flurry_iOS_SDK
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        Flurry.startSession("");
+        // Flurry.startSession("CF7YYJD5WPHPFJZ2HJSZ");
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
@@ -33,9 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
+        
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-8959953054263820~4674777616")
     
         return true
     }
+
     
     func applicationWillResignActive(_ application: UIApplication) {
     }
