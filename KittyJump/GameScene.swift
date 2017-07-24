@@ -223,8 +223,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 successGenerator.prepare()
                 if kittyCurrentState == .onTrain {
                     self.physicsWorld.removeAllJoints()
+                    
+                    //                    kitty.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 80))
                     kitty.animateShape(destPos: CGPoint(x: kitty.position.x,
-                                                        y: kitty.position.y + 150))
+                                                        y: kitty.position.y + 200))
+                    kitty.zPosition = 3
+                    
                     if score != pastHighScore {
                         generator.impactOccurred()
                     }
@@ -592,6 +596,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryBorder) || (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryDeadline) {
+            kitty.zPosition = 2
+            kitty.removeAllActions()
             self.stop()
         }
         
@@ -606,22 +612,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if (contact.contactPoint.x > (secondBody.node!.frame.maxX - 100)) {
                     
-                    if finishJump {
-                        
-                        finishJump = false
-                        
-                        switchJointL(iWagon: secondBody.node! as! LeftTrain)
-                        changeTrackAndGrassInNewLocation()
-                        
-                        moveRightWagon2()
-                        
-                        kittyPosition = .LeftTrain
-                        
-                        // Remove old deadline & add new deadline
-                        newDeadlinePosY += trainDiffPosition
-                        setNewDeadline()
-                        isUpdateCameraPosY = true
-                    }
+                    kitty.removeAllActions()
+                    kitty.zPosition = 2
+                    
+                    switchJointL(iWagon: secondBody.node! as! LeftTrain)
+                    changeTrackAndGrassInNewLocation()
+                    
+                    moveRightWagon2()
+                    
+                    kittyPosition = .LeftTrain
+                    
+                    // Remove old deadline & add new deadline
+                    newDeadlinePosY += trainDiffPosition
+                    setNewDeadline()
+                    isUpdateCameraPosY = true
+                    
                 }
                 else {
                     stop()
@@ -635,21 +640,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if (contact.contactPoint.x < (secondBody.node!.frame.minX + 100)) {
                     
-                    if finishJump {
-                        finishJump = false
-                        
-                        switchJoint(iWagon:secondBody.node! as! RightTrain)
-                        changeTrackAndGrassInNewLocation()
-                        moveLeftTrain2()
-                        kittyPosition = .RightTrain
-                        
-                        // Remove old deadline & add new deadline
-                        newDeadlinePosY += trainDiffPosition
-                        setNewDeadline()
-                        
-                        // Camera
-                        isUpdateCameraPosY = true
-                    }
+                    kitty.removeAllActions()
+                    kitty.zPosition = 2
+                    
+                    switchJoint(iWagon:secondBody.node! as! RightTrain)
+                    changeTrackAndGrassInNewLocation()
+                    moveLeftTrain2()
+                    kittyPosition = .RightTrain
+                    
+                    // Remove old deadline & add new deadline
+                    newDeadlinePosY += trainDiffPosition
+                    setNewDeadline()
+                    
+                    // Camera
+                    isUpdateCameraPosY = true
                 }
                 else {
                     stop()

@@ -77,7 +77,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         
         
-        // Add coin button tapped
+        //Add coin button click
         
         let addCoinBtnClick = UITapGestureRecognizer(target: self, action: #selector(showAddCoinsView))
         coinImage.isUserInteractionEnabled = true
