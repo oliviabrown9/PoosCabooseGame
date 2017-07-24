@@ -10,6 +10,7 @@ import UIKit
 import Contacts
 import MessageUI
 import StoreKit
+import SwiftyGif
 
 var using: Int = 0
 var selectedPhoneNumber: String = ""
@@ -71,6 +72,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.gifView.delegate = self
         
         //Add coin button click
         
@@ -552,7 +555,13 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
     }
     
+    @IBOutlet weak var gifView: UIImageView!
     func addPurchasedCoins(amount: Int) {
+        
+        let gif = UIImage(gifName: "coin.gif")
+        let gifManager = SwiftyGifManager(memoryLimit: 20)
+        self.gifView.setGifImage(gif, manager: gifManager, loopCount: 1)
+        
         coins += amount
         SharingManager.sharedInstance.lifetimeScore += amount
         currentCoins.text = "\(coins)"
@@ -768,8 +777,9 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         case MessageComposeResult.failed.rawValue:
             controller.dismiss(animated: true, completion: nil)
         case MessageComposeResult.sent.rawValue:
-            addPurchasedCoins(amount: 250)
             controller.dismiss(animated: true, completion: nil)
+            addPurchasedCoins(amount: 250)
+            darkenedView.isHidden = false
         default:
             break;
         }
@@ -807,5 +817,11 @@ extension String {
         let start = characters.index(startIndex, offsetBy: r.lowerBound)
         let end = characters.index(start, offsetBy: r.upperBound - r.lowerBound)
         return self[Range(start ..< end)]
+    }
+}
+extension StoreViewController: SwiftyGifDelegate {
+    
+    func gifDidLoop() {
+        gifView.isHidden = true
     }
 }

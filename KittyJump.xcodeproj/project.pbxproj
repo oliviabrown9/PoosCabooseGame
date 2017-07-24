@@ -19,6 +19,7 @@
 		75B5B1711F2140F6008D8584 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5B1701F2140F6008D8584 /* ContactsTableViewCell.swift */; };
 		75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */; };
 		75C5A2CC1F26679B002DD5DB /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 75C5A2CB1F26679B002DD5DB /* splash.gif */; };
+		75C5A2CE1F266815002DD5DB /* coin.gif in Resources */ = {isa = PBXBuildFile; fileRef = 75C5A2CD1F266815002DD5DB /* coin.gif */; };
 		75EF6CCD1F1569B7004AD11F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EF6CCC1F1569B7004AD11F /* StoreKit.framework */; };
 		75F3FE391F1D608B001E0C0D /* CustomPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F3FE351F1D608B001E0C0D /* CustomPage.xib */; };
 		75F3FE3A1F1D608B001E0C0D /* CustomPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3FE361F1D608B001E0C0D /* CustomPage.swift */; };
@@ -62,6 +63,7 @@
 		75B5B1701F2140F6008D8584 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		75C5A2CB1F26679B002DD5DB /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
+		75C5A2CD1F266815002DD5DB /* coin.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = coin.gif; sourceTree = "<group>"; };
 		75EF6CCC1F1569B7004AD11F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		75F3FE351F1D608B001E0C0D /* CustomPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPage.xib; sourceTree = "<group>"; };
 		75F3FE361F1D608B001E0C0D /* CustomPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPage.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				D7C5EAB51EEB5C21007DA71A /* GameScene.sks */,
 				D7C5EAB71EEB5C21007DA71A /* Actions.sks */,
 				75C5A2CB1F26679B002DD5DB /* splash.gif */,
+				75C5A2CD1F266815002DD5DB /* coin.gif */,
 				75F3FE341F1D6072001E0C0D /* Onboarding */,
 				D7C5EAE41EEC058C007DA71A /* Sprites */,
 				755820F11F0413D400A68A88 /* Audio */,
@@ -293,6 +296,7 @@
 				D7C5EAC41EEB5C21007DA71A /* LaunchScreen.storyboard in Resources */,
 				75F3FE391F1D608B001E0C0D /* CustomPage.xib in Resources */,
 				755820EE1F04126400A68A88 /* jump.mp3 in Resources */,
+				75C5A2CE1F266815002DD5DB /* coin.gif in Resources */,
 				755C59021F0484F70064472D /* background.mp3 in Resources */,
 				753E80A61F058FAD001FEE97 /* stop.mp3 in Resources */,
 				D7C5EAB81EEB5C21007DA71A /* Actions.sks in Resources */,
