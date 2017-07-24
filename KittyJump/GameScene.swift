@@ -246,6 +246,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     if score == pastHighScore {
                         successGenerator.notificationOccurred(.success)
+                        if (!soundState) {
                         let newHighScoreSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "newHighScore", ofType: "mp3")!)
                         do {
                             soundEffectPlayer = try AVAudioPlayer(contentsOf: newHighScoreSound as URL)
@@ -254,6 +255,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             soundEffectPlayer.play()
                         } catch {
                             print("Cannot play the file")
+                        }
                         }
                     }
                 }
@@ -862,7 +864,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func muteSound() {
-        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+            try AVAudioSession.sharedInstance().setActive(true)
+        }
+        catch let error as NSError {
+            print(error)
+        }
         backgroundMusicPlayer.stop()
     }
     
