@@ -864,13 +864,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func muteSound() {
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
-        }
-        catch let error as NSError {
-            print(error)
-        }
         backgroundMusicPlayer.stop()
     }
     

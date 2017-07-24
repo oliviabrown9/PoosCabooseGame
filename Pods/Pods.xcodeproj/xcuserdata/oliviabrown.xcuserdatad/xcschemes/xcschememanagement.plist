@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Flurry-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-KittyJump.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1262D04DC8E151E499798C538B331263</key>
+		<key>35235DC0C35253D8CB719010AEC670AC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F7DFADA5AFBE2F15F50D4722484C4C5</key>
+		<key>378CB025CABFE23CACDC2CF6B8C6C0AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D359D91E523A45B3275B1CF70A1F5CD7</key>
+		<key>77C5F2A59B06D71164CDD71C211CB87E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F19B92E446CA197B030B953F781B4AD6</key>
+		<key>ABB9F5080B827139D07061DF00D9620F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EA66FA2D3006B003AF4A3EB2A8694FF4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

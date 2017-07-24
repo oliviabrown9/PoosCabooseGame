@@ -89,11 +89,13 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/Flurry-iOS-SDK/Flurry_iOS_SDK.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SpriteKitEasingSwift/SpriteKitEasingSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyGif/SwiftyGif.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyOnboard/SwiftyOnboard.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/Flurry-iOS-SDK/Flurry_iOS_SDK.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SpriteKitEasingSwift/SpriteKitEasingSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyGif/SwiftyGif.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyOnboard/SwiftyOnboard.framework"

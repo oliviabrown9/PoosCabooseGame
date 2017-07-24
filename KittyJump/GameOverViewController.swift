@@ -9,8 +9,12 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import Flurry_iOS_SDK
 
-class GameOverViewController: UIViewController {
+class GameOverViewController: UIViewController, FlurryAdInterstitialDelegate{
+    
+    // Variable for advertisement
+    let adInterstitial = FlurryAdInterstitial(space:"ADSPACE");
     
     // Variables for changing label text
     var lastNineScores = SharingManager.sharedInstance.lastScores
@@ -23,8 +27,37 @@ class GameOverViewController: UIViewController {
     // Start over image
     @IBOutlet weak var startOver: UIImageView?
     
+    func adInterstitialDidFetchAd(interstitialAd: FlurryAdInterstitial!) {
+        // You can choose to present the ad as soon as it is received
+        interstitialAd.present(with: self);
+    }
+    func adInterstitialDidRender(interstitialAd: FlurryAdInterstitial!) {
+        
+    }
+    
+    // Informs the app that a video associated with this ad has finished playing
+    // Only present for rewarded & client-side rewarded ad spaces
+    func adInterstitialVideoDidFinish(interstitialAd: FlurryAdInterstitial!) {
+        
+    }
+    
+    // Informational callback invoked when there is an ad error
+    func adInterstitial(interstitialAd: FlurryAdInterstitial!, adError: FlurryAdError, errorDescription: NSError!) {
+        // @param interstitialAd The interstitial ad object associated with the error
+        // @param adError an enum that gives the reason for the error
+        // @param errorDescription An error object that gives additional information on the cause of the ad error
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if (adInterstitial?.ready)! {
+            print("show add")
+            adInterstitial?.present(with: self);
+        } else {
+            print("fetching add")
+            adInterstitial?.fetchAd();
+        }
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameOverViewController.swiped(_:)))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
@@ -44,11 +77,17 @@ class GameOverViewController: UIViewController {
         performSegue(withIdentifier: "toStore", sender: self)
     }
     
-    // Recognize if startOver image is tapped
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        adInterstitial?.adDelegate = self;
+        adInterstitial?.fetchAd();
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         startOver?.isUserInteractionEnabled = true
         startOver?.addGestureRecognizer(tapGestureRecognizer)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated);
     }
     
     // Unwind segue back to gameView
