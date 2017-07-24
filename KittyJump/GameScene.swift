@@ -11,6 +11,8 @@ import GameplayKit
 import Foundation
 import AVFoundation
 
+var playCount: Int = 0
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var soundEffectPlayer: AVAudioPlayer = AVAudioPlayer()
@@ -796,6 +798,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Game lost
     func stop() {
+        
+        playCount += 1
         
         kitty.removeAllActions()
         isStop = true

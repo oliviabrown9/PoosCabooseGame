@@ -9,12 +9,12 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import GoogleMobileAds
 // import Flurry_iOS_SDK
 
-class GameOverViewController: UIViewController{
+class GameOverViewController: UIViewController, GADInterstitialDelegate {
     
-    // Variable for advertisement
-    //let adInterstitial = FlurryAdInterstitial(space:"ADSPACE");
+    var interstitial: GADInterstitial!
     
     // Variables for changing label text
     var lastNineScores = SharingManager.sharedInstance.lastScores
@@ -27,29 +27,19 @@ class GameOverViewController: UIViewController{
     // Start over image
     @IBOutlet weak var startOver: UIImageView?
     
-    //func adInterstitialDidFetchAd(interstitialAd: FlurryAdInterstitial!) {
-        // You can choose to present the ad as soon as it is received
-        //interstitialAd.present(with: self);
-   // }
-    // func adInterstitialDidRender(interstitialAd: FlurryAdInterstitial!) {
-        
-   // }
+    var showFirst: Bool = true
     
-    // Informs the app that a video associated with this ad has finished playing
-    // Only present for rewarded & client-side rewarded ad spaces
-    //func adInterstitialVideoDidFinish(interstitialAd: FlurryAdInterstitial!) {
-        
-   // }
-    
-    // Informational callback invoked when there is an ad error
-    //func adInterstitial(interstitialAd: FlurryAdInterstitial!, adError: FlurryAdError, errorDescription: NSError!) {
-        // @param interstitialAd The interstitial ad object associated with the error
-        // @param adError an enum that gives the reason for the error
-        // @param errorDescription An error object that gives additional information on the cause of the ad error
-   // }
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        if showFirst == true && playCount % 5 == 0 {
+            interstitial.present(fromRootViewController: self)
+            showFirst = false
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        interstitial = createAndLoadInterstitial()
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameOverViewController.swiped(_:)))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
@@ -63,6 +53,20 @@ class GameOverViewController: UIViewController{
             String($0)
         }
         pastScores.text = stringArray.joined(separator: "  ")
+    }
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-1224845211182149/4021005644")
+        interstitial.delegate = self
+        let request = GADRequest()
+        request.testDevices = [ kGADSimulatorID,
+            "564a568fb48a3aded298f6a10f02b34c"]
+        interstitial.load(request)
+        return interstitial
+    }
+    
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        interstitial = createAndLoadInterstitial()
     }
     
     func swiped(_ gesture: UIGestureRecognizer) {

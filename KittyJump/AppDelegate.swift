@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
         
-        GADMobileAds.configure(withApplicationID: "ca-app-pub-8959953054263820~4674777616")
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-1224845211182149~2532664151")
     
         return true
     }
