@@ -755,7 +755,15 @@
                                             <constraint firstItem="Ws1-xm-H8O" firstAttribute="centerX" secondItem="yf0-mT-b7O" secondAttribute="centerX" constant="-30.5" id="m9f-XQ-fpT"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Frc-fu-qgl">
+                                    <searchBar contentMode="redraw" placeholder="search" translucent="NO" backgroundImage="white" translatesAutoresizingMaskIntoConstraints="NO" id="br7-bf-q9P">
+                                        <rect key="frame" x="16" y="226" width="299" height="44"/>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="nFG-jk-vvE" id="6Ch-nd-HuP"/>
+                                        </connections>
+                                    </searchBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" canCancelContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Frc-fu-qgl">
                                         <rect key="frame" x="0.0" y="282" width="325" height="243"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="separatorColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -808,14 +816,6 @@
                                             <outlet property="delegate" destination="nFG-jk-vvE" id="Cah-HD-Kaq"/>
                                         </connections>
                                     </tableView>
-                                    <searchBar contentMode="redraw" placeholder="search" translucent="NO" backgroundImage="white" translatesAutoresizingMaskIntoConstraints="NO" id="br7-bf-q9P">
-                                        <rect key="frame" x="16" y="226" width="299" height="44"/>
-                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="nFG-jk-vvE" id="6Ch-nd-HuP"/>
-                                        </connections>
-                                    </searchBar>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

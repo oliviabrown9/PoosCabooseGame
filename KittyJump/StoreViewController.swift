@@ -120,7 +120,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 unlocked += 1
             }
         }
-        let unlockedString: String = "\(unlocked) / 8 unlocked"
+        let unlockedString: String = "\(unlocked) of 8 unlocked"
         unlockedLabel.text = unlockedString
     }
     
@@ -364,24 +364,31 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         failureGenerator.prepare()
 
         if pageIndex == 1 {
+            itemTitle = "poos trotter"
             cost = 1000
         }
         else if pageIndex == 2 {
+            itemTitle = "pirate poos"
             cost = 1000
         }
         else if pageIndex == 3 {
+            itemTitle = "proper poos"
             cost = 2000
         }
         else if pageIndex == 4 {
+            itemTitle = "quapoos"
             cost = 5000
         }
         else if pageIndex == 5 {
+            itemTitle = "le pous"
             cost = 10000
         }
         else if pageIndex == 6 {
+            itemTitle = "poos in boots"
             cost = 25000
         }
         else if pageIndex == 7 {
+            itemTitle = "trumpoos"
             cost = 100000
         }
         
@@ -399,7 +406,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             showModal()
         }
     }
-    
     
     func showModal() {
         
@@ -485,6 +491,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         darkenedView.isHidden = false
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tap.cancelsTouchesInView = false
         darkenedView.addGestureRecognizer(tap)
         
         addModalTopConstraint.constant += self.view.bounds.height
@@ -529,6 +536,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     func inviteFriends() {
         checkAuthorization()
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
         inviteFriendsView.addGestureRecognizer(tap)
         inviteFriendsView.layer.cornerRadius = 28
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
@@ -843,6 +851,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("selected")
         let contact = contacts[indexPath.row]
         selectedPhoneNumber = ""
         
