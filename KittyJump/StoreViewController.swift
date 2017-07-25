@@ -79,7 +79,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         //Add coin button click
         
-        let addCoinBtnClick = UITapGestureRecognizer(target: self, action: #selector(showAddCoinsView))
+        let addCoinBtnClick = UITapGestureRecognizer(target: self, action: #selector(animateAddCoinsView))
         coinImage.isUserInteractionEnabled = true
         coinImage.addGestureRecognizer(addCoinBtnClick)
         
@@ -476,6 +476,25 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         peek.isHidden = false
         addCoinsView.isHidden = false
         addCoinsGestures()
+    }
+    
+    func animateAddCoinsView() {
+        addCoinsView.layer.cornerRadius = 28
+        addCoinsLabel.text = "Pick your poos coin \n package"
+        
+        darkenedView.isHidden = false
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        darkenedView.addGestureRecognizer(tap)
+        
+        addModalTopConstraint.constant += self.view.bounds.height
+        view.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.addCoinsView.isHidden = false
+            self.addModalTopConstraint.constant -= self.view.bounds.height
+            self.view.layoutIfNeeded()
+        })
     }
     
     func setPlaceHolder(placeholder: String)-> String

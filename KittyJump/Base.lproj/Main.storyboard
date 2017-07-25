@@ -353,6 +353,13 @@
                                     <constraint firstAttribute="height" constant="32" id="WhK-T1-Y2j"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="tiY-Z9-ZzS">
+                                <rect key="frame" x="314" y="62" width="40" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="8XE-Vo-c7Q"/>
+                                    <constraint firstAttribute="height" constant="36" id="yQX-v1-DGR"/>
+                                </constraints>
+                            </imageView>
                             <view hidden="YES" alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CkV-Lz-Jbm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -680,13 +687,6 @@
                                     <constraint firstItem="mvR-aF-lU7" firstAttribute="top" secondItem="12T-x0-6aE" secondAttribute="top" constant="7" id="yXa-nU-DGi"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="tiY-Z9-ZzS">
-                                <rect key="frame" x="314" y="62" width="40" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="8XE-Vo-c7Q"/>
-                                    <constraint firstAttribute="height" constant="36" id="yQX-v1-DGR"/>
-                                </constraints>
-                            </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oY-l4-JJY">
                                 <rect key="frame" x="25" y="58" width="325" height="550"/>
                                 <subviews>
