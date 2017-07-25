@@ -8,7 +8,5 @@ target 'KittyJump' do
 pod 'SwiftyGif'
 pod 'SwiftyOnboard'
 pod ‘SpriteKitEasingSwift’
-#pod 'Flurry-iOS-SDK/FlurrySDK'
-#pod 'Flurry-iOS-SDK/FlurryAds'
 pod 'Google-Mobile-Ads-SDK'
 end

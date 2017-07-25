@@ -478,9 +478,52 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         addCoinsGestures()
     }
     
+    func setPlaceHolder(placeholder: String)-> String
+    {
+        
+        var text = placeholder
+        if text.characters.last! != " " {
+            
+            // define a max size
+            let maxSize = CGSize(width: UIScreen.main.bounds.size.width - 104, height: 40)
+            // get the size of the text
+            let widthText = text.boundingRect( with: maxSize, options: .usesLineFragmentOrigin, attributes:nil, context:nil).size.width
+            // get the size of one space
+            let widthSpace = " ".boundingRect( with: maxSize, options: .usesLineFragmentOrigin, attributes:nil, context:nil).size.width
+            let spaces = floor((maxSize.width - widthText) / widthSpace)
+            // add the spaces
+            let newText = text + ((Array(repeating: " ", count: Int(spaces)).joined(separator: "")))
+            // apply the new text if nescessary
+            if newText != text {
+                return newText
+            }
+            
+        }
+        
+        return placeholder;
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     func inviteFriends() {
         checkAuthorization()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        inviteFriendsView.addGestureRecognizer(tap)
         inviteFriendsView.layer.cornerRadius = 28
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.black
+        textFieldInsideSearchBar?.font = UIFont(name: "Avenir-Medium", size: 18)
+        textFieldInsideSearchBar?.attributedPlaceholder = NSAttributedString(string: self.setPlaceHolder(placeholder: "search"), attributes: [NSForegroundColorAttributeName: UIColor.black])
+        let button = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
+        if let image = button.imageView?.image {
+            button.setImage(image.transform(withNewColor: UIColor.black), for: .normal)
+            if let imageView = textFieldInsideSearchBar?.leftView as? UIImageView {
+                imageView.image = imageView.image?.transform(withNewColor: UIColor.black)
+            }
+        }
+
         inviteFriendsView.isHidden = false
     }
     
@@ -871,5 +914,26 @@ extension StoreViewController: SwiftyGifDelegate {
     
     func gifDidLoop() {
         gifView.isHidden = true
+    }
+}
+extension UIImage {
+    
+    func transform(withNewColor color: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        
+        let context = UIGraphicsGetCurrentContext()!
+        context.translateBy(x: 0, y: size.height)
+        context.scaleBy(x: 1.0, y: -1.0)
+        context.setBlendMode(.normal)
+        
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        context.clip(to: rect, mask: cgImage!)
+        
+        color.setFill()
+        context.fill(rect)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
     }
 }

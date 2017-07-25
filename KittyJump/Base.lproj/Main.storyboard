@@ -808,12 +808,8 @@
                                             <outlet property="delegate" destination="nFG-jk-vvE" id="Cah-HD-Kaq"/>
                                         </connections>
                                     </tableView>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="search" translatesAutoresizingMaskIntoConstraints="NO" id="br7-bf-q9P">
-                                        <rect key="frame" x="14" y="226" width="297" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="297" id="RLB-3g-ELf"/>
-                                            <constraint firstAttribute="height" constant="44" id="dmL-X0-s3E"/>
-                                        </constraints>
+                                    <searchBar contentMode="redraw" placeholder="search" translucent="NO" backgroundImage="white" translatesAutoresizingMaskIntoConstraints="NO" id="br7-bf-q9P">
+                                        <rect key="frame" x="16" y="226" width="299" height="44"/>
                                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -834,11 +830,12 @@
                                     <constraint firstItem="yf0-mT-b7O" firstAttribute="top" secondItem="Ga1-B2-5EV" secondAttribute="bottom" id="SPd-xY-eLj"/>
                                     <constraint firstItem="FNs-Hk-bKg" firstAttribute="top" secondItem="Ws1-xm-H8O" secondAttribute="bottom" constant="25" id="YLy-8n-I2x"/>
                                     <constraint firstItem="Frc-fu-qgl" firstAttribute="leading" secondItem="1oY-l4-JJY" secondAttribute="leading" id="ZGo-dX-UxT"/>
-                                    <constraint firstItem="br7-bf-q9P" firstAttribute="centerX" secondItem="1oY-l4-JJY" secondAttribute="centerX" id="caN-9U-7Re"/>
+                                    <constraint firstAttribute="trailing" secondItem="br7-bf-q9P" secondAttribute="trailing" constant="10" id="j30-is-jpj"/>
                                     <constraint firstItem="Frc-fu-qgl" firstAttribute="top" secondItem="br7-bf-q9P" secondAttribute="bottom" constant="12" id="qCB-0W-1h7"/>
                                     <constraint firstItem="wXf-sq-erg" firstAttribute="leading" secondItem="1oY-l4-JJY" secondAttribute="leading" constant="7" id="qXv-dW-se3"/>
                                     <constraint firstItem="Ga1-B2-5EV" firstAttribute="centerX" secondItem="1oY-l4-JJY" secondAttribute="centerX" id="tY9-xq-ayN"/>
                                     <constraint firstAttribute="trailing" secondItem="Frc-fu-qgl" secondAttribute="trailing" id="vvI-8a-PQA"/>
+                                    <constraint firstItem="br7-bf-q9P" firstAttribute="leading" secondItem="1oY-l4-JJY" secondAttribute="leading" constant="16" id="wwk-hC-0Hp"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kWr-Qf-7v1">
@@ -939,6 +936,7 @@
         <image name="cornerpoos" width="1647" height="1449"/>
         <image name="peek" width="240" height="123"/>
         <image name="startOver" width="222" height="222"/>
+        <image name="white" width="602" height="174"/>
         <image name="x" width="45" height="42"/>
     </resources>
 </document>
