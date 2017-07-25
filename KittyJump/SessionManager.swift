@@ -49,6 +49,11 @@ class SharingManager {
             userDefaults.set(onboardingFinished, forKey: "OnboardingFinished")
         }
     }
+    var saveMute: Bool = true {
+        didSet {
+            userDefaults.set(saveMute, forKey: "SaveMute")
+        }
+    }
     
     static let sharedInstance = SharingManager()
     
@@ -93,6 +98,9 @@ class SharingManager {
         
         let storedOnboardingFinished = userDefaults.bool(forKey: "OnboardingFinished")
         onboardingFinished = storedOnboardingFinished
+        
+        let storedMute = userDefaults.bool(forKey: "saveMute")
+        saveMute = storedMute
 
     }
     

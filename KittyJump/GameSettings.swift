@@ -3,14 +3,14 @@
 //  Olivia
 //
 //  Created by Olivia Brown on 7/19/17.
-//  Copyright © 2016 Olivia Brown. All rights reserved.
+//  Copyright © 2017 Olivia Brown. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-var savePause : Bool = false
-var finishJump : Bool = false;
+var savePause: Bool = false
+var finishJump : Bool = false
 
 func load()
 {
