@@ -50,6 +50,12 @@ class SharingManager {
         }
     }
     
+    var soundState: Bool = false {
+        didSet {
+            userDefaults.set(soundState, forKey: "SoundState")
+        }
+    }
+    
     static let sharedInstance = SharingManager()
     
     private init() {
@@ -93,6 +99,9 @@ class SharingManager {
         
         let storedOnboardingFinished = userDefaults.bool(forKey: "OnboardingFinished")
         onboardingFinished = storedOnboardingFinished
+        
+        let storedSoundState = userDefaults.bool(forKey: "SoundState")
+        soundState = storedSoundState
 
     }
     

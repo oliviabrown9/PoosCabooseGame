@@ -105,7 +105,9 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
             backgroundMusicPlayer.delegate = self
             backgroundMusicPlayer.numberOfLoops = 0
             backgroundMusicPlayer.prepareToPlay()
+            if (!soundState) {
             backgroundMusicPlayer.play()
+            }
         } catch {
             print("Cannot play the file")
         }
@@ -126,7 +128,9 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
             backgroundMusicPlayer = try AVAudioPlayer(contentsOf: backgroundSound as URL)
             backgroundMusicPlayer.numberOfLoops = -1
             backgroundMusicPlayer.prepareToPlay()
+            if (!soundState) {
             backgroundMusicPlayer.play()
+            }
         } catch {
             print("Cannot play the file")
         }

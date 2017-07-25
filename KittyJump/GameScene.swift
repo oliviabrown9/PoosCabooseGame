@@ -12,6 +12,7 @@ import Foundation
 import AVFoundation
 
 var playCount: Int = 0
+var soundState: Bool = SharingManager.sharedInstance.soundState
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -26,7 +27,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Variables for game play
     var isStart = false
-    var soundState = false
     var pauseState = false
     var gamePaused = false
     var pauseButton:SKSpriteNode!
@@ -181,6 +181,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func setSoundButton() {
+        if soundState == true {
+            soundButton.texture = SKTexture(imageNamed: "sound")
+        }
+        else {
+            soundButton.texture = SKTexture(imageNamed: "mute")
+        }
+    }
+    
     // Touches
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -205,13 +214,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         else if (name == "sound") {
             soundState = !soundState
+            SharingManager.sharedInstance.soundState = soundState
             if (soundState) {
                 muteSound()
-                soundButton.texture = SKTexture(imageNamed: "sound")
+                setSoundButton()
             }
             else {
                 playSound()
-                soundButton.texture = SKTexture(imageNamed: "mute")
+                setSoundButton()
             }
         }
         else {
@@ -238,6 +248,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         do {
                             soundEffectPlayer = try AVAudioPlayer(contentsOf: jumpSound as URL)
                             soundEffectPlayer.numberOfLoops = 0
+                            soundEffectPlayer.volume = 0.8
                             soundEffectPlayer.prepareToPlay()
                             soundEffectPlayer.play()
                         } catch {
@@ -309,7 +320,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pauseButton.position = CGPoint(x:-(hud.size.width/2)+50, y: 130)
         hud.addChild(pauseButton)
         
-        soundButton = SKSpriteNode(imageNamed: "mute")
+        if soundState == true {
+            soundButton = SKSpriteNode(imageNamed: "sound")
+        }
+        else {
+            soundButton = SKSpriteNode(imageNamed: "mute")
+        }
         soundButton.name = "sound"
         soundButton.size.height = 40
         soundButton.size.width = 60
@@ -872,8 +888,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func playSound() {
-        
+        if (!soundState) {
         backgroundMusicPlayer.play()
+        }
         
     }
     func playGame() {
