@@ -174,7 +174,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     func createSlides() -> [Slide] {
         
-        let slideArray = [slide0, slide1, slide2, slide3, slide4, slide5, slide6]
+        let slideArray = [slide0, slide1, slide2, slide3, slide4, slide5, slide6, slide7]
         
         var x = 0
         for i in slideArray {
@@ -671,8 +671,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         SharingManager.sharedInstance.lifetimeScore += amount
         
         if coins >= 100000 {
-            slide6.image.image = #imageLiteral(resourceName: "trumpStore")
-            slide6.titleLabel.text = "trumpoos"
+            slide7.image.image = #imageLiteral(resourceName: "trumpStore")
+            slide7.titleLabel.text = "trumpoos"
         }
         updateCoinsLabel()
         
