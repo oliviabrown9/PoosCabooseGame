@@ -30,6 +30,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         performSegue(withIdentifier: "unwindToGameOver", sender: self)
     }
     @IBOutlet weak var inviteFriendsView: UIView!
+    @IBOutlet weak var unlockedLabel: UILabel!
     
     // Slides
     let slide0 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
@@ -39,6 +40,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     let slide4 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     let slide5 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     let slide6 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+    let slide7 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
@@ -107,6 +109,19 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
         else {
         }
+        
+        updateUnlocked()
+    }
+    
+    func updateUnlocked() {
+        var unlocked: Int = 0
+        for i in SharingManager.sharedInstance.itemStates {
+            if i == "inCloset" {
+                unlocked += 1
+            }
+        }
+        let unlockedString: String = "\(unlocked) / 8 unlocked"
+        unlockedLabel.text = unlockedString
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -181,44 +196,49 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         slide1.costLabel.text = "1,000"
         slide1.imageHeight.constant = 245
         
-        slide2.image.image = #imageLiteral(resourceName: "properStore")
-        slide2.titleLabel.text = "proper poos"
-        slide2.costLabel.text = "2,000"
-        slide2.imageHeight.constant = 230
+        slide2.image.image = #imageLiteral(resourceName: "rateStore")
+        slide2.titleLabel.text = "pirate poos"
+        slide2.costLabel.text = "1,000"
+        slide2.imageHeight.constant = 217
         
-        slide3.image.image = #imageLiteral(resourceName: "rateStore")
-        slide3.titleLabel.text = "poosrate"
-        slide3.costLabel.text = "5,000"
-        slide3.imageHeight.constant = 217
+        slide3.image.image = #imageLiteral(resourceName: "properStore")
+        slide3.titleLabel.text = "proper poos"
+        slide3.costLabel.text = "2,000"
+        slide3.imageHeight.constant = 230
         
         slide4.image.image = #imageLiteral(resourceName: "quaStore")
         slide4.titleLabel.text = "quapoos"
-        slide4.costLabel.text = "10,000"
+        slide4.costLabel.text = "5,000"
         slide4.imageHeight.constant = 217
         
         slide5.image.image = #imageLiteral(resourceName: "pousStore")
         slide5.titleLabel.text = "le pous"
-        slide5.costLabel.text = "25,000"
+        slide5.costLabel.text = "10,000"
         slide5.imageHeight.constant = 208
         
+        slide6.image.image = #imageLiteral(resourceName: "bootsStore")
+        slide6.titleLabel.text = "poos in boots"
+        slide6.costLabel.text = "25,000"
+        slide6.imageHeight.constant = 253
+        
         if coins >= 100000 {
-            slide6.image.image = #imageLiteral(resourceName: "trumpStore")
-            slide6.titleLabel.text = "trumpoos"
-            slide6.imageHeight.constant = 216
+            slide7.image.image = #imageLiteral(resourceName: "trumpStore")
+            slide7.titleLabel.text = "trumpoos"
+            slide7.imageHeight.constant = 216
         }
         else if SharingManager.sharedInstance.itemStates[6] == "inCloset" {
-            slide6.image.image = #imageLiteral(resourceName: "trumpStore")
-            slide6.titleLabel.text = "trumpoos"
-            slide6.imageHeight.constant = 216
+            slide7.image.image = #imageLiteral(resourceName: "trumpStore")
+            slide7.titleLabel.text = "trumpoos"
+            slide7.imageHeight.constant = 216
         }
         else {
-            slide6.image.image = #imageLiteral(resourceName: "mysteryStore")
-            slide6.titleLabel.text = "?????"
-            slide6.imageHeight.constant = 207
+            slide7.image.image = #imageLiteral(resourceName: "mysteryStore")
+            slide7.titleLabel.text = "?????"
+            slide7.imageHeight.constant = 207
         }
-        slide6.costLabel.text = "100,000"
+        slide7.costLabel.text = "100,000"
         
-        return [slide0, slide1, slide2, slide3, slide4, slide5, slide6]
+        return [slide0, slide1, slide2, slide3, slide4, slide5, slide6, slide7]
     }
     
     func setupScrollView(slides: [Slide]) {
@@ -268,11 +288,14 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         else if pageIndex == 6 {
             currentSlide = slide6
         }
+        else if pageIndex == 7 {
+            currentSlide = slide7
+        }
         setupInCloset(slide: currentSlide, x: pageIndex)
     }
     
     func updateUseButton() {
-        let allSlides = [slide0, slide1, slide2, slide3, slide4, slide5, slide6]
+        let allSlides = [slide0, slide1, slide2, slide3, slide4, slide5, slide6, slide7]
         
         var x = 0
         for i in allSlides {
@@ -305,12 +328,12 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
         else if pageIndex == 2 {
             SharingManager.sharedInstance.using = 2
-            SharingManager.sharedInstance.catImageString = "properpoos"
+            SharingManager.sharedInstance.catImageString = "poosrate"
             updateUseButton()
         }
         else if pageIndex == 3 {
             SharingManager.sharedInstance.using = 3
-            SharingManager.sharedInstance.catImageString = "poosrate"
+            SharingManager.sharedInstance.catImageString = "properpoos"
             updateUseButton()
         }
         else if pageIndex == 4 {
@@ -325,6 +348,11 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
         else if pageIndex == 6 {
             SharingManager.sharedInstance.using = 6
+            SharingManager.sharedInstance.catImageString = "bootspoos"
+            updateUseButton()
+        }
+        else if pageIndex == 7 {
+            SharingManager.sharedInstance.using = 7
             SharingManager.sharedInstance.catImageString = "trumpoos"
             updateUseButton()
         }
@@ -339,18 +367,21 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             cost = 1000
         }
         else if pageIndex == 2 {
-            cost = 2000
+            cost = 1000
         }
         else if pageIndex == 3 {
-            cost = 5000
+            cost = 2000
         }
         else if pageIndex == 4 {
-            cost = 10000
+            cost = 5000
         }
         else if pageIndex == 5 {
-            cost = 25000
+            cost = 10000
         }
         else if pageIndex == 6 {
+            cost = 25000
+        }
+        else if pageIndex == 7 {
             cost = 100000
         }
         
@@ -426,6 +457,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             currentCoins.text = "\(coins)"
             SharingManager.sharedInstance.lifetimeScore = coins
             SharingManager.sharedInstance.itemStates[pageIndex] = "inCloset"
+            updateUnlocked()
             itemAlreadyPurchased()
         }
         else if confirm == true && cost >= coins {

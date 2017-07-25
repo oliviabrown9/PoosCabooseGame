@@ -306,14 +306,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundGradient" translatesAutoresizingMaskIntoConstraints="NO" id="nWy-aB-ild">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customize your Poos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="XrY-i5-Asb">
-                                <rect key="frame" x="21" y="101.5" width="172.5" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/8 Unlocked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="XrY-i5-Asb" userLabel="Unlocked">
+                                <rect key="frame" x="21" y="101.5" width="109" height="25"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="8XH-BJ-ZYs">
-                                <rect key="frame" x="21" y="55" width="92" height="49.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pooses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="8XH-BJ-ZYs">
+                                <rect key="frame" x="21" y="55" width="121" height="49.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="36"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -921,6 +921,7 @@
                         <outlet property="shareTopConstraint" destination="qh1-cy-2dA" id="ZwG-kc-IIl"/>
                         <outlet property="tableView" destination="Frc-fu-qgl" id="Ust-bk-9uA"/>
                         <outlet property="thirdAddCoins" destination="ITj-f8-evu" id="sfc-bh-U9T"/>
+                        <outlet property="unlockedLabel" destination="XrY-i5-Asb" id="Dgu-zn-60U"/>
                         <segue destination="IZF-mN-TjC" kind="unwind" identifier="unwindToGameOver" unwindAction="unwindToGameOverWithSender:" id="s11-Qc-MZb"/>
                     </connections>
                 </viewController>
