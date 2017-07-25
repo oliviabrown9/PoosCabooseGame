@@ -630,7 +630,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             searchBar.isUserInteractionEnabled = authStatus == .authorized
             if authStatus == .authorized { // all search
                 contacts = fetchContacts("")
-                tableView.reloadData()
+                DispatchQueue.main.async() {
+                    self.tableView.reloadData()
+                }
+                
             }
         }
     }

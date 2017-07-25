@@ -10,7 +10,6 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import GoogleMobileAds
-// import Flurry_iOS_SDK
 
 class GameOverViewController: UIViewController, GADInterstitialDelegate {
     
@@ -30,7 +29,7 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate {
     var showFirst: Bool = true
     
     func interstitialDidReceiveAd(_ ad: GADInterstitial) {
-        if showFirst == true && playCount % 5 == 0 {
+        if showFirst == true && playCount % 3 == 0 {
             interstitial.present(fromRootViewController: self)
             showFirst = false
         }
