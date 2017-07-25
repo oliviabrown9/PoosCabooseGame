@@ -99,7 +99,6 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         
         scene.isStart = true
         
-        if SharingManager.sharedInstance.saveMute == true {
         let introSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "intro", ofType: "mp3")!)
         do {
             backgroundMusicPlayer = try AVAudioPlayer(contentsOf: introSound as URL)
@@ -109,7 +108,6 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
             backgroundMusicPlayer.play()
         } catch {
             print("Cannot play the file")
-        }
         }
         
         // Set the scale mode to scale to fit the window
@@ -123,8 +121,6 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        
-        if SharingManager.sharedInstance.saveMute == true {
         let backgroundSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "background", ofType: "mp3")!)
         do {
             backgroundMusicPlayer = try AVAudioPlayer(contentsOf: backgroundSound as URL)
@@ -134,7 +130,6 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         } catch {
             print("Cannot play the file")
         }
-    }
     }
     
     // Hide status bar

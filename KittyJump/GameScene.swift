@@ -26,7 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Variables for game play
     var isStart = false
-    var soundState = SharingManager.sharedInstance.saveMute
+    var soundState = false
     var pauseState = false
     var gamePaused = false
     var pauseButton:SKSpriteNode!
@@ -204,8 +204,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         else if (name == "sound") {
-            SharingManager.sharedInstance.saveMute = !SharingManager.sharedInstance.saveMute
-            if (SharingManager.sharedInstance.saveMute == false) {
+            soundState = !soundState
+            if (soundState) {
                 muteSound()
                 soundButton.texture = SKTexture(imageNamed: "sound")
             }
@@ -233,7 +233,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         generator.impactOccurred()
                     }
                     
-                    if SharingManager.sharedInstance.saveMute == true {
+                    if (!soundState) {
                         let jumpSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "jump", ofType: "mp3")!)
                         do {
                             soundEffectPlayer = try AVAudioPlayer(contentsOf: jumpSound as URL)
@@ -246,10 +246,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     }
                     kittyCurrentState = .onAir
                     
-                    
                     if score == pastHighScore {
                         successGenerator.notificationOccurred(.success)
-                        if SharingManager.sharedInstance.saveMute == true {
+                        if (!soundState) {
                         let newHighScoreSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "newHighScore", ofType: "mp3")!)
                         do {
                             soundEffectPlayer = try AVAudioPlayer(contentsOf: newHighScoreSound as URL)
@@ -310,12 +309,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pauseButton.position = CGPoint(x:-(hud.size.width/2)+50, y: 130)
         hud.addChild(pauseButton)
         
-        if SharingManager.sharedInstance.saveMute == true {
         soundButton = SKSpriteNode(imageNamed: "mute")
-        }
-        else {
-            soundButton = SKSpriteNode(imageNamed: "sound")
-        }
         soundButton.name = "sound"
         soundButton.size.height = 40
         soundButton.size.width = 60
@@ -812,10 +806,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let failureGenerator = UINotificationFeedbackGenerator()
         failureGenerator.notificationOccurred(.error)
-        if SharingManager.sharedInstance.saveMute == true {
         backgroundMusicPlayer.stop()
-        }
-        if SharingManager.sharedInstance.saveMute == true {
+        
+        if (!soundState) {
             let stopSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "stop", ofType: "mp3")!)
             do {
                 soundEffectPlayer = try AVAudioPlayer(contentsOf: stopSound as URL)
@@ -875,12 +868,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func muteSound() {
-        SharingManager.sharedInstance.saveMute = false
         backgroundMusicPlayer.stop()
     }
     
     func playSound() {
-        SharingManager.sharedInstance.saveMute = true
+        
         backgroundMusicPlayer.play()
         
     }
