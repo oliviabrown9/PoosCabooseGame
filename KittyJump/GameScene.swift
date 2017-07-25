@@ -246,6 +246,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     if (!soundState) {
                         let jumpSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "jump", ofType: "mp3")!)
                         do {
+                            let audioSession = AVAudioSession.sharedInstance()
+                            try!audioSession.setCategory(AVAudioSessionCategoryAmbient, with: AVAudioSessionCategoryOptions.mixWithOthers)
                             soundEffectPlayer = try AVAudioPlayer(contentsOf: jumpSound as URL)
                             soundEffectPlayer.numberOfLoops = 0
                             soundEffectPlayer.volume = 0.8
@@ -262,6 +264,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         if (!soundState) {
                         let newHighScoreSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "newHighScore", ofType: "mp3")!)
                         do {
+                            let audioSession = AVAudioSession.sharedInstance()
+                            try!audioSession.setCategory(AVAudioSessionCategoryAmbient, with: AVAudioSessionCategoryOptions.mixWithOthers)
                             soundEffectPlayer = try AVAudioPlayer(contentsOf: newHighScoreSound as URL)
                             soundEffectPlayer.numberOfLoops = 0
                             soundEffectPlayer.prepareToPlay()
@@ -269,7 +273,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         } catch {
                             print("Cannot play the file")
                         }
-                        }
+                    }
                     }
                 }
             }
@@ -910,6 +914,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } catch {
                 print("Cannot play the file")
             }
+            let audioSession = AVAudioSession.sharedInstance()
+            try!audioSession.setCategory(AVAudioSessionCategoryAmbient, with: AVAudioSessionCategoryOptions.mixWithOthers)
         }
         
         // Play the game

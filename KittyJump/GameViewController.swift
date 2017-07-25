@@ -101,6 +101,8 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         
         let introSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "intro", ofType: "mp3")!)
         do {
+            let audioSession = AVAudioSession.sharedInstance()
+            try!audioSession.setCategory(AVAudioSessionCategoryAmbient, with: AVAudioSessionCategoryOptions.mixWithOthers)
             backgroundMusicPlayer = try AVAudioPlayer(contentsOf: introSound as URL)
             backgroundMusicPlayer.delegate = self
             backgroundMusicPlayer.numberOfLoops = 0
@@ -125,6 +127,8 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         let backgroundSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "background", ofType: "mp3")!)
         do {
+            let audioSession = AVAudioSession.sharedInstance()
+            try!audioSession.setCategory(AVAudioSessionCategoryAmbient, with: AVAudioSessionCategoryOptions.mixWithOthers)
             backgroundMusicPlayer = try AVAudioPlayer(contentsOf: backgroundSound as URL)
             backgroundMusicPlayer.numberOfLoops = -1
             backgroundMusicPlayer.prepareToPlay()
