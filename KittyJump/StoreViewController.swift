@@ -226,7 +226,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             slide7.titleLabel.text = "trumpoos"
             slide7.imageHeight.constant = 216
         }
-        else if SharingManager.sharedInstance.itemStates[6] == "inCloset" {
+        else if SharingManager.sharedInstance.itemStates[7] == "inCloset" {
             slide7.image.image = #imageLiteral(resourceName: "trumpStore")
             slide7.titleLabel.text = "trumpoos"
             slide7.imageHeight.constant = 216
