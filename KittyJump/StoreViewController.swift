@@ -93,7 +93,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         pageControl.currentPage = 0
         view.bringSubview(toFront: pageControl)
         
-        currentCoins.text = "\(coins)"
+        updateCoinsLabel()
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
@@ -454,7 +454,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             })
             
             coins -= cost
-            currentCoins.text = "\(coins)"
+            
+            updateCoinsLabel()
             SharingManager.sharedInstance.lifetimeScore = coins
             SharingManager.sharedInstance.itemStates[pageIndex] = "inCloset"
             updateUnlocked()
@@ -587,6 +588,13 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().add(pay as SKPayment)
     }
+
+    func updateCoinsLabel() {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        let formattedCoins = numberFormatter.string(from: NSNumber(value:coins))
+        currentCoins.text = formattedCoins
+    }
     
     @IBOutlet weak var gifView: UIImageView!
     func addPurchasedCoins(amount: Int) {
@@ -604,7 +612,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             slide6.image.image = #imageLiteral(resourceName: "trumpStore")
             slide6.titleLabel.text = "trumpoos"
         }
-        currentCoins.text = "\(coins)"
+        updateCoinsLabel()
         
         if amount > 250 {
             hideAddCoinsModal()
