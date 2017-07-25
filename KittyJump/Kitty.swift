@@ -59,7 +59,7 @@ class Kitty: SKSpriteNode {
         
         let destP = destPos
         
-        self.run(SKEase.move(easeFunction: .curveTypeQuartic,
+        self.run(SKEase.move(easeFunction: .curveTypeQuintic,
                              easeType: EaseType.easeTypeOut,
                              time: 0.2,
                              from: self.position ,
