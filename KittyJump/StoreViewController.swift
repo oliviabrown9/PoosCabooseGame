@@ -44,8 +44,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
-    //var coins = SharingManager.sharedInstance.lifetimeScore
-    var coins = 1000000
+    var coins = SharingManager.sharedInstance.lifetimeScore
     var cost: Int = 0
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
@@ -121,7 +120,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             }
         }
         let unlockedString: String = "\(unlocked) of 8 unlocked"
-        unlockedLabel.text = unlockedString
+        let attributedText = NSMutableAttributedString(string: unlockedString, attributes: [NSFontAttributeName:UIFont(name: "Avenir-Medium", size: 18.0)!])
+        attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:0,length:1))
+        attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:5,length:1))
+        unlockedLabel.attributedText = attributedText
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -504,6 +506,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             self.addModalTopConstraint.constant -= self.view.bounds.height
             self.view.layoutIfNeeded()
         })
+        addCoinsGestures()
     }
     
     func setPlaceHolder(placeholder: String)-> String
