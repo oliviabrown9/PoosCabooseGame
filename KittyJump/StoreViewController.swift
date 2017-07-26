@@ -101,7 +101,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         self.view.addGestureRecognizer(swipeRight)
         
         if (SKPaymentQueue.canMakePayments()) {
-            let productID: NSSet = NSSet(objects: "com.pooscaboose.onek", "com.pooscaboose.fivek", "com.pooscaboose.tenk", "com.pooscaboose.hundredk")
+            let productID: NSSet = NSSet(objects: "org.pooscaboose.onek", "org.pooscaboose.fivek", "org.pooscaboose.tenk", "org.pooscaboose.hundredk")
             let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
             
             request.delegate = self
@@ -109,7 +109,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
         else {
         }
-        
         updateUnlocked()
     }
     
@@ -491,7 +490,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         darkenedView.isHidden = false
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        tap.cancelsTouchesInView = false
         darkenedView.addGestureRecognizer(tap)
         
         addModalTopConstraint.constant += self.view.bounds.height
@@ -617,7 +615,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         if viewTapped == secondAddCoins {
             for product in list {
                 let prodID = product.productIdentifier
-                if prodID == "com.pooscaboose.onek" {
+                if prodID == "org.pooscaboose.onek" {
                     p = product
                     buyProduct()
                 }
@@ -626,7 +624,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         else if viewTapped == thirdAddCoins {
             for product in list {
                 let prodID = product.productIdentifier
-                if prodID == "com.pooscaboose.fivek" {
+                if prodID == "org.pooscaboose.fivek" {
                     p = product
                     buyProduct()
                 }
@@ -635,7 +633,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         else if viewTapped == fourthAddCoins {
             for product in list {
                 let prodID = product.productIdentifier
-                if prodID == "com.pooscaboose.tenk" {
+                if prodID == "org.pooscaboose.tenk" {
                     p = product
                     buyProduct()
                 }
@@ -644,7 +642,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         else if viewTapped == fifthAddCoins {
             for product in list {
                 let prodID = product.productIdentifier
-                if prodID == "com.pooscaboose.hundredk" {
+                if prodID == "org.pooscaboose.hundredk" {
                     p = product
                     buyProduct()
                 }
@@ -707,16 +705,16 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             case .purchased:
                 let prodID = p.productIdentifier
                 switch prodID {
-                case "com.pooscaboose.onek":
+                case "org.pooscaboose.onek":
                     addPurchasedCoins(amount: 1000)
                     
-                case "com.pooscaboose.fivek":
+                case "org.pooscaboose.fivek":
                     addPurchasedCoins(amount: 5000)
                     
-                case "com.pooscaboose.tenk":
+                case "org.pooscaboose.tenk":
                     addPurchasedCoins(amount: 10000)
                     
-                case "com.pooscaboose.hundredk":
+                case "org.pooscaboose.hundredk":
                     addPurchasedCoins(amount: 100000)
                     
                 default:
