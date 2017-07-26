@@ -44,7 +44,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
-    var coins = SharingManager.sharedInstance.lifetimeScore
+    //var coins = SharingManager.sharedInstance.lifetimeScore
+    var coins = 1000000
     var cost: Int = 0
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
@@ -394,7 +395,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         if cost <= coins {
             modalView.layer.cornerRadius = 20
             confirmButton.layer.cornerRadius = 25
-            messageLabel.text = "Buy \(itemTitle) for \n \(cost) coins?"
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = NumberFormatter.Style.decimal
+            let formattedCost = numberFormatter.string(from: NSNumber(value:cost))
+            messageLabel.text = "Buy \(itemTitle) for \n \(formattedCost!) coins?"
             showModal()
         }
         else {
