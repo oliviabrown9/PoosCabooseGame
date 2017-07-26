@@ -850,7 +850,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("selected")
         let contact = contacts[indexPath.row]
         selectedPhoneNumber = ""
         

@@ -58,8 +58,6 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate {
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-1224845211182149/4021005644")
         interstitial.delegate = self
         let request = GADRequest()
-        request.testDevices = [ kGADSimulatorID,
-            "564a568fb48a3aded298f6a10f02b34c"]
         interstitial.load(request)
         return interstitial
     }
