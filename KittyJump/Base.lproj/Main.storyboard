@@ -241,14 +241,85 @@
                                     <segue destination="nFG-jk-vvE" kind="show" identifier="toStore" id="0Gd-2u-31f"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Is1-OO-Sbg">
+                                <rect key="frame" x="52" y="228" width="270" height="210"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferences" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELi-dX-P6R">
+                                        <rect key="frame" x="20" y="30" width="230" height="25"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fff-AA-23A">
+                                        <rect key="frame" x="45" y="134" width="180" height="45"/>
+                                        <color key="backgroundColor" red="0.16862745100000001" green="0.60392156860000001" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="Sxb-aT-9Lj"/>
+                                            <constraint firstAttribute="height" constant="45" id="gTb-yd-g6q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="16"/>
+                                        <state key="normal" title="Restore Purchases">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="confirmPressed:" destination="nFG-jk-vvE" eventType="touchUpInside" id="Mnq-y6-xtE"/>
+                                            <action selector="restoreButtonTapped:" destination="doZ-1J-RsL" eventType="touchUpInside" id="804-KJ-iAo"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOz-LJ-ufu">
+                                        <rect key="frame" x="7" y="7" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="FCH-D9-PUK"/>
+                                            <constraint firstAttribute="height" constant="30" id="tw6-BF-Mu5"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" image="x"/>
+                                        <connections>
+                                            <action selector="cancelPressed:" destination="nFG-jk-vvE" eventType="touchUpInside" id="KfZ-Ni-3bw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xoe-9X-EGq">
+                                        <rect key="frame" x="45" y="77" width="180" height="45"/>
+                                        <color key="backgroundColor" red="0.16862745100000001" green="0.60392156860000001" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="FBj-am-4T5"/>
+                                            <constraint firstAttribute="height" constant="45" id="RVW-30-xqH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="16"/>
+                                        <state key="normal" title="Remove Ads">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="confirmPressed:" destination="nFG-jk-vvE" eventType="touchUpInside" id="cZ8-dI-mw2"/>
+                                            <action selector="removeAdButtonTapped:" destination="doZ-1J-RsL" eventType="touchUpInside" id="bNM-Ds-DhR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Fff-AA-23A" firstAttribute="centerX" secondItem="Is1-OO-Sbg" secondAttribute="centerX" id="2xl-rT-jV8"/>
+                                    <constraint firstItem="ELi-dX-P6R" firstAttribute="top" secondItem="Is1-OO-Sbg" secondAttribute="top" constant="30" id="5CY-MB-ao7"/>
+                                    <constraint firstItem="Fff-AA-23A" firstAttribute="top" secondItem="Xoe-9X-EGq" secondAttribute="bottom" constant="12" id="7ja-A7-5uR"/>
+                                    <constraint firstItem="Xoe-9X-EGq" firstAttribute="centerX" secondItem="Is1-OO-Sbg" secondAttribute="centerX" id="F6M-sg-8Bh"/>
+                                    <constraint firstAttribute="width" constant="270" id="Jto-oE-itd"/>
+                                    <constraint firstAttribute="trailing" secondItem="ELi-dX-P6R" secondAttribute="trailing" constant="20" id="QQB-FI-zLc"/>
+                                    <constraint firstItem="ELi-dX-P6R" firstAttribute="leading" secondItem="Is1-OO-Sbg" secondAttribute="leading" constant="20" id="Zg5-Cz-p1m"/>
+                                    <constraint firstItem="VOz-LJ-ufu" firstAttribute="leading" secondItem="Is1-OO-Sbg" secondAttribute="leading" constant="7" id="d3A-ag-eOa"/>
+                                    <constraint firstItem="Xoe-9X-EGq" firstAttribute="top" secondItem="ELi-dX-P6R" secondAttribute="bottom" constant="22" id="dDH-3U-gHY"/>
+                                    <constraint firstAttribute="height" constant="210" id="dZU-Un-ZL1"/>
+                                    <constraint firstItem="VOz-LJ-ufu" firstAttribute="top" secondItem="Is1-OO-Sbg" secondAttribute="top" constant="7" id="fBK-ke-9Dd"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.32549019607843138" green="0.6588235294117647" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="Is1-OO-Sbg" firstAttribute="centerX" secondItem="xeD-0f-y0X" secondAttribute="centerX" id="0hV-W4-4KW"/>
                             <constraint firstItem="T9A-VY-ya6" firstAttribute="top" secondItem="61j-Pl-6Nf" secondAttribute="bottom" constant="10" id="0ly-Qh-r0y"/>
                             <constraint firstAttribute="trailing" secondItem="Kpj-aq-ezg" secondAttribute="trailing" id="5Nl-n7-UwY"/>
                             <constraint firstItem="tnq-gu-eye" firstAttribute="top" secondItem="6DS-U8-LL5" secondAttribute="bottom" id="7pb-dR-S98"/>
                             <constraint firstItem="I1j-K6-rVR" firstAttribute="top" secondItem="rAM-9b-1Uj" secondAttribute="bottom" constant="-30" id="9aW-AX-fXS"/>
                             <constraint firstItem="aPX-hV-qxj" firstAttribute="leading" secondItem="xeD-0f-y0X" secondAttribute="leadingMargin" constant="5" id="Aj8-Rm-Jgl"/>
+                            <constraint firstItem="Is1-OO-Sbg" firstAttribute="centerY" secondItem="xeD-0f-y0X" secondAttribute="centerY" id="EGm-vZ-aTD"/>
                             <constraint firstItem="3Lb-n6-gf7" firstAttribute="top" secondItem="Kpj-aq-ezg" secondAttribute="bottom" id="HTI-A1-Rqq"/>
                             <constraint firstItem="T9A-VY-ya6" firstAttribute="leading" secondItem="RIt-Zv-u3b" secondAttribute="trailing" constant="71" id="J0v-bj-voL"/>
                             <constraint firstItem="I1j-K6-rVR" firstAttribute="centerX" secondItem="xeD-0f-y0X" secondAttribute="centerX" id="KRV-U9-wM2"/>
@@ -282,6 +353,10 @@
                         <outlet property="highScoreLabel" destination="EPO-0P-T3r" id="S3M-Ry-iz1"/>
                         <outlet property="mostRecentScore" destination="rAM-9b-1Uj" id="dNm-ZU-QtB"/>
                         <outlet property="pastScores" destination="tnq-gu-eye" id="EnG-gH-uHP"/>
+                        <outlet property="preferencesTopConstraint" destination="EGm-vZ-aTD" id="OV8-74-gJP"/>
+                        <outlet property="preferencesView" destination="Is1-OO-Sbg" id="dgj-Xb-zDt"/>
+                        <outlet property="removeAdsButton" destination="Xoe-9X-EGq" id="nwx-0t-izW"/>
+                        <outlet property="restorePurchasesButton" destination="Fff-AA-23A" id="IuL-pM-m7n"/>
                         <outlet property="startOver" destination="RIt-Zv-u3b" id="D0g-pl-bqO"/>
                         <segue destination="S1n-et-zFN" kind="unwind" identifier="unwindToHomeView" unwindAction="unwindToHomeViewWithSender:" id="SBm-1F-aJT"/>
                     </connections>
@@ -289,7 +364,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Egq-xP-xz8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="S1n-et-zFN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="153" y="139"/>
+            <point key="canvasLocation" x="152.80000000000001" y="138.98050974512745"/>
         </scene>
         <!--Store View Controller-->
         <scene sceneID="A5f-WD-Bua">

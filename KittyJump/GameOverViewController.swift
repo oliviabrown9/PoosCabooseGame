@@ -10,8 +10,11 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import GoogleMobileAds
+import StoreKit
 
-class GameOverViewController: UIViewController, GADInterstitialDelegate {
+var removedAds: Bool = false
+
+class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     var interstitial: GADInterstitial!
     
@@ -26,19 +29,114 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate {
     // Start over image
     @IBOutlet weak var startOver: UIImageView?
     
+    @IBOutlet weak var preferencesView: UIView!
+    @IBOutlet weak var preferencesTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var removeAdsButton: UIButton!
+    @IBOutlet weak var restorePurchasesButton: UIButton!
+    @IBAction func removeAdButtonTapped(_ sender: Any) {
+        for product in list {
+            let prodID = product.productIdentifier
+            if prodID == "org.pooscaboose.noads" {
+                p = product
+                buyProduct()
+            }
+        }
+    }
+    @IBAction func restoreButtonTapped(_ sender: Any) {
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().restoreCompletedTransactions()
+    }
+    
+    func buyProduct() {
+        let pay = SKPayment(product: p)
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().add(pay as SKPayment)
+        
+    }
     var showFirst: Bool = true
     
+    var list = [SKProduct]()
+    var p = SKProduct()
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        print("product request")
+        let myProduct = response.products
+        for product in myProduct {
+            print("product added")
+            print(product.localizedDescription)
+            list.append(product)
+        }
+    }
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        print("restored")
+        for transaction in queue.transactions {
+            let t: SKPaymentTransaction = transaction
+            let prodID = t.payment.productIdentifier as String
+            
+            switch prodID {
+            case "org.pooscaboose.noads":
+                print("remove ads")
+                removedAds = true
+            default:
+                print("iap not found")
+            }
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction: AnyObject in transactions {
+            let trans = transaction as! SKPaymentTransaction
+            
+            switch trans.transactionState {
+            case .purchased:
+                
+                let prodID = p.productIdentifier
+                switch prodID {
+                case "org.pooscaboose.noads":
+                    print("remove ads")
+                    removedAds = true
+                default:
+                    print("iap not found")
+                }
+                queue.finishTransaction(trans)
+            case .failed:
+                queue.finishTransaction(trans)
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    
     func interstitialDidReceiveAd(_ ad: GADInterstitial) {
-        if showFirst == true && playCount % 3 == 0 {
+        if showFirst == true && playCount % 3 == 0 && removedAds == false {
             interstitial.present(fromRootViewController: self)
             showFirst = false
         }
     }
     
+    func showPreferencesView() {
+        preferencesView.layer.cornerRadius = 20
+        removeAdsButton.layer.cornerRadius = 22
+        restorePurchasesButton.layer.cornerRadius = 22
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showPreferencesView()
+        
         interstitial = createAndLoadInterstitial()
+        
+        if(SKPaymentQueue.canMakePayments()) {
+            let productID: NSSet = NSSet(object: "org.pooscaboose.noads")
+            let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+            request.delegate = self
+            request.start()
+            
+        }
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameOverViewController.swiped(_:)))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
