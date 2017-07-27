@@ -53,6 +53,22 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         SKPaymentQueue.default().add(pay as SKPayment)
         
     }
+    @IBAction func cancelPreferences(_ sender: Any) {
+        //darkenedView.isHidden = true
+        UIView.animate(withDuration: 0.5, animations: {
+            self.preferencesTopConstraint.constant += self.view.bounds.height
+            self.view.layoutIfNeeded()
+        }, completion: { (finished: Bool) in
+            if finished {
+                self.preferencesView.isHidden = true
+                self.preferencesTopConstraint.constant -= self.view.bounds.height
+            }
+        })
+    }
+
+    @IBAction func preferencesButtonTapped(_ sender: Any) {
+        showPreferencesView()
+    }
     var showFirst: Bool = true
     
     var list = [SKProduct]()
@@ -123,12 +139,24 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         preferencesView.layer.cornerRadius = 20
         removeAdsButton.layer.cornerRadius = 22
         restorePurchasesButton.layer.cornerRadius = 22
+        //darkenedView.isHidden = false
+        
+        //let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        //darkenedView.addGestureRecognizer(tap)
+        
+        preferencesTopConstraint.constant += self.view.bounds.height
+        view.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.preferencesView.isHidden = false
+            self.preferencesTopConstraint.constant -= self.view.bounds.height
+            self.view.layoutIfNeeded()
+        })
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        showPreferencesView()
         
         interstitial = createAndLoadInterstitial()
         
