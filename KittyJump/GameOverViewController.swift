@@ -33,6 +33,7 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
     @IBOutlet weak var preferencesTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var removeAdsButton: UIButton!
     @IBOutlet weak var restorePurchasesButton: UIButton!
+    @IBOutlet weak var darkenedView: UIView!
     @IBAction func removeAdButtonTapped(_ sender: Any) {
         for product in list {
             let prodID = product.productIdentifier
@@ -54,16 +55,7 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         
     }
     @IBAction func cancelPreferences(_ sender: Any) {
-        //darkenedView.isHidden = true
-        UIView.animate(withDuration: 0.5, animations: {
-            self.preferencesTopConstraint.constant += self.view.bounds.height
-            self.view.layoutIfNeeded()
-        }, completion: { (finished: Bool) in
-            if finished {
-                self.preferencesView.isHidden = true
-                self.preferencesTopConstraint.constant -= self.view.bounds.height
-            }
-        })
+        hidePreferencesView()
     }
 
     @IBAction func preferencesButtonTapped(_ sender: Any) {
@@ -135,14 +127,27 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         }
     }
     
+    func hidePreferencesView() {
+        darkenedView.isHidden = true
+        UIView.animate(withDuration: 0.5, animations: {
+            self.preferencesTopConstraint.constant += self.view.bounds.height
+            self.view.layoutIfNeeded()
+        }, completion: { (finished: Bool) in
+            if finished {
+                self.preferencesView.isHidden = true
+                self.preferencesTopConstraint.constant -= self.view.bounds.height
+            }
+        })
+    }
+    
     func showPreferencesView() {
         preferencesView.layer.cornerRadius = 20
         removeAdsButton.layer.cornerRadius = 22
         restorePurchasesButton.layer.cornerRadius = 22
-        //darkenedView.isHidden = false
+        darkenedView.isHidden = false
         
-        //let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        //darkenedView.addGestureRecognizer(tap)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hidePreferencesView))
+        darkenedView.addGestureRecognizer(tap)
         
         preferencesTopConstraint.constant += self.view.bounds.height
         view.layoutIfNeeded()
