@@ -12,7 +12,7 @@ import GameplayKit
 import GoogleMobileAds
 import StoreKit
 
-var removedAds: Bool = false
+var removedAds: Bool = SharingManager.sharedInstance.didRemoveAds
 
 class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
@@ -78,6 +78,7 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
             case "org.pooscaboose.noads":
                 print("remove ads")
                 removedAds = true
+                SharingManager.sharedInstance.didRemoveAds = true
             default:
                 print("iap not found")
             }
@@ -96,6 +97,7 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
                 case "org.pooscaboose.noads":
                     print("remove ads")
                     removedAds = true
+                    SharingManager.sharedInstance.didRemoveAds = true
                 default:
                     print("iap not found")
                 }

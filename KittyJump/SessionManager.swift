@@ -55,6 +55,11 @@ class SharingManager {
             userDefaults.set(soundState, forKey: "SoundState")
         }
     }
+    var didRemoveAds: Bool = false {
+        didSet {
+            userDefaults.set(didRemoveAds, forKey: "DidRemoveAds")
+        }
+    }
     
     static let sharedInstance = SharingManager()
     
@@ -102,6 +107,9 @@ class SharingManager {
         
         let storedSoundState = userDefaults.bool(forKey: "SoundState")
         soundState = storedSoundState
+        
+        let storedDidRemoveAds = userDefaults.bool(forKey: "DidRemoveAds")
+        didRemoveAds = storedDidRemoveAds
 
     }
     
