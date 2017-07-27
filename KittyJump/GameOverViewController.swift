@@ -149,6 +149,11 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         restorePurchasesButton.layer.cornerRadius = 22
         darkenedView.isHidden = false
         
+        if removedAds == true {
+            removeAdsButton.isEnabled = false
+            removeAdsButton.alpha = 0.5
+        }
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(hidePreferencesView))
         darkenedView.addGestureRecognizer(tap)
         
