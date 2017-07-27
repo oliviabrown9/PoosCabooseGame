@@ -46,6 +46,8 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
     @IBAction func restoreButtonTapped(_ sender: Any) {
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().restoreCompletedTransactions()
+        restorePurchasesButton.isEnabled = false
+        restorePurchasesButton.alpha = 0.5
     }
     
     func buyProduct() {
@@ -67,26 +69,26 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
     var p = SKProduct()
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print("product request")
         let myProduct = response.products
         for product in myProduct {
-            print("product added")
             print(product.localizedDescription)
             list.append(product)
         }
     }
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        print("restored")
         for transaction in queue.transactions {
             let t: SKPaymentTransaction = transaction
             let prodID = t.payment.productIdentifier as String
+            restorePurchasesButton.alpha = 0.5
+            restorePurchasesButton.isEnabled = false
             
             switch prodID {
             case "org.pooscaboose.noads":
-                print("remove ads")
                 removedAds = true
                 SharingManager.sharedInstance.didRemoveAds = true
+                removeAdsButton.alpha = 0.5
+                removeAdsButton.isEnabled = false
             default:
                 print("iap not found")
             }
@@ -103,9 +105,10 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
                 let prodID = p.productIdentifier
                 switch prodID {
                 case "org.pooscaboose.noads":
-                    print("remove ads")
                     removedAds = true
                     SharingManager.sharedInstance.didRemoveAds = true
+                    removeAdsButton.isEnabled = false
+                    removeAdsButton.alpha = 0.5
                 default:
                     print("iap not found")
                 }
