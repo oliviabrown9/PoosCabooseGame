@@ -471,6 +471,9 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             SharingManager.sharedInstance.itemStates[pageIndex] = "inCloset"
             updateUnlocked()
             itemAlreadyPurchased()
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            }
         }
         else if confirm == true && cost >= coins {
             showAddCoinsView();

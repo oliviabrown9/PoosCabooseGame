@@ -173,6 +173,12 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         
         interstitial = createAndLoadInterstitial()
         
+        if playCount % 3 != 0{
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            }
+        }
+        
         if(SKPaymentQueue.canMakePayments()) {
             let productID: NSSet = NSSet(object: "org.pooscaboose.noads")
             let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
