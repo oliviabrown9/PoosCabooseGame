@@ -730,8 +730,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 default:
                     print("IAP not found")
                 }
-                queue.finishTransaction(trans)
-                
             case .failed:
                 queue.finishTransaction(trans)
                 break

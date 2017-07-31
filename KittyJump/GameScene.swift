@@ -818,7 +818,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Game lost
     func stop() {
-        
         playCount += 1
         
         kitty.removeAllActions()
@@ -840,6 +839,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 print("Cannot play the file")
             }
         }
+        
+        soundEffectPlayer.stop()
         
         // Add score to lifetimeScore
         if score != 0 {
