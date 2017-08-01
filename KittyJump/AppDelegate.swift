@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMobileAds
 import Firebase
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,26 +19,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-1224845211182149~2532664151")
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         var initialViewController: UIViewController? = nil
-        
         if SharingManager.sharedInstance.onboardingFinished == false {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController")
         }
         else {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "GameViewController")
         }
-        
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
-        
-        GADMobileAds.configure(withApplicationID: "ca-app-pub-1224845211182149~2532664151")
     
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        
+        return handled
     }
 
     

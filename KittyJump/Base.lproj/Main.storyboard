@@ -238,7 +238,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="hhO-ES-dCX" kind="show" id="DkW-uv-W2i"/>
+                                    <segue destination="nFG-jk-vvE" kind="show" identifier="toStore" id="CT6-xT-rfg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIf-dk-mzR">
@@ -250,6 +250,15 @@
                                 <state key="normal" image="gear"/>
                                 <connections>
                                     <action selector="preferencesButtonTapped:" destination="doZ-1J-RsL" eventType="touchUpInside" id="VuG-S0-uIY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0AY-Ya-icI">
+                                <rect key="frame" x="36" y="459.5" width="91" height="30"/>
+                                <state key="normal" title="leaderboards">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="hhO-ES-dCX" kind="show" id="UQe-gv-FnX"/>
                                 </connections>
                             </button>
                             <view hidden="YES" alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIn-H2-Iwf">
@@ -331,12 +340,14 @@
                         <constraints>
                             <constraint firstItem="Is1-OO-Sbg" firstAttribute="centerX" secondItem="xeD-0f-y0X" secondAttribute="centerX" id="0hV-W4-4KW"/>
                             <constraint firstItem="T9A-VY-ya6" firstAttribute="top" secondItem="61j-Pl-6Nf" secondAttribute="bottom" constant="10" id="0ly-Qh-r0y"/>
+                            <constraint firstItem="0AY-Ya-icI" firstAttribute="centerY" secondItem="61j-Pl-6Nf" secondAttribute="centerY" id="4R8-YA-ItD"/>
                             <constraint firstAttribute="trailing" secondItem="Kpj-aq-ezg" secondAttribute="trailing" id="5Nl-n7-UwY"/>
                             <constraint firstItem="tnq-gu-eye" firstAttribute="top" secondItem="6DS-U8-LL5" secondAttribute="bottom" id="7pb-dR-S98"/>
                             <constraint firstItem="JIf-dk-mzR" firstAttribute="centerY" secondItem="aPX-hV-qxj" secondAttribute="centerY" id="8E0-0X-Dd5"/>
                             <constraint firstAttribute="trailing" secondItem="JIf-dk-mzR" secondAttribute="trailing" constant="20" id="91z-cx-CUL"/>
                             <constraint firstItem="I1j-K6-rVR" firstAttribute="top" secondItem="rAM-9b-1Uj" secondAttribute="bottom" constant="-30" id="9aW-AX-fXS"/>
                             <constraint firstItem="aPX-hV-qxj" firstAttribute="leading" secondItem="xeD-0f-y0X" secondAttribute="leadingMargin" constant="5" id="Aj8-Rm-Jgl"/>
+                            <constraint firstItem="0AY-Ya-icI" firstAttribute="leading" secondItem="xeD-0f-y0X" secondAttribute="leadingMargin" constant="20" id="Ckm-fq-Nmo"/>
                             <constraint firstItem="Is1-OO-Sbg" firstAttribute="centerY" secondItem="xeD-0f-y0X" secondAttribute="centerY" id="EGm-vZ-aTD"/>
                             <constraint firstItem="3Lb-n6-gf7" firstAttribute="top" secondItem="Kpj-aq-ezg" secondAttribute="bottom" id="HTI-A1-Rqq"/>
                             <constraint firstItem="T9A-VY-ya6" firstAttribute="leading" secondItem="RIt-Zv-u3b" secondAttribute="trailing" constant="71" id="J0v-bj-voL"/>
@@ -400,12 +411,25 @@
                     <view key="view" contentMode="scaleToFill" id="vD9-zv-pKa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77x-G1-sna">
+                                <rect key="frame" x="153.5" y="318" width="67" height="30"/>
+                                <state key="normal" title="Facebook"/>
+                                <connections>
+                                    <action selector="facebookLoginWithSender:" destination="hhO-ES-dCX" eventType="touchUpInside" id="K98-ER-Icw"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="77x-G1-sna" firstAttribute="centerX" secondItem="vD9-zv-pKa" secondAttribute="centerX" id="DxH-Rl-tqf"/>
+                            <constraint firstItem="77x-G1-sna" firstAttribute="centerY" secondItem="vD9-zv-pKa" secondAttribute="centerY" id="EOO-tr-VCj"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HsH-zn-0JP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="929" y="432"/>
+            <point key="canvasLocation" x="929" y="394"/>
         </scene>
         <!--Store View Controller-->
         <scene sceneID="A5f-WD-Bua">
