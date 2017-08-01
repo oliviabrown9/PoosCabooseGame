@@ -21,6 +21,7 @@
 		75C5A2CC1F26679B002DD5DB /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 75C5A2CB1F26679B002DD5DB /* splash.gif */; };
 		75C5A2CE1F266815002DD5DB /* coin.gif in Resources */ = {isa = PBXBuildFile; fileRef = 75C5A2CD1F266815002DD5DB /* coin.gif */; };
 		75D93C1D1F3010E40020E067 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D93C1C1F3010E40020E067 /* LoginViewController.swift */; };
+		75D93C1F1F30EE930020E067 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75D93C1E1F30EE930020E067 /* GoogleService-Info.plist */; };
 		75EF6CCD1F1569B7004AD11F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EF6CCC1F1569B7004AD11F /* StoreKit.framework */; };
 		75F3FE391F1D608B001E0C0D /* CustomPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F3FE351F1D608B001E0C0D /* CustomPage.xib */; };
 		75F3FE3A1F1D608B001E0C0D /* CustomPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3FE361F1D608B001E0C0D /* CustomPage.swift */; };
@@ -66,6 +67,7 @@
 		75C5A2CB1F26679B002DD5DB /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		75C5A2CD1F266815002DD5DB /* coin.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = coin.gif; sourceTree = "<group>"; };
 		75D93C1C1F3010E40020E067 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		75D93C1E1F30EE930020E067 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		75EF6CCC1F1569B7004AD11F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		75F3FE351F1D608B001E0C0D /* CustomPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPage.xib; sourceTree = "<group>"; };
 		75F3FE361F1D608B001E0C0D /* CustomPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPage.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				D7C5EAC01EEB5C21007DA71A /* Assets.xcassets */,
 				D7C5EAC21EEB5C21007DA71A /* LaunchScreen.storyboard */,
 				D7C5EAC51EEB5C21007DA71A /* Info.plist */,
+				75D93C1E1F30EE930020E067 /* GoogleService-Info.plist */,
 			);
 			path = KittyJump;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				755820EE1F04126400A68A88 /* jump.mp3 in Resources */,
 				75C5A2CE1F266815002DD5DB /* coin.gif in Resources */,
 				755C59021F0484F70064472D /* background.mp3 in Resources */,
+				75D93C1F1F30EE930020E067 /* GoogleService-Info.plist in Resources */,
 				753E80A61F058FAD001FEE97 /* stop.mp3 in Resources */,
 				D7C5EAB81EEB5C21007DA71A /* Actions.sks in Resources */,
 				755C59001F0484E50064472D /* intro.mp3 in Resources */,
