@@ -362,6 +362,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     // Try to buy something
     func purchaseItem() {
+        
         let failureGenerator = UINotificationFeedbackGenerator()
         failureGenerator.prepare()
 

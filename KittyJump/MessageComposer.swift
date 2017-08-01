@@ -42,6 +42,4 @@ class MessageComposer: NSObject, MFMessageComposeViewControllerDelegate {
             break;
         }
     }
-    
-    
 }

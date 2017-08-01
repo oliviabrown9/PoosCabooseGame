@@ -9,4 +9,6 @@ pod 'SwiftyGif'
 pod 'SwiftyOnboard'
 pod ‘SpriteKitEasingSwift’
 pod 'Google-Mobile-Ads-SDK'
+pod 'FacebookCore'
+pod 'FacebookLogin'
 end

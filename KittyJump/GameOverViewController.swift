@@ -71,7 +71,6 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         let myProduct = response.products
         for product in myProduct {
-            print(product.localizedDescription)
             list.append(product)
         }
     }
@@ -122,7 +121,6 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         }
     }
     
-    
     func interstitialDidReceiveAd(_ ad: GADInterstitial) {
         if showFirst == true && playCount % 3 == 0 && removedAds == false {
             interstitial.present(fromRootViewController: self)
@@ -165,7 +163,6 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
             self.preferencesTopConstraint.constant -= self.view.bounds.height
             self.view.layoutIfNeeded()
         })
-
     }
     
     override func viewDidLoad() {

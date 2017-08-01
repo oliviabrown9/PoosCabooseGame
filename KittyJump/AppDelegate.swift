@@ -7,8 +7,8 @@
 //
 
 import UIKit
-// import Flurry_iOS_SDK
 import GoogleMobileAds
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Flurry.startSession("CF7YYJD5WPHPFJZ2HJSZ");
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
@@ -51,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        FBSDKAppEvents.activateApp()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
