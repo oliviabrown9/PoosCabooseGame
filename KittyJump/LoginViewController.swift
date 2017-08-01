@@ -14,29 +14,28 @@ import Firebase
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var loginButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if Auth.auth().currentUser != nil {
+            loginButton.isEnabled = false
+            loginButton.isHidden = true
+        }
     }
     
     func fetchFriends() {
-    let params = ["fields" : "email, name"]
-    let graphRequest = GraphRequest(graphPath: "me", parameters: params)
-    graphRequest.start {
-    (urlResponse, requestResult) in
-    
-    switch requestResult {
-    case .failed(let error):
-    print("error in graph request:", error)
-    break
-    case .success(let graphResponse):
-    if let responseDictionary = graphResponse.dictionaryValue {
-    print(responseDictionary)
-    
-    print(responseDictionary["name"])
-    print(responseDictionary["email"])
-    }
-    }
-    }
+        let params = ["fields": "id, first_name, last_name, middle_name, name, email, picture"]
+        FBSDKGraphRequest(graphPath: "me/friends", parameters: params).start { (connection, result , error) -> Void in
+            
+            if error != nil {
+                print(error!)
+            }
+            else {
+                print(result!)
+                //Do further work with response
+            }
+        }
     }
     
 

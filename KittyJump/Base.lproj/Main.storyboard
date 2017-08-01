@@ -426,6 +426,9 @@
                             <constraint firstItem="77x-G1-sna" firstAttribute="centerY" secondItem="vD9-zv-pKa" secondAttribute="centerY" id="EOO-tr-VCj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="77x-G1-sna" id="5d2-OU-fFv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HsH-zn-0JP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

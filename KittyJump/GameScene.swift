@@ -840,7 +840,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
-        soundEffectPlayer.stop()
+       // soundEffectPlayer.stop()
         
         // Add score to lifetimeScore
         if score != 0 {
