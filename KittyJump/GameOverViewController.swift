@@ -11,12 +11,17 @@ import SpriteKit
 import GameplayKit
 import GoogleMobileAds
 import StoreKit
+import Firebase
+import FirebaseDatabase
 
 var removedAds: Bool = SharingManager.sharedInstance.didRemoveAds
 
 class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     var interstitial: GADInterstitial!
+    
+    var ref: DatabaseReference?
+    let user = Auth.auth().currentUser
     
     // Variables for changing label text
     var lastNineScores = SharingManager.sharedInstance.lastScores
@@ -169,6 +174,9 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         super.viewDidLoad()
         
         interstitial = createAndLoadInterstitial()
+        
+        ref = Database.database().reference()
+        ref?.child("players").child(user!.uid).updateChildValues(["highScore": highScore])
         
         if playCount % 3 != 0{
             if #available(iOS 10.3, *) {

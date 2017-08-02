@@ -23,6 +23,9 @@ PODS:
   - Firebase/Core (4.0.4):
     - FirebaseAnalytics (= 4.0.2)
     - FirebaseCore (= 4.0.4)
+  - Firebase/Database (4.0.4):
+    - Firebase/Core
+    - FirebaseDatabase (= 4.0.0)
   - FirebaseAnalytics (4.0.2):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -34,6 +37,8 @@ PODS:
   - FirebaseCore (4.0.4):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
+  - FirebaseDatabase (4.0.0):
+    - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.0):
     - FirebaseCore (~> 4.0)
   - Google-Mobile-Ads-SDK (7.21.0)
@@ -55,6 +60,7 @@ PODS:
   - nanopb/encode (0.3.8)
   - SpriteKitEasingSwift (0.10)
   - SwiftyGif (3.0.3)
+  - SwiftyJSON (3.1.4)
   - SwiftyOnboard (1.3.3)
 
 DEPENDENCIES:
@@ -62,9 +68,11 @@ DEPENDENCIES:
   - FacebookLogin
   - Firebase/Auth
   - Firebase/Core
+  - Firebase/Database
   - Google-Mobile-Ads-SDK
   - SpriteKitEasingSwift
   - SwiftyGif
+  - SwiftyJSON
   - SwiftyOnboard
 
 SPEC CHECKSUMS:
@@ -77,6 +85,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
   FirebaseCore: cfc042628ef9f20debe09c0eb683135fcd404cb4
+  FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   Google-Mobile-Ads-SDK: 4a6f1b43c8cc0e1e95a3b59d9f52a01671c6f9f3
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
@@ -84,8 +93,9 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SpriteKitEasingSwift: 511748b42a203e93a800dc6cd07f71e8b37c6401
   SwiftyGif: 89a0bb19709bdb6990e10405ad456d8bea804a65
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyOnboard: 349a04c16751c26d63c80ee394e3250b2d023816
 
-PODFILE CHECKSUM: 03da4f1f140367d2766f609c7df5297933189c9c
+PODFILE CHECKSUM: b1f6730321e8e9c303f68fbd6e42818d4b188496
 
 COCOAPODS: 1.2.1
