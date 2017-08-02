@@ -16,15 +16,14 @@ import FirebaseDatabase
 
 var using: Int = 0
 var selectedPhoneNumber: String = ""
+var itemStates: [String] = []
 
 class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, MFMessageComposeViewControllerDelegate {
     
     var ref: DatabaseReference?
     var handle: DatabaseHandle?
     let user = Auth.auth().currentUser
-    
-    var itemStates: [String] = []
-    
+
     @IBOutlet weak var currentCoins: UILabel!
     @IBOutlet weak var coinImage: UIImageView!
     @IBOutlet weak var modalView: UIView!
@@ -85,6 +84,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
 
         itemStates = SharingManager.sharedInstance.itemStates
         ref?.child("players").child(user!.uid).updateChildValues(["poosesOwned": itemStates])
+        SharingManager.sharedInstance.removedDefaults = true
+        
     }
     
     override func viewDidLoad() {
@@ -94,11 +95,13 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         handle = ref?.child("players").child(user!.uid).child("poosesOwned").observe(.childChanged, with: { (snapshot) in
             if let item = snapshot.value as? String {
                 let index = Int(snapshot.key)
-                self.itemStates[index!] = item
+                itemStates[index!] = item
+                self.updateUnlocked()
+                self.itemAlreadyPurchased()
             }
         })
         
-        if user != nil {
+        if user != nil && SharingManager.sharedInstance.removedDefaults == false {
         removeUserDefaults()
         }
         
@@ -140,8 +143,9 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     
     func updateUnlocked() {
+        print("yo \(itemStates)")
         var unlocked: Int = 0
-        for i in SharingManager.sharedInstance.itemStates {
+        for i in itemStates {
             if i == "inCloset" {
                 unlocked += 1
             }
@@ -207,10 +211,14 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         var x = 0
         for i in slideArray {
-            if SharingManager.sharedInstance.itemStates[x] == "inCloset" {
+            print(x)
+            print(itemStates)
+            if itemStates[x] == "inCloset" {
+                print("closet")
                 setupInCloset(slide: i, x: x)
             }
             else {
+                print("store")
                 setupInStore(slide: i)
             }
             x += 1
@@ -255,7 +263,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             slide7.titleLabel.text = "trumpoos"
             slide7.imageHeight.constant = 216
         }
-        else if SharingManager.sharedInstance.itemStates[7] == "inCloset" {
+        else if itemStates[7] == "inCloset" {
             slide7.image.image = #imageLiteral(resourceName: "trumpStore")
             slide7.titleLabel.text = "trumpoos"
             slide7.imageHeight.constant = 216
@@ -332,7 +340,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 buttonInUse(button: i.useButton)
             }
             else {
-                if SharingManager.sharedInstance.itemStates[x] == "inCloset" {
+                if itemStates[x] == "inCloset" {
                     buttonNotInUse(button: i.useButton)
                 }
                 else {
@@ -497,8 +505,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             updateCoinsLabel()
             SharingManager.sharedInstance.lifetimeScore = coins
             ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["\(pageIndex)": "inCloset"])
-            updateUnlocked()
-            itemAlreadyPurchased()
             if #available(iOS 10.3, *) {
                 SKStoreReviewController.requestReview()
             }

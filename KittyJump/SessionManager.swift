@@ -60,6 +60,11 @@ class SharingManager {
             userDefaults.set(didRemoveAds, forKey: "DidRemoveAds")
         }
     }
+    var removedDefaults: Bool = false {
+        didSet {
+            userDefaults.set(removedDefaults, forKey: "RemovedDefaults")
+        }
+    }
     
     static let sharedInstance = SharingManager()
     
@@ -110,6 +115,9 @@ class SharingManager {
         
         let storedDidRemoveAds = userDefaults.bool(forKey: "DidRemoveAds")
         didRemoveAds = storedDidRemoveAds
+        
+        let storedRemovedDefaults = userDefaults.bool(forKey: "RemovedDefaults")
+        removedDefaults = storedRemovedDefaults
 
     }
     
