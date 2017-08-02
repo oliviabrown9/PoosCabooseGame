@@ -20,9 +20,10 @@ var selectedPhoneNumber: String = ""
 class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, MFMessageComposeViewControllerDelegate {
     
     var ref: DatabaseReference?
+    var handle: DatabaseHandle?
     let user = Auth.auth().currentUser
     
-    var removedDefaults: Bool = false
+    var itemStates: [String] = []
     
     @IBOutlet weak var currentCoins: UILabel!
     @IBOutlet weak var coinImage: UIImageView!
@@ -81,46 +82,23 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     
     func removeUserDefaults() {
-        
-        var x: Int = 0
-        for i in SharingManager.sharedInstance.itemStates {
-            x += 1
-            if i == "inCloset" {
-                if x == 1 {
-                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["ogPoss": true])
-                }
-                else if x == 2 {
-                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["poosTrotter": true])
-                }
-                else if x == 3 {
-                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["piratePoos": true])
-                }
-                else if x == 4 {
-                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["properPoos": true])
-                }
-                else if x == 5 {
-                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["quaPoos": true])
-                }
-                else if x == 6 {
-                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["lePous": true])
-                }
-                else if x == 7 {
-                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["poosInBoots": true])
-                }
-                else if x == 8 {
-                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["trumpoos": true])
-                }
-            }
-    }
-        removedDefaults = true
+
+        itemStates = SharingManager.sharedInstance.itemStates
+        ref?.child("players").child(user!.uid).updateChildValues(["poosesOwned": itemStates])
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ref = Database.database().reference()
+        handle = ref?.child("players").child(user!.uid).child("poosesOwned").observe(.childChanged, with: { (snapshot) in
+            if let item = snapshot.value as? String {
+                let index = Int(snapshot.key)
+                self.itemStates[index!] = item
+            }
+        })
         
-        if removedDefaults == false && user != nil {
+        if user != nil {
         removeUserDefaults()
         }
         
@@ -518,7 +496,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             
             updateCoinsLabel()
             SharingManager.sharedInstance.lifetimeScore = coins
-            SharingManager.sharedInstance.itemStates[pageIndex] = "inCloset"
+            ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["\(pageIndex)": "inCloset"])
             updateUnlocked()
             itemAlreadyPurchased()
             if #available(iOS 10.3, *) {
