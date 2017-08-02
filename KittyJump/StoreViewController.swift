@@ -11,11 +11,18 @@ import Contacts
 import MessageUI
 import StoreKit
 import SwiftyGif
+import Firebase
+import FirebaseDatabase
 
 var using: Int = 0
 var selectedPhoneNumber: String = ""
 
 class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, MFMessageComposeViewControllerDelegate {
+    
+    var ref: DatabaseReference?
+    let user = Auth.auth().currentUser
+    
+    var removedDefaults: Bool = false
     
     @IBOutlet weak var currentCoins: UILabel!
     @IBOutlet weak var coinImage: UIImageView!
@@ -44,7 +51,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
-    var coins = SharingManager.sharedInstance.lifetimeScore
+    //var coins = SharingManager.sharedInstance.lifetimeScore
+    var coins = 10000
     var cost: Int = 0
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
@@ -72,8 +80,49 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         _ = tapGestureRecognizer.view as! UIImageView
     }
     
+    func removeUserDefaults() {
+        
+        var x: Int = 0
+        for i in SharingManager.sharedInstance.itemStates {
+            x += 1
+            if i == "inCloset" {
+                if x == 1 {
+                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["ogPoss": true])
+                }
+                else if x == 2 {
+                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["poosTrotter": true])
+                }
+                else if x == 3 {
+                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["piratePoos": true])
+                }
+                else if x == 4 {
+                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["properPoos": true])
+                }
+                else if x == 5 {
+                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["quaPoos": true])
+                }
+                else if x == 6 {
+                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["lePous": true])
+                }
+                else if x == 7 {
+                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["poosInBoots": true])
+                }
+                else if x == 8 {
+                    ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["trumpoos": true])
+                }
+            }
+    }
+        removedDefaults = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = Database.database().reference()
+        
+        if removedDefaults == false && user != nil {
+        removeUserDefaults()
+        }
         
         self.gifView.delegate = self
         

@@ -29,7 +29,6 @@ class LoginViewController: UIViewController {
             fetchFriends()
             ref = Database.database().reference()
             ref?.child("players").child(user!.uid).updateChildValues(["name": user!.displayName!, "facebookId": FBSDKAccessToken.current().userID])
-            ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["ogPoss": true, "poosTrotter": false, "piratePoos": false, "properPoos": false, "quaPoos": false, "lePous": false, "poosInBoots": false, "trumpoos": false])
         }
     }
     
