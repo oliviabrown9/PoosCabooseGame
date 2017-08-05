@@ -90,7 +90,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         ref = Database.database().reference()
         handle = ref?.child("players").child(user!.uid).child("poosesOwned").observe(.childChanged, with: { (snapshot) in
             if let item = snapshot.value as? String {
@@ -104,6 +103,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         if user != nil && SharingManager.sharedInstance.removedDefaults == false {
         removeUserDefaults()
         }
+    
+        
         
         self.gifView.delegate = self
         
@@ -143,7 +144,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     
     func updateUnlocked() {
-        print("yo \(itemStates)")
         var unlocked: Int = 0
         for i in itemStates {
             if i == "inCloset" {
@@ -211,17 +211,15 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         var x = 0
         for i in slideArray {
-            print(x)
-            print(itemStates)
             if itemStates[x] == "inCloset" {
-                print("closet")
                 setupInCloset(slide: i, x: x)
             }
             else {
-                print("store")
                 setupInStore(slide: i)
             }
+            if x < slideArray.count {
             x += 1
+            }
         }
         
         slide0.image.image = #imageLiteral(resourceName: "ogStore")

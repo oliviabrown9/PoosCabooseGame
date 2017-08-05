@@ -23,13 +23,18 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
         if user != nil {
             loginButton.isEnabled = false
             loginButton.isHidden = true
             fetchFriends()
-            ref = Database.database().reference()
-            ref?.child("players").child(user!.uid).updateChildValues(["name": user!.displayName!, "facebookId": FBSDKAccessToken.current().userID])
+            
+            
         }
+    }
+    
+    func addPlayer() {
+        ref?.child("players").child(user!.uid).updateChildValues(["name": user!.displayName!, "facebookId": FBSDKAccessToken.current().userID])
     }
     
     func fetchFriends() {

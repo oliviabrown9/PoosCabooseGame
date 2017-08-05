@@ -22,7 +22,6 @@ func load()
         savePause = false
         userDefault.set(savePause, forKey: "gamePaused")
         userDefault.synchronize()
-        
     }
     else {
         savePause = userDefault.bool(forKey: "gamePaused")

@@ -9,14 +9,17 @@
 import UIKit
 import GoogleMobileAds
 import Firebase
+import FirebaseDatabase
 import FBSDKCoreKit
+
+var myItemStates: [String] = []
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
-    
+    var ref: DatabaseReference?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -33,6 +36,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
+        
+        ref = Database.database().reference()
+        let user = Auth.auth().currentUser
+        
+        ref?.child("players").child(user!.uid).child("poosesOwned").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                for child in result {
+                    let val = child.value as! String
+                    itemStates.append(val)
+                }
+            } else {
+                print("no results")
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     
         return true
     }
