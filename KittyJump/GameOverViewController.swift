@@ -13,19 +13,23 @@ import GoogleMobileAds
 import StoreKit
 import Firebase
 import FirebaseDatabase
+import FBSDKLoginKit
+import FacebookLogin
+import FacebookCore
 
 var removedAds: Bool = SharingManager.sharedInstance.didRemoveAds
 
 class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     var interstitial: GADInterstitial!
+    var facebookId = "";
     
     var ref: DatabaseReference?
     let user = Auth.auth().currentUser
     
     // Variables for changing label text
     var lastNineScores = SharingManager.sharedInstance.lastScores
-    let highScore = SharingManager.sharedInstance.highScore
+    var highScore = SharingManager.sharedInstance.highScore
     
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var mostRecentScore: UILabel!
@@ -64,7 +68,7 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
     @IBAction func cancelPreferences(_ sender: Any) {
         hidePreferencesView()
     }
-
+    
     @IBAction func preferencesButtonTapped(_ sender: Any) {
         showPreferencesView()
     }
@@ -170,14 +174,26 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         })
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if(FBSDKAccessToken.current() != nil){
+        facebookId = FBSDKAccessToken.current().userID;
+        print("FB USER ID IS %@",facebookId)
+        }
         interstitial = createAndLoadInterstitial()
         
         ref = Database.database().reference()
-        ref?.child("players").child(user!.uid).updateChildValues(["highScore": highScore])
-        
+        if(facebookId != ""){
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd-MM-yyyy"
+            let dateString = formatter.string(from:Date())
+            ref?.child("players").child(facebookId).child("TodayshighScore").updateChildValues(["score": highScore])
+            ref?.child("players").child(facebookId).child("TodayshighScore").updateChildValues(["date": dateString])
+            ref?.child("players").child(facebookId).updateChildValues(["highScore": highScore])
+        }
         if playCount % 3 != 0{
             if #available(iOS 10.3, *) {
                 SKStoreReviewController.requestReview()
@@ -224,7 +240,7 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
-
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         startOver?.isUserInteractionEnabled = true
         startOver?.addGestureRecognizer(tapGestureRecognizer)

@@ -13,17 +13,22 @@ import StoreKit
 import SwiftyGif
 import Firebase
 import FirebaseDatabase
+import FBSDKLoginKit
+import FacebookLogin
+import FacebookCore
 
 var using: Int = 0
 var selectedPhoneNumber: String = ""
 var itemStates: [String] = []
+var facebookId = "";
+
 
 class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, MFMessageComposeViewControllerDelegate {
     
     var ref: DatabaseReference?
     var handle: DatabaseHandle?
     let user = Auth.auth().currentUser
-
+    
     @IBOutlet weak var currentCoins: UILabel!
     @IBOutlet weak var coinImage: UIImageView!
     @IBOutlet weak var modalView: UIView!
@@ -81,31 +86,65 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     
     func removeUserDefaults() {
-
+        
         itemStates = SharingManager.sharedInstance.itemStates
-        ref?.child("players").child(user!.uid).updateChildValues(["poosesOwned": itemStates])
+        if(facebookId != ""){
+        ref?.child("players").child(facebookId).updateChildValues(["poosesOwned": itemStates])
+        }
         SharingManager.sharedInstance.removedDefaults = true
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        
+
+    }
+    func updateCoins(){
+        
+        if(facebookId != ""){
+            print("user id %@",user!.uid);
+            
+            if(itemStates.count == 0){
+                
+                self.removeUserDefaults()
+            }
+            ref?.child("players").child(facebookId).child("poosesOwned").observeSingleEvent(of: .value, with: { (snapshot) in
+                //read the user data from the snapshot and do whatever with it
+                if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                    print("result \(result)")
+                    
+                    if(result.isEmpty){
+                        self.removeUserDefaults()
+                        
+                    }
+                    for child in result {
+                        let index = Int(child.key)
+                        let val = child.value as! String
+                        print("index \(String(describing: index)) val \(val)");
+                        itemStates[index!] = val
+                    }
+                    self.updateUnlocked()
+                    self.itemAlreadyPurchased()
+                    
+                } else {
+                    print("no results")
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference()
-        handle = ref?.child("players").child(user!.uid).child("poosesOwned").observe(.childChanged, with: { (snapshot) in
-            if let item = snapshot.value as? String {
-                let index = Int(snapshot.key)
-                itemStates[index!] = item
-                self.updateUnlocked()
-                self.itemAlreadyPurchased()
-            }
-        })
+        if(FBSDKAccessToken.current() != nil){
+        facebookId = FBSDKAccessToken.current().userID;
+        print("FB USER ID IS %@",facebookId)
         
-        if user != nil && SharingManager.sharedInstance.removedDefaults == false {
-        removeUserDefaults()
         }
-    
-        
-        
+        ref = Database.database().reference()
+        updateCoins();
         self.gifView.delegate = self
         
         //Add coin button click
@@ -211,6 +250,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         var x = 0
         for i in slideArray {
+            
             if itemStates[x] == "inCloset" {
                 setupInCloset(slide: i, x: x)
             }
@@ -218,7 +258,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 setupInStore(slide: i)
             }
             if x < slideArray.count {
-            x += 1
+                x += 1
             }
         }
         
@@ -398,7 +438,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         let failureGenerator = UINotificationFeedbackGenerator()
         failureGenerator.prepare()
-
+        
         if pageIndex == 1 {
             itemTitle = "poos trotter"
             cost = 1000
@@ -502,7 +542,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             
             updateCoinsLabel()
             SharingManager.sharedInstance.lifetimeScore = coins
-            ref?.child("players").child(user!.uid).child("poosesOwned").updateChildValues(["\(pageIndex)": "inCloset"])
+            if(facebookId != ""){
+            ref?.child("players").child(facebookId).child("poosesOwned").updateChildValues(["\(pageIndex)": "inCloset"])
+                updateCoins();
+            }
             if #available(iOS 10.3, *) {
                 SKStoreReviewController.requestReview()
             }
@@ -590,7 +633,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 imageView.image = imageView.image?.transform(withNewColor: UIColor.black)
             }
         }
-
+        
         inviteFriendsView.isHidden = false
     }
     
@@ -698,7 +741,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().add(pay as SKPayment)
     }
-
+    
     func updateCoinsLabel() {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
@@ -776,7 +819,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-
+    
     var contacts = [CNContact]()
     var authStatus: CNAuthorizationStatus = .denied {
         didSet {
@@ -926,7 +969,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
-
+    
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         switch (result.rawValue) {
         case MessageComposeResult.cancelled.rawValue:
