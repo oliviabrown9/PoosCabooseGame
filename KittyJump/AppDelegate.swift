@@ -19,12 +19,14 @@ import FacebookCore
 var myItemStates: [String] = []
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate {
     
     var window: UIWindow?
     var ref: DatabaseReference?
     let date = Date()
     var facebookId = "";
+    var gViewController: UIViewController?
+    var mInterstitial: GADInterstitial!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -56,6 +58,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func showAdmobInterstitial()
+    {
+        
+        let kGoogleFullScreenAppUnitID = "ca-app-pub-1224845211182149/4021005644";
+        self.mInterstitial = GADInterstitial.init(adUnitID:kGoogleFullScreenAppUnitID )
+        
+        mInterstitial.delegate = self
+        let Request  = GADRequest()
+        mInterstitial.load(Request)
+    }
+    
+    func interstitialDidReceiveAd(_ ad: GADInterstitial)
+    {
+        ad.present(fromRootViewController: self.gViewController!)
+    }
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
         

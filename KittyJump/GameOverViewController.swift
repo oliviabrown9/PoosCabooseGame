@@ -19,9 +19,9 @@ import FacebookCore
 
 var removedAds: Bool = SharingManager.sharedInstance.didRemoveAds
 
-class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
-    var interstitial: GADInterstitial!
+//    var interstitial: GADInterstitial!
     var facebookId = "";
     
     var ref: DatabaseReference?
@@ -130,12 +130,12 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         }
     }
     
-    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
-        if showFirst == true && playCount % 3 == 0 && removedAds == false {
-            interstitial.present(fromRootViewController: self)
-            showFirst = false
-        }
-    }
+//    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+//        if showFirst == true && playCount % 3 == 0 && removedAds == false {
+//            interstitial.present(fromRootViewController: self)
+//            showFirst = false
+//        }
+//    }
     
     func hidePreferencesView() {
         darkenedView.isHidden = true
@@ -174,14 +174,22 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         })
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let App = UIApplication.shared.delegate as! AppDelegate
+        App.gViewController = self;
+        if playCount % 3 == 0 && removedAds == false {
+        App.showAdmobInterstitial()
+        }
+        
         if(FBSDKAccessToken.current() != nil){
         facebookId = FBSDKAccessToken.current().userID;
         print("FB USER ID IS %@",facebookId)
         }
-        interstitial = createAndLoadInterstitial()
-        
+
         ref = Database.database().reference()
         if(facebookId != ""){
             
@@ -209,10 +217,7 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameOverViewController.swiped(_:)))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
-
-        let swipesLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameOverViewController.swiped(_:)))
-        swipesLeft.direction = UISwipeGestureRecognizerDirection.left
-        self.view.addGestureRecognizer(swipesLeft)
+        
         highScoreLabel.text = "Best: \(highScore)"
         // Setting text of labels to stored value
         mostRecentScore.text = "\(lastNineScores[0])"
@@ -223,18 +228,18 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         pastScores.text = stringArray.joined(separator: "  ")
     }
     
-    func createAndLoadInterstitial() -> GADInterstitial {
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-1224845211182149/4021005644")
-        interstitial.delegate = self
-        let request = GADRequest()
-        interstitial.load(request)
-        return interstitial
-    }
-    
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-        interstitial = createAndLoadInterstitial()
-    }
-    
+//    func createAndLoadInterstitial() -> GADInterstitial {
+//        interstitial = GADInterstitial(adUnitID: "ca-app-pub-1224845211182149/4021005644")
+//        interstitial.delegate = self
+//        let request = GADRequest()
+//        interstitial.load(request)
+//        return interstitial
+//    }
+//    
+//    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+//        interstitial = createAndLoadInterstitial()
+//    }
+//    
     func swiped(_ gesture: UIGestureRecognizer) {
         performSegue(withIdentifier: "toStore", sender: self)
     }
