@@ -14,19 +14,25 @@ import Firebase
 import FirebaseDatabase
 import SwiftyJSON
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var ref: DatabaseReference?
     let user = Auth.auth().currentUser
     var facebookId = "";
     
+    @IBOutlet weak var highScoreLabel: UILabel!
+    @IBOutlet weak var profilePhoto: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
+    
+    var friendObjects: [NSDictionary] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         if(FBSDKAccessToken.current() != nil){
-        facebookId = FBSDKAccessToken.current().userID;
-        print("FB USER ID IS %@",facebookId)
+            facebookId = FBSDKAccessToken.current().userID;
+            print("FB USER ID IS %@",facebookId)
         }
         
         ref = Database.database().reference()
@@ -35,12 +41,24 @@ class LoginViewController: UIViewController {
             loginButton.isHidden = true
             logoutButton.isHidden = false
             getFriendsScore()
-        }else{
+            print(friendObjects.count)
+        }
+        else {
             logoutButton.isHidden = true
         }
-
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return friendObjects.count
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected")
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+        return cell
+    }
     
     func getScoreUser(fb_user: String) -> String{
         var score:String = "";
@@ -54,19 +72,17 @@ class LoginViewController: UIViewController {
         return score;
     }
     
-    func getFriendsScore(){
+    func getFriendsScore() {
         
-        let params = ["fields": "id, first_name, last_name, name, email, picture"]
+        let params = ["fields": "id, name, picture"]
         
         let graphRequest = FBSDKGraphRequest(graphPath: "/me/friends", parameters: params)
         let connection = FBSDKGraphRequestConnection()
         connection.add(graphRequest, completionHandler: { (connection, result, error) in
             if error == nil {
                 if let userData = result as? [String:Any] {
-                    print("Friends list")
-                    print(userData)
-                    let friendObjects = userData["data"] as! [NSDictionary]
-                    for friendObject in friendObjects {
+                    self.friendObjects = userData["data"] as! [NSDictionary]
+                    for friendObject in self.friendObjects {
                         let fbId = friendObject["id"] as! NSString;
                         let fbuName = friendObject["name"] as! NSString;
                         print("FBid \(fbId)");
@@ -74,21 +90,20 @@ class LoginViewController: UIViewController {
                         print("Score \(self.getScoreUser(fb_user: fbId as String))")
                         
                     }
-                    print("\(friendObjects.count)")
+                    print("\(self.friendObjects.count)")
                 }
             } else {
                 print("Error Getting Friends \(String(describing: error))");
             }
             
         })
-        
         connection.start()
-        
     }
     
     @IBAction func backClicked(_ sender: UIButton) {
         _ = navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func logout(_ sender: UIButton) {
         do {
             try Auth.auth().signOut()
@@ -96,6 +111,7 @@ class LoginViewController: UIViewController {
             print ("Error signing out: %@", signOutError)
         }
     }
+    
     @IBAction func facebookLogin(sender: UIButton) {
         let fbLoginManager = FBSDKLoginManager()
         fbLoginManager.logIn(withReadPermissions: ["public_profile", "email", "user_friends"], from: self) { (result, error) in
@@ -110,8 +126,7 @@ class LoginViewController: UIViewController {
             }
             
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-            
-            // Perform login by calling Firebase APIs
+
             Auth.auth().signIn(with: credential, completion: { (user, error) in
                 if let error = error {
                     print("Login error: \(error.localizedDescription)")
@@ -125,21 +140,11 @@ class LoginViewController: UIViewController {
                 self.getFBUserData()
                 
             })
-            
         }
-        
-    }
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    override func viewWillAppear(_ animated: Bool) {
-//        getFBUserData()
     }
     
     func getFBUserData()
     {
-        
-        
         if((FBSDKAccessToken.current()) != nil ) {
             
             FBSDKGraphRequest(graphPath: "me",
@@ -153,6 +158,7 @@ class LoginViewController: UIViewController {
                               })
         }
     }
-    
-
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }

@@ -174,8 +174,6 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         })
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if(FBSDKAccessToken.current() != nil){
@@ -211,7 +209,10 @@ class GameOverViewController: UIViewController, GADInterstitialDelegate, SKProdu
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameOverViewController.swiped(_:)))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
-        
+
+        let swipesLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameOverViewController.swiped(_:)))
+        swipesLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipesLeft)
         highScoreLabel.text = "Best: \(highScore)"
         // Setting text of labels to stored value
         mostRecentScore.text = "\(lastNineScores[0])"

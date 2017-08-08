@@ -495,14 +495,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if isFirstTrain {
             let firsttrain = rightTrainArray[0]
-            posInit = CGPoint(x: self.frame.minX + firsttrain.size.width/2,
+            posInit = CGPoint(x: self.frame.minX - firsttrain.size.width/2,
                               y: yPositionC)
             posTo = CGPoint(x: self.frame.maxX + irWagon.size.width/2,
                             y: yPositionC)
             isFirstTrain = false
         }
         else {
-            posInit = CGPoint(x: self.frame.minX + irWagon.size.width/2 - stepPos,
+            posInit = CGPoint(x: self.frame.minX - irWagon.size.width/2 - stepPos,
                               y: yPositionC)
             posTo = CGPoint(x: self.frame.maxX + irWagon.size.width/2 + stepPos,
                             y: yPositionC)
@@ -530,7 +530,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let ilTrain = leftTrainArray[newLeftTrainIndex]
         
-        let posInit = CGPoint(x: self.frame.maxX - ilTrain.size.width/2 - stepPos,
+        let posInit = CGPoint(x: self.frame.maxX + ilTrain.size.width/2 - stepPos,
                               y: yPositionC)
         
         let posTo = CGPoint(x: self.frame.minX - ilTrain.size.width/2,
@@ -608,10 +608,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ilTrain.run(act)
         }
     }
-    
+    var edges:Bool = false;
     // Contact delegate functions
+    var needItme:Bool = true;
     func didBegin(_ contact: SKPhysicsContact) {
-        
+        if(needItme){
+        moveRightWagon2()
+        moveLeftTrain2()
+            needItme = false;
+        }
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
         
@@ -624,12 +629,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
-        if (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryBorder) || (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryDeadline) {
+        if (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryBorder && edges == true) || (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryDeadline  && edges == true) {
             kitty.zPosition = 2
             kitty.removeAllActions()
             self.stop()
+            edges = false
         }
         
+        edges = false
         if isStop {
             return
         }
@@ -637,6 +644,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Handles left train & creates a right train
         if kittyPosition == .RightTrain {
             
+            edges = true
             if firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryTrain {
                 
                 if (contact.contactPoint.x > (secondBody.node!.frame.maxX - 100)) {
@@ -665,6 +673,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Handles right train & creates a left train
         if kittyPosition == .LeftTrain {
+            edges = true
             if firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryWagon {
                 
                 if (contact.contactPoint.x < (secondBody.node!.frame.minX + 100)) {
