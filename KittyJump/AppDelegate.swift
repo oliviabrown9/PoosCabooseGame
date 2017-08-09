@@ -127,13 +127,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
                             if(key.contains("score")){
                                 score = child.value as! Int;
                         }
-                        
                     }
                     
                     let formatter = DateFormatter()
                     formatter.dateFormat = "dd-MM-yyyy"
-                    let dbDate = formatter.date(from: dbDateString) // according to date format your date string
-                    let localDate = formatter.date(from: dateString) // according to date format your date string
+                    let dbDate = formatter.date(from: dbDateString) // Format date string
+                    let localDate = formatter.date(from: dateString)
                     print("dbDate \(String(describing: dbDate))")
                     print("self.date \(dateString)")
                     if(dbDate == nil){
@@ -159,7 +158,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
             
             
             self.ref?.child("players").child(facebookId).child("poosesOwned").observeSingleEvent(of: .value, with: { (snapshot) in
-                //read the user data from the snapshot and do whatever with it
+                // Read user data from the snapshot
                 if let result = snapshot.children.allObjects as? [DataSnapshot] {
                     print("result \(result)")
                     for child in result {
@@ -177,7 +176,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
         }
     }
     
-    
     func getFBUserData()
     {
         if((FBSDKAccessToken.current()) != nil ) {
@@ -187,7 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
                               parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email , gender"]).start(
                                 
                                 completionHandler: { (connection, result, error) -> Void in
-                                    self.ref?.child("players").child(self.facebookId).child("profile").updateChildValues(result as! [AnyHashable : Any]) //
+                                    self.ref?.child("players").child(self.facebookId).child("profile").updateChildValues(result as! [AnyHashable : Any])
                               })
         }
     }
