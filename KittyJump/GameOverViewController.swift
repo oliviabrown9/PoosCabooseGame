@@ -175,21 +175,25 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     }
     
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        
+//        let App = UIApplication.shared.delegate as! AppDelegate
+//        App.gViewController = self;
+//        App.showAdmobInterstitial()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let App = UIApplication.shared.delegate as! AppDelegate
         App.gViewController = self;
-        if playCount % 3 == 0 && removedAds == false {
         App.showAdmobInterstitial()
-        }
         
         if(FBSDKAccessToken.current() != nil){
         facebookId = FBSDKAccessToken.current().userID;
         print("FB USER ID IS %@",facebookId)
         }
-
+//        interstitial = createAndLoadInterstitial()
+        
         ref = Database.database().reference()
         if(facebookId != ""){
             

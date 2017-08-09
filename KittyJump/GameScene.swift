@@ -10,11 +10,13 @@ import SpriteKit
 import GameplayKit
 import Foundation
 import AVFoundation
+import GoogleMobileAds
 
 var playCount: Int = 0
 var soundState: Bool = SharingManager.sharedInstance.soundState
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    var interstitial: GADInterstitial!
     
     var soundEffectPlayer: AVAudioPlayer = AVAudioPlayer()
     
@@ -73,13 +75,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var newTrainPosY: CGFloat = -600.0
     let kitty = Kitty()
     var joint1: SKPhysicsJointPin!
-    var currentTrain: Int = 2
+    var currentTrain: Int = 3
     var currentTrainNumber: Int = 0
     var stepSpeed: Int = 0
     var stepPos: CGFloat = 0
     var beforeColorIndex = -1
-    let countTrainArray = 8
-    let timeOfTrain: Double = 3.5
+    let countTrainArray = 3
+    var timeOfTrain: Double = 6.0
     var isStop = false
     
     
@@ -95,6 +97,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var highScore: Int = 0 {
         didSet {
             Label.highScoreLabel.text = "Best: \(pastHighScore)"
+            
         }
     }
     
@@ -124,6 +127,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         beforeColorIndex = [0, 1, 2].randomItem()
         
+        
+        stepSpeed = 0
+        stepPos = 0
+        createHud()
         setupTrackArray()
         setupGrassArray()
         
@@ -132,10 +139,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         setupFirstRightAndLeftTrains()
         currentTrainNumber = 0
-        
-        stepSpeed = 0
-        stepPos = 0
-        createHud()
     }
     
     // Movement
@@ -179,6 +182,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if score > pastHighScore {
             Label.highScoreLabel.text = "Best: \(score)"
         }
+        //        10,20,40,80,160,320, & 640.
+        
+            if(score >= 10 && score < 20){
+                timeOfTrain =  5.4;
+            } else
+                if(score >= 20 && score < 40){
+                    timeOfTrain =  5.0;
+                } else
+                    if(score >= 40 && score < 80){
+                        timeOfTrain =  4.8;
+                    } else
+                        if(score >= 80 && score < 160){
+                            timeOfTrain =  4.6;
+                        }
+                        else
+                            if(score >= 160 && score < 320){
+                                timeOfTrain =  4.4;
+                            }
+                                
+                            else
+                                if(score >= 320){
+                                    timeOfTrain =  4.2;
+        }
+        
     }
     
     func setSoundButton() {
@@ -262,18 +289,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     if score == pastHighScore {
                         successGenerator.notificationOccurred(.success)
                         if (!soundState) {
-                        let newHighScoreSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "newHighScore", ofType: "mp3")!)
-                        do {
-                            let audioSession = AVAudioSession.sharedInstance()
-                            try!audioSession.setCategory(AVAudioSessionCategoryAmbient, with: AVAudioSessionCategoryOptions.mixWithOthers)
-                            soundEffectPlayer = try AVAudioPlayer(contentsOf: newHighScoreSound as URL)
-                            soundEffectPlayer.numberOfLoops = 0
-                            soundEffectPlayer.prepareToPlay()
-                            soundEffectPlayer.play()
-                        } catch {
-                            print("Cannot play the file")
+                            let newHighScoreSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "newHighScore", ofType: "mp3")!)
+                            do {
+                                let audioSession = AVAudioSession.sharedInstance()
+                                try!audioSession.setCategory(AVAudioSessionCategoryAmbient, with: AVAudioSessionCategoryOptions.mixWithOthers)
+                                soundEffectPlayer = try AVAudioPlayer(contentsOf: newHighScoreSound as URL)
+                                soundEffectPlayer.numberOfLoops = 0
+                                soundEffectPlayer.prepareToPlay()
+                                soundEffectPlayer.play()
+                            } catch {
+                                print("Cannot play the file")
+                            }
                         }
-                    }
                     }
                 }
             }
@@ -342,7 +369,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for i in 0...5 {
             let trainTrack = TrainTrack()
             if i == 5 {
-                trainTrack.alpha = 0
+                trainTrack.alpha = 1
             }
             trainTrack.position = getTrainTrackPosition(row : i)
             trainTrack.name = "Track" + String(i)
@@ -376,7 +403,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for i in 0...5 {
             let grass = Grass()
             if i == 5 {
-                grass.alpha = 0
+                grass.alpha = 1
             }
             grass.position = getGrassPosition(row: i)
             grass.zPosition = 1
@@ -613,8 +640,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var needItme:Bool = true;
     func didBegin(_ contact: SKPhysicsContact) {
         if(needItme){
-        moveRightWagon2()
-        moveLeftTrain2()
+            moveRightWagon2()
+            moveLeftTrain2()
             needItme = false;
         }
         var firstBody: SKPhysicsBody
@@ -629,7 +656,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
-        if (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryBorder && edges == true) || (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryDeadline  && edges == true) {
+        if (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryBorder && edges == true) || (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryDeadline) {
             kitty.zPosition = 2
             kitty.removeAllActions()
             self.stop()
@@ -653,10 +680,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     kitty.zPosition = 2
                     
                     switchJointL(iWagon: secondBody.node! as! LeftTrain)
-                    changeTrackAndGrassInNewLocation()
-                    
                     moveRightWagon2()
                     
+                    changeTrackAndGrassInNewLocation()
+
                     kittyPosition = .LeftTrain
                     
                     // Remove old deadline & add new deadline
@@ -682,8 +709,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     kitty.zPosition = 2
                     
                     switchJoint(iWagon:secondBody.node! as! RightTrain)
-                    changeTrackAndGrassInNewLocation()
                     moveLeftTrain2()
+                    changeTrackAndGrassInNewLocation()
                     kittyPosition = .RightTrain
                     
                     // Remove old deadline & add new deadline
@@ -709,11 +736,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func changeTrackAndGrassInNewLocation() {
+        print("currentTrain\(currentTrain)");
         let lastTrain = currentTrain
         currentTrain += 1
         if currentTrain > 5 {
             currentTrain %= 6
         }
+        print("currentTrain after up\(currentTrain)");
+        print("lastTrain after up\(lastTrain)");
         
         let newCurrentTrainPosY = trainTrackArray[lastTrain].position.y + trainDiffPosition
         setupNewTrack(index: currentTrain, posY: newCurrentTrainPosY)
@@ -745,7 +775,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var newYPos: CGFloat = 0
         
         // Track & grass
-        for i in 0...4 {
+        for i in 0...5 {
             
             // Track
             newYPos = trainTrackArray[i].position.y - temp
@@ -849,7 +879,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
-       // soundEffectPlayer.stop()
+        // soundEffectPlayer.stop()
         
         // Add score to lifetimeScore
         if score != 0 {
@@ -869,12 +899,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.removeAllJoints()
         self.removeAllActions()
         self.isPaused = true
-        
         // Segue to gameOverVC
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        
+//        let App = UIApplication.shared.delegate as! AppDelegate
+////        App.gViewController = se;
+//        App.showAdmobInterstitial()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+             
             self.viewController?.performSegue(withIdentifier: "toGameOver", sender: self.viewController)
         }
     }
+    
     
     func pauseGame() {
         
@@ -903,7 +939,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func playSound() {
         if (!soundState) {
-        backgroundMusicPlayer.play()
+            backgroundMusicPlayer.play()
         }
         
     }

@@ -49,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
             initialViewController = storyboard.instantiateViewController(withIdentifier: "GameViewController")
         }
         self.window?.rootViewController = initialViewController
+        self.gViewController = initialViewController;
         self.window?.makeKeyAndVisible()
         if(FBSDKAccessToken.current() != nil){
             facebookId = FBSDKAccessToken.current().userID;
@@ -66,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
         
         mInterstitial.delegate = self
         let Request  = GADRequest()
+        Request.testDevices = [kGADSimulatorID]
         mInterstitial.load(Request)
     }
     
@@ -130,22 +132,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
                     
                     let formatter = DateFormatter()
                     formatter.dateFormat = "dd-MM-yyyy"
-                    let dbDate = formatter.date(from: dbDateString) //according to date format your date string
-                    let localDate = formatter.date(from: dateString) //according to date format your date string
+                    let dbDate = formatter.date(from: dbDateString) // according to date format your date string
+                    let localDate = formatter.date(from: dateString) // according to date format your date string
                     print("dbDate \(String(describing: dbDate))")
                     print("self.date \(dateString)")
                     if(dbDate == nil){
                         self.ref?.child("players").child(self.facebookId).child("TodayshighScore").updateChildValues(["date": dateString])
-                        self.ref?.child("players").child(self.facebookId).child("TodayshighScore").updateChildValues(["score": 0]) //Reset to
+                        self.ref?.child("players").child(self.facebookId).child("TodayshighScore").updateChildValues(["score": 0]) // Set to 0
                     }
                     else
-                        if(dbDate! < localDate!){
+                        if(dbDate! < localDate!) {
                             print("Condition 1")
                             self.ref?.child("players").child(self.facebookId).child("TodayshighScore").updateChildValues(["date": dateString])
-                            self.ref?.child("players").child(self.facebookId).child("TodayshighScore").updateChildValues(["score": 0]) //Reset to Zero
+                            self.ref?.child("players").child(self.facebookId).child("TodayshighScore").updateChildValues(["score": 0]) //Reset to 0
                         } else {
                             print("Condition 2")
-                            //                        self.ref?.child("players").child(self.facebookId).child("TodayshighScore").updateChildValues(["score": "20"])
                     }
                     
                 } else {
@@ -186,14 +187,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
                               parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email , gender"]).start(
                                 
                                 completionHandler: { (connection, result, error) -> Void in
-//                                    print(result.debugDescription);
                                     self.ref?.child("players").child(self.facebookId).child("profile").updateChildValues(result as! [AnyHashable : Any]) //
                               })
-        
         }
     }
-    
-    
 }
 extension String {
     func makeFirebaseString()->String{
@@ -203,7 +200,6 @@ extension String {
         for character in arrCharacterToReplace{
             finalString = finalString.replacingOccurrences(of: character, with: " ")
         }
-        
         return finalString
     }
 }

@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C7F49841F3A706800E03762 /* AdsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7F49831F3A706800E03762 /* AdsViewController.swift */; };
 		75149F291F25B2B800B70B59 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75149F281F25B2B800B70B59 /* StoreViewController.swift */; };
 		75149F2B1F25B2CB00B70B59 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75149F2A1F25B2CB00B70B59 /* MessageComposer.swift */; };
-		752D49BB1F38E826007CC994 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752D49BA1F38E826007CC994 /* LeaderboardTableViewCell.swift */; };
 		753E80A61F058FAD001FEE97 /* stop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 753E80A51F058FAD001FEE97 /* stop.mp3 */; };
 		755820EE1F04126400A68A88 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755820ED1F04126400A68A88 /* jump.mp3 */; };
 		755C59001F0484E50064472D /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 755C58FF1F0484E50064472D /* intro.mp3 */; };
@@ -53,10 +53,10 @@
 
 /* Begin PBXFileReference section */
 		170ABEBE832CE954F508ADBC /* Pods_KittyJump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KittyJump.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C7F49831F3A706800E03762 /* AdsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsViewController.swift; sourceTree = "<group>"; };
 		5783ACE75A3B97ED65A81BCD /* Pods-KittyJump.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KittyJump.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KittyJump/Pods-KittyJump.debug.xcconfig"; sourceTree = "<group>"; };
 		75149F281F25B2B800B70B59 /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		75149F2A1F25B2CB00B70B59 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
-		752D49BA1F38E826007CC994 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
 		753E80A51F058FAD001FEE97 /* stop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stop.mp3; sourceTree = "<group>"; };
 		755820ED1F04126400A68A88 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 		755C58FF1F0484E50064472D /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = intro.mp3; sourceTree = "<group>"; };
@@ -182,7 +182,6 @@
 				756C47AA1F197A3100B034C0 /* Slide.swift */,
 				D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */,
 				75B5B1701F2140F6008D8584 /* ContactsTableViewCell.swift */,
-				752D49BA1F38E826007CC994 /* LeaderboardTableViewCell.swift */,
 				75D93C1C1F3010E40020E067 /* LeaderboardViewController.swift */,
 				D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */,
 				D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */,
@@ -203,6 +202,7 @@
 				D7C5EAC21EEB5C21007DA71A /* LaunchScreen.storyboard */,
 				D7C5EAC51EEB5C21007DA71A /* Info.plist */,
 				75D93C1E1F30EE930020E067 /* GoogleService-Info.plist */,
+				1C7F49831F3A706800E03762 /* AdsViewController.swift */,
 			);
 			path = KittyJump;
 			sourceTree = "<group>";
@@ -373,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7C5EAFF1EF24469007DA71A /* KCamera.swift in Sources */,
+				1C7F49841F3A706800E03762 /* AdsViewController.swift in Sources */,
 				D7C5EADC1EEB76D7007DA71A /* CommonSpriteNode.swift in Sources */,
 				75149F291F25B2B800B70B59 /* StoreViewController.swift in Sources */,
 				75D93C1D1F3010E40020E067 /* LeaderboardViewController.swift in Sources */,
@@ -381,7 +382,6 @@
 				75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */,
 				D7C5EAE31EEBFB03007DA71A /* Grass.swift in Sources */,
 				756C47AB1F197A3100B034C0 /* Slide.swift in Sources */,
-				752D49BB1F38E826007CC994 /* LeaderboardTableViewCell.swift in Sources */,
 				D7C5EAE61EEC07E5007DA71A /* LeftTrain.swift in Sources */,
 				D7C5EABC1EEB5C21007DA71A /* GameViewController.swift in Sources */,
 				D7C5EADA1EEB638E007DA71A /* TrainTrack.swift in Sources */,
