@@ -736,14 +736,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func changeTrackAndGrassInNewLocation() {
-        print("currentTrain\(currentTrain)");
         let lastTrain = currentTrain
         currentTrain += 1
         if currentTrain > 5 {
             currentTrain %= 6
         }
-        print("currentTrain after up\(currentTrain)");
-        print("lastTrain after up\(lastTrain)");
         
         let newCurrentTrainPosY = trainTrackArray[lastTrain].position.y + trainDiffPosition
         setupNewTrack(index: currentTrain, posY: newCurrentTrainPosY)
@@ -900,10 +897,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.removeAllActions()
         self.isPaused = true
         // Segue to gameOverVC
-        
-//        let App = UIApplication.shared.delegate as! AppDelegate
-////        App.gViewController = se;
-//        App.showAdmobInterstitial()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
              

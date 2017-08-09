@@ -19,9 +19,9 @@ import FacebookCore
 
 var removedAds: Bool = SharingManager.sharedInstance.didRemoveAds
 
-class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver, GADInterstitialDelegate {
     
-//    var interstitial: GADInterstitial!
+    var interstitial: GADInterstitial!
     var facebookId = "";
     
     var ref: DatabaseReference?
@@ -130,12 +130,12 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         }
     }
     
-//    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
-//        if showFirst == true && playCount % 3 == 0 && removedAds == false {
-//            interstitial.present(fromRootViewController: self)
-//            showFirst = false
-//        }
-//    }
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        if playCount % 3 == 0 && removedAds == false && showFirst == true {
+            interstitial.present(fromRootViewController: self)
+            showFirst = false
+        }
+    }
     
     func hidePreferencesView() {
         darkenedView.isHidden = true
@@ -173,26 +173,23 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             self.view.layoutIfNeeded()
         })
     }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-//        let App = UIApplication.shared.delegate as! AppDelegate
-//        App.gViewController = self;
-//        App.showAdmobInterstitial()
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let App = UIApplication.shared.delegate as! AppDelegate
-        App.gViewController = self;
-        App.showAdmobInterstitial()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        startOver?.isUserInteractionEnabled = true
+        startOver?.addGestureRecognizer(tapGestureRecognizer)
+        
+        if playCount % 3 == 0 {
+            startOver?.isUserInteractionEnabled = false
+        }
         
         if(FBSDKAccessToken.current() != nil){
         facebookId = FBSDKAccessToken.current().userID;
         print("FB USER ID IS %@",facebookId)
         }
-//        interstitial = createAndLoadInterstitial()
+        interstitial = createAndLoadInterstitial()
         
         ref = Database.database().reference()
         if(facebookId != ""){
@@ -204,11 +201,11 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             ref?.child("players").child(facebookId).child("TodayshighScore").updateChildValues(["date": dateString])
             ref?.child("players").child(facebookId).updateChildValues(["highScore": highScore])
         }
-        if playCount % 3 != 0{
-            if #available(iOS 10.3, *) {
-                SKStoreReviewController.requestReview()
-            }
-        }
+//        if playCount % 3 != 0{
+//            if #available(iOS 10.3, *) {
+//                SKStoreReviewController.requestReview()
+//            }
+//        }
         
         if(SKPaymentQueue.canMakePayments()) {
             let productID: NSSet = NSSet(object: "org.pooscaboose.noads")
@@ -232,28 +229,21 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         pastScores.text = stringArray.joined(separator: "  ")
     }
     
-//    func createAndLoadInterstitial() -> GADInterstitial {
-//        interstitial = GADInterstitial(adUnitID: "ca-app-pub-1224845211182149/4021005644")
-//        interstitial.delegate = self
-//        let request = GADRequest()
-//        interstitial.load(request)
-//        return interstitial
-//    }
-//    
-//    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-//        interstitial = createAndLoadInterstitial()
-//    }
-//    
-    func swiped(_ gesture: UIGestureRecognizer) {
-        performSegue(withIdentifier: "toStore", sender: self)
+    func createAndLoadInterstitial() -> GADInterstitial {
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-1224845211182149/4021005644")
+        interstitial.delegate = self
+        let request = GADRequest()
+        interstitial.load(request)
+        return interstitial
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated);
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        interstitial = createAndLoadInterstitial()
         startOver?.isUserInteractionEnabled = true
-        startOver?.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    func swiped(_ gesture: UIGestureRecognizer) {
+        performSegue(withIdentifier: "toStore", sender: self)
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated);

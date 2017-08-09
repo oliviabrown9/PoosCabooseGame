@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C7F49841F3A706800E03762 /* AdsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7F49831F3A706800E03762 /* AdsViewController.swift */; };
 		75149F291F25B2B800B70B59 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75149F281F25B2B800B70B59 /* StoreViewController.swift */; };
 		75149F2B1F25B2CB00B70B59 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75149F2A1F25B2CB00B70B59 /* MessageComposer.swift */; };
 		753E80A61F058FAD001FEE97 /* stop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 753E80A51F058FAD001FEE97 /* stop.mp3 */; };
@@ -53,7 +52,6 @@
 
 /* Begin PBXFileReference section */
 		170ABEBE832CE954F508ADBC /* Pods_KittyJump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KittyJump.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1C7F49831F3A706800E03762 /* AdsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsViewController.swift; sourceTree = "<group>"; };
 		5783ACE75A3B97ED65A81BCD /* Pods-KittyJump.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KittyJump.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KittyJump/Pods-KittyJump.debug.xcconfig"; sourceTree = "<group>"; };
 		75149F281F25B2B800B70B59 /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		75149F2A1F25B2CB00B70B59 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 				D7C5EAC21EEB5C21007DA71A /* LaunchScreen.storyboard */,
 				D7C5EAC51EEB5C21007DA71A /* Info.plist */,
 				75D93C1E1F30EE930020E067 /* GoogleService-Info.plist */,
-				1C7F49831F3A706800E03762 /* AdsViewController.swift */,
 			);
 			path = KittyJump;
 			sourceTree = "<group>";
@@ -373,7 +370,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7C5EAFF1EF24469007DA71A /* KCamera.swift in Sources */,
-				1C7F49841F3A706800E03762 /* AdsViewController.swift in Sources */,
 				D7C5EADC1EEB76D7007DA71A /* CommonSpriteNode.swift in Sources */,
 				75149F291F25B2B800B70B59 /* StoreViewController.swift in Sources */,
 				75D93C1D1F3010E40020E067 /* LeaderboardViewController.swift in Sources */,
