@@ -28,6 +28,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var logoutButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(FBSDKAccessToken.current())
         if(FBSDKAccessToken.current() != nil){
         facebookId = FBSDKAccessToken.current().userID;
         print("FB USER ID IS %@",facebookId)
@@ -42,15 +43,13 @@ class LoginViewController: UIViewController {
         }else{
             logoutButton.isHidden = true
         }
-
     }
-    
-    
+
     func getScoreUser(fb_user: String) -> String{
-        var score:String = "";
+        var score: String = "";
         self.ref?.child("players").child(fb_user).observeSingleEvent(of: .value, with: { (snapshot) in
-            score = snapshot.childSnapshot(forPath: "highScore").value as! String
-            print("score is %@",score );
+            score = String(describing: snapshot.childSnapshot(forPath: "highScore").value)
+            
             self.scoreDict.append((fb_user, score))
             
         }) { (error) in

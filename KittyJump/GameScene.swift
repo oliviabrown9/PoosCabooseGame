@@ -81,7 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var stepPos: CGFloat = 0
     var beforeColorIndex = -1
     let countTrainArray = 3
-    var timeOfTrain: Double = 6.0
+    var timeOfTrain: Double = 4.4
     var isStop = false
     
     
@@ -184,26 +184,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         //        10,20,40,80,160,320, & 640.
         
-            if(score >= 10 && score < 20){
-                timeOfTrain =  5.4;
-            } else
+            
+        if(score >= 5 && score < 10) {
+            timeOfTrain =  4.2
+        }
+            else
+                if(score >= 10 && score < 20){
+                timeOfTrain =  4.0;
+            }
+            else
                 if(score >= 20 && score < 40){
-                    timeOfTrain =  5.0;
+                    timeOfTrain =  3.8;
                 } else
                     if(score >= 40 && score < 80){
-                        timeOfTrain =  4.8;
+                        timeOfTrain =  3.6;
                     } else
                         if(score >= 80 && score < 160){
-                            timeOfTrain =  4.6;
+                            timeOfTrain =  3.4;
                         }
                         else
                             if(score >= 160 && score < 320){
-                                timeOfTrain =  4.4;
+                                timeOfTrain =  3.2;
                             }
-                                
                             else
                                 if(score >= 320){
-                                    timeOfTrain =  4.2;
+                                    timeOfTrain =  3.0;
         }
         
     }
