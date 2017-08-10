@@ -77,6 +77,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     @IBAction func shareButtonTapped(_ sender: Any) {
         // Set the default sharing message.
         let message = "Check out this fun game! My high score is \(highScore)!"
+        
         // Set the link to share.
         if let link = NSURL(string: "http://pooscaboose.com/download")
         {
@@ -237,6 +238,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         self.view.addGestureRecognizer(swipeLeft)
         
         highScoreLabel.text = "Best: \(highScore)"
+        mostRecentScore.text = "\(lastNineScores[0])"
         // Setting text of labels to stored value
     }
     

@@ -5,6 +5,7 @@
 //  Created by Olivia Brown on 6/9/17.
 //  Copyright © 2017 Olivia Brown. All rights reserved.
 //
+
 import SpriteKit
 import GameplayKit
 import Foundation
@@ -183,15 +184,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         //        10,20,40,80,160,320, & 640.
         
-        
-        if(score >= 5 && score < 10) {
-            timeOfTrain =  4.2
-        }
-        else
-            if(score >= 10 && score < 20){
-                timeOfTrain =  4.0;
-            }
-            else
+            if(score >= 5 && score < 10){
+                timeOfTrain =  4.2;
+            } else
+                if(score >= 10 && score < 20){
+                    timeOfTrain =  4.0;
+                } else
                 if(score >= 20 && score < 40){
                     timeOfTrain =  3.8;
                 } else
@@ -205,8 +203,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             if(score >= 160 && score < 320){
                                 timeOfTrain =  3.2;
                             }
+                                
                             else
-                                if(score >= 320){
+                                if(score >= 320 && score < 640){
                                     timeOfTrain =  3.0;
         }
         
@@ -526,7 +525,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if isFirstTrain {
             let firsttrain = rightTrainArray[0]
-            posInit = CGPoint(x: self.frame.minX - firsttrain.size.width/2,
+            posInit = CGPoint(x: self.frame.minX + firsttrain.size.width/2,
                               y: yPositionC)
             posTo = CGPoint(x: self.frame.maxX + irWagon.size.width/2,
                             y: yPositionC)
@@ -639,15 +638,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ilTrain.run(act)
         }
     }
-    var edges:Bool = false;
     // Contact delegate functions
     var needItme:Bool = true;
     func didBegin(_ contact: SKPhysicsContact) {
-        if(needItme){
-            moveRightWagon2()
-            moveLeftTrain2()
-            needItme = false;
-        }
+//        if(needItme){
+//            moveRightWagon2()
+//            moveLeftTrain2()
+//            needItme = false;
+//        }
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
         
@@ -660,14 +658,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
-        if (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryBorder && edges == true) || (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryDeadline) {
+        if (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryBorder) || (firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryDeadline) {
             kitty.zPosition = 2
             kitty.removeAllActions()
             self.stop()
-            edges = false
         }
         
-        edges = false
         if isStop {
             return
         }
@@ -675,7 +671,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Handles left train & creates a right train
         if kittyPosition == .RightTrain {
             
-            edges = true
             if firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryTrain {
                 
                 if (contact.contactPoint.x > (secondBody.node!.frame.maxX - 100)) {
@@ -687,7 +682,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     moveRightWagon2()
                     
                     changeTrackAndGrassInNewLocation()
-                    
+
                     kittyPosition = .LeftTrain
                     
                     // Remove old deadline & add new deadline
@@ -704,7 +699,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Handles right train & creates a left train
         if kittyPosition == .LeftTrain {
-            edges = true
             if firstBody.categoryBitMask == categoryKitty && secondBody.categoryBitMask == categoryWagon {
                 
                 if (contact.contactPoint.x < (secondBody.node!.frame.minX + 100)) {
@@ -740,11 +734,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func changeTrackAndGrassInNewLocation() {
+        print("currentTrain\(currentTrain)");
         let lastTrain = currentTrain
         currentTrain += 1
         if currentTrain > 5 {
             currentTrain %= 6
         }
+        print("currentTrain after up\(currentTrain)");
+        print("lastTrain after up\(lastTrain)");
         
         let newCurrentTrainPosY = trainTrackArray[lastTrain].position.y + trainDiffPosition
         setupNewTrack(index: currentTrain, posY: newCurrentTrainPosY)
@@ -753,9 +750,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // SKScene functions
     override func didSimulatePhysics() {
+//        print("\(kitty.position.x)")
+        if(isStart && kitty.position.x > -200 && needItme){
+            self.moveRightWagon2()
+                        self.moveLeftTrain2()
+            print("Item added");
+            self.needItme = false;
+        }
         if isUpdateCameraPosY && (kitty.position.y > -100.0) {
             currentTrainNumber += 1
-            
             if currentTrainNumber > 5 {
                 stepPos = 50
                 stepSpeed = 1
@@ -823,7 +826,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         
         if isStart {
-            
+            print("start pressed");
             // Place the background
             background.position = CGPoint(x: 0, y: 0)
             background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -837,6 +840,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // Move the first 2 trains
             newTrainPosY = trainYPosition
+            
             moveRightWagon2()
             moveLeftTrain2()
             
@@ -851,6 +855,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             kittyCamera.position.y = 0
             addChild(kittyCamera)
             self.camera = kittyCamera
+            
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+//                
+//            self.moveRightWagon2()
+//            self.moveLeftTrain2()
+//            }
+
         }
         else {
         }
@@ -902,8 +913,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.isPaused = true
         // Segue to gameOverVC
         
+//        let App = UIApplication.shared.delegate as! AppDelegate
+////        App.gViewController = se;
+//        App.showAdmobInterstitial()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            
+             
             self.viewController?.performSegue(withIdentifier: "toGameOver", sender: self.viewController)
         }
     }
