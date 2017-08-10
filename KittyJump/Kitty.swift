@@ -40,7 +40,7 @@ class Kitty: SKSpriteNode {
         anchorPoint.x = 0.5
         anchorPoint.y = 0.5
         zPosition=2
-        let centerPoint = CGPoint(x: self.size.width / 2 - (self.size.width * self.anchorPoint.x), y: self.size.height / 2 - (self.size.height * self.anchorPoint.y))
+        let centerPoint = CGPoint(x: self.size.width / 2 - (self.size.width), y: self.size.height / 2 - (self.size.height * self.anchorPoint.y))
         
         physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2.5, center: centerPoint)
         

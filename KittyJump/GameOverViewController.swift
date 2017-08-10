@@ -183,11 +183,13 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         
         if playCount % 3 == 0 {
             startOver?.isUserInteractionEnabled = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.startOver?.isUserInteractionEnabled = true
+            }
         }
         
-        if(FBSDKAccessToken.current() != nil){
+        if(FBSDKAccessToken.current() != nil) {
         facebookId = FBSDKAccessToken.current().userID;
-        print("FB USER ID IS %@",facebookId)
         }
         interstitial = createAndLoadInterstitial()
         
@@ -221,12 +223,6 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         
         highScoreLabel.text = "Best: \(highScore)"
         // Setting text of labels to stored value
-        mostRecentScore.text = "\(lastNineScores[0])"
-        let stringArray = lastNineScores.map
-        {
-            String($0)
-        }
-        pastScores.text = stringArray.joined(separator: "  ")
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
@@ -239,7 +235,6 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         interstitial = createAndLoadInterstitial()
-        startOver?.isUserInteractionEnabled = true
     }
     
     func swiped(_ gesture: UIGestureRecognizer) {

@@ -343,7 +343,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     // Change display to use button
     func itemAlreadyPurchased() {
         
-        var currentSlide: Slide = slide1
+        var currentSlide: Slide = slide0
         
         if pageIndex == 1 {
             currentSlide = slide1
@@ -383,6 +383,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 }
                 else {
                     buttonInUse(button: i.useButton)
+                    
                 }
             }
             x += 1

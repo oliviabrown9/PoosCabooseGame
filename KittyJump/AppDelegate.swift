@@ -86,7 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
         self.ref = Database.database().reference()
         _ = Auth.auth().currentUser
         if(facebookId != ""){
-            print("user id %@",facebookId);
             
             let formatter = DateFormatter()
             formatter.dateFormat = "dd-MM-yyyy"
@@ -97,7 +96,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
             self.ref?.child("players").child(facebookId).child("TodayshighScore").observeSingleEvent(of: .value, with: { (snapshot) in
                 //read the user data from the snapshot and do whatever with it
                 if let result = snapshot.children.allObjects as? [DataSnapshot] {
-                    print("result \(result)")
                     for child in result {
                         let key = child.key ;
                         if(key.contains("date")){
@@ -112,23 +110,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
                     formatter.dateFormat = "dd-MM-yyyy"
                     let dbDate = formatter.date(from: dbDateString) // Format date string
                     let localDate = formatter.date(from: dateString)
-                    print("dbDate \(String(describing: dbDate))")
-                    print("self.date \(dateString)")
                     if(dbDate == nil){
                         self.ref?.child("players").child(self.facebookId).child("TodayshighScore").updateChildValues(["date": dateString])
                         self.ref?.child("players").child(self.facebookId).child("TodayshighScore").updateChildValues(["score": 0]) // Set to 0
                     }
                     else
                         if(dbDate! < localDate!) {
-                            print("Condition 1")
                             self.ref?.child("players").child(self.facebookId).child("TodayshighScore").updateChildValues(["date": dateString])
                             self.ref?.child("players").child(self.facebookId).child("TodayshighScore").updateChildValues(["score": 0]) //Reset to 0
-                        } else {
-                            print("Condition 2")
-                    }
-                    
-                } else {
-                    print("Insert 0 record")
+                        }
                     
                 }
             }) { (error) in
@@ -139,15 +129,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
             self.ref?.child("players").child(facebookId).child("poosesOwned").observeSingleEvent(of: .value, with: { (snapshot) in
                 // Read user data from the snapshot
                 if let result = snapshot.children.allObjects as? [DataSnapshot] {
-                    print("result \(result)")
                     for child in result {
-                        let index = Int(child.key)
                         let val = child.value as! String
-                        print("index \(String(describing: index)) val \(val)");
                         itemStates.append(val);
                     }
-                } else {
-                    print("no results")
                 }
             }) { (error) in
                 print(error.localizedDescription)

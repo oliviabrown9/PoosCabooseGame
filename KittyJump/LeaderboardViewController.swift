@@ -17,21 +17,19 @@ import SwiftyJSON
 class LoginViewController: UIViewController {
     
     @IBAction func printDictAction(_ sender: UIButton) {
-        print("ScoreDict");
-        print(scoreDict);
+        print("todayDict");
+        print(todayDict);
     }
     var ref: DatabaseReference?
     let user = Auth.auth().currentUser
     var facebookId = "";
-    var scoreDict = [(String, String)]()
+    var todayDict = [(String, String)]()
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(FBSDKAccessToken.current())
         if(FBSDKAccessToken.current() != nil){
-        facebookId = FBSDKAccessToken.current().userID;
-        print("FB USER ID IS %@",facebookId)
+            facebookId = FBSDKAccessToken.current().userID;
         }
         
         ref = Database.database().reference()
@@ -44,13 +42,14 @@ class LoginViewController: UIViewController {
             logoutButton.isHidden = true
         }
     }
-
-    func getScoreUser(fb_user: String) -> String{
+    
+    func getTodaysScore(fb_user: String) -> String{
         var score: String = "";
         self.ref?.child("players").child(fb_user).observeSingleEvent(of: .value, with: { (snapshot) in
             score = String(describing: snapshot.childSnapshot(forPath: "highScore").value)
             
-            self.scoreDict.append((fb_user, score))
+            
+            self.todayDict.append((fb_user, score))
             
         }) { (error) in
             print(error.localizedDescription)
@@ -67,15 +66,12 @@ class LoginViewController: UIViewController {
         connection.add(graphRequest, completionHandler: { (connection, result, error) in
             if error == nil {
                 if let userData = result as? [String:Any] {
-                    print("Friends list")
-                    print(userData)
                     let friendObjects = userData["data"] as! [NSDictionary]
                     for friendObject in friendObjects {
                         let fbId = friendObject["id"] as! NSString;
                         let fbuName = friendObject["name"] as! NSString;
-                        print("FBid \(fbId)");
-                        print("fbuName \(fbuName)");
-                        print("Score \(self.getScoreUser(fb_user: fbId as String))")
+                        print("Friend name: \(fbuName)");
+                        _ = self.getTodaysScore(fb_user: fbId as String)
                         
                     }
                     print("\(friendObjects.count)")
@@ -83,11 +79,8 @@ class LoginViewController: UIViewController {
             } else {
                 print("Error Getting Friends \(String(describing: error))");
             }
-            
         })
-        
         connection.start()
-        
     }
     
     @IBAction func backClicked(_ sender: UIButton) {
@@ -136,9 +129,6 @@ class LoginViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    override func viewWillAppear(_ animated: Bool) {
-//        getFBUserData()
-    }
     
     func getFBUserData()
     {
@@ -157,6 +147,4 @@ class LoginViewController: UIViewController {
                               })
         }
     }
-    
-
 }
