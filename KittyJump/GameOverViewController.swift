@@ -72,6 +72,20 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     @IBAction func preferencesButtonTapped(_ sender: Any) {
         showPreferencesView()
     }
+    
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        // Set the default sharing message.
+        let message = "Check out this fun game! My high score is \(highScore)!"
+        // Set the link to share.
+        if let link = NSURL(string: "http://pooscaboose.com/download")
+        {
+            let objectsToShare = [message, link] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList, UIActivityType(rawValue: "com.apple.reminders.RemindersEditorExtension"), UIActivityType(rawValue: "com.apple.mobilenotes.SharingExtension")]
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
     var showFirst: Bool = true
     
     var list = [SKProduct]()
