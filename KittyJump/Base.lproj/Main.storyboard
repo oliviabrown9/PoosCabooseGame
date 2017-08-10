@@ -372,6 +372,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0CV-KH-0dc"/>
                     <connections>
+                        <outlet property="cornerImageView" destination="T9A-VY-ya6" id="Bye-Bf-imn"/>
                         <outlet property="darkenedView" destination="mIn-H2-Iwf" id="vq5-7Q-NyF"/>
                         <outlet property="highScoreLabel" destination="EPO-0P-T3r" id="S3M-Ry-iz1"/>
                         <outlet property="mostRecentScore" destination="rAM-9b-1Uj" id="dNm-ZU-QtB"/>

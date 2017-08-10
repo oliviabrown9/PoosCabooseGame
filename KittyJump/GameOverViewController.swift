@@ -27,6 +27,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     var ref: DatabaseReference?
     let user = Auth.auth().currentUser
     
+    @IBOutlet weak var cornerImageView: UIImageView!
     // Variables for changing label text
     var lastNineScores = SharingManager.sharedInstance.lastScores
     var highScore = SharingManager.sharedInstance.highScore
