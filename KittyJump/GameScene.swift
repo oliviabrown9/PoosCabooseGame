@@ -5,7 +5,6 @@
 //  Created by Olivia Brown on 6/9/17.
 //  Copyright © 2017 Olivia Brown. All rights reserved.
 //
-
 import SpriteKit
 import GameplayKit
 import Foundation
@@ -182,7 +181,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if score > pastHighScore {
             Label.highScoreLabel.text = "Best: \(score)"
         }
-        //        5,10,20,40,80,160,320, & 640.
+        //        10,20,40,80,160,320, & 640.
+        
         
         if(score >= 5 && score < 10) {
             timeOfTrain =  4.2
@@ -207,7 +207,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             }
                             else
                                 if(score >= 320){
-                                    timeOfTrain =  3.0;        }
+                                    timeOfTrain =  3.0;
+        }
         
     }
     
@@ -541,12 +542,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         irWagon.position = posInit
         let act1 = SKAction.move(to: posInit, duration: 0.0)
         let act2 = SKAction.move(to: posTo, duration: timeOfTrain)
-        act1.timingMode = .easeInEaseOut
-        act2.timingMode = .easeInEaseOut
         let act = SKAction.sequence([act1, act2])
-
+        
         irWagon.run(act)
-        irWagon.timeOfTrain = timeOfTrain-2
+        irWagon.timeOfTrain = timeOfTrain
         newTrainPosY += trainDiffPosition
     }
     
@@ -571,8 +570,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let act1 = SKAction.move(to: posInit, duration: 0.0)
         let act2 = SKAction.move(to: posTo, duration: timeOfTrain)
-        act1.timingMode = .easeInEaseOut
-        act2.timingMode = .easeInEaseOut
         let act = SKAction.sequence([act1, act2])
         ilTrain.run(act)
         ilTrain.timeOfTrain = timeOfTrain
@@ -690,7 +687,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     moveRightWagon2()
                     
                     changeTrackAndGrassInNewLocation()
-
+                    
                     kittyPosition = .LeftTrain
                     
                     // Remove old deadline & add new deadline
@@ -743,14 +740,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func changeTrackAndGrassInNewLocation() {
-        print("currentTrain\(currentTrain)");
         let lastTrain = currentTrain
         currentTrain += 1
         if currentTrain > 5 {
             currentTrain %= 6
         }
-        print("currentTrain after up\(currentTrain)");
-        print("lastTrain after up\(lastTrain)");
         
         let newCurrentTrainPosY = trainTrackArray[lastTrain].position.y + trainDiffPosition
         setupNewTrack(index: currentTrain, posY: newCurrentTrainPosY)
@@ -908,12 +902,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.isPaused = true
         // Segue to gameOverVC
         
-//        let App = UIApplication.shared.delegate as! AppDelegate
-////        App.gViewController = se;
-//        App.showAdmobInterstitial()
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-             
+            
             self.viewController?.performSegue(withIdentifier: "toGameOver", sender: self.viewController)
         }
     }
