@@ -25,17 +25,22 @@ class LoginViewController: UIViewController {
     var facebookId = "";
     var todayDict = [(String, String)]()
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginArrow: UIImageView!
     @IBOutlet weak var logoutButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         if(FBSDKAccessToken.current() != nil){
             facebookId = FBSDKAccessToken.current().userID;
         }
+        else {
+            loginButton.isHidden = false
+            loginArrow.isHidden = true
+        }
         
         ref = Database.database().reference()
         if FBSDKAccessToken.current() != nil {
-            loginButton.isEnabled = false
             loginButton.isHidden = true
+            loginArrow.isHidden = true
             logoutButton.isHidden = false
             getFriendsScore()
         }else{
@@ -89,6 +94,11 @@ class LoginViewController: UIViewController {
     @IBAction func logout(_ sender: UIButton) {
         do {
             try Auth.auth().signOut()
+            let fbLoginManager = FBSDKLoginManager()
+            fbLoginManager.logOut()
+            logoutButton.isHidden = true
+            loginButton.isHidden = false
+            loginArrow.isHidden = false
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
@@ -100,6 +110,9 @@ class LoginViewController: UIViewController {
                 print("Failed to login: \(error.localizedDescription)")
                 return
             }
+            self.loginButton.isHidden = true
+            self.loginArrow.isHidden = true
+            self.logoutButton.isHidden = false
             
             guard let accessToken = FBSDKAccessToken.current() else {
                 print("Failed to get access token")
@@ -132,8 +145,6 @@ class LoginViewController: UIViewController {
     
     func getFBUserData()
     {
-        
-        
         if((FBSDKAccessToken.current()) != nil ) {
             
             FBSDKGraphRequest(graphPath: "me",
@@ -142,8 +153,7 @@ class LoginViewController: UIViewController {
                                 
                                 completionHandler: { (connection, result, error) -> Void in
                                     print(result.debugDescription);
-                                    self.ref?.child("players").child(FBSDKAccessToken.current().userID).child("profile").updateChildValues(result as! [AnyHashable : Any]) //
-                                    _ = self.navigationController?.popViewController(animated: true)
+                                    self.ref?.child("players").child(FBSDKAccessToken.current().userID).child("profile").updateChildValues(result as! [AnyHashable : Any])
                               })
         }
     }
