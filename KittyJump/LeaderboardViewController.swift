@@ -52,7 +52,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var friendArray: [Friend] = []
     
-    func makeFriends(fb_user: String) -> String{
+    func makeFriends(fb_user: String) {
         var name: String = ""
         var score: String = "";
         var todaysHighScore: String = ""
@@ -62,6 +62,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             score = String(describing: snapshot.childSnapshot(forPath: "highScore").value!)
             let foundFriend = Friend(name: name, highScore: score, todayScore: todaysHighScore, imageURL: imageString)
             self.friendArray.append(foundFriend)
+            self.friendArray.sort { Int($0.highScore)! > Int($1.highScore)! }
             self.tableView.reloadData()
     
         }) { (error) in
@@ -88,11 +89,11 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }) { (error) in
             print(error.localizedDescription)
         }
-        
-        return score;
     }
     
     func getFriendsScore(){
+        
+        makeFriends(fb_user: facebookId as String)
         
         let params = ["fields": "id, first_name, last_name, name, email, picture"]
         
@@ -106,7 +107,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         let fbId = friendObject["id"] as! NSString;
                         let fbuName = friendObject["name"] as! NSString;
                         print("Friend name: \(fbuName)");
-                        _ = self.makeFriends(fb_user: fbId as String)
+                        self.makeFriends(fb_user: fbId as String)
                         
                     }
                     print("\(friendObjects.count)")
@@ -170,6 +171,8 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friendArray.count
     }
@@ -181,6 +184,9 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.nameLabel.text = friendArray[indexPath.row].name
         cell.scoreLabel.text = friendArray[indexPath.row].highScore
         cell.profileImage.downloadedFrom(link: friendArray[indexPath.row].imageURL)
+        cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.height/2
+        cell.profileImage.layer.borderWidth = 3
+        cell.profileImage.layer.borderColor = UIColor.white.cgColor
         return cell
     }
     override var prefersStatusBarHidden: Bool {
@@ -202,6 +208,8 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
 }
+
+
 extension UIImageView {
     func downloadedFromURL(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
         contentMode = mode
