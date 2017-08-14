@@ -185,7 +185,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.scoreLabel.text = friendArray[indexPath.row].highScore
         cell.profileImage.downloadedFrom(link: friendArray[indexPath.row].imageURL)
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.height/2
-        cell.profileImage.layer.borderWidth = 3
+        cell.profileImage.layer.borderWidth = 2
         cell.profileImage.layer.borderColor = UIColor.white.cgColor
         return cell
     }

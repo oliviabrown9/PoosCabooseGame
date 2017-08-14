@@ -490,7 +490,7 @@
                                     <action selector="logout:" destination="hhO-ES-dCX" eventType="touchUpInside" id="8ut-Qc-3a4"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="mWR-Wp-gq5">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="mWR-Wp-gq5">
                                 <rect key="frame" x="21" y="207" width="314" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -499,11 +499,14 @@
                                         <rect key="frame" x="0.0" y="1" width="314" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jRD-Y7-JKm" id="DVW-ip-wiQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="314" height="54.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="314" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4215" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnZ-fa-JB8">
-                                                    <rect key="frame" x="0.0" y="13.5" width="48" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4215" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LnZ-fa-JB8">
+                                                    <rect key="frame" x="0.0" y="14" width="59" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="59" id="oco-XI-F6s"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -524,11 +527,11 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="ns3-2Q-9BT" firstAttribute="leading" secondItem="Dcs-tD-44V" secondAttribute="trailing" constant="10" id="4DR-Hp-Fq2"/>
-                                                <constraint firstItem="Dcs-tD-44V" firstAttribute="leading" secondItem="LnZ-fa-JB8" secondAttribute="trailing" constant="15" id="C8R-6v-Rsa"/>
                                                 <constraint firstItem="LnZ-fa-JB8" firstAttribute="leading" secondItem="DVW-ip-wiQ" secondAttribute="leadingMargin" constant="-8" id="FIZ-2S-WQ2"/>
                                                 <constraint firstItem="ns3-2Q-9BT" firstAttribute="centerY" secondItem="Dcs-tD-44V" secondAttribute="centerY" id="NxM-1x-Dhw"/>
+                                                <constraint firstItem="ns3-2Q-9BT" firstAttribute="leading" secondItem="Dcs-tD-44V" secondAttribute="trailing" constant="10" id="cC9-zx-Pb4"/>
                                                 <constraint firstItem="Dcs-tD-44V" firstAttribute="centerY" secondItem="LnZ-fa-JB8" secondAttribute="centerY" id="fRk-uC-6G5"/>
+                                                <constraint firstItem="Dcs-tD-44V" firstAttribute="leading" secondItem="DVW-ip-wiQ" secondAttribute="leadingMargin" constant="55" id="icH-GY-vmb"/>
                                                 <constraint firstItem="LnZ-fa-JB8" firstAttribute="centerY" secondItem="DVW-ip-wiQ" secondAttribute="centerY" id="me9-89-CXU"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -587,7 +590,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HsH-zn-0JP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="561" y="499"/>
+            <point key="canvasLocation" x="560.79999999999995" y="498.80059970014997"/>
         </scene>
         <!--Store View Controller-->
         <scene sceneID="A5f-WD-Bua">
