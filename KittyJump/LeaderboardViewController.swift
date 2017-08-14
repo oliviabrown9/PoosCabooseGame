@@ -14,8 +14,9 @@ import Firebase
 import FirebaseDatabase
 import SwiftyJSON
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
     @IBAction func printDictAction(_ sender: UIButton) {
         print("todayDict");
         print(todayDict);
@@ -29,6 +30,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var logoutButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if(FBSDKAccessToken.current() != nil){
             facebookId = FBSDKAccessToken.current().userID;
         }
@@ -48,17 +50,45 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func getTodaysScore(fb_user: String) -> String{
+    var friendArray: [Friend] = []
+    
+    func makeFriends(fb_user: String) -> String{
+        var name: String = ""
         var score: String = "";
+        var todaysHighScore: String = ""
+        var imageString: String = ""
+        
         self.ref?.child("players").child(fb_user).observeSingleEvent(of: .value, with: { (snapshot) in
-            score = String(describing: snapshot.childSnapshot(forPath: "highScore").value)
-            
-            
-            self.todayDict.append((fb_user, score))
+            score = String(describing: snapshot.childSnapshot(forPath: "highScore").value!)
+            let foundFriend = Friend(name: name, highScore: score, todayScore: todaysHighScore, imageURL: imageString)
+            self.friendArray.append(foundFriend)
+            self.tableView.reloadData()
+    
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        self.ref?.child("players").child(fb_user).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
+            name = String(describing: snapshot.childSnapshot(forPath: "name").value!)
             
         }) { (error) in
             print(error.localizedDescription)
         }
+        
+        self.ref?.child("players").child(fb_user).child("profile").child("picture").child("data").observeSingleEvent(of: .value, with: { (snapshot) in
+            imageString = String(describing: snapshot.childSnapshot(forPath: "url").value!)
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        self.ref?.child("players").child(fb_user).child("TodayshighScore").observeSingleEvent(of: .value, with: { (snapshot) in
+            todaysHighScore = String(describing: snapshot.childSnapshot(forPath: "score").value!)
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
         return score;
     }
     
@@ -76,7 +106,7 @@ class LoginViewController: UIViewController {
                         let fbId = friendObject["id"] as! NSString;
                         let fbuName = friendObject["name"] as! NSString;
                         print("Friend name: \(fbuName)");
-                        _ = self.getTodaysScore(fb_user: fbId as String)
+                        _ = self.makeFriends(fb_user: fbId as String)
                         
                     }
                     print("\(friendObjects.count)")
@@ -139,6 +169,20 @@ class LoginViewController: UIViewController {
         }
         
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return friendArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeaderboardTableViewCell
+        cell.selectionStyle = .none
+        cell.nameLabel.text = friendArray[indexPath.row].name
+        cell.scoreLabel.text = friendArray[indexPath.row].highScore
+        cell.profileImage.downloadedFrom(link: friendArray[indexPath.row].imageURL)
+        return cell
+    }
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -157,4 +201,24 @@ class LoginViewController: UIViewController {
                               })
         }
     }
+}
+extension UIImageView {
+    func downloadedFromURL(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { () -> Void in
+                self.image = image
+            }
+            }.resume()
+    }
+    func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloadedFromURL(url: url, contentMode: mode)
+}
 }

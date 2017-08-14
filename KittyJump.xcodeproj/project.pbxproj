@@ -20,6 +20,8 @@
 		75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */; };
 		75C5A2CC1F26679B002DD5DB /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 75C5A2CB1F26679B002DD5DB /* splash.gif */; };
 		75C5A2CE1F266815002DD5DB /* coin.gif in Resources */ = {isa = PBXBuildFile; fileRef = 75C5A2CD1F266815002DD5DB /* coin.gif */; };
+		75D392A41F42184900FE34F5 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D392A31F42184900FE34F5 /* LeaderboardTableViewCell.swift */; };
+		75D392A61F421CF400FE34F5 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D392A51F421CF300FE34F5 /* Friend.swift */; };
 		75D73E261F3D0740000BD7E7 /* SegueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D73E251F3D0740000BD7E7 /* SegueFromLeft.swift */; };
 		75D73E281F3D0C33000BD7E7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D73E271F3D0C33000BD7E7 /* GameScene.swift */; };
 		75D93C1D1F3010E40020E067 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D93C1C1F3010E40020E067 /* LeaderboardViewController.swift */; };
@@ -67,6 +69,8 @@
 		75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		75C5A2CB1F26679B002DD5DB /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		75C5A2CD1F266815002DD5DB /* coin.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = coin.gif; sourceTree = "<group>"; };
+		75D392A31F42184900FE34F5 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
+		75D392A51F421CF300FE34F5 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		75D73E251F3D0740000BD7E7 /* SegueFromLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueFromLeft.swift; path = ../SegueFromLeft.swift; sourceTree = "<group>"; };
 		75D73E271F3D0C33000BD7E7 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		75D93C1C1F3010E40020E067 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 				D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */,
 				75B5B1701F2140F6008D8584 /* ContactsTableViewCell.swift */,
 				75D93C1C1F3010E40020E067 /* LeaderboardViewController.swift */,
+				75D392A51F421CF300FE34F5 /* Friend.swift */,
+				75D392A31F42184900FE34F5 /* LeaderboardTableViewCell.swift */,
 				D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */,
 				D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */,
 				75F3FE3F1F1EA5AA001E0C0D /* GameSettings.swift */,
@@ -375,6 +381,7 @@
 				D7C5EAFF1EF24469007DA71A /* KCamera.swift in Sources */,
 				D7C5EADC1EEB76D7007DA71A /* CommonSpriteNode.swift in Sources */,
 				75149F291F25B2B800B70B59 /* StoreViewController.swift in Sources */,
+				75D392A41F42184900FE34F5 /* LeaderboardTableViewCell.swift in Sources */,
 				75D93C1D1F3010E40020E067 /* LeaderboardViewController.swift in Sources */,
 				D7C5EAFA1EF0F638007DA71A /* Label.swift in Sources */,
 				75D73E261F3D0740000BD7E7 /* SegueFromLeft.swift in Sources */,
@@ -382,6 +389,7 @@
 				D7C5EAE31EEBFB03007DA71A /* Grass.swift in Sources */,
 				756C47AB1F197A3100B034C0 /* Slide.swift in Sources */,
 				D7C5EAE61EEC07E5007DA71A /* LeftTrain.swift in Sources */,
+				75D392A61F421CF400FE34F5 /* Friend.swift in Sources */,
 				D7C5EABC1EEB5C21007DA71A /* GameViewController.swift in Sources */,
 				D7C5EADA1EEB638E007DA71A /* TrainTrack.swift in Sources */,
 				75F3FE3C1F1D608B001E0C0D /* CustomOverlay.swift in Sources */,
