@@ -187,7 +187,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="startOver" translatesAutoresizingMaskIntoConstraints="NO" id="RIt-Zv-u3b">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startOver" translatesAutoresizingMaskIntoConstraints="NO" id="RIt-Zv-u3b">
                                 <rect key="frame" x="51" y="550" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="aeS-f5-7c0"/>
@@ -345,6 +345,7 @@
                             <constraint firstItem="JIf-dk-mzR" firstAttribute="leading" secondItem="Ls5-2d-9gT" secondAttribute="trailing" constant="20" id="HC4-uZ-xLB"/>
                             <constraint firstItem="3Lb-n6-gf7" firstAttribute="top" secondItem="Kpj-aq-ezg" secondAttribute="bottom" id="HTI-A1-Rqq"/>
                             <constraint firstItem="I1j-K6-rVR" firstAttribute="centerX" secondItem="xeD-0f-y0X" secondAttribute="centerX" id="KRV-U9-wM2"/>
+                            <constraint firstItem="3Lb-n6-gf7" firstAttribute="top" secondItem="RIt-Zv-u3b" secondAttribute="bottom" constant="47" id="KWm-kX-I3x"/>
                             <constraint firstItem="aPX-hV-qxj" firstAttribute="top" secondItem="Z5D-vU-5Ri" secondAttribute="bottom" constant="35" id="LLt-If-biA"/>
                             <constraint firstItem="Ls5-2d-9gT" firstAttribute="centerY" secondItem="JIf-dk-mzR" secondAttribute="centerY" id="Lwb-tC-5oU"/>
                             <constraint firstItem="61j-Pl-6Nf" firstAttribute="centerY" secondItem="xeD-0f-y0X" secondAttribute="centerY" id="Tls-aV-HTP"/>
