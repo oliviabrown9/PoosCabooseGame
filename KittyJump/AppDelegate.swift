@@ -90,8 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
             let formatter = DateFormatter()
             formatter.dateFormat = "dd-MM-yyyy"
             let dateString = formatter.string(from: self.date)
-            var score: Int = 0
-            
+
             var dbDateString:String = "";
             self.ref?.child("players").child(facebookId).child("TodayshighScore").observeSingleEvent(of: .value, with: { (snapshot) in
                 //read the user data from the snapshot and do whatever with it
@@ -100,9 +99,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
                         let key = child.key ;
                         if(key.contains("date")){
                             dbDateString = child.value as! String;
-                        } else
-                            if(key.contains("score")){
-                                score = child.value as! Int;
                         }
                     }
                     
