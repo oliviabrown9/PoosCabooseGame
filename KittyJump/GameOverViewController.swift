@@ -190,6 +190,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     }
     
     @IBOutlet weak var cornerHeight: NSLayoutConstraint!
+    
     func setCornerImage() {
         if SharingManager.sharedInstance.catImageString == "poos" {
             cornerImageView.image = #imageLiteral(resourceName: "cornerpoos")
@@ -240,11 +241,13 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             cornerHeight.constant = 192
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setCornerImage()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setCornerImage()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         startOver?.isUserInteractionEnabled = true
