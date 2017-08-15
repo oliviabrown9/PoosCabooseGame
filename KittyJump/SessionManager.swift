@@ -65,6 +65,11 @@ class SharingManager {
             userDefaults.set(removedDefaults, forKey: "RemovedDefaults")
         }
     }
+    var sharedContacts: [String] = [] {
+        didSet {
+            userDefaults.set(sharedContacts, forKey: "SharedContacts")
+        }
+    }
     
     static let sharedInstance = SharingManager()
     
@@ -118,6 +123,11 @@ class SharingManager {
         
         let storedRemovedDefaults = userDefaults.bool(forKey: "RemovedDefaults")
         removedDefaults = storedRemovedDefaults
+        
+        let storedSharedContacts = userDefaults.array(forKey: "SharedContacts")
+        if storedSharedContacts != nil {
+            sharedContacts = storedSharedContacts as! [String]
+        }
 
     }
     

@@ -76,7 +76,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     
     @IBAction func shareButtonTapped(_ sender: Any) {
         // Set the default sharing message.
-        let message = "Check out this fun game! My high score is \(highScore)!"
+        let message = "Check out this game! My high score is \(highScore)! Think you can beat that?"
         
         // Set the link to share.
         if let link = NSURL(string: "http://pooscaboose.com/download")

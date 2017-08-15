@@ -812,8 +812,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
     }
     
-    // CONTACTS
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -967,6 +965,16 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
     }
     
+    func checkIfSharedPreviously() -> Bool {
+        if SharingManager.sharedInstance.sharedContacts.contains(selectedPhoneNumber) {
+            return false
+        }
+        else {
+            SharingManager.sharedInstance.sharedContacts.append(selectedPhoneNumber)
+            return true
+        }
+    }
+    
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         switch (result.rawValue) {
         case MessageComposeResult.cancelled.rawValue:
@@ -975,7 +983,9 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             controller.dismiss(animated: true, completion: nil)
         case MessageComposeResult.sent.rawValue:
             controller.dismiss(animated: true, completion: nil)
+            if checkIfSharedPreviously() == true {
             addPurchasedCoins(amount: 250)
+            }
             darkenedView.isHidden = false
         default:
             break;

@@ -1023,7 +1023,7 @@
                                             <action selector="cancelShare:" destination="nFG-jk-vvE" eventType="touchUpInside" id="BtQ-bs-lRl"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get your squad aboard the Poos Caboose to come up on" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ga1-B2-5EV">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get your squad aboard the Poos Caboose to receive" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ga1-B2-5EV">
                                         <rect key="frame" x="37.5" y="47" width="250" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="Jpf-uU-m7G"/>
