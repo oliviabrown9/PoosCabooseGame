@@ -480,16 +480,6 @@
                                     <constraint firstAttribute="height" constant="32" id="x9H-JQ-r6m"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zU-Hu-K5p">
-                                <rect key="frame" x="21" y="615" width="61" height="37"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
-                                <state key="normal" title="log out">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="logout:" destination="hhO-ES-dCX" eventType="touchUpInside" id="8ut-Qc-3a4"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="mWR-Wp-gq5">
                                 <rect key="frame" x="21" y="207" width="314" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -548,6 +538,30 @@
                                     <outlet property="delegate" destination="hhO-ES-dCX" id="rh7-D8-b7k"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zU-Hu-K5p">
+                                <rect key="frame" x="21" y="615" width="61" height="37"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="log out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="hhO-ES-dCX" eventType="touchUpInside" id="8ut-Qc-3a4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2i-Fp-EA4">
+                                <rect key="frame" x="279" y="63" width="75" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="Lbz-aY-cAg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                <state key="normal" title=" today ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dayButtonPressed:" destination="hhO-ES-dCX" eventType="touchUpInside" id="gq0-bb-48w"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -559,6 +573,7 @@
                             <constraint firstItem="oyu-hh-CgS" firstAttribute="top" secondItem="L7U-NR-ysb" secondAttribute="bottom" constant="-4" id="H9P-rZ-gzd"/>
                             <constraint firstItem="Xge-Yx-Jlf" firstAttribute="centerY" secondItem="vD9-zv-pKa" secondAttribute="centerY" id="IbJ-MS-gll"/>
                             <constraint firstItem="Xge-Yx-Jlf" firstAttribute="leading" secondItem="mWR-Wp-gq5" secondAttribute="trailing" constant="8" id="MzF-Vq-xE5"/>
+                            <constraint firstItem="c2i-Fp-EA4" firstAttribute="centerY" secondItem="L7U-NR-ysb" secondAttribute="centerY" id="RFo-Aq-vLF"/>
                             <constraint firstItem="aQa-ZP-Uoa" firstAttribute="top" secondItem="oyu-hh-CgS" secondAttribute="bottom" constant="46" id="T3F-mQ-lLi"/>
                             <constraint firstItem="Dkp-Sx-fsL" firstAttribute="width" secondItem="aQa-ZP-Uoa" secondAttribute="width" id="Ue1-TW-bBV"/>
                             <constraint firstItem="Dkp-Sx-fsL" firstAttribute="top" secondItem="aQa-ZP-Uoa" secondAttribute="bottom" constant="2" id="Vhl-n6-9zZ"/>
@@ -571,6 +586,7 @@
                             <constraint firstItem="2g1-GX-BlO" firstAttribute="top" secondItem="ARS-5B-6Og" secondAttribute="bottom" constant="2" id="iax-OP-E7G"/>
                             <constraint firstItem="L7U-NR-ysb" firstAttribute="top" secondItem="Jg1-Dx-O6P" secondAttribute="bottom" constant="35" id="jtZ-Dt-P31"/>
                             <constraint firstItem="aQa-ZP-Uoa" firstAttribute="leading" secondItem="vD9-zv-pKa" secondAttribute="leadingMargin" constant="5" id="lh1-jy-uOj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c2i-Fp-EA4" secondAttribute="trailing" constant="5" id="n0h-kw-y9V"/>
                             <constraint firstItem="oyu-hh-CgS" firstAttribute="leading" secondItem="vD9-zv-pKa" secondAttribute="leadingMargin" constant="5" id="pA3-zj-S1X"/>
                             <constraint firstItem="77x-G1-sna" firstAttribute="leading" secondItem="vD9-zv-pKa" secondAttribute="leadingMargin" constant="5" id="rfK-MA-wCG"/>
                             <constraint firstItem="ARS-5B-6Og" firstAttribute="centerY" secondItem="aQa-ZP-Uoa" secondAttribute="centerY" id="scJ-nY-IZU"/>
@@ -582,6 +598,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dayButton" destination="c2i-Fp-EA4" id="hwF-31-Jrv"/>
                         <outlet property="loginArrow" destination="gts-3R-qSy" id="f3B-oH-8SV"/>
                         <outlet property="loginButton" destination="77x-G1-sna" id="5d2-OU-fFv"/>
                         <outlet property="logoutButton" destination="7zU-Hu-K5p" id="utr-fs-D9W"/>

@@ -104,7 +104,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     func updateCoins(){
         
         if(facebookId != ""){
-            print("user id %@",user!.uid);
             
             if(itemStates.count == 0){
                 
@@ -113,7 +112,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             ref?.child("players").child(facebookId).child("poosesOwned").observeSingleEvent(of: .value, with: { (snapshot) in
                 //read the user data from the snapshot and do whatever with it
                 if let result = snapshot.children.allObjects as? [DataSnapshot] {
-                    print("result \(result)")
                     
                     if(result.isEmpty){
                         self.removeUserDefaults()
@@ -122,7 +120,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                     for child in result {
                         let index = Int(child.key)
                         let val = child.value as! String
-                        print("index \(String(describing: index)) val \(val)");
                         itemStates[index!] = val
                     }
                     self.updateUnlocked()
@@ -140,7 +137,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         super.viewDidLoad()
         if(FBSDKAccessToken.current() != nil){
         facebookId = FBSDKAccessToken.current().userID;
-        print("FB USER ID IS %@",facebookId)
         
         }
         ref = Database.database().reference()

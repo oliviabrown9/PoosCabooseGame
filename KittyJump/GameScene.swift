@@ -734,14 +734,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func changeTrackAndGrassInNewLocation() {
-        print("currentTrain\(currentTrain)");
         let lastTrain = currentTrain
         currentTrain += 1
         if currentTrain > 5 {
             currentTrain %= 6
         }
-        print("currentTrain after up\(currentTrain)");
-        print("lastTrain after up\(lastTrain)");
         
         let newCurrentTrainPosY = trainTrackArray[lastTrain].position.y + trainDiffPosition
         setupNewTrack(index: currentTrain, posY: newCurrentTrainPosY)
@@ -750,11 +747,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // SKScene functions
     override func didSimulatePhysics() {
-//        print("\(kitty.position.x)")
         if(isStart && kitty.position.x > -200 && needItme){
             self.moveRightWagon2()
                         self.moveLeftTrain2()
-            print("Item added");
             self.needItme = false;
         }
         if isUpdateCameraPosY && (kitty.position.y > -100.0) {
@@ -826,7 +821,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         
         if isStart {
-            print("start pressed");
             // Place the background
             background.position = CGPoint(x: 0, y: 0)
             background.anchorPoint = CGPoint(x: 0.5, y: 0.5)

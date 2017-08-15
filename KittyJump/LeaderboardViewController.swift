@@ -16,11 +16,24 @@ import SwiftyJSON
 
 class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBAction func printDictAction(_ sender: UIButton) {
-        print("todayDict");
-        print(todayDict);
+    var today: Bool = true
+    
+    @IBAction func dayButtonPressed(_ sender: Any) {
+        if today == true {
+            today = false
+            dayButton.setTitle("all time", for: .normal)
+            friendArray.removeAll()
+            getFriendsScore()
+        }
+        else {
+            today = true
+            dayButton.setTitle("today", for: .normal)
+            friendArray.removeAll()
+            getFriendsScore()
+        }
     }
+    @IBOutlet weak var dayButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     var ref: DatabaseReference?
     let user = Auth.auth().currentUser
     var facebookId = "";
@@ -30,7 +43,12 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var logoutButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
+//        getWorldHighScores()
         
+        dayButton.layer.borderWidth = 2
+        dayButton.layer.borderColor = UIColor.white.cgColor
+        dayButton.layer.cornerRadius = 17
         if(FBSDKAccessToken.current() != nil){
             facebookId = FBSDKAccessToken.current().userID;
         }
@@ -39,7 +57,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             loginArrow.isHidden = true
         }
         
-        ref = Database.database().reference()
         if FBSDKAccessToken.current() != nil {
             loginButton.isHidden = true
             loginArrow.isHidden = true
@@ -58,20 +75,36 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var todaysHighScore: String = ""
         var imageString: String = ""
         
-        self.ref?.child("players").child(fb_user).observeSingleEvent(of: .value, with: { (snapshot) in
-            score = String(describing: snapshot.childSnapshot(forPath: "highScore").value!)
-            let foundFriend = Friend(name: name, highScore: score, todayScore: todaysHighScore, imageURL: imageString)
-            self.friendArray.append(foundFriend)
-            self.friendArray.sort { Int($0.highScore)! > Int($1.highScore)! }
-            self.tableView.reloadData()
-    
-        }) { (error) in
-            print(error.localizedDescription)
+        if today == false {
+            self.ref?.child("players").child(fb_user).observeSingleEvent(of: .value, with: { (snapshot) in
+                score = String(describing: snapshot.childSnapshot(forPath: "highScore").value!)
+                let foundFriend = Friend(name: name, highScore: score, todayScore: todaysHighScore, imageURL: imageString)
+                self.friendArray.append(foundFriend)
+                self.friendArray.sort { Int($0.highScore)! > Int($1.highScore)! }
+                self.tableView.reloadData()
+                
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+        else {
+            self.ref?.child("players").child(fb_user).child("TodayshighScore").observeSingleEvent(of: .value, with: { (snapshot) in
+                score = String(describing: snapshot.childSnapshot(forPath: "score").value!)
+                
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+
         }
         
         self.ref?.child("players").child(fb_user).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
             name = String(describing: snapshot.childSnapshot(forPath: "name").value!)
-            
+            if self.today == true {
+                let foundFriend = Friend(name: name, highScore: score, todayScore: todaysHighScore, imageURL: imageString)
+                self.friendArray.append(foundFriend)
+                self.friendArray.sort { Int($0.highScore)! > Int($1.highScore)! }
+                self.tableView.reloadData()
+            }
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -105,12 +138,8 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     let friendObjects = userData["data"] as! [NSDictionary]
                     for friendObject in friendObjects {
                         let fbId = friendObject["id"] as! NSString;
-                        let fbuName = friendObject["name"] as! NSString;
-                        print("Friend name: \(fbuName)");
                         self.makeFriends(fb_user: fbId as String)
-                        
                     }
-                    print("\(friendObjects.count)")
                 }
             } else {
                 print("Error Getting Friends \(String(describing: error))");
@@ -119,6 +148,15 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         connection.start()
     }
     
+//    func getWorldHighScores() {
+//        let query = ref?.child("players").queryOrdered(byChild: "highScore").queryLimited(toFirst: 10)
+//        query?.observe(.value, with: { (snapshot) in
+//            if let results = snapshot.value as? NSDictionary {
+//                print("key: \(snapshot.key), value: \(snapshot.value)")
+//            }
+//        })
+//    }
+//    
     @IBAction func backClicked(_ sender: UIButton) {
         _ = navigationController?.popViewController(animated: true)
     }
