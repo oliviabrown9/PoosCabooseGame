@@ -849,13 +849,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             kittyCamera.position.y = 0
             addChild(kittyCamera)
             self.camera = kittyCamera
-            
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-//                
-//            self.moveRightWagon2()
-//            self.moveLeftTrain2()
-//            }
-
         }
         else {
         }
@@ -907,9 +900,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.isPaused = true
         // Segue to gameOverVC
         
-//        let App = UIApplication.shared.delegate as! AppDelegate
 ////        App.gViewController = se;
-//        App.showAdmobInterstitial()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
              
@@ -947,7 +938,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (!soundState) {
             backgroundMusicPlayer.play()
         }
-        
     }
     func playGame() {
         

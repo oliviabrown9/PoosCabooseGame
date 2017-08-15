@@ -29,7 +29,6 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     
     @IBOutlet weak var cornerImageView: UIImageView!
     // Variables for changing label text
-    var lastNineScores = SharingManager.sharedInstance.lastScores
     var highScore = SharingManager.sharedInstance.highScore
     
     @IBOutlet weak var highScoreLabel: UILabel!
@@ -292,7 +291,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         self.view.addGestureRecognizer(swipeLeft)
         
         highScoreLabel.text = "Best: \(highScore)"
-        mostRecentScore.text = "\(lastNineScores[0])"
+        mostRecentScore.text = "\(SharingManager.sharedInstance.currentScore)"
         // Setting text of labels to stored value
     }
     
