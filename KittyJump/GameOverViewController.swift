@@ -189,9 +189,63 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             self.view.layoutIfNeeded()
         })
     }
+    
+    @IBOutlet weak var cornerHeight: NSLayoutConstraint!
+    func setCornerImage() {
+        if SharingManager.sharedInstance.catImageString == "poos" {
+            cornerImageView.image = #imageLiteral(resourceName: "cornerpoos")
+            cornerHeight.constant = 161
+        }
+        else if SharingManager.sharedInstance.catImageString == "trotterpoos" {
+            cornerImageView.image = #imageLiteral(resourceName: "trotterCorner")
+            cornerHeight.constant = 193
+        }
+        else if SharingManager.sharedInstance.catImageString == "poosrate" {
+            cornerImageView.image = #imageLiteral(resourceName: "pirateCorner")
+            cornerHeight.constant = 163.5
+        }
+        else if SharingManager.sharedInstance.catImageString == "properpoos" {
+            cornerImageView.image = #imageLiteral(resourceName: "properCorner")
+            cornerHeight.constant = 176
+        }
+        else if SharingManager.sharedInstance.catImageString == "quapoos" {
+            cornerImageView.image = #imageLiteral(resourceName: "quaCorner")
+            cornerHeight.constant = 162
+        }
+        else if SharingManager.sharedInstance.catImageString == "pous" {
+            cornerImageView.image = #imageLiteral(resourceName: "pousCorner")
+            cornerHeight.constant = 156
+        }
+        else if SharingManager.sharedInstance.catImageString == "bootspoos" {
+            cornerImageView.image = #imageLiteral(resourceName: "bootsCorner")
+            cornerHeight.constant = 190
+        }
+        else if SharingManager.sharedInstance.catImageString == "trumpoos" {
+            cornerImageView.image = #imageLiteral(resourceName: "trumpCorner")
+            cornerHeight.constant = 161.4
+        }
+        else if SharingManager.sharedInstance.catImageString == "winniepoos" {
+            cornerImageView.image = #imageLiteral(resourceName: "winnieCorner")
+            cornerHeight.constant = 189
+        }
+        else if SharingManager.sharedInstance.catImageString == "yoncepoos" {
+            cornerImageView.image = #imageLiteral(resourceName: "yonceCorner")
+            cornerHeight.constant = 157.5
+        }
+        else if SharingManager.sharedInstance.catImageString == "fieripoos" {
+            cornerImageView.image = #imageLiteral(resourceName: "fieriCorner")
+            cornerHeight.constant = 167.1
+        }
+        else if SharingManager.sharedInstance.catImageString == "pepepoos" {
+            cornerImageView.image = #imageLiteral(resourceName: "pepeCorner")
+            cornerHeight.constant = 192
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setCornerImage()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         startOver?.isUserInteractionEnabled = true
