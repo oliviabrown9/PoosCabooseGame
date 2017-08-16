@@ -266,15 +266,32 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         interstitial = createAndLoadInterstitial()
         
         ref = Database.database().reference()
-        if(facebookId != ""){
-            
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd-MM-yyyy"
-            let dateString = formatter.string(from:Date())
-            ref?.child("players").child(facebookId).child("TodayshighScore").updateChildValues(["score": highScore])
-            ref?.child("players").child(facebookId).child("TodayshighScore").updateChildValues(["date": dateString])
-            ref?.child("players").child(facebookId).updateChildValues(["highScore": highScore])
+        if(self.facebookId != "" ){
+        self.ref?.child("players").child(self.facebookId).updateChildValues(["highScore": self.highScore])
+        self.ref?.child("players").child(facebookId).child("TodayshighScore").observeSingleEvent(of: .value, with: { (snapshot) in
+            //read the user data from the snapshot and do whatever with it
+            if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                for child in result {
+                    let key = child.key ;
+                    if(key.contains("score")){
+                        let dbhighScore = child.value as! Int;
+                        
+                        if(dbhighScore < Int(SharingManager.sharedInstance.currentScore)){
+                            
+                            let formatter = DateFormatter()
+                            formatter.dateFormat = "dd-MM-yyyy"
+                            let dateString = formatter.string(from:Date())
+                            self.ref?.child("players").child(self.facebookId).child("TodayshighScore").updateChildValues(["score": SharingManager.sharedInstance.currentScore])
+                            self.ref?.child("players").child(self.facebookId).child("TodayshighScore").updateChildValues(["date": dateString])
+                        }
+                    }
+                }
+                
+            }
+        }) { (error) in
+            print(error.localizedDescription)
         }
+    }
 //        if playCount % 3 != 0{
 //            if #available(iOS 10.3, *) {
 //                SKStoreReviewController.requestReview()
@@ -286,30 +303,16 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
             request.delegate = self
             request.start()
+            
         }
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameOverViewController.swiped(_:)))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
         
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeToLeaderboard))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.right
-        self.view.addGestureRecognizer(swipeRight)
-        
         highScoreLabel.text = "Best: \(highScore)"
         mostRecentScore.text = "\(SharingManager.sharedInstance.currentScore)"
         // Setting text of labels to stored value
-    }
-    
-    func swipeToLeaderboard() {
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers
-        for aViewController in viewControllers {
-            if aViewController is LoginViewController {
-                if navigationController != nil {
-                self.navigationController!.popToViewController(aViewController, animated: true)
-                }
-            }
-        }
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
@@ -326,6 +329,9 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     
     func swiped(_ gesture: UIGestureRecognizer) {
         performSegue(withIdentifier: "toStore", sender: self)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated);
     }
     
     // Unwind segue back to gameView

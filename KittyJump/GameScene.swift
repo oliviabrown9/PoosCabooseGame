@@ -99,6 +99,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    var roundCoins: Int = SharingManager.sharedInstance.lifetimeScore {
+        didSet {
+            coinLabel.text = "\(roundCoins)"
+        }
+    }
+    
     let pastHighScore: Int = SharingManager.sharedInstance.highScore
     // Starting high score set to zero & changes as high score updates
     var highScore: Int = 0 {
@@ -107,13 +113,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
     }
-    
-    var roundCoins: Int = SharingManager.sharedInstance.lifetimeScore {
-        didSet {
-            coinLabel.text = "\(roundCoins)"
-        }
-    }
-    
     
     // Init functions
     override init() {
@@ -161,6 +160,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let coinStatus = iWagon.userData?.value(forKey: "coin")
         print("selected is \(String(describing: coinStatus))");
         bonusFound = ((coinStatus as! String).contains("yes"))
+        if(bonusFound){
+            
+            iWagon.removeAllChildren()
+        }
         if let jointN = joint1 {
             
             self.physicsWorld.remove(jointN)
@@ -184,7 +187,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.removeAllJoints()
         let coinStatus = iWagon.userData?.value(forKey: "coin")
         print("selected is \(String(describing: coinStatus))");
+        
         bonusFound = ((coinStatus as! String).contains("yes"))
+        if(bonusFound){
+            
+            iWagon.removeAllChildren()
+        }
         if let wagonPhysicBody = iWagon.physicsBody, let kittyPhysicBody = kitty.physicsBody {
             
             kitty.position.x  = iWagon.frame.maxX - (kitty.size.width/2.0)-8.0
@@ -210,8 +218,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         SharingManager.sharedInstance.lifetimeScore = roundCoins
         if score > pastHighScore {
             Label.highScoreLabel.text = "Best: \(score)"
-        }
-        //        10,20,40,80,160,320, & 640.
+        }        //        10,20,40,80,160,320, & 640.
         
             if(score >= 5 && score < 10){
                 timeOfTrain =  4.2;
@@ -416,6 +423,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         soundButton.position = CGPoint(x:-(hud.size.width/2)+130, y: 130)
         hud.addChild(soundButton)
     }
+    
     // Train Track & Grass
     func setupTrackArray() {
         for i in 0...5 {
@@ -575,7 +583,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 coin = SKSpriteNode(imageNamed:"poos coin bag")
                 coin.scale(to: size)
                 coin.position.y = wagon.position.y + coin.size.height + 10
-                coin.position.x =  -(wagon.size.width/2) + coin.size.width
+                coin.position.x =  -(wagon.size.width/2) + coin.size.width + 50
                 coin.zPosition = 2
                 wagon.addChild(coin);
             }else{
@@ -584,6 +592,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
         } else {
+            wagon.removeAllChildren();
             let xPos1 = currentLeftTrain.size.width/2
             let yPos1 = currentLeftTrain.size.height/2
             wagon.anchorPoint = CGPoint(x:1, y:0)
@@ -597,8 +606,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             coin = SKSpriteNode(imageNamed:"poos coin bag")
             coin.scale(to: size)
             coin.position.y =  wagon.position.y + coin.size.height  + 10
-                coin.position.x =  +(wagon.size.width/2) - coin.size.width
+                coin.position.x =  +(wagon.size.width/2) - coin.size.width - 40
                 coin.zPosition = 2
+                
             wagon.addChild(coin);
             }else{
                 
