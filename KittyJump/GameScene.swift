@@ -34,6 +34,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var pauseButton:SKSpriteNode!
     var soundButton:SKSpriteNode!
     
+    let trainAlpha = 1;
+    let trackAlpha = 0.4;
+    let grassAlpha = 0.7;
+    let bonusPoint = 100;
+    
     // Label for current score
     var scoreLabel: SKLabelNode!
     var coinLabel: SKLabelNode!
@@ -94,13 +99,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var roundCoins: Int = SharingManager.sharedInstance.lifetimeScore {
-        didSet {
-            coinLabel.text = "\(roundCoins)"
-//            coinLabel.text = "351624"
-        }
-    }
-    
     let pastHighScore: Int = SharingManager.sharedInstance.highScore
     // Starting high score set to zero & changes as high score updates
     var highScore: Int = 0 {
@@ -109,6 +107,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
     }
+    
+    var roundCoins: Int = SharingManager.sharedInstance.lifetimeScore {
+        didSet {
+            coinLabel.text = "\(roundCoins)"
+        }
+    }
+    
     
     // Init functions
     override init() {
@@ -135,6 +140,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.categoryBitMask = categoryBorder
         
         beforeColorIndex = [0, 1, 2].randomItem()
+        
+        
         stepSpeed = 0
         stepPos = 0
         createHud()
@@ -150,7 +157,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Movement
     func switchJoint(iWagon: RightTrain) {
-        
+        var bonusFound = false;
+        let coinStatus = iWagon.userData?.value(forKey: "coin")
+        print("selected is \(String(describing: coinStatus))");
+        bonusFound = ((coinStatus as! String).contains("yes"))
         if let jointN = joint1 {
             
             self.physicsWorld.remove(jointN)
@@ -162,16 +172,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 joint1 = SKPhysicsJointPin.joint(withBodyA: wagonPhysicBody, bodyB: kittyPhysicBody, anchor: CGPoint(x: iWagon.frame.minX, y: iWagon.frame.midY))
                 self.physicsWorld.add(joint1)
-                updateScore()
+                updateScore(bonusFound: bonusFound)
                 kittyCurrentState = .onTrain
             }
         }
     }
     
     func switchJointL(iWagon :LeftTrain ) {
+        var bonusFound = false;
         
         self.physicsWorld.removeAllJoints()
-        
+        let coinStatus = iWagon.userData?.value(forKey: "coin")
+        print("selected is \(String(describing: coinStatus))");
+        bonusFound = ((coinStatus as! String).contains("yes"))
         if let wagonPhysicBody = iWagon.physicsBody, let kittyPhysicBody = kitty.physicsBody {
             
             kitty.position.x  = iWagon.frame.maxX - (kitty.size.width/2.0)-8.0
@@ -179,14 +192,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             joint1 = SKPhysicsJointPin.joint(withBodyA: wagonPhysicBody, bodyB: kittyPhysicBody, anchor: CGPoint(x: iWagon.frame.midX, y: iWagon.frame.midY))
             self.physicsWorld.add(joint1)
-            updateScore()
+            updateScore(bonusFound: bonusFound)
             kittyCurrentState = .onTrain
         }
     }
     
-    func updateScore() {
+    func updateScore(bonusFound: Bool) {
         score = score + 1
-        roundCoins = roundCoins + multiplier
+        
+        if(bonusFound){
+            roundCoins = roundCoins + bonusPoint + multiplier
+        }
+        else {
+            roundCoins = roundCoins + multiplier
+        }
+        
+        SharingManager.sharedInstance.lifetimeScore = roundCoins
         if score > pastHighScore {
             Label.highScoreLabel.text = "Best: \(score)"
         }
@@ -351,7 +372,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinLabel.zPosition = 1
         coinLabel.fontSize = 40
         coinLabel.text = "\(SharingManager.sharedInstance.lifetimeScore)"
-//        coinLabel.text = "351624"
+        //        coinLabel.text = "351624"
         
         coinLabel.fontColor = UIColor.white
         coinLabel.position = CGPoint(x: self.frame.maxX - 75 , y: 130)
@@ -395,7 +416,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         soundButton.position = CGPoint(x:-(hud.size.width/2)+130, y: 130)
         hud.addChild(soundButton)
     }
-    
     // Train Track & Grass
     func setupTrackArray() {
         for i in 0...5 {
@@ -406,6 +426,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             trainTrack.position = getTrainTrackPosition(row : i)
             trainTrack.name = "Track" + String(i)
             trainTrack.zPosition = 1
+            trainTrack.alpha = CGFloat(trackAlpha)
             self.addChild(trainTrack)
             trainTrackArray.append(trainTrack)
         }
@@ -428,6 +449,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         trainTrack.position.y = posY
         trainTrack.name = nodeName
         trainTrack.zPosition = 1
+        trainTrack.alpha = CGFloat(trackAlpha)
         self.addChild(trainTrack)
     }
     
@@ -439,6 +461,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             grass.position = getGrassPosition(row: i)
             grass.zPosition = 1
+            grass.alpha = CGFloat(grassAlpha)
             self.addChild(grass)
             grassArray.append(grass)
         }
@@ -464,6 +487,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         isFirstTrain = true
         var posY1: CGFloat = newTrainPosY + 20 + 45
         var posY2: CGFloat = posY1 + trainDiffPosition
+        var coins = "no";
         
         for i in 0..<countTrainArray {
             if i != 0 {
@@ -471,32 +495,46 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 posY2 = -1000
             }
             
+//            if( i > 0 && ((i%randRange(lower: 2,upper: 6)) == 0)){
+                if( i > 0 && ((i%2) == 0)){
+                coins = "yes";
+            }else{
+                coins = "no";
+                
+            }
             // Right train
             let rightTrain = RightTrain()
             rightTrain.position = CGPoint(x:self.frame.minX + (rightTrain.size.width - rightTrain.size.width/2), y: posY1)
             rightTrain.name = "right" + String(i)
+            rightTrain.userData = NSMutableDictionary();
+            rightTrain.userData?.setValue(coins, forKey: "coin")
             currentRightTrain = rightTrain
-            var wagon = createWagon()
+            
+            var wagon = createWagon(bonus: coins.contains("yes"))
+            
             rightTrain.zPosition = 2
             rightTrain.addChild(wagon)
+            rightTrain.alpha = CGFloat(trainAlpha);
             self.addChild(rightTrain)
             rightTrainArray.append(rightTrain);
-            
             // Left train
             let leftTrain = LeftTrain()
             leftTrain.position = CGPoint(x:self.frame.maxX + leftTrain.size.width/2, y:posY2)
             leftTrain.name = "left" + String(i)
+            leftTrain.userData = NSMutableDictionary();
+            leftTrain.userData?.setValue(coins, forKey: "coin")
             currentLeftTrain = leftTrain
-            wagon = createWagon(rightSide: false)
+            wagon = createWagon(rightSide: false,bonus: coins.contains("yes"))
             leftTrain.zPosition = 2
             leftTrain.addChild(wagon)
+            leftTrain.alpha = CGFloat(trainAlpha);
             self.addChild(leftTrain)
             leftTrainArray.append(leftTrain)
         }
     }
     
-    func createWagon(rightSide: Bool = true) -> SKSpriteNode {
-        
+    func createWagon(rightSide: Bool = true, bonus: Bool = false) -> SKSpriteNode {
+       
         // Get random color except the color before
         var restColorIndices = [Int]()
         for i in 0...2 {
@@ -519,6 +557,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             wagon = SKSpriteNode()
         }
         
+        
+        // Get color image
         // Locate imate at specified point
         let size = CGSize(width: 110, height: 45)
         wagon.scale(to: size)
@@ -527,13 +567,46 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let yPos = currentRightTrain.size.height/2
             wagon.anchorPoint = CGPoint(x:0, y:0)
             wagon.position = CGPoint(x: -xPos, y: -yPos)
+            if(bonus){
+                print("bonus exist")
+                
+                var coin:SKSpriteNode
+                let size = CGSize(width: 110, height: 200)
+                coin = SKSpriteNode(imageNamed:"poos coin bag")
+                coin.scale(to: size)
+                coin.position.y = wagon.position.y + coin.size.height + 10
+                coin.position.x =  -(wagon.size.width/2) + coin.size.width
+                coin.zPosition = 2
+                wagon.addChild(coin);
+            }else{
+                
+                print("bonus not available")
+            }
+            
         } else {
             let xPos1 = currentLeftTrain.size.width/2
             let yPos1 = currentLeftTrain.size.height/2
             wagon.anchorPoint = CGPoint(x:1, y:0)
             wagon.position = CGPoint(x: xPos1, y: -yPos1)
+            if(bonus){
+                print("bonus exist")
+                
+
+                var coin:SKSpriteNode
+                let size = CGSize(width: 110, height: 200)
+            coin = SKSpriteNode(imageNamed:"poos coin bag")
+            coin.scale(to: size)
+            coin.position.y =  wagon.position.y + coin.size.height  + 10
+                coin.position.x =  +(wagon.size.width/2) - coin.size.width
+                coin.zPosition = 2
+            wagon.addChild(coin);
+            }else{
+                
+                print("bonus not available")
+            }
         }
         wagon.zPosition = 2
+        
         return wagon
     }
     
@@ -778,7 +851,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didSimulatePhysics() {
         if(isStart && kitty.position.x > -200 && needItme){
             self.moveRightWagon2()
-                        self.moveLeftTrain2()
+            self.moveLeftTrain2()
             self.needItme = false;
         }
         if isUpdateCameraPosY && (kitty.position.y > -100.0) {
@@ -833,6 +906,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node.removeFromParent();
             }
             rightTrainArray[i].position.y -= temp
+            rightTrainArray[i].userData = NSMutableDictionary()
+            rightTrainArray[i].userData?.setValue("init", forKey: "coin")
             self.addChild(rightTrainArray[i])
             
             // Left train
@@ -842,6 +917,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node.removeFromParent();
             }
             leftTrainArray[i].position.y -= temp
+            leftTrainArray[i].userData = NSMutableDictionary()
+            leftTrainArray[i].userData?.setValue("init", forKey: "coin")
             self.addChild(leftTrainArray[i])
             newTrainPosY -= temp
         }
@@ -872,7 +949,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             kitty.zPosition = 3
             self.addChild(kitty)
-            joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody!, bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
+            joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody! , bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
             self.physicsWorld.add(joint1)
             
             kittyCamera.position.y = 0
@@ -927,6 +1004,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.removeAllJoints()
         self.removeAllActions()
         self.isPaused = true
+        // Segue to gameOverVC
+        
+////        App.gViewController = se;
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
              
