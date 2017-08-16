@@ -16,6 +16,8 @@ var backgroundMusicPlayer: AVAudioPlayer = AVAudioPlayer()
 
 var homeView = SKView()
 
+var multiplier: Int = 1
+
 class GameViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var animationEndImage: UIImageView!
@@ -40,6 +42,30 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         if isReplayGame {
             initView()
             startGameScreen()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if SharingManager.sharedInstance.catImageString == "trotterpoos" || SharingManager.sharedInstance.catImageString == "poosrate" {
+            multiplier = 2
+        }
+        else if SharingManager.sharedInstance.catImageString == "properpoos" || SharingManager.sharedInstance.catImageString == "pepepoos" {
+            multiplier = 3
+        }
+        else if SharingManager.sharedInstance.catImageString == "quapoos" || SharingManager.sharedInstance.catImageString == "winniepoos" {
+            multiplier = 4
+        }
+        else if SharingManager.sharedInstance.catImageString == "pous" || SharingManager.sharedInstance.catImageString == "poosfieri" {
+            multiplier = 5
+        }
+        else if SharingManager.sharedInstance.catImageString == "bootspoos" || SharingManager.sharedInstance.catImageString == "yoncepoos" {
+            multiplier = 6
+        }
+        else if SharingManager.sharedInstance.catImageString == "trumpoos" || SharingManager.sharedInstance.catImageString == "yoncepoos" {
+            multiplier = 10
+        }
+        else if SharingManager.sharedInstance.catImageString == "poos" {
+            multiplier = 1
         }
     }
     

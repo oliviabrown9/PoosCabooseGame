@@ -36,6 +36,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Label for current score
     var scoreLabel: SKLabelNode!
+    var coinLabel: SKLabelNode!
+    var coinImage: SKSpriteNode!
     
     // Enum for train direction
     enum kittyCurrentTrain {
@@ -92,6 +94,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    var roundCoins: Int = SharingManager.sharedInstance.lifetimeScore {
+        didSet {
+            coinLabel.text = "\(roundCoins)"
+//            coinLabel.text = "351624"
+        }
+    }
+    
     let pastHighScore: Int = SharingManager.sharedInstance.highScore
     // Starting high score set to zero & changes as high score updates
     var highScore: Int = 0 {
@@ -126,8 +135,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.categoryBitMask = categoryBorder
         
         beforeColorIndex = [0, 1, 2].randomItem()
-        
-        
         stepSpeed = 0
         stepPos = 0
         createHud()
@@ -179,6 +186,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func updateScore() {
         score = score + 1
+        roundCoins = roundCoins + multiplier
         if score > pastHighScore {
             Label.highScoreLabel.text = "Best: \(score)"
         }
@@ -330,13 +338,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hud.name = "hud"
         scoreLabel = SKLabelNode(fontNamed: "Avenir-Medium")
         scoreLabel.zPosition = 1
-        scoreLabel.fontSize = 250
+        scoreLabel.fontSize = 200
         scoreLabel.text = "0"
         
         scoreLabel.fontColor = UIColor.white
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
         hud.addChild(scoreLabel)
+        
+        //
+        coinLabel = SKLabelNode(fontNamed: "Avenir-Heavy")
+        coinLabel.zPosition = 1
+        coinLabel.fontSize = 40
+        coinLabel.text = "\(SharingManager.sharedInstance.lifetimeScore)"
+//        coinLabel.text = "351624"
+        
+        coinLabel.fontColor = UIColor.white
+        coinLabel.position = CGPoint(x: self.frame.maxX - 75 , y: 130)
+        coinLabel.verticalAlignmentMode = .center
+        hud.addChild(coinLabel)
+        //
+        
+        coinImage = SKSpriteNode(imageNamed: "coin")
+        coinImage.size.height = 36
+        coinImage.size.width = 40
+        coinImage.position = CGPoint(x: coinLabel.frame.minX - 25, y: 130)
+        hud.addChild(coinImage)
+        
         
         kittyCamera.addChild(hud)
         
@@ -345,8 +373,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hud.addChild(Label.scoreLabelHelper)
         
         Label.createHighScore()
-        Label.highScoreLabel.position = CGPoint(x: self.frame.maxX - 30 , y: 130)
+        Label.highScoreLabel.position = CGPoint(x: self.frame.midX, y: 130)
         hud.addChild(Label.highScoreLabel)
+        
         pauseButton = SKSpriteNode(imageNamed: "pause")
         pauseButton.name = "pause"
         pauseButton.size.height = 40
@@ -882,7 +911,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Add score to lifetimeScore
         if score != 0 {
-            SharingManager.sharedInstance.lifetimeScore = SharingManager.sharedInstance.lifetimeScore + score
+            SharingManager.sharedInstance.lifetimeScore = roundCoins
         }
         
         // Store high score if necessary
