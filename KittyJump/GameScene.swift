@@ -37,7 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let trainAlpha = 1;
     let trackAlpha = 0.4;
     let grassAlpha = 0.7;
-    let bonusPoint = 100;
+    var bonusPoint = 100;
     
     // Label for current score
     var scoreLabel: SKLabelNode!
@@ -176,6 +176,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 joint1 = SKPhysicsJointPin.joint(withBodyA: wagonPhysicBody, bodyB: kittyPhysicBody, anchor: CGPoint(x: iWagon.frame.minX, y: iWagon.frame.midY))
                 self.physicsWorld.add(joint1)
                 updateScore(bonusFound: bonusFound)
+                if score < 10 {
+                    bonusPoint = 10
+                }
+                else if score > 10 && score <= 20 {
+                    bonusPoint = 25
+                }
+                else if score > 20 && score <= 40 {
+                    bonusPoint = 50
+                }
+                else if score > 40 && score <= 80 {
+                    bonusPoint = 100
+                }
+                else if score > 80 && score <= 160 {
+                    bonusPoint = 150
+                }
+                else if score > 160 && score <= 320 {
+                    bonusPoint = 200
+                }
+                else if score > 320 {
+                    bonusPoint = 250
+                }
                 kittyCurrentState = .onTrain
             }
         }
@@ -209,7 +230,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         score = score + 1
         
         if(bonusFound){
-            roundCoins = roundCoins + bonusPoint + multiplier
+            roundCoins = roundCoins + (bonusPoint * multiplier)
         }
         else {
             roundCoins = roundCoins + multiplier

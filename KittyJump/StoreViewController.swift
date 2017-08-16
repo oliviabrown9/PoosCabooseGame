@@ -56,8 +56,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
-    //var coins = SharingManager.sharedInstance.lifetimeScore
-    var coins = 10000
+    var coins = SharingManager.sharedInstance.lifetimeScore
+//    var coins = 10000
     var cost: Int = 0
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
