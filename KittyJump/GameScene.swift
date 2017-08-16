@@ -843,7 +843,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             kitty.zPosition = 3
             self.addChild(kitty)
-            joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody! , bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
+            joint1 = SKPhysicsJointPin.joint(withBodyA: rightTrainArray[0].physicsBody!, bodyB: kitty.physicsBody!, anchor: CGPoint(x: self.rightTrainArray[0].frame.minX, y: self.rightTrainArray[0].frame.midY))
             self.physicsWorld.add(joint1)
             
             kittyCamera.position.y = 0
@@ -898,9 +898,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.removeAllJoints()
         self.removeAllActions()
         self.isPaused = true
-        // Segue to gameOverVC
-        
-////        App.gViewController = se;
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
              

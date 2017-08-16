@@ -113,7 +113,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         } catch {
             print("Cannot play the file")
         }
-        
+    
         // Set the scale mode to scale to fit the window
         scene.scaleMode = .aspectFill
         

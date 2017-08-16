@@ -54,7 +54,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         else {
             loginButton.isHidden = false
-            loginArrow.isHidden = true
+            loginArrow.isHidden = false
         }
         
         if FBSDKAccessToken.current() != nil {
@@ -104,6 +104,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.friendArray.append(foundFriend)
                 self.friendArray.sort { Int($0.highScore)! > Int($1.highScore)! }
                 self.tableView.reloadData()
+                print(self.friendArray[0])
             }
         }) { (error) in
             print(error.localizedDescription)
@@ -146,17 +147,19 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         })
         connection.start()
+        print("yoo \(friendArray)")
     }
     
 //    func getWorldHighScores() {
 //        let query = ref?.child("players").queryOrdered(byChild: "highScore").queryLimited(toFirst: 10)
 //        query?.observe(.value, with: { (snapshot) in
-//            if let results = snapshot.value as? NSDictionary {
-//                print("key: \(snapshot.key), value: \(snapshot.value)")
+//            if
+//            let results = snapshot.value as? NSDictionary {
+//                print("key: \(snapshot.key), value: \(String(describing: snapshot.value))")
 //            }
 //        })
 //    }
-//    
+
     @IBAction func backClicked(_ sender: UIButton) {
         _ = navigationController?.popViewController(animated: true)
     }
@@ -168,6 +171,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             logoutButton.isHidden = true
             loginButton.isHidden = false
             loginArrow.isHidden = false
+            tableView.isHidden = true
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
@@ -182,11 +186,14 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.loginButton.isHidden = true
             self.loginArrow.isHidden = true
             self.logoutButton.isHidden = false
+            self.tableView.isHidden = false
             
             guard let accessToken = FBSDKAccessToken.current() else {
                 print("Failed to get access token")
                 return
             }
+            self.getFBUserData()
+            self.tableView.reloadData()
             
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
             
@@ -201,15 +208,9 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                     return
                 }
-                self.getFBUserData()
-                
             })
-            
         }
-        
     }
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friendArray.count
@@ -219,7 +220,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeaderboardTableViewCell
         cell.selectionStyle = .none
-        cell.nameLabel.text = friendArray[indexPath.row].name
+        cell.nameLabel.text = friendArray[indexPath.row].name.lowercased()
         cell.scoreLabel.text = friendArray[indexPath.row].highScore
         cell.profileImage.downloadedFrom(link: friendArray[indexPath.row].imageURL)
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.height/2

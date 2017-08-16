@@ -313,9 +313,6 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     func swiped(_ gesture: UIGestureRecognizer) {
         performSegue(withIdentifier: "toStore", sender: self)
     }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated);
-    }
     
     // Unwind segue back to gameView
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)

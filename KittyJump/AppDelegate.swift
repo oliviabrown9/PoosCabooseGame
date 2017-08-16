@@ -19,7 +19,7 @@ import FacebookCore
 var myItemStates: [String] = []
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate {
     
     var window: UIWindow?
     var ref: DatabaseReference?
