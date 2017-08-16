@@ -286,16 +286,30 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
             request.delegate = self
             request.start()
-            
         }
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameOverViewController.swiped(_:)))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
         
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeToLeaderboard))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
+        
         highScoreLabel.text = "Best: \(highScore)"
         mostRecentScore.text = "\(SharingManager.sharedInstance.currentScore)"
         // Setting text of labels to stored value
+    }
+    
+    func swipeToLeaderboard() {
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers
+        for aViewController in viewControllers {
+            if aViewController is LoginViewController {
+                if navigationController != nil {
+                self.navigationController!.popToViewController(aViewController, animated: true)
+                }
+            }
+        }
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {

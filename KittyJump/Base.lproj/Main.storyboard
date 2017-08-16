@@ -252,7 +252,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="hhO-ES-dCX" kind="custom" customClass="SegueFromLeft" customModule="KittyJump" customModuleProvider="target" id="UQe-gv-FnX"/>
+                                    <segue destination="hhO-ES-dCX" kind="custom" identifier="toLeaderboard" customClass="SegueFromLeft" customModule="KittyJump" customModuleProvider="target" id="UQe-gv-FnX"/>
                                 </connections>
                             </button>
                             <view hidden="YES" alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIn-H2-Iwf">

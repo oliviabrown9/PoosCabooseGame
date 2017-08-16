@@ -104,11 +104,14 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.friendArray.append(foundFriend)
                 self.friendArray.sort { Int($0.highScore)! > Int($1.highScore)! }
                 self.tableView.reloadData()
-                print(self.friendArray[0])
             }
         }) { (error) in
             print(error.localizedDescription)
         }
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeToGameOver))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
         
         self.ref?.child("players").child(fb_user).child("profile").child("picture").child("data").observeSingleEvent(of: .value, with: { (snapshot) in
             imageString = String(describing: snapshot.childSnapshot(forPath: "url").value!)
@@ -123,6 +126,12 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }) { (error) in
             print(error.localizedDescription)
         }
+    }
+    
+    func swipeToGameOver() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "GameOverViewController")
+        self.show(controller, sender: self)
     }
     
     func getFriendsScore(){
@@ -147,7 +156,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         })
         connection.start()
-        print("yoo \(friendArray)")
     }
     
 //    func getWorldHighScores() {
@@ -161,7 +169,9 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //    }
 
     @IBAction func backClicked(_ sender: UIButton) {
-        _ = navigationController?.popViewController(animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "GameOverViewController")
+        self.show(controller, sender: self)
     }
     @IBAction func logout(_ sender: UIButton) {
         do {
