@@ -240,6 +240,10 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             cornerImageView.image = #imageLiteral(resourceName: "pepeCorner")
             cornerHeight.constant = 192
         }
+        else if SharingManager.sharedInstance.catImageString == "elvispoos" {
+            cornerImageView.image = #imageLiteral(resourceName: "elvispoosCorner")
+            cornerHeight.constant = 177
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

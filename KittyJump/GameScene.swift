@@ -140,7 +140,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         beforeColorIndex = [0, 1, 2].randomItem()
         
-        
         stepSpeed = 0
         stepPos = 0
         createHud()
@@ -158,7 +157,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func switchJoint(iWagon: RightTrain) {
         var bonusFound = false;
         let coinStatus = iWagon.userData?.value(forKey: "coin") as! String;
-        print("selected is " + coinStatus);
         bonusFound = ((coinStatus ).contains("yes"))
         if(bonusFound){
             
@@ -245,7 +243,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         SharingManager.sharedInstance.lifetimeScore = roundCoins
         if score > pastHighScore {
             Label.highScoreLabel.text = "Best: \(score)"
-        }        //        10,20,40,80,160,320, & 640.
+        }
         
             if(score >= 5 && score < 10){
                 timeOfTrain =  4.2;
@@ -530,8 +528,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 posY2 = -1000
             }
             
-//            if( i > 0 && ((i%randRange(lower: 2,upper: 6)) == 0)){
-                if( i > 0 && ((i%2) == 0)){
+            if( i > 0 && ((i%randRange(lower: 2,upper: 6)) == 0)){
+//                if( i > 0 && ((i%2) == 0)){
                 coins = "yes";
             }else{
                 coins = "no";
@@ -547,23 +545,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             var wagon = createWagon(bonus: coins.contains("yes"))
             wagon.name = "wagon_" + rightTrain.name!
-            print("create name wagon_" + rightTrain.name!)
             rightTrain.zPosition = 2
             rightTrain.addChild(wagon)
             rightTrain.alpha = CGFloat(trainAlpha);
             self.addChild(rightTrain)
             rightTrainArray.append(rightTrain);
             
-            
-            
-            //            if( i > 0 && ((i%randRange(lower: 2,upper: 6)) == 0)){
-            if( i > 0 && ((i%2) == 0)){
+                if( i > 0 && ((i%randRange(lower: 2,upper: 6)) == 0)){
+//            if( i > 0 && ((i%2) == 0)){
                 coins = "yes";
             }else{
                 coins = "no";
                 
             }
-            
             
             // Left train
             let leftTrain = LeftTrain()
@@ -576,7 +570,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             wagon = createWagon(rightSide: false,bonus: coins.contains("yes"))
             leftTrain.zPosition = 2
             wagon.name = "wagon_"+leftTrain.name!
-            print("create name wagon_\(String(describing: leftTrain.name))")
             leftTrain.addChild(wagon)
             leftTrain.alpha = CGFloat(trainAlpha);
             self.addChild(leftTrain)
@@ -607,7 +600,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         default:
             wagon = SKSpriteNode()
         }
-        
         
         // Get color image
         // Locate imate at specified point
@@ -761,6 +753,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let actR2 = SKAction.move(to: posToR, duration: timeOfTrain)
             let actR = SKAction.sequence([actR1, actR2])
             irWagon.run(actR)
+            
+            print(actR.speed.description)
         }
     }
     
@@ -798,11 +792,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Contact delegate functions
     var needItme:Bool = true;
     func didBegin(_ contact: SKPhysicsContact) {
-//        if(needItme){
-//            moveRightWagon2()
-//            moveLeftTrain2()
-//            needItme = false;
-//        }
+
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
         
@@ -1060,8 +1050,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.removeAllActions()
         self.isPaused = true
         // Segue to gameOverVC
-        
-////        App.gViewController = se;
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
              
