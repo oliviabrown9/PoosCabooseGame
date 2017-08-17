@@ -20,10 +20,10 @@
 		75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */; };
 		75C5A2CC1F26679B002DD5DB /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 75C5A2CB1F26679B002DD5DB /* splash.gif */; };
 		75C5A2CE1F266815002DD5DB /* coin.gif in Resources */ = {isa = PBXBuildFile; fileRef = 75C5A2CD1F266815002DD5DB /* coin.gif */; };
+		75D113761F461EF500984500 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D113751F461EF500984500 /* GameScene.swift */; };
 		75D392A41F42184900FE34F5 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D392A31F42184900FE34F5 /* LeaderboardTableViewCell.swift */; };
 		75D392A61F421CF400FE34F5 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D392A51F421CF300FE34F5 /* Friend.swift */; };
 		75D73E261F3D0740000BD7E7 /* SegueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D73E251F3D0740000BD7E7 /* SegueFromLeft.swift */; };
-		75D73E281F3D0C33000BD7E7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D73E271F3D0C33000BD7E7 /* GameScene.swift */; };
 		75D93C1D1F3010E40020E067 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D93C1C1F3010E40020E067 /* LeaderboardViewController.swift */; };
 		75D93C1F1F30EE930020E067 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75D93C1E1F30EE930020E067 /* GoogleService-Info.plist */; };
 		75EF6CCD1F1569B7004AD11F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EF6CCC1F1569B7004AD11F /* StoreKit.framework */; };
@@ -69,10 +69,10 @@
 		75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		75C5A2CB1F26679B002DD5DB /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		75C5A2CD1F266815002DD5DB /* coin.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = coin.gif; sourceTree = "<group>"; };
+		75D113751F461EF500984500 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		75D392A31F42184900FE34F5 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
 		75D392A51F421CF300FE34F5 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		75D73E251F3D0740000BD7E7 /* SegueFromLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueFromLeft.swift; path = ../SegueFromLeft.swift; sourceTree = "<group>"; };
-		75D73E271F3D0C33000BD7E7 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		75D93C1C1F3010E40020E067 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		75D93C1E1F30EE930020E067 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		75EF6CCC1F1569B7004AD11F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -192,7 +192,7 @@
 				D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */,
 				D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */,
 				75F3FE3F1F1EA5AA001E0C0D /* GameSettings.swift */,
-				75D73E271F3D0C33000BD7E7 /* GameScene.swift */,
+				75D113751F461EF500984500 /* GameScene.swift */,
 				75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */,
 				75149F2A1F25B2CB00B70B59 /* MessageComposer.swift */,
 				75149F281F25B2B800B70B59 /* StoreViewController.swift */,
@@ -386,6 +386,7 @@
 				D7C5EAFA1EF0F638007DA71A /* Label.swift in Sources */,
 				75D73E261F3D0740000BD7E7 /* SegueFromLeft.swift in Sources */,
 				75BB97891EFEE91A00DB3BF3 /* GameOverViewController.swift in Sources */,
+				75D113761F461EF500984500 /* GameScene.swift in Sources */,
 				D7C5EAE31EEBFB03007DA71A /* Grass.swift in Sources */,
 				756C47AB1F197A3100B034C0 /* Slide.swift in Sources */,
 				D7C5EAE61EEC07E5007DA71A /* LeftTrain.swift in Sources */,
@@ -398,7 +399,6 @@
 				75B5B1711F2140F6008D8584 /* ContactsTableViewCell.swift in Sources */,
 				D7C5EAEE1EEC0AC0007DA71A /* Kitty.swift in Sources */,
 				D1C52BEF1EF5911200115764 /* Deadline.swift in Sources */,
-				75D73E281F3D0C33000BD7E7 /* GameScene.swift in Sources */,
 				75F3FE3E1F1D617A001E0C0D /* OnboardingViewController.swift in Sources */,
 				D7C5EAEA1EEC0993007DA71A /* RightTrain.swift in Sources */,
 				75F3FE3A1F1D608B001E0C0D /* CustomPage.swift in Sources */,
@@ -475,6 +475,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -516,7 +517,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

@@ -157,12 +157,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Movement
     func switchJoint(iWagon: RightTrain) {
         var bonusFound = false;
-        let coinStatus = iWagon.userData?.value(forKey: "coin")
-        print("selected is \(String(describing: coinStatus))");
-        bonusFound = ((coinStatus as! String).contains("yes"))
+        let coinStatus = iWagon.userData?.value(forKey: "coin") as! String;
+        print("selected is " + coinStatus);
+        bonusFound = ((coinStatus ).contains("yes"))
         if(bonusFound){
             
-            iWagon.removeAllChildren()
+            print("fetech name wagon_" + iWagon.name!)
+            if let child = iWagon.childNode(withName: "wagon_" + iWagon.name!) as? SKSpriteNode {
+                child.removeAllChildren()
+            }
         }
         if let jointN = joint1 {
             
@@ -206,13 +209,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var bonusFound = false;
         
         self.physicsWorld.removeAllJoints()
-        let coinStatus = iWagon.userData?.value(forKey: "coin")
+        let coinStatus = iWagon.userData?.value(forKey: "coin") as! String;
         print("selected is \(String(describing: coinStatus))");
         
-        bonusFound = ((coinStatus as! String).contains("yes"))
+        bonusFound = ((coinStatus ).contains("yes"))
         if(bonusFound){
             
-            iWagon.removeAllChildren()
+            print("fetech name wagon_" + iWagon.name!)
+            if let child = iWagon.childNode(withName: "wagon_" + iWagon.name!) as? SKSpriteNode {
+                child.removeAllChildren()
+            }
         }
         if let wagonPhysicBody = iWagon.physicsBody, let kittyPhysicBody = kitty.physicsBody {
             
@@ -540,21 +546,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             currentRightTrain = rightTrain
             
             var wagon = createWagon(bonus: coins.contains("yes"))
-            
+            wagon.name = "wagon_" + rightTrain.name!
+            print("create name wagon_" + rightTrain.name!)
             rightTrain.zPosition = 2
             rightTrain.addChild(wagon)
             rightTrain.alpha = CGFloat(trainAlpha);
             self.addChild(rightTrain)
             rightTrainArray.append(rightTrain);
+            
+            
+            
+            //            if( i > 0 && ((i%randRange(lower: 2,upper: 6)) == 0)){
+            if( i > 0 && ((i%2) == 0)){
+                coins = "yes";
+            }else{
+                coins = "no";
+                
+            }
+            
+            
             // Left train
             let leftTrain = LeftTrain()
             leftTrain.position = CGPoint(x:self.frame.maxX + leftTrain.size.width/2, y:posY2)
             leftTrain.name = "left" + String(i)
+            
             leftTrain.userData = NSMutableDictionary();
             leftTrain.userData?.setValue(coins, forKey: "coin")
             currentLeftTrain = leftTrain
             wagon = createWagon(rightSide: false,bonus: coins.contains("yes"))
             leftTrain.zPosition = 2
+            wagon.name = "wagon_"+leftTrain.name!
+            print("create name wagon_\(String(describing: leftTrain.name))")
             leftTrain.addChild(wagon)
             leftTrain.alpha = CGFloat(trainAlpha);
             self.addChild(leftTrain)
@@ -603,6 +625,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let size = CGSize(width: 110, height: 200)
                 coin = SKSpriteNode(imageNamed:"poos coin bag")
                 coin.scale(to: size)
+                coin.name = "bonus";
                 coin.position.y = wagon.position.y + coin.size.height + 10
                 coin.position.x =  -(wagon.size.width/2) + coin.size.width + 50
                 coin.zPosition = 2
@@ -626,9 +649,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let size = CGSize(width: 110, height: 200)
             coin = SKSpriteNode(imageNamed:"poos coin bag")
             coin.scale(to: size)
+            coin.name = "bonus";
             coin.position.y =  wagon.position.y + coin.size.height  + 10
-                coin.position.x =  +(wagon.size.width/2) - coin.size.width - 40
-                coin.zPosition = 2
+            coin.position.x =  +(wagon.size.width/2) - coin.size.width - 40
+            coin.zPosition = 2
                 
             wagon.addChild(coin);
             }else{
