@@ -18,18 +18,39 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var today: Bool = true
     
+    @IBOutlet weak var friendTab: UILabel!
+    @IBOutlet weak var worldTab: UILabel!
+    @IBOutlet weak var friendHigh: UIView!
+    @IBOutlet weak var worldHigh: UIView!
+    
     @IBAction func dayButtonPressed(_ sender: Any) {
         if today == true {
             today = false
             dayButton.setTitle("all time", for: .normal)
-            friendArray.removeAll()
-            getFriendsScore()
+            if(friendHigh.isHidden){
+                
+                self.worldArray.sort { Int($0.highScore) > Int($1.highScore) }
+                tableView.reloadData()
+            }else{
+                
+                friendArray.removeAll()
+                getFriendsScore()
+                tableView.reloadData()
+            }
         }
         else {
             today = true
             dayButton.setTitle("today", for: .normal)
-            friendArray.removeAll()
-            getFriendsScore()
+            if(friendHigh.isHidden) {
+                
+                self.worldArray.sort { Int($0.todayScore) > Int($1.todayScore) }
+                tableView.reloadData()
+            }else{
+                
+                friendArray.removeAll()
+                getFriendsScore()
+                tableView.reloadData()
+            }
         }
     }
     @IBOutlet weak var dayButton: UIButton!
@@ -44,7 +65,17 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
-//        getWorldHighScores()
+        worldTab.isUserInteractionEnabled = true
+        let friend = UITapGestureRecognizer(target: self, action: #selector(self.frindTabClicked))
+        friendTab.isUserInteractionEnabled = true
+        friendTab.addGestureRecognizer(friend)
+        
+        worldTab.isUserInteractionEnabled = true
+        
+        let world = UITapGestureRecognizer(target: self, action: #selector(self.worldTabClicked))
+        worldTab.isUserInteractionEnabled = true
+        worldTab.addGestureRecognizer(world)
+        
         
         dayButton.layer.borderWidth = 2
         dayButton.layer.borderColor = UIColor.white.cgColor
@@ -62,12 +93,64 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             loginArrow.isHidden = true
             logoutButton.isHidden = false
             getFriendsScore()
+            getWorldScore()
         }else{
             logoutButton.isHidden = true
         }
     }
     
+    
+    
+    func frindTabClicked(sender:UITapGestureRecognizer) {
+        friendHigh.isHidden = false
+        worldHigh.isHidden = true
+        friendTab.font = UIFont (name: "Avenir-Black", size: 18)
+        worldTab.font = UIFont (name: "Avenir-Medium", size: 18)
+        tableView.reloadData()
+    }
+    
+    
     var friendArray: [Friend] = []
+    var worldArray: [World] = []
+    
+    
+    func worldTabClicked(sender:UITapGestureRecognizer) {
+        friendHigh.isHidden = true
+        worldHigh.isHidden = false
+        friendTab.font = UIFont (name: "Avenir-Medium", size: 18)
+        worldTab.font = UIFont (name: "Avenir-Black", size: 18)
+        tableView.reloadData()
+    }
+    
+    func getWorldScore(){
+        print("firebase connected")
+        let ref = Database.database().reference()
+        ref.child("players").queryOrdered(byChild: facebookId)
+            .observeSingleEvent(of: .value, with: { (snapshot) in
+                if snapshot.exists() {
+                    
+                    let snapDict = snapshot.value as? [String:AnyObject]
+                    for snap in snapshot.children.allObjects as! [DataSnapshot] {
+                        let json = snapDict?[snap.key]
+                        // print("json is \(json)")
+                        let highScore = json?["highScore"] as! Int;
+                        let profile = json?["profile"] as! NSDictionary;
+                        let TodayshighScore = json?["TodayshighScore"] as! NSDictionary;
+                        let todayhigh = TodayshighScore["score"] as! Int
+                        let name = profile["name"] as! String
+                        let imageString = ((profile["picture"] as! NSDictionary)["data"]  as! NSDictionary)["url"] as! String
+                        print("today \(todayhigh) alltime \(highScore) name \(name)")
+                        
+                        let foundFriend = World(name: name, highScore: highScore, todayScore: todayhigh, imageURL: imageString)
+                        self.worldArray.append(foundFriend)
+                        self.worldArray.sort { Int($0.todayScore) > Int($1.todayScore) }
+                    }
+                    print("worldArray \(self.worldArray.description)")
+                    
+                }
+            })
+    }
+    
     
     func makeFriends(fb_user: String) {
         var name: String = ""
@@ -94,7 +177,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }) { (error) in
                 print(error.localizedDescription)
             }
-
+            
         }
         
         self.ref?.child("players").child(fb_user).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -135,7 +218,8 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func getFriendsScore(){
-        
+        if(facebookId != ""){
+
         makeFriends(fb_user: facebookId as String)
         
         let params = ["fields": "id, first_name, last_name, name, email, picture"]
@@ -156,18 +240,10 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         })
         connection.start()
+        }
     }
     
-//    func getWorldHighScores() {
-//        let query = ref?.child("players").queryOrdered(byChild: "highScore").queryLimited(toFirst: 10)
-//        query?.observe(.value, with: { (snapshot) in
-//            if
-//            let results = snapshot.value as? NSDictionary {
-//                print("key: \(snapshot.key), value: \(String(describing: snapshot.value))")
-//            }
-//        })
-//    }
-
+    
     @IBAction func backClicked(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "GameOverViewController")
@@ -203,7 +279,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 return
             }
             self.getFBUserData()
-            self.tableView.reloadData()
             
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
             
@@ -219,23 +294,45 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     return
                 }
             })
+            
         }
+        self.tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friendArray.count
+        if(friendHigh.isHidden){
+            return worldArray.count
+        }else{
+            return friendArray.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeaderboardTableViewCell
         cell.selectionStyle = .none
-        cell.nameLabel.text = friendArray[indexPath.row].name.lowercased()
-        cell.scoreLabel.text = friendArray[indexPath.row].highScore
-        cell.profileImage.downloadedFrom(link: friendArray[indexPath.row].imageURL)
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.height/2
         cell.profileImage.layer.borderWidth = 2
         cell.profileImage.layer.borderColor = UIColor.white.cgColor
+        
+        if(friendHigh.isHidden){
+            cell.nameLabel.text = worldArray[indexPath.row].name.lowercased()
+            if today == false {
+                cell.scoreLabel.text = "\(worldArray[indexPath.row].highScore)"
+            }else{
+                cell.scoreLabel.text = "\(worldArray[indexPath.row].todayScore)"
+            }
+            cell.profileImage.downloadedFrom(link: worldArray[indexPath.row].imageURL)
+        }else{
+            cell.nameLabel.text = friendArray[indexPath.row].name.lowercased()
+            if today == false {
+                cell.scoreLabel.text = "\(friendArray[indexPath.row].highScore)"
+            }else{
+                cell.scoreLabel.text = "\(friendArray[indexPath.row].highScore)"
+            }
+            
+            cell.profileImage.downloadedFrom(link: friendArray[indexPath.row].imageURL)
+        }
         return cell
     }
     override var prefersStatusBarHidden: Bool {
@@ -277,5 +374,5 @@ extension UIImageView {
     func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
         guard let url = URL(string: link) else { return }
         downloadedFromURL(url: url, contentMode: mode)
-}
+    }
 }

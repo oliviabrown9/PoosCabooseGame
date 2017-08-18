@@ -161,35 +161,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bonusFound = ((coinStatus ).contains("yes"))
         if(bonusFound){
                 
-                var bonusText = 0
-                
-                if score < 10 {
-                    bonusText = 10
-                }
-                else if score > 10 && score <= 20 {
-                    bonusText = 25
-                }
-                else if score > 20 && score <= 40 {
-                    bonusText = 50
-                }
-                else if score > 40 && score <= 80 {
-                    bonusText = 100
-                }
-                else if score > 80 && score <= 160 {
-                    bonusText = 150
-                }
-                else if score > 160 && score <= 320 {
-                    bonusText = 200
-                }
-                else if score > 320 {
-                    bonusText = 250
-                }
-                
-                bonusLabel.text = "+\(bonusText)"
-                bonusLabel.isHidden = false
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.bonusLabel.isHidden = true
-                }
+//                var bonusText = 0
+//                
+//                if score < 10 {
+//                    bonusText = 10
+//                }
+//                else if score > 10 && score <= 20 {
+//                    bonusText = 25
+//                }
+//                else if score > 20 && score <= 40 {
+//                    bonusText = 50
+//                }
+//                else if score > 40 && score <= 80 {
+//                    bonusText = 100
+//                }
+//                else if score > 80 && score <= 160 {
+//                    bonusText = 150
+//                }
+//                else if score > 160 && score <= 320 {
+//                    bonusText = 200
+//                }
+//                else if score > 320 {
+//                    bonusText = 250
+//                }
+//                
+//                bonusLabel.text = "+\(bonusText)"
+//                bonusLabel.isHidden = false
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                    self.bonusLabel.isHidden = true
+//                }
             
             print("fetech name wagon_" + iWagon.name!)
             if let child = iWagon.childNode(withName: "wagon_" + iWagon.name!) as? SKSpriteNode {
@@ -245,35 +245,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bonusFound = ((coinStatus ).contains("yes"))
         if(bonusFound){
             
-            var bonusText = 0
-            
-            if score < 10 {
-                bonusText = 10
-            }
-            else if score > 10 && score <= 20 {
-                bonusText = 25
-            }
-            else if score > 20 && score <= 40 {
-                bonusText = 50
-            }
-            else if score > 40 && score <= 80 {
-                bonusText = 100
-            }
-            else if score > 80 && score <= 160 {
-                bonusText = 150
-            }
-            else if score > 160 && score <= 320 {
-                bonusText = 200
-            }
-            else if score > 320 {
-                bonusText = 250
-            }
-            
-            bonusLabel.text = "+\(bonusText)"
-            bonusLabel.isHidden = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.bonusLabel.isHidden = true
-            }
+//            var bonusText = 0
+//            
+//            if score < 10 {
+//                bonusText = 10
+//            }
+//            else if score > 10 && score <= 20 {
+//                bonusText = 25
+//            }
+//            else if score > 20 && score <= 40 {
+//                bonusText = 50
+//            }
+//            else if score > 40 && score <= 80 {
+//                bonusText = 100
+//            }
+//            else if score > 80 && score <= 160 {
+//                bonusText = 150
+//            }
+//            else if score > 160 && score <= 320 {
+//                bonusText = 200
+//            }
+//            else if score > 320 {
+//                bonusText = 250
+//            }
+//            
+//            bonusLabel.text = "+\(bonusText)"
+//            bonusLabel.isHidden = false
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                self.bonusLabel.isHidden = true
+//            }
             
             print("fetech name wagon_" + iWagon.name!)
             if let child = iWagon.childNode(withName: "wagon_" + iWagon.name!) as? SKSpriteNode {
@@ -295,12 +295,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func updateScore(bonusFound: Bool) {
         score = score + 1
         
+        var coinsEarned = 0
+        
         if(bonusFound){
             roundCoins = roundCoins + (bonusPoint * multiplier)
+            coinsEarned = (bonusPoint * multiplier) + multiplier
+            bonusLabel.text = "+\(coinsEarned)"
+            
         }
         else {
             roundCoins = roundCoins + multiplier
+            bonusLabel.text = "+\(multiplier)"
         }
+        if coinsEarned < 10 {
+            bonusLabel.position = CGPoint(x: self.frame.maxX - 40, y: 80)
+        }
+        else if coinsEarned >= 10 && coinsEarned < 100 {
+            bonusLabel.position = CGPoint(x: self.frame.maxX - 55, y: 80)
+        }
+        else if coinsEarned >= 100 && coinsEarned < 1000 {
+            bonusLabel.position = CGPoint(x: self.frame.maxX - 65, y: 80)
+        }
+        else if coinsEarned >= 1000 {
+            bonusLabel.position = CGPoint(x: self.frame.maxX - 77, y: 80)
+        }
+        
+        bonusLabel.isHidden = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            self.bonusLabel.isHidden = true
+        }
+        
         
         SharingManager.sharedInstance.lifetimeScore = roundCoins
         if score > pastHighScore {
@@ -467,7 +492,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bonusLabel.fontSize = 40
         bonusLabel.text = "\(bonusPoint)"
         bonusLabel.fontColor = UIColor.white
-        bonusLabel.position = CGPoint(x: self.frame.maxX, y: 80)
+        bonusLabel.position = CGPoint(x: self.frame.maxX - 40, y: 80)
         bonusLabel.verticalAlignmentMode = .center
         hud.addChild(bonusLabel)
         
