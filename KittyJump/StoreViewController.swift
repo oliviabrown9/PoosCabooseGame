@@ -6,6 +6,15 @@
 //  Copyright © 2017 Olivia Brown. All rights reserved.
 //
 
+
+//pepe le poos
+//winnie the poos
+//le pous
+//elvis poosley
+//poos fieri
+//poos fieri
+//poosyoncé
+
 import UIKit
 import Contacts
 import MessageUI
@@ -53,11 +62,16 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     let slide5 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     let slide6 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     let slide7 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+    let slide8 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+    let slide9 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+    let slide10 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+    let slide11 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+    let slide12 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
-    var coins = SharingManager.sharedInstance.lifetimeScore
-//    var coins = 10000
+    //var coins = SharingManager.sharedInstance.lifetimeScore
+    var coins = 10000
     var cost: Int = 0
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
@@ -131,6 +145,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             }) { (error) in
                 print(error.localizedDescription)
             }
+        }else{
+            
+            self.updateUnlocked()
+            self.itemAlreadyPurchased()
         }
     }
     override func viewDidLoad() {
@@ -138,6 +156,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         if(FBSDKAccessToken.current() != nil){
         facebookId = FBSDKAccessToken.current().userID;
         
+        }else{
+            removeUserDefaults();
         }
         ref = Database.database().reference()
         updateCoins();
@@ -185,7 +205,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 unlocked += 1
             }
         }
-        let unlockedString: String = "\(unlocked) of 8 unlocked"
+        let unlockedString: String = "\(unlocked) of 12 unlocked"
         let attributedText = NSMutableAttributedString(string: unlockedString, attributes: [NSFontAttributeName:UIFont(name: "Avenir-Medium", size: 18.0)!])
         attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:0,length:1))
         attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:5,length:1))
@@ -242,7 +262,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     func createSlides() -> [Slide] {
         
-        let slideArray = [slide0, slide1, slide2, slide3, slide4, slide5, slide6, slide7]
+        let slideArray = [slide0, slide1, slide2, slide3, slide4, slide5, slide6, slide7, slide8, slide9, slide10, slide11, slide12]
         
         var x = 0
         for i in slideArray {
@@ -260,56 +280,84 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         slide0.image.image = #imageLiteral(resourceName: "ogStore")
         slide0.titleLabel.text = "og poos"
+        slide4.costLabel.text = "0"
         slide0.imageHeight.constant = 216
         
         slide1.image.image = #imageLiteral(resourceName: "trotterStore")
         slide1.titleLabel.text = "poos trotter"
-        slide1.costLabel.text = "1,000"
         slide1.imageHeight.constant = 245
+        slide4.costLabel.text = "0"
         
         slide2.image.image = #imageLiteral(resourceName: "rateStore")
         slide2.titleLabel.text = "pirate poos"
-        slide2.costLabel.text = "1,000"
+        slide4.costLabel.text = "0"
         slide2.imageHeight.constant = 217
         
         slide3.image.image = #imageLiteral(resourceName: "properStore")
         slide3.titleLabel.text = "proper poos"
-        slide3.costLabel.text = "2,000"
+        slide4.costLabel.text = "0"
         slide3.imageHeight.constant = 230
         
-        slide4.image.image = #imageLiteral(resourceName: "quaStore")
-        slide4.titleLabel.text = "quapoos"
-        slide4.costLabel.text = "5,000"
-        slide4.imageHeight.constant = 217
+        slide4.image.image = #imageLiteral(resourceName: "pepeStore")
+        slide4.titleLabel.text = "pepe le poos"
+        slide4.costLabel.text = "2,000"
+        slide4.imageHeight.constant = 242
         
-        slide5.image.image = #imageLiteral(resourceName: "pousStore")
-        slide5.titleLabel.text = "le pous"
-        slide5.costLabel.text = "10,000"
-        slide5.imageHeight.constant = 208
         
-        slide6.image.image = #imageLiteral(resourceName: "bootsStore")
-        slide6.titleLabel.text = "poos in boots"
-        slide6.costLabel.text = "25,000"
-        slide6.imageHeight.constant = 253
+        slide5.image.image = #imageLiteral(resourceName: "quaStore")
+        slide5.titleLabel.text = "quapoos"
+        slide5.imageHeight.constant = 217
+        
+        slide6.image.image = #imageLiteral(resourceName: "winnieStore")
+        slide6.titleLabel.text = "winnie the poos"
+        slide6.costLabel.text = "5,000"
+        slide6.imageHeight.constant = 239
+        
+        slide7.image.image = #imageLiteral(resourceName: "pousStore")
+        slide7.titleLabel.text = "le pous"
+        slide7.costLabel.text = "10,000"
+        slide7.imageHeight.constant = 208
+        
+        
+        slide8.image.image = #imageLiteral(resourceName: "elvisStore")
+        slide8.titleLabel.text = "elvis poosley"
+        slide8.costLabel.text = "10,000"
+        slide8.imageHeight.constant = 227
+        
+        
+        slide9.image.image = #imageLiteral(resourceName: "fieriStore")
+        slide9.titleLabel.text = "poos fieri"
+        slide9.costLabel.text = "10,000"
+        slide9.imageHeight.constant = 222
+        
+        slide10.image.image = #imageLiteral(resourceName: "bootsStore")
+        slide10.titleLabel.text = "poos in boots"
+        slide10.imageHeight.constant = 253
+        
+        slide11.image.image = #imageLiteral(resourceName: "yonceStore")
+        slide11.titleLabel.text = "poosyoncé"
+        slide11.costLabel.text = "25,000"
+        slide11.imageHeight.constant = 195
+        
         
         if coins >= 100000 {
-            slide7.image.image = #imageLiteral(resourceName: "trumpStore")
-            slide7.titleLabel.text = "trumpoos"
-            slide7.imageHeight.constant = 216
+            slide12.image.image = #imageLiteral(resourceName: "trumpStore")
+            slide12.titleLabel.text = "trumpoos"
+            slide12.imageHeight.constant = 216
         }
-        else if itemStates[7] == "inCloset" {
-            slide7.image.image = #imageLiteral(resourceName: "trumpStore")
-            slide7.titleLabel.text = "trumpoos"
-            slide7.imageHeight.constant = 216
+        else if itemStates[12] == "inCloset" {
+            slide12.image.image = #imageLiteral(resourceName: "trumpStore")
+            slide12.titleLabel.text = "trumpoos"
+            slide12.imageHeight.constant = 216
         }
         else {
-            slide7.image.image = #imageLiteral(resourceName: "mysteryStore")
-            slide7.titleLabel.text = "?????"
-            slide7.imageHeight.constant = 207
+            slide12.image.image = #imageLiteral(resourceName: "mysteryStore")
+            slide12.titleLabel.text = "?????"
+            slide12.imageHeight.constant = 207
         }
-        slide7.costLabel.text = "100,000"
+        slide12.costLabel.text = "100,000"
         
-        return [slide0, slide1, slide2, slide3, slide4, slide5, slide6, slide7]
+        return [slide0, slide1, slide2, slide3, slide4, slide5, slide6, slide7, slide8, slide9, slide10, slide11, slide12]
     }
     
     func setupScrollView(slides: [Slide]) {
@@ -362,11 +410,26 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         else if pageIndex == 7 {
             currentSlide = slide7
         }
+        else if pageIndex == 8 {
+            currentSlide = slide8
+        }
+        else if pageIndex == 9 {
+            currentSlide = slide9
+        }
+        else if pageIndex == 10 {
+            currentSlide = slide10
+        }
+        else if pageIndex == 11 {
+            currentSlide = slide11
+        }
+        else if pageIndex == 12 {
+            currentSlide = slide12
+        }
         setupInCloset(slide: currentSlide, x: pageIndex)
     }
     
     func updateUseButton() {
-        let allSlides = [slide0, slide1, slide2, slide3, slide4, slide5, slide6, slide7]
+        let allSlides = [slide0, slide1, slide2, slide3, slide4, slide5, slide6, slide7, slide8, slide9, slide10, slide11, slide12]
         
         var x = 0
         for i in allSlides {
@@ -410,21 +473,46 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
         else if pageIndex == 4 {
             SharingManager.sharedInstance.using = 4
-            SharingManager.sharedInstance.catImageString = "quapoos"
+            SharingManager.sharedInstance.catImageString = "pepepoos"
             updateUseButton()
         }
         else if pageIndex == 5 {
             SharingManager.sharedInstance.using = 5
-            SharingManager.sharedInstance.catImageString = "pous"
+            SharingManager.sharedInstance.catImageString = "quapoos"
             updateUseButton()
         }
         else if pageIndex == 6 {
             SharingManager.sharedInstance.using = 6
-            SharingManager.sharedInstance.catImageString = "bootspoos"
+            SharingManager.sharedInstance.catImageString = "winniepoos"
             updateUseButton()
         }
         else if pageIndex == 7 {
             SharingManager.sharedInstance.using = 7
+            SharingManager.sharedInstance.catImageString = "pous"
+            updateUseButton()
+        }
+        else if pageIndex == 8 {
+            SharingManager.sharedInstance.using = 8
+            SharingManager.sharedInstance.catImageString = "elvispoosley"
+            updateUseButton()
+        }
+        else if pageIndex == 9 {
+            SharingManager.sharedInstance.using = 9
+            SharingManager.sharedInstance.catImageString = "fieripoos"
+            updateUseButton()
+        }
+        else if pageIndex == 10 {
+            SharingManager.sharedInstance.using = 10
+            SharingManager.sharedInstance.catImageString = "bootspoos"
+            updateUseButton()
+        }
+        else if pageIndex == 11 {
+            SharingManager.sharedInstance.using = 11
+            SharingManager.sharedInstance.catImageString = "yoncepoos"
+            updateUseButton()
+        }
+        else if pageIndex == 12 {
+            SharingManager.sharedInstance.using = 12
             SharingManager.sharedInstance.catImageString = "trumpoos"
             updateUseButton()
         }
@@ -438,31 +526,51 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         if pageIndex == 1 {
             itemTitle = "poos trotter"
-            cost = 1000
+            cost = 0
         }
         else if pageIndex == 2 {
             itemTitle = "pirate poos"
-            cost = 1000
+            cost = 0
         }
         else if pageIndex == 3 {
             itemTitle = "proper poos"
-            cost = 2000
+            cost = 0
         }
         else if pageIndex == 4 {
-            itemTitle = "quapoos"
-            cost = 5000
+            itemTitle = "pepe le poos"
+            cost = 2000
         }
         else if pageIndex == 5 {
-            itemTitle = "le pous"
-            cost = 10000
+            itemTitle = "quapoos"
+            cost = 0
         }
         else if pageIndex == 6 {
-            itemTitle = "poos in boots"
-            cost = 25000
+            itemTitle = "winnie the poos"
+            cost = 5000
         }
         else if pageIndex == 7 {
+            itemTitle = "le pous"
+            cost = 0
+        }
+        else if pageIndex == 8 {
+            itemTitle = "elvis poosley"
+            cost = 10000
+        }
+        else if pageIndex == 9 {
+            itemTitle = "poos fieri"
+            cost = 10000
+        }
+        else if pageIndex == 10 {
+            itemTitle = "poos in boots"
+            cost = 0
+        }
+        else if pageIndex == 11 {
+            itemTitle = "poosyoncé"
+            cost = 25000
+        }
+        else if pageIndex == 12 {
             itemTitle = "trumpoos"
-            cost = 100000
+            cost = 0
         }
         
         if cost <= coins {
@@ -541,6 +649,9 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             SharingManager.sharedInstance.lifetimeScore = coins
             if(facebookId != ""){
             ref?.child("players").child(facebookId).child("poosesOwned").updateChildValues(["\(pageIndex)": "inCloset"])
+                updateCoins();
+            }else{
+                SharingManager.sharedInstance.itemStates[pageIndex] = "inCloset";
                 updateCoins();
             }
             if #available(iOS 10.3, *) {

@@ -240,10 +240,12 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             cornerImageView.image = #imageLiteral(resourceName: "pepeCorner")
             cornerHeight.constant = 192
         }
-        else if SharingManager.sharedInstance.catImageString == "elvispoos" {
+        else if SharingManager.sharedInstance.catImageString == "elvispoosley" {
             cornerImageView.image = #imageLiteral(resourceName: "elvispoosCorner")
-            cornerHeight.constant = 177
+            cornerHeight.constant = 192
         }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -316,6 +318,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         
         highScoreLabel.text = "Best: \(highScore)"
         mostRecentScore.text = "\(SharingManager.sharedInstance.currentScore)"
+        // Setting text of labels to stored value
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {

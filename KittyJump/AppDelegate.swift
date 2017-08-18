@@ -15,14 +15,15 @@ import FBSDKLoginKit
 import FacebookLogin
 import FacebookCore
 
-let date = Date()
+
 var myItemStates: [String] = []
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate {
     
     var window: UIWindow?
     var ref: DatabaseReference?
+    let date = Date()
     var facebookId = "";
     var gViewController: UIViewController?
     var mInterstitial: GADInterstitial!
@@ -36,12 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var initialViewController: UIViewController? = nil
-        if SharingManager.sharedInstance.onboardingFinished == false {
-            initialViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController")
-        }
-        else {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "GameViewController")
-        }
         self.window?.rootViewController = initialViewController
         self.gViewController = initialViewController;
         self.window?.makeKeyAndVisible()
@@ -88,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate {
             
             let formatter = DateFormatter()
             formatter.dateFormat = "dd-MM-yyyy"
-            let dateString = formatter.string(from: date)
+            let dateString = formatter.string(from: self.date)
 
             var dbDateString:String = "";
             self.ref?.child("players").child(facebookId).child("TodayshighScore").observeSingleEvent(of: .value, with: { (snapshot) in

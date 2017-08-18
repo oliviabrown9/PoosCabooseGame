@@ -37,14 +37,6 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         startGameScreen()
     }
     
-    // Unwind segue
-    @IBAction func unwindToHomeView(sender: UIStoryboardSegue) {
-        if isReplayGame {
-            initView()
-            startGameScreen()
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         if SharingManager.sharedInstance.catImageString == "trotterpoos" || SharingManager.sharedInstance.catImageString == "poosrate" {
             multiplier = 2
@@ -66,6 +58,15 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         }
         else if SharingManager.sharedInstance.catImageString == "poos" {
             multiplier = 1
+        }
+    }
+
+    
+    // Unwind segue
+    @IBAction func unwindToHomeView(sender: UIStoryboardSegue) {
+        if isReplayGame {
+            initView()
+            startGameScreen()
         }
     }
     
@@ -133,14 +134,13 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
             backgroundMusicPlayer.delegate = self
             backgroundMusicPlayer.numberOfLoops = 0
             backgroundMusicPlayer.prepareToPlay()
-            
             if (!soundState) {
             backgroundMusicPlayer.play()
             }
         } catch {
             print("Cannot play the file")
         }
-    
+        
         // Set the scale mode to scale to fit the window
         scene.scaleMode = .aspectFill
         

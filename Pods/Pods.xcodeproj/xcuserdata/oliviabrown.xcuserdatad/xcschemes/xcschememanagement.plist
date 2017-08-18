@@ -59,11 +59,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftyOnboard.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,17 +72,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2E4FD813F55A41B34C1D0501FE12A089</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>42A4AFA79B9CE18030CF998F1A38902A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>44CAD6CE523055ED339E87154473A254</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4BCC94D31112884FCAC986A27D13BAF7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,17 +87,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5950121CD72821A3199B585A9F3E4B65</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>5B5AC3C06B783F8674FDB4C0F900B56A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6BD296656CF1C5C9F0836119FA586124</key>
+		<key>5B7049513A428B25D2AABB7F2EE2E016</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,12 +102,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<key>AB5CA27EBA105AB1FAFAEBFDE4CB1D36</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA5F66C2AF31C908D511030113767F8F</key>
+		<key>BA81430F119014E4E612C5EAB56E3E0B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
 		<dict>
 			<key>primary</key>
 			<true/>

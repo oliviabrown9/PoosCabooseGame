@@ -49,7 +49,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 friendArray.removeAll()
                 getFriendsScore()
-                self.friendArray.sort { Int($0.todayScore)! > Int($1.todayScore)! }
                 tableView.reloadData()
             }
         }
@@ -103,10 +102,9 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func frindTabClicked(sender:UITapGestureRecognizer) {
+        print("tap working")
         friendHigh.isHidden = false
         worldHigh.isHidden = true
-        friendTab.font = UIFont (name: "Avenir-Black", size: 18)
-        worldTab.font = UIFont (name: "Avenir-Medium", size: 18)
         tableView.reloadData()
     }
     
@@ -116,20 +114,13 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func worldTabClicked(sender:UITapGestureRecognizer) {
+        print("tap working")
         friendHigh.isHidden = true
         worldHigh.isHidden = false
-        friendTab.font = UIFont (name: "Avenir-Medium", size: 18)
-        worldTab.font = UIFont (name: "Avenir-Black", size: 18)
         tableView.reloadData()
     }
     
-    
-    
     func getWorldScore(){
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
-        let dateString = formatter.string(from: date)
-        //let localDate = formatter.date(from: dateString)
         print("firebase connected")
         let ref = Database.database().reference()
         ref.child("players").queryOrdered(byChild: facebookId)
@@ -143,11 +134,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         let highScore = json?["highScore"] as! Int;
                         let profile = json?["profile"] as! NSDictionary;
                         let TodayshighScore = json?["TodayshighScore"] as! NSDictionary;
-                        var todayhigh = 0
-                        if TodayshighScore["date"] as! String == dateString {
-                            todayhigh = TodayshighScore["score"] as! Int
-                                
-                    }
+                        let todayhigh = TodayshighScore["score"] as! Int
                         let name = profile["name"] as! String
                         let imageString = ((profile["picture"] as! NSDictionary)["data"]  as! NSDictionary)["url"] as! String
                         print("today \(todayhigh) alltime \(highScore) name \(name)")
@@ -157,20 +144,15 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         self.worldArray.sort { Int($0.todayScore) > Int($1.todayScore) }
                     }
                     print("worldArray \(self.worldArray.description)")
-                    
                 }
             })
     }
-    
     
     func makeFriends(fb_user: String) {
         var name: String = ""
         var score: String = "";
         var todaysHighScore: String = ""
         var imageString: String = ""
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
-        let dateString = formatter.string(from: date)
         
         if today == false {
             self.ref?.child("players").child(fb_user).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -199,12 +181,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if self.today == true {
                 let foundFriend = Friend(name: name, highScore: score, todayScore: todaysHighScore, imageURL: imageString)
                 self.friendArray.append(foundFriend)
-                if self.today == false {
                 self.friendArray.sort { Int($0.highScore)! > Int($1.highScore)! }
-                }
-                else {
-                    self.friendArray.sort { Int($0.todayScore)! > Int($1.todayScore)! }
-                }
                 self.tableView.reloadData()
             }
         }) { (error) in
@@ -223,14 +200,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         self.ref?.child("players").child(fb_user).child("TodayshighScore").observeSingleEvent(of: .value, with: { (snapshot) in
-            let todayDate = String(describing: snapshot.childSnapshot(forPath: "date").value!)
-            if todayDate == dateString {
-                todaysHighScore = String(describing: snapshot.childSnapshot(forPath: "score").value!)
-            }
-            else {
-                todaysHighScore = "0"
-            }
-            
+            todaysHighScore = String(describing: snapshot.childSnapshot(forPath: "score").value!)
             
         }) { (error) in
             print(error.localizedDescription)
@@ -305,6 +275,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 return
             }
             self.getFBUserData()
+            self.tableView.reloadData()
             
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
             
@@ -320,9 +291,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     return
                 }
             })
-            
         }
-        self.tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -354,7 +323,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if today == false {
                 cell.scoreLabel.text = "\(friendArray[indexPath.row].highScore)"
             }else{
-                cell.scoreLabel.text = "\(friendArray[indexPath.row].todayScore)"
+                cell.scoreLabel.text = "\(friendArray[indexPath.row].highScore)"
             }
             
             cell.profileImage.downloadedFrom(link: friendArray[indexPath.row].imageURL)

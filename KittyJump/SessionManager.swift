@@ -28,7 +28,20 @@ class SharingManager {
             userDefaults.set((lifetimeScore), forKey: "LifetimeScore")
         }
     }
-    var itemStates: [String] = ["inCloset", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore"] {
+     
+    var itemStates: [String] = ["inCloset",
+                                "inCloset",
+                                "inCloset",
+                                "inCloset",
+                                "inStore",
+                                "inCloset",
+                                "inStore",
+                                "inCloset",
+                                "inStore",
+                                "inStore",
+                                "inCloset",
+                                "inStore",
+                                "inStore"] {
         didSet {
             userDefaults.set(itemStates, forKey: "itemStates")
         }
@@ -100,6 +113,9 @@ class SharingManager {
             itemStates = storedItemStates as! [String]
         }
         else {
+            userDefaults.set(itemStates, forKey: "itemStates")
+        }
+        if( itemStates.count != storedItemStates?.count ){
             userDefaults.set(itemStates, forKey: "itemStates")
         }
         let storedCatImageString = userDefaults.string(forKey: "CatImageString")

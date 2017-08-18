@@ -61,7 +61,6 @@ PODS:
   - SpriteKitEasingSwift (0.10)
   - SwiftyGif (3.0.3)
   - SwiftyJSON (3.1.4)
-  - SwiftyOnboard (1.3.3)
 
 DEPENDENCIES:
   - FacebookCore
@@ -73,7 +72,6 @@ DEPENDENCIES:
   - SpriteKitEasingSwift
   - SwiftyGif
   - SwiftyJSON
-  - SwiftyOnboard
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -94,8 +92,7 @@ SPEC CHECKSUMS:
   SpriteKitEasingSwift: 511748b42a203e93a800dc6cd07f71e8b37c6401
   SwiftyGif: 89a0bb19709bdb6990e10405ad456d8bea804a65
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  SwiftyOnboard: 349a04c16751c26d63c80ee394e3250b2d023816
 
-PODFILE CHECKSUM: b1f6730321e8e9c303f68fbd6e42818d4b188496
+PODFILE CHECKSUM: a086e02503f07a48bbc7d0dceea48f44c1f1eae7
 
 COCOAPODS: 1.2.1

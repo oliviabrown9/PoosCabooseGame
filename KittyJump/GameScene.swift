@@ -33,10 +33,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gamePaused = false
     var pauseButton:SKSpriteNode!
     var soundButton:SKSpriteNode!
+    var showBagAtEvery:Int = Int(arc4random_uniform(10)) + 15;
     
-    let trainAlpha = 1;
-    let trackAlpha = 0.4;
-    let grassAlpha = 0.7;
+    //    let trainAlpha = 1;
+    //    let trackAlpha = 0.4;
+    //    let grassAlpha = 0.7;
     var bonusPoint = 100;
     
     // Label for current score
@@ -141,6 +142,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         beforeColorIndex = [0, 1, 2].randomItem()
         
+        
         stepSpeed = 0
         stepPos = 0
         createHud()
@@ -158,38 +160,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func switchJoint(iWagon: RightTrain) {
         var bonusFound = false;
         let coinStatus = iWagon.userData?.value(forKey: "coin") as! String;
+        print("selected is " + coinStatus);
         bonusFound = ((coinStatus ).contains("yes"))
         if(bonusFound){
-                
-//                var bonusText = 0
-//                
-//                if score < 10 {
-//                    bonusText = 10
-//                }
-//                else if score > 10 && score <= 20 {
-//                    bonusText = 25
-//                }
-//                else if score > 20 && score <= 40 {
-//                    bonusText = 50
-//                }
-//                else if score > 40 && score <= 80 {
-//                    bonusText = 100
-//                }
-//                else if score > 80 && score <= 160 {
-//                    bonusText = 150
-//                }
-//                else if score > 160 && score <= 320 {
-//                    bonusText = 200
-//                }
-//                else if score > 320 {
-//                    bonusText = 250
-//                }
-//                
-//                bonusLabel.text = "+\(bonusText)"
-//                bonusLabel.isHidden = false
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                    self.bonusLabel.isHidden = true
-//                }
             
             print("fetech name wagon_" + iWagon.name!)
             if let child = iWagon.childNode(withName: "wagon_" + iWagon.name!) as? SKSpriteNode {
@@ -197,7 +170,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         if let jointN = joint1 {
-            
             
             self.physicsWorld.remove(jointN)
             
@@ -244,36 +216,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         bonusFound = ((coinStatus ).contains("yes"))
         if(bonusFound){
-            
-//            var bonusText = 0
-//            
-//            if score < 10 {
-//                bonusText = 10
-//            }
-//            else if score > 10 && score <= 20 {
-//                bonusText = 25
-//            }
-//            else if score > 20 && score <= 40 {
-//                bonusText = 50
-//            }
-//            else if score > 40 && score <= 80 {
-//                bonusText = 100
-//            }
-//            else if score > 80 && score <= 160 {
-//                bonusText = 150
-//            }
-//            else if score > 160 && score <= 320 {
-//                bonusText = 200
-//            }
-//            else if score > 320 {
-//                bonusText = 250
-//            }
-//            
-//            bonusLabel.text = "+\(bonusText)"
-//            bonusLabel.isHidden = false
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                self.bonusLabel.isHidden = true
-//            }
             
             print("fetech name wagon_" + iWagon.name!)
             if let child = iWagon.childNode(withName: "wagon_" + iWagon.name!) as? SKSpriteNode {
@@ -332,12 +274,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             Label.highScoreLabel.text = "Best: \(score)"
         }
         
-            if(score >= 5 && score < 10){
-                timeOfTrain =  4.2;
+        if(score >= 5 && score < 10){
+            timeOfTrain =  4.2;
+        } else
+            if(score >= 10 && score < 20){
+                timeOfTrain =  4.0;
             } else
-                if(score >= 10 && score < 20){
-                    timeOfTrain =  4.0;
-                } else
                 if(score >= 20 && score < 40){
                     timeOfTrain =  3.8;
                 } else
@@ -358,7 +300,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
     }
-    
     func setSoundButton() {
         if soundState == true {
             soundButton.texture = SKTexture(imageNamed: "sound")
@@ -478,7 +419,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hud.name = "hud"
         scoreLabel = SKLabelNode(fontNamed: "Avenir-Medium")
         scoreLabel.zPosition = 1
-        scoreLabel.fontSize = 200
+        scoreLabel.fontSize = 160
         scoreLabel.text = "0"
         
         scoreLabel.fontColor = UIColor.white
@@ -497,8 +438,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hud.addChild(bonusLabel)
         
         bonusLabel.isHidden = true
-
-        //
+        
         coinLabel = SKLabelNode(fontNamed: "Avenir-Heavy")
         coinLabel.zPosition = 1
         coinLabel.fontSize = 40
@@ -507,7 +447,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinLabel.position = CGPoint(x: self.frame.maxX - 75 , y: 130)
         coinLabel.verticalAlignmentMode = .center
         hud.addChild(coinLabel)
-        //
         
         coinImage = SKSpriteNode(imageNamed: "coin")
         coinImage.size.height = 36
@@ -517,10 +456,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         kittyCamera.addChild(hud)
-        
-        Label.createScoreHelper()
-        Label.scoreLabelHelper.position = CGPoint(x: self.frame.midX, y: -(hud.size.height/2)+60)
-        hud.addChild(Label.scoreLabelHelper)
         
         Label.createHighScore()
         Label.highScoreLabel.position = CGPoint(x: self.frame.midX, y: 130)
@@ -550,13 +485,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func setupTrackArray() {
         for i in 0...5 {
             let trainTrack = TrainTrack()
-            if i == 5 {
-                trainTrack.alpha = 1
-            }
             trainTrack.position = getTrainTrackPosition(row : i)
             trainTrack.name = "Track" + String(i)
             trainTrack.zPosition = 1
-            trainTrack.alpha = CGFloat(trackAlpha)
             self.addChild(trainTrack)
             trainTrackArray.append(trainTrack)
         }
@@ -569,6 +500,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupNewTrack(index: Int, posY: CGFloat) {
+        print("setting up new track \(index)")
         let nodeName = "Track" + String(index)
         self.enumerateChildNodes(withName: nodeName) {
             node, stop in
@@ -579,7 +511,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         trainTrack.position.y = posY
         trainTrack.name = nodeName
         trainTrack.zPosition = 1
-        trainTrack.alpha = CGFloat(trackAlpha)
         self.addChild(trainTrack)
     }
     
@@ -587,11 +518,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for i in 0...5 {
             let grass = Grass()
             if i == 5 {
-                grass.alpha = 1
+//                grass.alpha = 1
             }
+            
+            
+            let nodeName = "Grass" + String(i)
+            grass.name = nodeName;
+            
+            
             grass.position = getGrassPosition(row: i)
             grass.zPosition = 1
-            grass.alpha = CGFloat(grassAlpha)
+            //            grass.alpha = CGFloat(grassAlpha)
             self.addChild(grass)
             grassArray.append(grass)
         }
@@ -613,6 +550,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return CGPoint(x: x, y: posY)
     }
     
+    
     func setupFirstRightAndLeftTrains() {
         isFirstTrain = true
         var posY1: CGFloat = newTrainPosY + 20 + 45
@@ -625,8 +563,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 posY2 = -1000
             }
             
-//            if( i > 0 && ((i%randRange(lower: 2,upper: 6)) == 0)){
-                if( i > 0 && ((i%2) == 0)){
+            //            if( i > 0 && ((i%randRange(lower: 2,upper: 6)) == 0)){
+            if( i > 0 && ((i%5) == 0)){
                 coins = "yes";
             }else{
                 coins = "no";
@@ -640,21 +578,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rightTrain.userData?.setValue(coins, forKey: "coin")
             currentRightTrain = rightTrain
             
-            var wagon = createWagon(bonus: coins.contains("yes"))
+            var wagon = createWagon(bonus: false)
             wagon.name = "wagon_" + rightTrain.name!
+            print("create name wagon_" + rightTrain.name!)
             rightTrain.zPosition = 2
             rightTrain.addChild(wagon)
-            rightTrain.alpha = CGFloat(trainAlpha);
+            //            rightTrain.alpha = CGFloat(trainAlpha);
             self.addChild(rightTrain)
             rightTrainArray.append(rightTrain);
             
-                if( i > 0 && ((i%randRange(lower: 2,upper: 6)) == 0)){
-//            if( i > 0 && ((i%2) == 0)){
+            
+            
+            //            if( i > 0 && ((i%randRange(lower: 2,upper: 6)) == 0)){
+            if( i > 0 && (((i+1)%5) == 0)){
                 coins = "yes";
             }else{
                 coins = "no";
                 
             }
+            
             
             // Left train
             let leftTrain = LeftTrain()
@@ -664,18 +606,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             leftTrain.userData = NSMutableDictionary();
             leftTrain.userData?.setValue(coins, forKey: "coin")
             currentLeftTrain = leftTrain
-            wagon = createWagon(rightSide: false,bonus: coins.contains("yes"))
+            wagon = createWagon(rightSide: false,bonus: false)
             leftTrain.zPosition = 2
             wagon.name = "wagon_"+leftTrain.name!
+            print("create name wagon_\(String(describing: leftTrain.name))")
             leftTrain.addChild(wagon)
-            leftTrain.alpha = CGFloat(trainAlpha);
+            //            leftTrain.alpha = CGFloat(trainAlpha);
             self.addChild(leftTrain)
             leftTrainArray.append(leftTrain)
         }
     }
     
     func createWagon(rightSide: Bool = true, bonus: Bool = false) -> SKSpriteNode {
-       
+        
         // Get random color except the color before
         var restColorIndices = [Int]()
         for i in 0...2 {
@@ -697,6 +640,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         default:
             wagon = SKSpriteNode()
         }
+        
         
         // Get color image
         // Locate imate at specified point
@@ -733,17 +677,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if(bonus){
                 print("bonus exist")
                 
-
+                
                 var coin:SKSpriteNode
                 let size = CGSize(width: 110, height: 200)
-            coin = SKSpriteNode(imageNamed:"poos coin bag")
-            coin.scale(to: size)
-            coin.name = "bonus";
-            coin.position.y =  wagon.position.y + coin.size.height  + 10
-            coin.position.x =  +(wagon.size.width/2) - coin.size.width - 40
-            coin.zPosition = 2
+                coin = SKSpriteNode(imageNamed:"poos coin bag")
+                coin.scale(to: size)
+                coin.name = "bonus";
+                coin.position.y =  wagon.position.y + coin.size.height  + 10
+                coin.position.x =  +(wagon.size.width/2) - coin.size.width - 40
+                coin.zPosition = 2
                 
-            wagon.addChild(coin);
+                wagon.addChild(coin);
             }else{
                 
                 print("bonus not available")
@@ -754,18 +698,46 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return wagon
     }
     
+    var index = 0;
     // Set the train in motion
     func moveRightWagon2() {
-        
         // Track height: 20 & train height: 45
         let yPositionC: CGFloat = CGFloat(newTrainPosY + 20 + 45)
         
         newRightTrainIndex += 1
+        index+=1
+        print("newRightTrainIndex \(newRightTrainIndex)")
         if newRightTrainIndex > countTrainArray-1 {
             newRightTrainIndex %= countTrainArray
         }
         
         let irWagon = rightTrainArray[newRightTrainIndex]
+//        let irWagon = createNewRightTrain(pos: newRightTrainIndex);
+        if(index%showBagAtEvery == 0){
+            print("bonus exist")
+            
+            irWagon.userData = NSMutableDictionary();
+            irWagon.userData?.setValue("yes", forKey: "coin")
+            
+            var coin:SKSpriteNode
+            let size = CGSize(width: 110, height: 200)
+            coin = SKSpriteNode(imageNamed:"poos coin bag")
+            coin.scale(to: size)
+            coin.name = "bonus";
+            
+            print("fetech name wagon1_" + irWagon.name!)
+
+            if let child = irWagon.childNode(withName: "wagon_" + irWagon.name!) as? SKSpriteNode {
+                
+                coin.position.y = (child.position.y) + coin.size.height + 10
+                
+                coin.position.x =  -(child.size.width/2) + coin.size.width + 50
+                coin.zPosition = 2
+                child.addChild(coin);
+            }
+            showBagAtEvery = Int(arc4random_uniform(10)) + 15
+        }
+
         var posInit = CGPoint.zero
         var posTo = CGPoint.zero
         
@@ -795,6 +767,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func moveLeftTrain2() {
+        index+=1
         
         // Track height: 20 & train height: 45
         let yPositionC: CGFloat = CGFloat(newTrainPosY + 20 + 45)
@@ -805,6 +778,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         let ilTrain = leftTrainArray[newLeftTrainIndex]
+        
+        
+        if(index%showBagAtEvery == 0){
+            print("bonus exist")
+            
+            ilTrain.userData = NSMutableDictionary();
+            ilTrain.userData?.setValue("yes", forKey: "coin")
+            
+            var coin:SKSpriteNode
+            let size = CGSize(width: 110, height: 200)
+            coin = SKSpriteNode(imageNamed:"poos coin bag")
+            coin.scale(to: size)
+            coin.name = "bonus";
+            
+            print("fetech name wagon1_" + ilTrain.name!)
+            
+            if let child = ilTrain.childNode(withName: "wagon_" + ilTrain.name!) as? SKSpriteNode {
+                
+                coin.position.y = (child.position.y) + coin.size.height + 10
+                
+                coin.position.x =  +(child.size.width/2) - coin.size.width - 40
+                coin.zPosition = 2
+                child.addChild(coin);
+            }
+        }
+
+        
         
         let posInit = CGPoint(x: self.frame.maxX + ilTrain.size.width/2 - stepPos,
                               y: yPositionC)
@@ -850,8 +850,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let actR2 = SKAction.move(to: posToR, duration: timeOfTrain)
             let actR = SKAction.sequence([actR1, actR2])
             irWagon.run(actR)
-            
-            print(actR.speed.description)
         }
     }
     
@@ -889,7 +887,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Contact delegate functions
     var needItme:Bool = true;
     func didBegin(_ contact: SKPhysicsContact) {
-
+        //        if(needItme){
+        //            moveRightWagon2()
+        //            moveLeftTrain2()
+        //            needItme = false;
+        //        }
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
         
@@ -926,7 +928,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     moveRightWagon2()
                     
                     changeTrackAndGrassInNewLocation()
-
+                    
                     kittyPosition = .LeftTrain
                     
                     // Remove old deadline & add new deadline
@@ -984,9 +986,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             currentTrain %= 6
         }
         
+        print("updating alphas")
+        print("count trainTrackArray \(trainTrackArray.count)")
+        
+        
+        
         let newCurrentTrainPosY = trainTrackArray[lastTrain].position.y + trainDiffPosition
         setupNewTrack(index: currentTrain, posY: newCurrentTrainPosY)
+        
         grassArray[currentTrain].position.y = grassArray[lastTrain].position.y + trainDiffPosition
+//        if let child = self.childNode(withName: "Track0") as? SKSpriteNode {
+//            child.alpha = 0;
+//        }
+        
+        if (currentTrain > 2){
+            for i in 0...trainTrackArray.count-1 {
+                print("index \(i)")
+            }
+            for j in 0...grassArray.count-1 {
+                print("index j \(j)")
+            }
+            }
+        grassArray[currentTrain].alpha = 1
+        trainTrackArray[currentTrain].alpha = 1
+        grassArray[lastTrain].alpha = 1
+        trainTrackArray[lastTrain].alpha = 1
     }
     
     // SKScene functions
@@ -1016,7 +1040,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func updateNodesYPosition(){
         let temp: CGFloat = 1000
         var newYPos: CGFloat = 0
-        
         // Track & grass
         for i in 0...5 {
             
@@ -1148,8 +1171,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.isPaused = true
         // Segue to gameOverVC
         
+        ////        App.gViewController = se;
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-             
+            
             self.viewController?.performSegue(withIdentifier: "toGameOver", sender: self.viewController)
         }
     }
