@@ -133,6 +133,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
             backgroundMusicPlayer.delegate = self
             backgroundMusicPlayer.numberOfLoops = 0
             backgroundMusicPlayer.prepareToPlay()
+            
             if (!soundState) {
             backgroundMusicPlayer.play()
             }

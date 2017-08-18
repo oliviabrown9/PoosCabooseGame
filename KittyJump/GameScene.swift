@@ -43,6 +43,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel: SKLabelNode!
     var coinLabel: SKLabelNode!
     var coinImage: SKSpriteNode!
+    var bonusLabel: SKLabelNode!
     
     // Enum for train direction
     enum kittyCurrentTrain {
@@ -159,6 +160,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let coinStatus = iWagon.userData?.value(forKey: "coin") as! String;
         bonusFound = ((coinStatus ).contains("yes"))
         if(bonusFound){
+                
+                var bonusText = 0
+                
+                if score < 10 {
+                    bonusText = 10
+                }
+                else if score > 10 && score <= 20 {
+                    bonusText = 25
+                }
+                else if score > 20 && score <= 40 {
+                    bonusText = 50
+                }
+                else if score > 40 && score <= 80 {
+                    bonusText = 100
+                }
+                else if score > 80 && score <= 160 {
+                    bonusText = 150
+                }
+                else if score > 160 && score <= 320 {
+                    bonusText = 200
+                }
+                else if score > 320 {
+                    bonusText = 250
+                }
+                
+                bonusLabel.text = "+\(bonusText)"
+                bonusLabel.isHidden = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.bonusLabel.isHidden = true
+                }
             
             print("fetech name wagon_" + iWagon.name!)
             if let child = iWagon.childNode(withName: "wagon_" + iWagon.name!) as? SKSpriteNode {
@@ -166,6 +197,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         if let jointN = joint1 {
+            
             
             self.physicsWorld.remove(jointN)
             
@@ -212,6 +244,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         bonusFound = ((coinStatus ).contains("yes"))
         if(bonusFound){
+            
+            var bonusText = 0
+            
+            if score < 10 {
+                bonusText = 10
+            }
+            else if score > 10 && score <= 20 {
+                bonusText = 25
+            }
+            else if score > 20 && score <= 40 {
+                bonusText = 50
+            }
+            else if score > 40 && score <= 80 {
+                bonusText = 100
+            }
+            else if score > 80 && score <= 160 {
+                bonusText = 150
+            }
+            else if score > 160 && score <= 320 {
+                bonusText = 200
+            }
+            else if score > 320 {
+                bonusText = 250
+            }
+            
+            bonusLabel.text = "+\(bonusText)"
+            bonusLabel.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.bonusLabel.isHidden = true
+            }
             
             print("fetech name wagon_" + iWagon.name!)
             if let child = iWagon.childNode(withName: "wagon_" + iWagon.name!) as? SKSpriteNode {
@@ -399,13 +461,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.verticalAlignmentMode = .center
         hud.addChild(scoreLabel)
         
+        
+        bonusLabel = SKLabelNode(fontNamed: "Avenir-Heavy")
+        bonusLabel.zPosition = 1
+        bonusLabel.fontSize = 40
+        bonusLabel.text = "\(bonusPoint)"
+        bonusLabel.fontColor = UIColor.white
+        bonusLabel.position = CGPoint(x: self.frame.maxX, y: 80)
+        bonusLabel.verticalAlignmentMode = .center
+        hud.addChild(bonusLabel)
+        
+        bonusLabel.isHidden = true
+
         //
         coinLabel = SKLabelNode(fontNamed: "Avenir-Heavy")
         coinLabel.zPosition = 1
         coinLabel.fontSize = 40
         coinLabel.text = "\(SharingManager.sharedInstance.lifetimeScore)"
-        //        coinLabel.text = "351624"
-        
         coinLabel.fontColor = UIColor.white
         coinLabel.position = CGPoint(x: self.frame.maxX - 75 , y: 130)
         coinLabel.verticalAlignmentMode = .center
@@ -528,8 +600,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 posY2 = -1000
             }
             
-            if( i > 0 && ((i%randRange(lower: 2,upper: 6)) == 0)){
-//                if( i > 0 && ((i%2) == 0)){
+//            if( i > 0 && ((i%randRange(lower: 2,upper: 6)) == 0)){
+                if( i > 0 && ((i%2) == 0)){
                 coins = "yes";
             }else{
                 coins = "no";

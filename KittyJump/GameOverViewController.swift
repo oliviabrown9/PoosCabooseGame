@@ -316,7 +316,6 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         
         highScoreLabel.text = "Best: \(highScore)"
         mostRecentScore.text = "\(SharingManager.sharedInstance.currentScore)"
-        // Setting text of labels to stored value
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
