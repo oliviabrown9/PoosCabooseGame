@@ -49,6 +49,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 friendArray.removeAll()
                 getFriendsScore()
+                self.friendArray.sort { Int($0.todayScore)! > Int($1.todayScore)! }
                 tableView.reloadData()
             }
         }
@@ -122,7 +123,13 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.reloadData()
     }
     
+    
+    
     func getWorldScore(){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        let dateString = formatter.string(from: date)
+        //let localDate = formatter.date(from: dateString)
         print("firebase connected")
         let ref = Database.database().reference()
         ref.child("players").queryOrdered(byChild: facebookId)
@@ -136,7 +143,11 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         let highScore = json?["highScore"] as! Int;
                         let profile = json?["profile"] as! NSDictionary;
                         let TodayshighScore = json?["TodayshighScore"] as! NSDictionary;
-                        let todayhigh = TodayshighScore["score"] as! Int
+                        var todayhigh = 0
+                        if TodayshighScore["date"] as! String == dateString {
+                            todayhigh = TodayshighScore["score"] as! Int
+                                
+                    }
                         let name = profile["name"] as! String
                         let imageString = ((profile["picture"] as! NSDictionary)["data"]  as! NSDictionary)["url"] as! String
                         print("today \(todayhigh) alltime \(highScore) name \(name)")
@@ -157,6 +168,9 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var score: String = "";
         var todaysHighScore: String = ""
         var imageString: String = ""
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        let dateString = formatter.string(from: date)
         
         if today == false {
             self.ref?.child("players").child(fb_user).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -185,7 +199,12 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if self.today == true {
                 let foundFriend = Friend(name: name, highScore: score, todayScore: todaysHighScore, imageURL: imageString)
                 self.friendArray.append(foundFriend)
+                if self.today == false {
                 self.friendArray.sort { Int($0.highScore)! > Int($1.highScore)! }
+                }
+                else {
+                    self.friendArray.sort { Int($0.todayScore)! > Int($1.todayScore)! }
+                }
                 self.tableView.reloadData()
             }
         }) { (error) in
@@ -204,7 +223,14 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         self.ref?.child("players").child(fb_user).child("TodayshighScore").observeSingleEvent(of: .value, with: { (snapshot) in
-            todaysHighScore = String(describing: snapshot.childSnapshot(forPath: "score").value!)
+            let todayDate = String(describing: snapshot.childSnapshot(forPath: "date").value!)
+            if todayDate == dateString {
+                todaysHighScore = String(describing: snapshot.childSnapshot(forPath: "score").value!)
+            }
+            else {
+                todaysHighScore = "0"
+            }
+            
             
         }) { (error) in
             print(error.localizedDescription)
@@ -328,7 +354,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if today == false {
                 cell.scoreLabel.text = "\(friendArray[indexPath.row].highScore)"
             }else{
-                cell.scoreLabel.text = "\(friendArray[indexPath.row].highScore)"
+                cell.scoreLabel.text = "\(friendArray[indexPath.row].todayScore)"
             }
             
             cell.profileImage.downloadedFrom(link: friendArray[indexPath.row].imageURL)

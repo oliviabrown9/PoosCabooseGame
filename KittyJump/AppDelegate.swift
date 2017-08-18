@@ -15,7 +15,7 @@ import FBSDKLoginKit
 import FacebookLogin
 import FacebookCore
 
-
+let date = Date()
 var myItemStates: [String] = []
 
 @UIApplicationMain
@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate {
     
     var window: UIWindow?
     var ref: DatabaseReference?
-    let date = Date()
     var facebookId = "";
     var gViewController: UIViewController?
     var mInterstitial: GADInterstitial!
@@ -89,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate {
             
             let formatter = DateFormatter()
             formatter.dateFormat = "dd-MM-yyyy"
-            let dateString = formatter.string(from: self.date)
+            let dateString = formatter.string(from: date)
 
             var dbDateString:String = "";
             self.ref?.child("players").child(facebookId).child("TodayshighScore").observeSingleEvent(of: .value, with: { (snapshot) in
