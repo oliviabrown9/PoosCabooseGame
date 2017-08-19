@@ -239,7 +239,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         var coinsEarned = 0
         
-        if(bonusFound){
+        if(bonusFound) {
+            if (!soundState) {
+                let newHighScoreSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "foundCoins", ofType: "mp3")!)
+                do {
+                    let audioSession = AVAudioSession.sharedInstance()
+                    try!audioSession.setCategory(AVAudioSessionCategoryAmbient, with: AVAudioSessionCategoryOptions.mixWithOthers)
+                    soundEffectPlayer = try AVAudioPlayer(contentsOf: newHighScoreSound as URL)
+                    soundEffectPlayer.numberOfLoops = 0
+                    soundEffectPlayer.prepareToPlay()
+                    soundEffectPlayer.play()
+                } catch {
+                    print("Cannot play the file")
+                }
+            }
             roundCoins = roundCoins + (bonusPoint * multiplier)
             coinsEarned = (bonusPoint * multiplier) + multiplier
             bonusLabel.text = "+\(coinsEarned)"
@@ -724,8 +737,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             coin = SKSpriteNode(imageNamed:"poos coin bag")
             coin.scale(to: size)
             coin.name = "bonus";
-            
-            print("fetech name wagon1_" + irWagon.name!)
 
             if let child = irWagon.childNode(withName: "wagon_" + irWagon.name!) as? SKSpriteNode {
                 
@@ -802,9 +813,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 coin.zPosition = 2
                 child.addChild(coin);
             }
+//            showBagAtEvery = Int(arc4random_uniform(10)) + 15
         }
-
-        
         
         let posInit = CGPoint(x: self.frame.maxX + ilTrain.size.width/2 - stepPos,
                               y: yPositionC)
