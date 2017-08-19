@@ -248,6 +248,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     soundEffectPlayer = try AVAudioPlayer(contentsOf: newHighScoreSound as URL)
                     soundEffectPlayer.numberOfLoops = 0
                     soundEffectPlayer.prepareToPlay()
+                    soundEffectPlayer.volume = 0.5
                     soundEffectPlayer.play()
                 } catch {
                     print("Cannot play the file")
@@ -401,6 +402,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                 soundEffectPlayer = try AVAudioPlayer(contentsOf: newHighScoreSound as URL)
                                 soundEffectPlayer.numberOfLoops = 0
                                 soundEffectPlayer.prepareToPlay()
+                                soundEffectPlayer.volume = 1
                                 soundEffectPlayer.play()
                             } catch {
                                 print("Cannot play the file")
@@ -1152,7 +1154,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 soundEffectPlayer = try AVAudioPlayer(contentsOf: stopSound as URL)
                 soundEffectPlayer.numberOfLoops = 1
                 soundEffectPlayer.prepareToPlay()
-                soundEffectPlayer.setVolume(0.7, fadeDuration: 0)
+                soundEffectPlayer.volume = 0.7
                 soundEffectPlayer.play()
             } catch {
                 print("Cannot play the file")
