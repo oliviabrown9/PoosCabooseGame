@@ -70,8 +70,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     @IBOutlet weak var scrollView: UIScrollView!
     var confirm: Bool = false
-    //var coins = SharingManager.sharedInstance.lifetimeScore
-    var coins = 10000
+    var coins = SharingManager.sharedInstance.lifetimeScore
     var cost: Int = 0
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
@@ -156,7 +155,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         if(FBSDKAccessToken.current() != nil){
         facebookId = FBSDKAccessToken.current().userID;
         
-        }else{
+        } else {
             removeUserDefaults();
         }
         ref = Database.database().reference()
@@ -205,9 +204,14 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 unlocked += 1
             }
         }
-        let unlockedString: String = "\(unlocked) of 12 unlocked"
+        let unlockedString: String = "\(unlocked) of 13 unlocked"
         let attributedText = NSMutableAttributedString(string: unlockedString, attributes: [NSFontAttributeName:UIFont(name: "Avenir-Medium", size: 18.0)!])
+        if unlocked < 10 {
         attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:0,length:1))
+        }
+        else {
+            attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:0,length:2))
+        }
         attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:5,length:1))
         unlockedLabel.attributedText = attributedText
     }
@@ -280,64 +284,65 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         slide0.image.image = #imageLiteral(resourceName: "ogStore")
         slide0.titleLabel.text = "og poos"
-        slide4.costLabel.text = "0"
         slide0.imageHeight.constant = 216
+        slide0.multiplierLabel.text = "coin multiplier: 1x"
         
         slide1.image.image = #imageLiteral(resourceName: "trotterStore")
         slide1.titleLabel.text = "poos trotter"
         slide1.imageHeight.constant = 245
-        slide4.costLabel.text = "0"
+        slide1.multiplierLabel.text = "coin multiplier: 2x"
         
         slide2.image.image = #imageLiteral(resourceName: "rateStore")
         slide2.titleLabel.text = "pirate poos"
-        slide4.costLabel.text = "0"
         slide2.imageHeight.constant = 217
+        slide2.multiplierLabel.text = "coin multiplier: 2x"
         
         slide3.image.image = #imageLiteral(resourceName: "properStore")
         slide3.titleLabel.text = "proper poos"
-        slide4.costLabel.text = "0"
         slide3.imageHeight.constant = 230
+        slide3.multiplierLabel.text = "coin multiplier: 3x"
         
         slide4.image.image = #imageLiteral(resourceName: "pepeStore")
         slide4.titleLabel.text = "pepe le poos"
-        slide4.costLabel.text = "2,000"
         slide4.imageHeight.constant = 242
+        slide4.multiplierLabel.text = "coin multiplier: 3x"
         
         
         slide5.image.image = #imageLiteral(resourceName: "quaStore")
         slide5.titleLabel.text = "quapoos"
         slide5.imageHeight.constant = 217
+        slide5.multiplierLabel.text = "coin multiplier: 4x"
         
         slide6.image.image = #imageLiteral(resourceName: "winnieStore")
         slide6.titleLabel.text = "winnie the poos"
-        slide6.costLabel.text = "5,000"
         slide6.imageHeight.constant = 239
+        slide6.multiplierLabel.text = "coin multiplier: 4x"
         
         slide7.image.image = #imageLiteral(resourceName: "pousStore")
         slide7.titleLabel.text = "le pous"
-        slide7.costLabel.text = "10,000"
         slide7.imageHeight.constant = 208
+        slide7.multiplierLabel.text = "coin multiplier: 5x"
         
         
         slide8.image.image = #imageLiteral(resourceName: "elvisStore")
         slide8.titleLabel.text = "elvis poosley"
-        slide8.costLabel.text = "10,000"
         slide8.imageHeight.constant = 227
-        
+        slide8.multiplierLabel.text = "coin multiplier: 5x"
         
         slide9.image.image = #imageLiteral(resourceName: "fieriStore")
         slide9.titleLabel.text = "poos fieri"
-        slide9.costLabel.text = "10,000"
         slide9.imageHeight.constant = 222
+        slide9.multiplierLabel.text = "coin multiplier: 5x"
         
         slide10.image.image = #imageLiteral(resourceName: "bootsStore")
         slide10.titleLabel.text = "poos in boots"
         slide10.imageHeight.constant = 253
+        slide10.multiplierLabel.text = "coin multiplier: 6x"
         
         slide11.image.image = #imageLiteral(resourceName: "yonceStore")
         slide11.titleLabel.text = "poosyoncé"
-        slide11.costLabel.text = "25,000"
         slide11.imageHeight.constant = 195
+        slide11.multiplierLabel.text = "coin multiplier: 6x"
         
         
         if coins >= 100000 {
@@ -355,6 +360,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             slide12.titleLabel.text = "?????"
             slide12.imageHeight.constant = 207
         }
+        slide12.multiplierLabel.text = "coin multiplier: 10x"
         slide12.costLabel.text = "100,000"
         
         return [slide0, slide1, slide2, slide3, slide4, slide5, slide6, slide7, slide8, slide9, slide10, slide11, slide12]

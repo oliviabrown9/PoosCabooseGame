@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,32 +23,32 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1r-pY-zWV">
-                    <rect key="frame" x="159" y="477" width="57.5" height="41"/>
+                    <rect key="frame" x="159" y="472" width="57.5" height="41"/>
                     <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="30"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="FbA-pU-bLA">
-                    <rect key="frame" x="104" y="533" width="103" height="33"/>
+                    <rect key="frame" x="104" y="548" width="103" height="33"/>
                     <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="24"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="poos coin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P44-gr-4hj">
-                    <rect key="frame" x="104" y="556" width="53" height="17"/>
+                    <rect key="frame" x="104" y="571" width="53" height="17"/>
                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="nlP-8Y-08X">
-                    <rect key="frame" x="60" y="535" width="42" height="38"/>
+                    <rect key="frame" x="60" y="550" width="42" height="38"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="38" id="xAT-Bu-DuJ"/>
                         <constraint firstAttribute="width" constant="42" id="zm4-cx-PHL"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzz-Nx-tLw">
-                    <rect key="frame" x="215" y="534" width="100" height="40"/>
+                    <rect key="frame" x="215" y="549" width="100" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="BMC-PE-FX2"/>
                         <constraint firstAttribute="height" constant="40" id="vTy-Z1-ZcX"/>
@@ -60,7 +60,7 @@
                     </state>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIk-NQ-2LA">
-                    <rect key="frame" x="137" y="534" width="100" height="40"/>
+                    <rect key="frame" x="137" y="549" width="100" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="06f-9d-NpD"/>
                         <constraint firstAttribute="width" constant="100" id="aoI-jR-Uzm"/>
@@ -71,9 +71,17 @@
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="multiplier" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ha7-tc-dOm">
+                    <rect key="frame" x="155.5" y="513" width="63.5" height="19.5"/>
+                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <constraints>
+                <constraint firstItem="Ha7-tc-dOm" firstAttribute="top" secondItem="J1r-pY-zWV" secondAttribute="bottom" id="22D-1O-JAm"/>
                 <constraint firstItem="Lzz-Nx-tLw" firstAttribute="centerY" secondItem="nlP-8Y-08X" secondAttribute="centerY" id="F4B-VW-lKR"/>
+                <constraint firstItem="Ha7-tc-dOm" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JCv-9N-bMp"/>
                 <constraint firstItem="P44-gr-4hj" firstAttribute="top" secondItem="FbA-pU-bLA" secondAttribute="bottom" constant="-10" id="REF-Fe-B6y"/>
                 <constraint firstItem="VIk-NQ-2LA" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="U0V-12-GPd"/>
                 <constraint firstItem="vVl-DT-ci7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="YNS-bQ-x9f"/>
@@ -84,8 +92,8 @@
                 <constraint firstItem="VIk-NQ-2LA" firstAttribute="centerY" secondItem="Lzz-Nx-tLw" secondAttribute="centerY" id="gsp-C0-mZ9"/>
                 <constraint firstItem="nlP-8Y-08X" firstAttribute="bottom" secondItem="P44-gr-4hj" secondAttribute="bottom" id="hUG-L2-Zle"/>
                 <constraint firstItem="J1r-pY-zWV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="opu-CF-V25"/>
-                <constraint firstItem="J1r-pY-zWV" firstAttribute="top" secondItem="vVl-DT-ci7" secondAttribute="bottom" constant="20" id="qSR-Zh-p46"/>
-                <constraint firstItem="FbA-pU-bLA" firstAttribute="top" secondItem="J1r-pY-zWV" secondAttribute="bottom" constant="15" id="qjE-nc-MTr"/>
+                <constraint firstItem="J1r-pY-zWV" firstAttribute="top" secondItem="vVl-DT-ci7" secondAttribute="bottom" constant="15" id="qSR-Zh-p46"/>
+                <constraint firstItem="FbA-pU-bLA" firstAttribute="top" secondItem="J1r-pY-zWV" secondAttribute="bottom" constant="35" id="qjE-nc-MTr"/>
                 <constraint firstAttribute="bottom" secondItem="vVl-DT-ci7" secondAttribute="bottom" constant="210" id="rvC-jh-AnR"/>
                 <constraint firstItem="P44-gr-4hj" firstAttribute="leading" secondItem="FbA-pU-bLA" secondAttribute="leading" id="uxe-ZW-Rov"/>
             </constraints>
@@ -96,6 +104,7 @@
                 <outlet property="costLabel" destination="FbA-pU-bLA" id="KVS-L7-7Rg"/>
                 <outlet property="image" destination="vVl-DT-ci7" id="IHD-UF-abQ"/>
                 <outlet property="imageHeight" destination="8RK-mf-FqS" id="jTv-zq-XbU"/>
+                <outlet property="multiplierLabel" destination="Ha7-tc-dOm" id="UsK-jw-eFE"/>
                 <outlet property="titleLabel" destination="J1r-pY-zWV" id="krD-xm-cHG"/>
                 <outlet property="useButton" destination="VIk-NQ-2LA" id="dv8-n5-ZOS"/>
             </connections>
