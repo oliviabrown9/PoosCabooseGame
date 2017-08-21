@@ -251,6 +251,10 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     override func viewWillAppear(_ animated: Bool) {
         setCornerImage()
     }
+    
+    func moveToStore() {
+        performSegue(withIdentifier: "toStore", sender: self)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -258,6 +262,10 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         startOver?.isUserInteractionEnabled = true
         startOver?.addGestureRecognizer(tapGestureRecognizer)
+        
+        let catTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(moveToStore))
+        cornerImageView?.isUserInteractionEnabled = true
+        cornerImageView?.addGestureRecognizer(catTapGestureRecognizer)
         
         if playCount % 3 == 0 {
             startOver?.isUserInteractionEnabled = false

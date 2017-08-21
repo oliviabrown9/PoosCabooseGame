@@ -27,7 +27,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if today == true {
             today = false
             dayButton.setTitle("all time", for: .normal)
-            if(friendHigh.isHidden){
+            if(friendHigh.isHidden) {
                 
                 self.worldArray.sort { Int($0.highScore) > Int($1.highScore) }
                 tableView.reloadData()
@@ -104,7 +104,9 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func frindTabClicked(sender:UITapGestureRecognizer) {
         print("tap working")
         friendHigh.isHidden = false
+        friendTab.font = UIFont(name: "Avenir-Black", size: 18.0)
         worldHigh.isHidden = true
+        worldTab.font = UIFont(name: "Avenir-Medium", size: 18.0)
         tableView.reloadData()
     }
     
@@ -116,7 +118,9 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func worldTabClicked(sender:UITapGestureRecognizer) {
         print("tap working")
         friendHigh.isHidden = true
+        friendTab.font = UIFont(name: "Avenir-Medium", size: 18.0)
         worldHigh.isHidden = false
+        worldTab.font = UIFont(name: "Avenir-Black", size: 18.0)
         tableView.reloadData()
     }
     
