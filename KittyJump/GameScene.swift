@@ -162,6 +162,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let coinStatus = iWagon.userData?.value(forKey: "coin") as! String;
         print("selected is " + coinStatus);
         bonusFound = ((coinStatus ).contains("yes"))
+        print("bonus found \(bonusFound.description)")
         if(bonusFound){
             
             print("fetech name wagon_" + iWagon.name!)
@@ -215,6 +216,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("selected is \(String(describing: coinStatus))");
         
         bonusFound = ((coinStatus ).contains("yes"))
+        print("bonus found \(bonusFound.description)")
         if(bonusFound){
             
             print("fetech name wagon_" + iWagon.name!)
@@ -533,7 +535,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for i in 0...5 {
             let grass = Grass()
             if i == 5 {
-//                grass.alpha = 1
+                //                grass.alpha = 1
             }
             
             
@@ -589,8 +591,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let rightTrain = RightTrain()
             rightTrain.position = CGPoint(x:self.frame.minX + (rightTrain.size.width - rightTrain.size.width/2), y: posY1)
             rightTrain.name = "right" + String(i)
-            rightTrain.userData = NSMutableDictionary();
-            rightTrain.userData?.setValue(coins, forKey: "coin")
             currentRightTrain = rightTrain
             
             var wagon = createWagon(bonus: false)
@@ -618,13 +618,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             leftTrain.position = CGPoint(x:self.frame.maxX + leftTrain.size.width/2, y:posY2)
             leftTrain.name = "left" + String(i)
             
-            leftTrain.userData = NSMutableDictionary();
-            leftTrain.userData?.setValue(coins, forKey: "coin")
             currentLeftTrain = leftTrain
             wagon = createWagon(rightSide: false,bonus: false)
             leftTrain.zPosition = 2
             wagon.name = "wagon_"+leftTrain.name!
-            print("create name wagon_\(String(describing: leftTrain.name))")
             leftTrain.addChild(wagon)
             //            leftTrain.alpha = CGFloat(trainAlpha);
             self.addChild(leftTrain)
@@ -726,8 +723,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             newRightTrainIndex %= countTrainArray
         }
         
+        print("onus foun index \(index)")
+        print("onus foun call \(index%showBagAtEvery)")
         let irWagon = rightTrainArray[newRightTrainIndex]
-//        let irWagon = createNewRightTrain(pos: newRightTrainIndex);
+        //        let irWagon = createNewRightTrain(pos: newRightTrainIndex);
         if(index%showBagAtEvery == 0){
             print("bonus exist")
             
@@ -739,7 +738,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             coin = SKSpriteNode(imageNamed:"poos coin bag")
             coin.scale(to: size)
             coin.name = "bonus";
-
+            
             if let child = irWagon.childNode(withName: "wagon_" + irWagon.name!) as? SKSpriteNode {
                 
                 coin.position.y = (child.position.y) + coin.size.height + 10
@@ -749,8 +748,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 child.addChild(coin);
             }
             showBagAtEvery = Int(arc4random_uniform(10)) + 15
+        }else{
+            
+            irWagon.userData = NSMutableDictionary();
+            irWagon.userData?.setValue("no", forKey: "coin")
         }
-
+        
         var posInit = CGPoint.zero
         var posTo = CGPoint.zero
         
@@ -792,7 +795,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let ilTrain = leftTrainArray[newLeftTrainIndex]
         
-        
+        print("onus foun index \(index)")
+        print("onus foun call \(index%showBagAtEvery)")
         if(index%showBagAtEvery == 0){
             print("bonus exist")
             
@@ -815,7 +819,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 coin.zPosition = 2
                 child.addChild(coin);
             }
-//            showBagAtEvery = Int(arc4random_uniform(10)) + 15
+            //            showBagAtEvery = Int(arc4random_uniform(10)) + 15
+        } else{
+            
+            ilTrain.userData = NSMutableDictionary();
+            ilTrain.userData?.setValue("no", forKey: "coin")
         }
         
         let posInit = CGPoint(x: self.frame.maxX + ilTrain.size.width/2 - stepPos,
@@ -1007,9 +1015,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupNewTrack(index: currentTrain, posY: newCurrentTrainPosY)
         
         grassArray[currentTrain].position.y = grassArray[lastTrain].position.y + trainDiffPosition
-//        if let child = self.childNode(withName: "Track0") as? SKSpriteNode {
-//            child.alpha = 0;
-//        }
+        //        if let child = self.childNode(withName: "Track0") as? SKSpriteNode {
+        //            child.alpha = 0;
+        //        }
         
         if (currentTrain > 2){
             for i in 0...trainTrackArray.count-1 {
@@ -1018,7 +1026,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             for j in 0...grassArray.count-1 {
                 print("index j \(j)")
             }
-            }
+        }
         grassArray[currentTrain].alpha = 1
         trainTrackArray[currentTrain].alpha = 1
         grassArray[lastTrain].alpha = 1
@@ -1082,7 +1090,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node, stop in
                 node.removeFromParent();
             }
+            
+            
             rightTrainArray[i].position.y -= temp
+            
             rightTrainArray[i].userData = NSMutableDictionary()
             rightTrainArray[i].userData?.setValue("init", forKey: "coin")
             self.addChild(rightTrainArray[i])
@@ -1094,6 +1105,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node.removeFromParent();
             }
             leftTrainArray[i].position.y -= temp
+            
             leftTrainArray[i].userData = NSMutableDictionary()
             leftTrainArray[i].userData?.setValue("init", forKey: "coin")
             self.addChild(leftTrainArray[i])
