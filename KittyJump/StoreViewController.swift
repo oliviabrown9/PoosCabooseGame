@@ -208,7 +208,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         let attributedText = NSMutableAttributedString(string: unlockedString, attributes: [NSFontAttributeName:UIFont(name: "Avenir-Medium", size: 18.0)!])
         if unlocked < 10 {
         attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:0,length:1))
-        attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:5,length:1))
+        attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:6,length:1))
         }
         else {
             attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:0,length:2))

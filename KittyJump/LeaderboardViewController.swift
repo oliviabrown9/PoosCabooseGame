@@ -275,6 +275,9 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 return
             }
             self.getFBUserData()
+            self.getFriendsScore()
+            self.getWorldScore()
+            
             self.tableView.reloadData()
             
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)

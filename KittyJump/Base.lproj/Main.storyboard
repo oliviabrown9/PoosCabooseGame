@@ -239,7 +239,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="nFG-jk-vvE" kind="show" identifier="toStore" id="CT6-xT-rfg"/>
+                                    <segue destination="nFG-jk-vvE" kind="custom" identifier="toStore" customClass="SegueFromRight" customModule="KittyJump" customModuleProvider="target" id="CT6-xT-rfg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0AY-Ya-icI">
