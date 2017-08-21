@@ -207,50 +207,54 @@
                                     <constraint firstAttribute="height" constant="161" id="F6y-7b-bju"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ls5-2d-9gT">
-                                <rect key="frame" x="288" y="67" width="22" height="27"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ls5-2d-9gT">
+                                <rect key="frame" x="282" y="65.5" width="24" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="22" id="SbO-ik-PqI"/>
-                                    <constraint firstAttribute="height" constant="27" id="uzX-n5-daR"/>
+                                    <constraint firstAttribute="width" constant="24" id="SbO-ik-PqI"/>
+                                    <constraint firstAttribute="height" constant="30" id="uzX-n5-daR"/>
                                 </constraints>
-                                <state key="normal" image="share"/>
+                                <state key="normal" image="sixtyShare"/>
+                                <state key="highlighted" image="share"/>
                                 <connections>
                                     <action selector="shareButtonTapped:" destination="doZ-1J-RsL" eventType="touchUpInside" id="DaC-25-M4E"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIf-dk-mzR">
-                                <rect key="frame" x="330" y="68" width="25" height="25"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIf-dk-mzR">
+                                <rect key="frame" x="326" y="65.5" width="29" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="4j7-Sd-kIK"/>
-                                    <constraint firstAttribute="width" constant="25" id="mOX-9h-lFk"/>
+                                    <constraint firstAttribute="height" constant="30" id="4j7-Sd-kIK"/>
+                                    <constraint firstAttribute="width" constant="29" id="mOX-9h-lFk"/>
                                 </constraints>
-                                <state key="normal" image="gear"/>
+                                <state key="normal" image="sixtyPref"/>
+                                <state key="highlighted" image="gear"/>
                                 <connections>
                                     <action selector="preferencesButtonTapped:" destination="doZ-1J-RsL" eventType="touchUpInside" id="VuG-S0-uIY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61j-Pl-6Nf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61j-Pl-6Nf">
                                 <rect key="frame" x="311" y="317.5" width="44" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="Ntj-nv-H4Z"/>
                                     <constraint firstAttribute="height" constant="32" id="iX8-QD-gAw"/>
                                 </constraints>
-                                <state key="normal" image="pooses">
+                                <state key="normal" image="sixtyPooses">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="pooses"/>
                                 <connections>
                                     <segue destination="nFG-jk-vvE" kind="custom" identifier="toStore" customClass="SegueFromRight" customModule="KittyJump" customModuleProvider="target" id="CT6-xT-rfg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0AY-Ya-icI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0AY-Ya-icI">
                                 <rect key="frame" x="16" y="318.5" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="6EL-Du-ob1"/>
                                     <constraint firstAttribute="height" constant="30" id="uzf-rB-FP3"/>
                                 </constraints>
-                                <state key="normal" image="leaderboard">
+                                <state key="normal" image="sixtyLeaderboard">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="leaderboard"/>
                                 <connections>
                                     <segue destination="hhO-ES-dCX" kind="custom" identifier="toLeaderboard" customClass="SegueFromLeft" customModule="KittyJump" customModuleProvider="target" id="UQe-gv-FnX"/>
                                 </connections>
@@ -381,6 +385,7 @@
                         <outlet property="removeAdsButton" destination="Xoe-9X-EGq" id="nwx-0t-izW"/>
                         <outlet property="restorePurchasesButton" destination="Fff-AA-23A" id="IuL-pM-m7n"/>
                         <outlet property="startOver" destination="RIt-Zv-u3b" id="D0g-pl-bqO"/>
+                        <outlet property="storeButton" destination="61j-Pl-6Nf" id="63C-R9-R8q"/>
                         <segue destination="S1n-et-zFN" kind="unwind" identifier="unwindToHomeView" unwindAction="unwindToHomeViewWithSender:" id="SBm-1F-aJT"/>
                     </connections>
                 </viewController>
@@ -422,7 +427,8 @@
                                     <constraint firstAttribute="width" constant="16" id="VRO-Ga-s2e"/>
                                     <constraint firstAttribute="height" constant="32" id="diV-pF-815"/>
                                 </constraints>
-                                <state key="normal" image="arrow"/>
+                                <state key="normal" image="sixtyRight"/>
+                                <state key="highlighted" image="arrow"/>
                                 <connections>
                                     <action selector="backClicked:" destination="hhO-ES-dCX" eventType="touchUpInside" id="Ich-0g-lgw"/>
                                 </connections>
@@ -660,7 +666,7 @@
                                     <action selector="backButtonPressed:" destination="nFG-jk-vvE" eventType="touchUpInside" id="gmH-63-RQe"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="zcd-I4-9mF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sixtyLeft" highlightedImage="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="zcd-I4-9mF">
                                 <rect key="frame" x="16" y="317" width="16" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="Owk-93-6eS"/>
@@ -1253,6 +1259,12 @@
         <image name="peek" width="240" height="123"/>
         <image name="pooses" width="132" height="99"/>
         <image name="share" width="66" height="81"/>
+        <image name="sixtyLeaderboard" width="136" height="88"/>
+        <image name="sixtyLeft" width="42" height="66"/>
+        <image name="sixtyPooses" width="132" height="96"/>
+        <image name="sixtyPref" width="87" height="90"/>
+        <image name="sixtyRight" width="39" height="66"/>
+        <image name="sixtyShare" width="75" height="90"/>
         <image name="startOver" width="222" height="222"/>
         <image name="white" width="602" height="174"/>
         <image name="x" width="45" height="42"/>

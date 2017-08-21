@@ -99,6 +99,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         }
     }
     
+    @IBOutlet weak var storeButton: UIButton!
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         for transaction in queue.transactions {
             let t: SKPaymentTransaction = transaction
@@ -262,6 +263,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        storeButton.adjustsImageWhenHighlighted = false
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         startOver?.isUserInteractionEnabled = true

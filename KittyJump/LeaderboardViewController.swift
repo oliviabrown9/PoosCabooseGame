@@ -323,7 +323,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if today == false {
                 cell.scoreLabel.text = "\(friendArray[indexPath.row].highScore)"
             }else{
-                cell.scoreLabel.text = "\(friendArray[indexPath.row].highScore)"
+                cell.scoreLabel.text = "\(friendArray[indexPath.row].todayScore)"
             }
             
             cell.profileImage.downloadedFrom(link: friendArray[indexPath.row].imageURL)
