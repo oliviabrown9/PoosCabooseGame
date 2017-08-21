@@ -70,6 +70,8 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         friendTab.isUserInteractionEnabled = true
         friendTab.addGestureRecognizer(friend)
         
+        worldHigh.layer.cornerRadius = 2
+        friendHigh.layer.cornerRadius = 2
         worldTab.isUserInteractionEnabled = true
         
         let world = UITapGestureRecognizer(target: self, action: #selector(self.worldTabClicked))
@@ -98,8 +100,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             logoutButton.isHidden = true
         }
     }
-    
-    
     
     func frindTabClicked(sender:UITapGestureRecognizer) {
         print("tap working")

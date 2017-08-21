@@ -252,7 +252,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="hhO-ES-dCX" kind="custom" customClass="SegueFromLeft" customModule="KittyJump" customModuleProvider="target" id="UQe-gv-FnX"/>
+                                    <segue destination="hhO-ES-dCX" kind="custom" identifier="toLeaderboard" customClass="SegueFromLeft" customModule="KittyJump" customModuleProvider="target" id="UQe-gv-FnX"/>
                                 </connections>
                             </button>
                             <view hidden="YES" alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIn-H2-Iwf">
@@ -440,17 +440,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkp-Sx-fsL">
-                                <rect key="frame" x="21" y="199" width="63.5" height="2"/>
+                                <rect key="frame" x="21" y="199" width="63.5" height="3"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="zaV-0v-qcn"/>
+                                    <constraint firstAttribute="height" constant="3" id="zaV-0v-qcn"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2g1-GX-BlO">
-                                <rect key="frame" x="104.5" y="199" width="49.5" height="2"/>
+                                <rect key="frame" x="104.5" y="199" width="49.5" height="3"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="X1k-RP-W1c"/>
+                                    <constraint firstAttribute="height" constant="3" id="X1k-RP-W1c"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="gts-3R-qSy">
