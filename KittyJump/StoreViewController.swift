@@ -292,64 +292,74 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         slide1.titleLabel.text = "poos trotter"
         slide1.imageHeight.constant = 245
         slide1.multiplierLabel.text = "coin multiplier: 2x"
+        slide1.costLabel.text = "1,000"
         
         slide2.image.image = #imageLiteral(resourceName: "rateStore")
         slide2.titleLabel.text = "pirate poos"
         slide2.imageHeight.constant = 217
         slide2.multiplierLabel.text = "coin multiplier: 2x"
+        slide2.costLabel.text = "1,000"
         
         slide3.image.image = #imageLiteral(resourceName: "properStore")
         slide3.titleLabel.text = "proper poos"
         slide3.imageHeight.constant = 230
         slide3.multiplierLabel.text = "coin multiplier: 3x"
+        slide3.costLabel.text = "2,000"
         
         slide4.image.image = #imageLiteral(resourceName: "pepeStore")
         slide4.titleLabel.text = "pepe le poos"
         slide4.imageHeight.constant = 242
         slide4.multiplierLabel.text = "coin multiplier: 3x"
-        
+        slide4.costLabel.text = "2,000"
         
         slide5.image.image = #imageLiteral(resourceName: "quaStore")
         slide5.titleLabel.text = "quapoos"
         slide5.imageHeight.constant = 217
         slide5.multiplierLabel.text = "coin multiplier: 4x"
+        slide5.costLabel.text = "5,000"
         
         slide6.image.image = #imageLiteral(resourceName: "winnieStore")
         slide6.titleLabel.text = "winnie the poos"
         slide6.imageHeight.constant = 239
         slide6.multiplierLabel.text = "coin multiplier: 4x"
+        slide6.costLabel.text = "5,000"
         
         slide7.image.image = #imageLiteral(resourceName: "pousStore")
         slide7.titleLabel.text = "le pous"
         slide7.imageHeight.constant = 208
         slide7.multiplierLabel.text = "coin multiplier: 5x"
-        
+        slide7.costLabel.text = "10,000"
         
         slide8.image.image = #imageLiteral(resourceName: "elvisStore")
         slide8.titleLabel.text = "elvis poosley"
         slide8.imageHeight.constant = 227
         slide8.multiplierLabel.text = "coin multiplier: 5x"
+        slide8.costLabel.text = "10,000"
         
         slide9.image.image = #imageLiteral(resourceName: "fieriStore")
         slide9.titleLabel.text = "poos fieri"
         slide9.imageHeight.constant = 222
         slide9.multiplierLabel.text = "coin multiplier: 5x"
+        slide9.costLabel.text = "10,000"
         
         slide10.image.image = #imageLiteral(resourceName: "bootsStore")
         slide10.titleLabel.text = "poos in boots"
         slide10.imageHeight.constant = 253
         slide10.multiplierLabel.text = "coin multiplier: 6x"
+        slide10.costLabel.text = "25,000"
         
         slide11.image.image = #imageLiteral(resourceName: "yonceStore")
         slide11.titleLabel.text = "poosyoncé"
         slide11.imageHeight.constant = 195
         slide11.multiplierLabel.text = "coin multiplier: 6x"
+        slide11.costLabel.text = "25,000"
         
         
         if coins >= 100000 {
             slide12.image.image = #imageLiteral(resourceName: "trumpStore")
             slide12.titleLabel.text = "trumpoos"
             slide12.imageHeight.constant = 216
+            slide12.costLabel.text = "100,000"
         }
         else if itemStates[12] == "inCloset" {
             slide12.image.image = #imageLiteral(resourceName: "trumpStore")
@@ -533,15 +543,15 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         if pageIndex == 1 {
             itemTitle = "poos trotter"
-            cost = 0
+            cost = 1000
         }
         else if pageIndex == 2 {
             itemTitle = "pirate poos"
-            cost = 0
+            cost = 1000
         }
         else if pageIndex == 3 {
             itemTitle = "proper poos"
-            cost = 0
+            cost = 2000
         }
         else if pageIndex == 4 {
             itemTitle = "pepe le poos"
@@ -549,7 +559,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
         else if pageIndex == 5 {
             itemTitle = "quapoos"
-            cost = 0
+            cost = 5000
         }
         else if pageIndex == 6 {
             itemTitle = "winnie the poos"
@@ -557,7 +567,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
         else if pageIndex == 7 {
             itemTitle = "le pous"
-            cost = 0
+            cost = 10000
         }
         else if pageIndex == 8 {
             itemTitle = "elvis poosley"
@@ -569,7 +579,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
         else if pageIndex == 10 {
             itemTitle = "poos in boots"
-            cost = 0
+            cost = 25000
         }
         else if pageIndex == 11 {
             itemTitle = "poosyoncé"
@@ -577,7 +587,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
         else if pageIndex == 12 {
             itemTitle = "trumpoos"
-            cost = 0
+            cost = 100000
         }
         
         if cost <= coins {

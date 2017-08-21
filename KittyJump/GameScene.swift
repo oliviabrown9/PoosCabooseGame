@@ -115,7 +115,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var highScore: Int = 0 {
         didSet {
             Label.highScoreLabel.text = "Best: \(pastHighScore)"
-            
         }
     }
     
@@ -468,8 +467,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let formattedCoins = numberFormatter.string(from: NSNumber(value:SharingManager.sharedInstance.lifetimeScore))
         coinLabel.text = formattedCoins
         coinLabel.fontColor = UIColor.white
-        coinLabel.position = CGPoint(x: self.frame.maxX - 75 , y: 130)
+        coinLabel.position = CGPoint(x: self.frame.maxX - 20 , y: 130)
         coinLabel.verticalAlignmentMode = .center
+        coinLabel.horizontalAlignmentMode = .right
         hud.addChild(coinLabel)
         
         coinImage = SKSpriteNode(imageNamed: "coin")
