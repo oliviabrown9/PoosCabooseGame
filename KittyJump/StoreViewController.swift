@@ -531,6 +531,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             SharingManager.sharedInstance.catImageString = "trumpoos"
             updateUseButton()
         }
+        performSegue(withIdentifier: "unwindToGameOver", sender: self)
     }
     
     // Try to buy something
