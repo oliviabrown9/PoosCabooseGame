@@ -103,7 +103,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var roundCoins: Int = SharingManager.sharedInstance.lifetimeScore {
         didSet {
-            coinLabel.text = "\(roundCoins)"
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = NumberFormatter.Style.decimal
+            let formattedCoins = numberFormatter.string(from: NSNumber(value:roundCoins))
+            coinLabel.text = formattedCoins
         }
     }
     
@@ -459,7 +462,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinLabel = SKLabelNode(fontNamed: "Avenir-Heavy")
         coinLabel.zPosition = 1
         coinLabel.fontSize = 40
-        coinLabel.text = "\(SharingManager.sharedInstance.lifetimeScore)"
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        let formattedCoins = numberFormatter.string(from: NSNumber(value:SharingManager.sharedInstance.lifetimeScore))
+        coinLabel.text = formattedCoins
         coinLabel.fontColor = UIColor.white
         coinLabel.position = CGPoint(x: self.frame.maxX - 75 , y: 130)
         coinLabel.verticalAlignmentMode = .center
