@@ -232,6 +232,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func setMultiplier() {
+        if SharingManager.sharedInstance.catImageString == "trotterpoos" || SharingManager.sharedInstance.catImageString == "poosrate" {
+            multiplier = 2
+        }
+        else if SharingManager.sharedInstance.catImageString == "properpoos" || SharingManager.sharedInstance.catImageString == "pepepoos" {
+            multiplier = 3
+        }
+        else if SharingManager.sharedInstance.catImageString == "quapoos" || SharingManager.sharedInstance.catImageString == "winniepoos" {
+            multiplier = 4
+        }
+        else if SharingManager.sharedInstance.catImageString == "pous" || SharingManager.sharedInstance.catImageString == "poosfieri" || SharingManager.sharedInstance.catImageString == "elvispoosley" {
+            multiplier = 5
+        }
+        else if SharingManager.sharedInstance.catImageString == "bootspoos" || SharingManager.sharedInstance.catImageString == "yoncepoos" {
+            multiplier = 6
+        }
+        else if SharingManager.sharedInstance.catImageString == "trumpoos" {
+            multiplier = 10
+        }
+        else if SharingManager.sharedInstance.catImageString == "poos" {
+            multiplier = 1
+        }
+    }
+
+    
     func updateScore(bonusFound: Bool) {
         score = score + 1
         
@@ -323,6 +348,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Touches
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        setMultiplier()
         
         //Pause Button click
         let touch = touches.first
@@ -580,7 +606,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 posY2 = -1000
             }
             
-            //            if( i > 0 && ((i%randRange(lower: 2,upper: 6)) == 0)){
             if( i > 0 && ((i%5) == 0)){
                 coins = "yes";
             }else{
@@ -597,20 +622,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             wagon.name = "wagon_" + rightTrain.name!
             rightTrain.zPosition = 2
             rightTrain.addChild(wagon)
-            //            rightTrain.alpha = CGFloat(trainAlpha);
             self.addChild(rightTrain)
             rightTrainArray.append(rightTrain);
-            
-            
-            
-            //            if( i > 0 && ((i%randRange(lower: 2,upper: 6)) == 0)){
+
             if( i > 0 && (((i+1)%5) == 0)){
                 coins = "yes";
             }else{
                 coins = "no";
                 
             }
-            
             
             // Left train
             let leftTrain = LeftTrain()
@@ -622,7 +642,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             leftTrain.zPosition = 2
             wagon.name = "wagon_"+leftTrain.name!
             leftTrain.addChild(wagon)
-            //            leftTrain.alpha = CGFloat(trainAlpha);
             self.addChild(leftTrain)
             leftTrainArray.append(leftTrain)
         }
@@ -652,9 +671,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             wagon = SKSpriteNode()
         }
         
-        
         // Get color image
-        // Locate imate at specified point
         let size = CGSize(width: 110, height: 45)
         wagon.scale(to: size)
         if rightSide {
