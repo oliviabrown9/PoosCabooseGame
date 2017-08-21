@@ -138,8 +138,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                     self.updateUnlocked()
                     self.itemAlreadyPurchased()
                     
-                } else {
-                    print("no results")
                 }
             }) { (error) in
                 print(error.localizedDescription)

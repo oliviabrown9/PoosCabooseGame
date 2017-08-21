@@ -60,7 +60,6 @@ PODS:
   - nanopb/encode (0.3.8)
   - SpriteKitEasingSwift (0.10)
   - SwiftyGif (3.0.3)
-  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - FacebookCore
@@ -71,7 +70,6 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK
   - SpriteKitEasingSwift
   - SwiftyGif
-  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -91,8 +89,7 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SpriteKitEasingSwift: 511748b42a203e93a800dc6cd07f71e8b37c6401
   SwiftyGif: 89a0bb19709bdb6990e10405ad456d8bea804a65
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: a086e02503f07a48bbc7d0dceea48f44c1f1eae7
+PODFILE CHECKSUM: 36c831bd45c38ae5247cb9b93eeec1da71f58ac6
 
 COCOAPODS: 1.2.1

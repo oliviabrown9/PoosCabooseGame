@@ -12,7 +12,6 @@ import FacebookLogin
 import FacebookCore
 import Firebase
 import FirebaseDatabase
-import SwiftyJSON
 
 class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -102,7 +101,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func frindTabClicked(sender:UITapGestureRecognizer) {
-        print("tap working")
         friendHigh.isHidden = false
         friendTab.font = UIFont(name: "Avenir-Black", size: 18.0)
         worldHigh.isHidden = true
@@ -116,7 +114,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func worldTabClicked(sender:UITapGestureRecognizer) {
-        print("tap working")
         friendHigh.isHidden = true
         friendTab.font = UIFont(name: "Avenir-Medium", size: 18.0)
         worldHigh.isHidden = false
@@ -125,7 +122,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func getWorldScore(){
-        print("firebase connected")
         let ref = Database.database().reference()
         ref.child("players").queryOrdered(byChild: facebookId)
             .observeSingleEvent(of: .value, with: { (snapshot) in
@@ -134,20 +130,17 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     let snapDict = snapshot.value as? [String:AnyObject]
                     for snap in snapshot.children.allObjects as! [DataSnapshot] {
                         let json = snapDict?[snap.key]
-                        // print("json is \(json)")
                         let highScore = json?["highScore"] as! Int;
                         let profile = json?["profile"] as! NSDictionary;
                         let TodayshighScore = json?["TodayshighScore"] as! NSDictionary;
                         let todayhigh = TodayshighScore["score"] as! Int
                         let name = profile["name"] as! String
                         let imageString = ((profile["picture"] as! NSDictionary)["data"]  as! NSDictionary)["url"] as! String
-                        print("today \(todayhigh) alltime \(highScore) name \(name)")
                         
                         let foundFriend = World(name: name, highScore: highScore, todayScore: todayhigh, imageURL: imageString)
                         self.worldArray.append(foundFriend)
                         self.worldArray.sort { Int($0.todayScore) > Int($1.todayScore) }
                     }
-                    print("worldArray \(self.worldArray.description)")
                 }
             })
     }

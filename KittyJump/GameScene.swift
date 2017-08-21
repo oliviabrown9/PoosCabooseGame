@@ -162,12 +162,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func switchJoint(iWagon: RightTrain) {
         var bonusFound = false;
         let coinStatus = iWagon.userData?.value(forKey: "coin") as! String;
-        print("selected is " + coinStatus);
         bonusFound = ((coinStatus ).contains("yes"))
-        print("bonus found \(bonusFound.description)")
         if(bonusFound){
-            
-            print("fetech name wagon_" + iWagon.name!)
+
             if let child = iWagon.childNode(withName: "wagon_" + iWagon.name!) as? SKSpriteNode {
                 child.removeAllChildren()
             }
@@ -215,13 +212,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.physicsWorld.removeAllJoints()
         let coinStatus = iWagon.userData?.value(forKey: "coin") as! String;
-        print("selected is \(String(describing: coinStatus))");
         
         bonusFound = ((coinStatus ).contains("yes"))
-        print("bonus found \(bonusFound.description)")
         if(bonusFound){
             
-            print("fetech name wagon_" + iWagon.name!)
             if let child = iWagon.childNode(withName: "wagon_" + iWagon.name!) as? SKSpriteNode {
                 child.removeAllChildren()
             }
@@ -524,7 +518,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupNewTrack(index: Int, posY: CGFloat) {
-        print("setting up new track \(index)")
         let nodeName = "Track" + String(index)
         self.enumerateChildNodes(withName: nodeName) {
             node, stop in
@@ -602,7 +595,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             var wagon = createWagon(bonus: false)
             wagon.name = "wagon_" + rightTrain.name!
-            print("create name wagon_" + rightTrain.name!)
             rightTrain.zPosition = 2
             rightTrain.addChild(wagon)
             //            rightTrain.alpha = CGFloat(trainAlpha);
@@ -671,8 +663,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             wagon.anchorPoint = CGPoint(x:0, y:0)
             wagon.position = CGPoint(x: -xPos, y: -yPos)
             if(bonus){
-                print("bonus exist")
-                
                 var coin:SKSpriteNode
                 let size = CGSize(width: 110, height: 200)
                 coin = SKSpriteNode(imageNamed:"poos coin bag")
@@ -682,9 +672,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 coin.position.x =  -(wagon.size.width/2) + coin.size.width + 50
                 coin.zPosition = 2
                 wagon.addChild(coin);
-            }else{
-                
-                print("bonus not available")
             }
             
         } else {
@@ -694,9 +681,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             wagon.anchorPoint = CGPoint(x:1, y:0)
             wagon.position = CGPoint(x: xPos1, y: -yPos1)
             if(bonus){
-                print("bonus exist")
-                
-                
                 var coin:SKSpriteNode
                 let size = CGSize(width: 110, height: 200)
                 coin = SKSpriteNode(imageNamed:"poos coin bag")
@@ -707,9 +691,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 coin.zPosition = 2
                 
                 wagon.addChild(coin);
-            }else{
-                
-                print("bonus not available")
             }
         }
         wagon.zPosition = 2
@@ -725,18 +706,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         newRightTrainIndex += 1
         index+=1
-        print("newRightTrainIndex \(newRightTrainIndex)")
         if newRightTrainIndex > countTrainArray-1 {
             newRightTrainIndex %= countTrainArray
         }
-        
-        print("onus foun index \(index)")
-        print("onus foun call \(index%showBagAtEvery)")
         let irWagon = rightTrainArray[newRightTrainIndex]
-        //        let irWagon = createNewRightTrain(pos: newRightTrainIndex);
         if(index%showBagAtEvery == 0){
-            print("bonus exist")
-            
             irWagon.userData = NSMutableDictionary();
             irWagon.userData?.setValue("yes", forKey: "coin")
             
@@ -801,9 +775,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         let ilTrain = leftTrainArray[newLeftTrainIndex]
-        
-        print("onus foun index \(index)")
-        print("onus foun call \(index%showBagAtEvery)")
+
         if(index%showBagAtEvery == 0){
             print("bonus exist")
             
@@ -815,8 +787,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             coin = SKSpriteNode(imageNamed:"poos coin bag")
             coin.scale(to: size)
             coin.name = "bonus";
-            
-            print("fetech name wagon1_" + ilTrain.name!)
             
             if let child = ilTrain.childNode(withName: "wagon_" + ilTrain.name!) as? SKSpriteNode {
                 
@@ -1012,28 +982,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if currentTrain > 5 {
             currentTrain %= 6
         }
-        
-        print("updating alphas")
-        print("count trainTrackArray \(trainTrackArray.count)")
-        
-        
-        
+
         let newCurrentTrainPosY = trainTrackArray[lastTrain].position.y + trainDiffPosition
         setupNewTrack(index: currentTrain, posY: newCurrentTrainPosY)
         
         grassArray[currentTrain].position.y = grassArray[lastTrain].position.y + trainDiffPosition
-        //        if let child = self.childNode(withName: "Track0") as? SKSpriteNode {
-        //            child.alpha = 0;
-        //        }
-        
-        if (currentTrain > 2){
-            for i in 0...trainTrackArray.count-1 {
-                print("index \(i)")
-            }
-            for j in 0...grassArray.count-1 {
-                print("index j \(j)")
-            }
-        }
+
         grassArray[currentTrain].alpha = 1
         trainTrackArray[currentTrain].alpha = 1
         grassArray[lastTrain].alpha = 1
