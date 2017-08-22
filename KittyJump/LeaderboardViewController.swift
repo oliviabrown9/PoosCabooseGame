@@ -21,6 +21,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var worldTab: UILabel!
     @IBOutlet weak var friendHigh: UIView!
     @IBOutlet weak var worldHigh: UIView!
+    let date = Date()
     
     @IBAction func dayButtonPressed(_ sender: Any) {
         if today == true {
@@ -132,10 +133,14 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         let highScore = json?["highScore"] as! Int;
                         let profile = json?["profile"] as! NSDictionary;
                         let TodayshighScore = json?["TodayshighScore"] as! NSDictionary;
-                        let todayhigh = TodayshighScore["score"] as! Int
+                        var todayhigh = TodayshighScore["score"] as! Int
+                        let scoreDate = TodayshighScore["date"] as! String
                         let name = profile["name"] as! String
                         let imageString = ((profile["picture"] as! NSDictionary)["data"]  as! NSDictionary)["url"] as! String
                         
+                        if self.checkIfToday(scoreDate: scoreDate) == false {
+                            todayhigh = 0
+                        }
                         let foundFriend = World(name: name, highScore: highScore, todayScore: todayhigh, imageURL: imageString)
                         self.worldArray.append(foundFriend)
                         self.worldArray.sort { Int($0.todayScore) > Int($1.todayScore) }
@@ -144,15 +149,33 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             })
     }
     
+    func checkIfToday(scoreDate: String) -> Bool {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        let todayDate = formatter.string(from: self.date)
+        
+        if scoreDate != todayDate {
+            return false
+        }
+        else {
+            return true
+        }
+    }
+    
     func makeFriends(fb_user: String) {
         var name: String = ""
         var score: String = "";
         var todaysHighScore: String = ""
         var imageString: String = ""
+        var scoreDate: String = ""
+        
         
         if today == false {
             self.ref?.child("players").child(fb_user).observeSingleEvent(of: .value, with: { (snapshot) in
                 score = String(describing: snapshot.childSnapshot(forPath: "highScore").value!)
+                if self.checkIfToday(scoreDate: scoreDate) == false {
+                    todaysHighScore = "0"
+                }
                 let foundFriend = Friend(name: name, highScore: score, todayScore: todaysHighScore, imageURL: imageString)
                 self.friendArray.append(foundFriend)
                 self.friendArray.sort { Int($0.highScore)! > Int($1.highScore)! }
@@ -165,16 +188,19 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         else {
             self.ref?.child("players").child(fb_user).child("TodayshighScore").observeSingleEvent(of: .value, with: { (snapshot) in
                 score = String(describing: snapshot.childSnapshot(forPath: "score").value!)
+                scoreDate = String(describing: snapshot.childSnapshot(forPath: "date").value!)
                 
             }) { (error) in
                 print(error.localizedDescription)
             }
-            
         }
         
         self.ref?.child("players").child(fb_user).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
             name = String(describing: snapshot.childSnapshot(forPath: "name").value!)
             if self.today == true {
+                if self.checkIfToday(scoreDate: scoreDate) == false {
+                    todaysHighScore = "0"
+                }
                 let foundFriend = Friend(name: name, highScore: score, todayScore: todaysHighScore, imageURL: imageString)
                 self.friendArray.append(foundFriend)
                 self.friendArray.sort { Int($0.highScore)! > Int($1.highScore)! }
@@ -196,8 +222,9 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         self.ref?.child("players").child(fb_user).child("TodayshighScore").observeSingleEvent(of: .value, with: { (snapshot) in
+            scoreDate = String(describing: snapshot.childSnapshot(forPath: "date").value!)
             todaysHighScore = String(describing: snapshot.childSnapshot(forPath: "score").value!)
-            
+        
         }) { (error) in
             print(error.localizedDescription)
         }
