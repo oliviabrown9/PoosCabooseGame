@@ -301,6 +301,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         bonusLabel.isHidden = false
         
+        coinImage.position = CGPoint(x: coinLabel.frame.minX - 25, y: 130)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             self.bonusLabel.isHidden = true
         }
@@ -598,19 +600,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         isFirstTrain = true
         var posY1: CGFloat = newTrainPosY + 20 + 45
         var posY2: CGFloat = posY1 + trainDiffPosition
-        var coins = "no";
         
         for i in 0..<countTrainArray {
             if i != 0 {
                 posY1 = -1000
                 posY2 = -1000
-            }
-            
-            if( i > 0 && ((i%5) == 0)){
-                coins = "yes";
-            }else{
-                coins = "no";
-                
             }
             // Right train
             let rightTrain = RightTrain()
@@ -624,13 +618,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rightTrain.addChild(wagon)
             self.addChild(rightTrain)
             rightTrainArray.append(rightTrain);
-
-            if( i > 0 && (((i+1)%5) == 0)){
-                coins = "yes";
-            }else{
-                coins = "no";
-                
-            }
             
             // Left train
             let leftTrain = LeftTrain()

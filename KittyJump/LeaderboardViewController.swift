@@ -106,6 +106,13 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         worldHigh.isHidden = true
         worldTab.font = UIFont(name: "Avenir-Medium", size: 18.0)
         tableView.reloadData()
+        
+        if today == true {
+            dayButton.setTitle("today", for: .normal)
+        }
+        else {
+            dayButton.setTitle("all time", for: .normal)
+        }
     }
     
     
@@ -119,6 +126,13 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         worldHigh.isHidden = false
         worldTab.font = UIFont(name: "Avenir-Black", size: 18.0)
         tableView.reloadData()
+        
+        if today == true {
+            dayButton.setTitle("today", for: .normal)
+        }
+        else {
+            dayButton.setTitle("all time", for: .normal)
+        }
     }
     
     func getWorldScore(){
