@@ -46,6 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,  GADInterstitialDelegate 
             syncFireBaseDb()
             getFBUserData()
         }
+        
+        self.window?.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundGradient")!)
         return true
     }
 
