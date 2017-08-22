@@ -422,10 +422,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xge-Yx-Jlf">
-                                <rect key="frame" x="343" y="317" width="16" height="32"/>
+                                <rect key="frame" x="345" y="322" width="14" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="VRO-Ga-s2e"/>
-                                    <constraint firstAttribute="height" constant="32" id="diV-pF-815"/>
+                                    <constraint firstAttribute="width" constant="14" id="VRO-Ga-s2e"/>
+                                    <constraint firstAttribute="height" constant="22" id="diV-pF-815"/>
                                 </constraints>
                                 <state key="normal" image="sixtyRight"/>
                                 <state key="highlighted" image="arrow"/>
@@ -460,22 +460,22 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="gts-3R-qSy">
-                                <rect key="frame" x="236" y="234" width="16" height="32"/>
+                                <rect key="frame" x="236" y="239" width="14" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="gts-3R-qSy" secondAttribute="height" multiplier="1:2" id="k21-HX-e9p"/>
-                                    <constraint firstAttribute="height" constant="32" id="x9H-JQ-r6m"/>
+                                    <constraint firstAttribute="width" constant="14" id="Khy-LO-lXF"/>
+                                    <constraint firstAttribute="height" constant="22" id="x9H-JQ-r6m"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="mWR-Wp-gq5">
-                                <rect key="frame" x="21" y="207" width="314" height="400"/>
+                                <rect key="frame" x="21" y="207" width="316" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="jRD-Y7-JKm" customClass="LeaderboardTableViewCell" customModule="KittyJump" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1" width="314" height="55"/>
+                                        <rect key="frame" x="0.0" y="1" width="316" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jRD-Y7-JKm" id="DVW-ip-wiQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="314" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="316" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4215" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LnZ-fa-JB8">
@@ -605,9 +605,11 @@
                         <outlet property="tableView" destination="mWR-Wp-gq5" id="YRF-Yx-hbj"/>
                         <outlet property="worldHigh" destination="2g1-GX-BlO" id="B8f-cP-v6t"/>
                         <outlet property="worldTab" destination="ARS-5B-6Og" id="E5C-3K-WdT"/>
+                        <segue destination="kAf-Vr-O1I" kind="unwind" identifier="leaderboardToGameOver" customClass="PopSegueFromRight" customModule="KittyJump" customModuleProvider="target" unwindAction="unwindToGameOverWithSender:" id="E7l-vx-Wpt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HsH-zn-0JP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kAf-Vr-O1I" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="560.79999999999995" y="498.80059970014997"/>
         </scene>
@@ -667,10 +669,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sixtyLeft" highlightedImage="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="zcd-I4-9mF">
-                                <rect key="frame" x="16" y="317" width="16" height="32"/>
+                                <rect key="frame" x="16" y="322" width="14" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="Owk-93-6eS"/>
-                                    <constraint firstAttribute="height" constant="32" id="WhK-T1-Y2j"/>
+                                    <constraint firstAttribute="width" constant="14" id="Owk-93-6eS"/>
+                                    <constraint firstAttribute="height" constant="22" id="WhK-T1-Y2j"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="tiY-Z9-ZzS">
@@ -1239,7 +1241,7 @@
                         <outlet property="tableView" destination="Frc-fu-qgl" id="Ust-bk-9uA"/>
                         <outlet property="thirdAddCoins" destination="ITj-f8-evu" id="sfc-bh-U9T"/>
                         <outlet property="unlockedLabel" destination="XrY-i5-Asb" id="Dgu-zn-60U"/>
-                        <segue destination="IZF-mN-TjC" kind="unwind" identifier="unwindToGameOver" unwindAction="unwindToGameOverWithSender:" id="s11-Qc-MZb"/>
+                        <segue destination="IZF-mN-TjC" kind="unwind" identifier="unwindToGameOver" customClass="PopSegueFromLeft" customModule="KittyJump" customModuleProvider="target" unwindAction="unwindToGameOverWithSender:" id="s11-Qc-MZb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rJ-bN-eTl" userLabel="First Responder" sceneMemberID="firstResponder"/>

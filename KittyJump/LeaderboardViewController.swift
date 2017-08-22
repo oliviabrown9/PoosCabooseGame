@@ -205,9 +205,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func swipeToGameOver() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "GameOverViewController")
-        self.show(controller, sender: self)
+        performSegue(withIdentifier: "leaderboardToGameOver", sender: self)
     }
     
     func getFriendsScore(){
@@ -238,9 +236,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     @IBAction func backClicked(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "GameOverViewController")
-        self.show(controller, sender: self)
+        performSegue(withIdentifier: "leaderboardToGameOver", sender: self)
     }
     @IBAction func logout(_ sender: UIButton) {
         do {

@@ -261,6 +261,10 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         performSegue(withIdentifier: "toLeaderboard", sender: self)
     }
 
+    func swipeDownToPlay() {
+        performSegue(withIdentifier: "unwindToHomeView", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -329,9 +333,14 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameOverViewController.swiped(_:)))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
+        
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeToLeaderboard))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownToPlay))
+        swipeDown.direction = UISwipeGestureRecognizerDirection.down
+        self.view.addGestureRecognizer(swipeDown)
         
         highScoreLabel.text = "Best: \(highScore)"
         mostRecentScore.text = "\(SharingManager.sharedInstance.currentScore)"
