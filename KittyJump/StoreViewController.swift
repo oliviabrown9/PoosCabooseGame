@@ -52,6 +52,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     @IBOutlet weak var inviteFriendsView: UIView!
     @IBOutlet weak var unlockedLabel: UILabel!
+   
     
     // Slides
     let slide0 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
@@ -114,6 +115,19 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
 
     }
+    
+    @IBAction func moveViewLeftRight(sender: UIPageControl) {
+        // Move to Right
+        self.scrollView
+            .scrollRectToVisible(CGRect(
+                x: Int(self.scrollView.frame.size.width) * self.pageControl.currentPage,
+                y: 0,
+                width:Int(self.scrollView.frame.size.width),
+                height: Int(self.scrollView.frame.size.height)),
+                                 animated: true)
+
+    }
+    
     func updateCoins(){
         
         if(facebookId != ""){

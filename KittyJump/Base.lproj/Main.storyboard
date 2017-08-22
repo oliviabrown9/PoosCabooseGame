@@ -654,6 +654,9 @@
                             </label>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="Ac6-36-gLV">
                                 <rect key="frame" x="80" y="610" width="215" height="37"/>
+                                <connections>
+                                    <action selector="moveViewLeftRightWithSender:" destination="nFG-jk-vvE" eventType="valueChanged" id="Z95-tH-ieW"/>
+                                </connections>
                             </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rs-gI-rOO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
