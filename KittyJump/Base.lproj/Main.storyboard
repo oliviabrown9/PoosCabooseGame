@@ -661,23 +661,19 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rs-gI-rOO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frr-ag-Thf">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frr-ag-Thf">
                                 <rect key="frame" x="6" y="293.5" width="42" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="kyx-ey-itY"/>
                                     <constraint firstAttribute="height" constant="80" id="yvc-tO-zTO"/>
                                 </constraints>
+                                <inset key="imageEdgeInsets" minX="14" minY="29" maxX="14" maxY="29"/>
+                                <state key="normal" image="sixtyLeft"/>
+                                <state key="highlighted" image="backArrow"/>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="nFG-jk-vvE" eventType="touchUpInside" id="gmH-63-RQe"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sixtyLeft" highlightedImage="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="zcd-I4-9mF">
-                                <rect key="frame" x="16" y="322" width="14" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="14" id="Owk-93-6eS"/>
-                                    <constraint firstAttribute="height" constant="22" id="WhK-T1-Y2j"/>
-                                </constraints>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="tiY-Z9-ZzS">
                                 <rect key="frame" x="314" y="62" width="40" height="36"/>
                                 <constraints>
@@ -1176,7 +1172,6 @@
                             <constraint firstItem="12T-x0-6aE" firstAttribute="centerY" secondItem="hD9-Wa-hV6" secondAttribute="centerY" id="4vo-f8-fua"/>
                             <constraint firstAttribute="leadingMargin" secondItem="8XH-BJ-ZYs" secondAttribute="leading" constant="-5" id="5HF-GE-zvs"/>
                             <constraint firstItem="Mgl-uL-ipJ" firstAttribute="top" secondItem="8rs-gI-rOO" secondAttribute="bottom" id="6B3-dz-zve"/>
-                            <constraint firstItem="zcd-I4-9mF" firstAttribute="leading" secondItem="hD9-Wa-hV6" secondAttribute="leadingMargin" id="6PK-f2-zQi"/>
                             <constraint firstItem="tiY-Z9-ZzS" firstAttribute="leading" secondItem="Zen-qP-XiF" secondAttribute="trailing" constant="2" id="BZq-LD-0Qy"/>
                             <constraint firstItem="CkV-Lz-Jbm" firstAttribute="centerX" secondItem="hD9-Wa-hV6" secondAttribute="centerX" id="D2U-xd-xhL"/>
                             <constraint firstItem="Mgl-uL-ipJ" firstAttribute="top" secondItem="Ac6-36-gLV" secondAttribute="bottom" constant="20" id="Fwr-Ta-Nru"/>
@@ -1185,7 +1180,6 @@
                             <constraint firstItem="CkV-Lz-Jbm" firstAttribute="top" secondItem="hD9-Wa-hV6" secondAttribute="top" id="LW9-nK-SmK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1oY-l4-JJY" secondAttribute="trailing" constant="9" id="Mff-AL-Q1x"/>
                             <constraint firstItem="XrY-i5-Asb" firstAttribute="top" secondItem="8XH-BJ-ZYs" secondAttribute="bottom" constant="-3.5" id="Ntf-HN-waC"/>
-                            <constraint firstItem="zcd-I4-9mF" firstAttribute="centerY" secondItem="hD9-Wa-hV6" secondAttribute="centerY" id="Ouh-PI-07k"/>
                             <constraint firstItem="12T-x0-6aE" firstAttribute="centerX" secondItem="hD9-Wa-hV6" secondAttribute="centerX" id="Rlz-Ob-f1g"/>
                             <constraint firstItem="frr-ag-Thf" firstAttribute="leading" secondItem="hD9-Wa-hV6" secondAttribute="leadingMargin" constant="-10" id="SQi-v8-9wj"/>
                             <constraint firstItem="kvS-AW-G8Y" firstAttribute="bottom" secondItem="tiY-Z9-ZzS" secondAttribute="bottom" id="Tdu-R4-TCi"/>
@@ -1222,6 +1216,7 @@
                         <outlet property="addCoinsLabel" destination="dzl-ob-8to" id="Cne-mB-Di3"/>
                         <outlet property="addCoinsView" destination="12T-x0-6aE" id="aRQ-ka-x5D"/>
                         <outlet property="addModalTopConstraint" destination="4vo-f8-fua" id="vlT-ju-aDB"/>
+                        <outlet property="buttonView" destination="frr-ag-Thf" id="BLn-9v-in5"/>
                         <outlet property="coinImage" destination="tiY-Z9-ZzS" id="hgs-Oq-M9w"/>
                         <outlet property="confirmButton" destination="873-Xu-xdu" id="BAa-7G-QYT"/>
                         <outlet property="currentCoins" destination="Zen-qP-XiF" id="laY-hF-lrx"/>

@@ -77,7 +77,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         worldTab.isUserInteractionEnabled = true
         worldTab.addGestureRecognizer(world)
         
-        
         dayButton.layer.borderWidth = 2
         dayButton.layer.borderColor = UIColor.white.cgColor
         dayButton.layer.cornerRadius = 17

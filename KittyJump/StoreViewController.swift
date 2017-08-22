@@ -109,13 +109,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        
-
-    }
-    
     @IBAction func moveViewLeftRight(sender: UIPageControl) {
         // Move to Right
         self.scrollView
@@ -162,6 +155,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             self.itemAlreadyPurchased()
         }
     }
+    @IBOutlet weak var buttonView: UIButton!
+    @IBOutlet weak var arrowImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         if(FBSDKAccessToken.current() != nil){
@@ -207,6 +202,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         else {
         }
         updateUnlocked()
+        
     }
     
     func updateUnlocked() {
