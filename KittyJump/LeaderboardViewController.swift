@@ -129,10 +129,13 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         if today == true {
             dayButton.setTitle("today", for: .normal)
+            self.worldArray.sort { Int($0.todayScore) > Int($1.todayScore) }
         }
         else {
             dayButton.setTitle("all time", for: .normal)
+            self.worldArray.sort { Int($0.highScore) > Int($1.highScore) }
         }
+        tableView.reloadData()
     }
     
     func getWorldScore(){
@@ -144,10 +147,10 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     let snapDict = snapshot.value as? [String:AnyObject]
                     for snap in snapshot.children.allObjects as! [DataSnapshot] {
                         let json = snapDict?[snap.key]
-                        let highScore = json?["highScore"] as! Int;
+                        let highScore = json?["highScore"] as? Int ?? 0
                         let profile = json?["profile"] as! NSDictionary;
                         let TodayshighScore = json?["TodayshighScore"] as! NSDictionary;
-                        var todayhigh = TodayshighScore["score"] as! Int
+                        var todayhigh = TodayshighScore["score"] as? Int ?? 0
                         let scoreDate = TodayshighScore["date"] as! String
                         let name = profile["name"] as! String
                         let imageString = ((profile["picture"] as! NSDictionary)["data"]  as! NSDictionary)["url"] as! String
@@ -155,9 +158,22 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         if self.checkIfToday(scoreDate: scoreDate) == false {
                             todayhigh = 0
                         }
+                        if name == "<null>" {
+                            self.personExist = false
+                        }
+                        if self.personExist == true {
                         let foundFriend = World(name: name, highScore: highScore, todayScore: todayhigh, imageURL: imageString)
                         self.worldArray.append(foundFriend)
-                        self.worldArray.sort { Int($0.todayScore) > Int($1.todayScore) }
+                        
+                        if self.today == true {
+                            self.worldArray.sort { Int($0.todayScore) > Int($1.todayScore) }
+                        }
+                        else {
+                            self.worldArray.sort { Int($0.highScore) > Int($1.highScore) }
+                        }
+                        self.tableView.reloadData()
+                        }
+                        self.personExist = true
                     }
                 }
             })
@@ -176,6 +192,8 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    var personExist: Bool = true
+    
     func makeFriends(fb_user: String) {
         var name: String = ""
         var score: String = "";
@@ -190,10 +208,22 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 if self.checkIfToday(scoreDate: scoreDate) == false {
                     todaysHighScore = "0"
                 }
+                if score == "<null>" {
+                    score = "0"
+                }
+                if todaysHighScore == "<null>" {
+                    todaysHighScore = "0"
+                }
+                if name == "<null>" {
+                    self.personExist = false
+                }
+                if self.personExist == true {
                 let foundFriend = Friend(name: name, highScore: score, todayScore: todaysHighScore, imageURL: imageString)
                 self.friendArray.append(foundFriend)
                 self.friendArray.sort { Int($0.highScore)! > Int($1.highScore)! }
                 self.tableView.reloadData()
+                }
+                self.personExist = true
                 
             }) { (error) in
                 print(error.localizedDescription)
@@ -212,13 +242,27 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.ref?.child("players").child(fb_user).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
             name = String(describing: snapshot.childSnapshot(forPath: "name").value!)
             if self.today == true {
+                if name == "<null>" {
+                    self.personExist = false
+                }
                 if self.checkIfToday(scoreDate: scoreDate) == false {
                     todaysHighScore = "0"
                 }
+                if score == "<null>" {
+                    score = "0"
+                }
+                if todaysHighScore == "<null>" {
+                    todaysHighScore = "0"
+                }
+                
+                if self.personExist == true {
                 let foundFriend = Friend(name: name, highScore: score, todayScore: todaysHighScore, imageURL: imageString)
                 self.friendArray.append(foundFriend)
-                self.friendArray.sort { Int($0.highScore)! > Int($1.highScore)! }
+                print(foundFriend.highScore)
+                self.friendArray.sort { Int($0.todayScore)! > Int($1.todayScore)! }
                 self.tableView.reloadData()
+                }
+                self.personExist = true
             }
         }) { (error) in
             print(error.localizedDescription)
