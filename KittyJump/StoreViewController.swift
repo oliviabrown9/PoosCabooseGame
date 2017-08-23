@@ -937,7 +937,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                     addPurchasedCoins(amount: 100000)
                     
                 default:
-                    print("IAP not found")
+                    print("Not found")
                 }
             case .failed:
                 queue.finishTransaction(trans)

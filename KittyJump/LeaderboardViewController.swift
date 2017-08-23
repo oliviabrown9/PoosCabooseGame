@@ -267,7 +267,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     }
                 }
             } else {
-                print("Error Getting Friends \(String(describing: error))");
+                print("\(String(describing: error))");
             }
         })
         connection.start()
@@ -288,14 +288,14 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             loginArrow.isHidden = false
             tableView.isHidden = true
         } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+            print (signOutError)
         }
     }
     @IBAction func facebookLogin(sender: UIButton) {
         let fbLoginManager = FBSDKLoginManager()
         fbLoginManager.logIn(withReadPermissions: ["public_profile", "email", "user_friends"], from: self) { (result, error) in
             if let error = error {
-                print("Failed to login: \(error.localizedDescription)")
+                print("\(error.localizedDescription)")
                 return
             }
             self.loginButton.isHidden = true
@@ -304,7 +304,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.tableView.isHidden = false
             
             guard let accessToken = FBSDKAccessToken.current() else {
-                print("Failed to get access token")
                 return
             }
             self.getFBUserData()
@@ -318,7 +317,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             // Perform login by calling Firebase APIs
             Auth.auth().signIn(with: credential, completion: { (user, error) in
                 if let error = error {
-                    print("Login error: \(error.localizedDescription)")
+                    print("\(error.localizedDescription)")
                     let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
                     let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(okayAction)

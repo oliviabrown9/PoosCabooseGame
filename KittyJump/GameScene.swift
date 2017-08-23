@@ -781,7 +781,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let ilTrain = leftTrainArray[newLeftTrainIndex]
 
         if(index%showBagAtEvery == 0){
-            print("bonus exist")
             
             ilTrain.userData = NSMutableDictionary();
             ilTrain.userData?.setValue("yes", forKey: "coin")
