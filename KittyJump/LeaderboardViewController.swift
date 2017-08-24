@@ -22,11 +22,14 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var friendHigh: UIView!
     @IBOutlet weak var worldHigh: UIView!
     let date = Date()
+    let todayLocalized = NSLocalizedString("today", comment: "today")
+    let alltimeLocalized = NSLocalizedString("all time", comment: "all time")
+    
     
     @IBAction func dayButtonPressed(_ sender: Any) {
         if today == true {
             today = false
-            dayButton.setTitle("all time", for: .normal)
+            dayButton.setTitle("\(alltimeLocalized)", for: .normal)
             if(friendHigh.isHidden) {
                 
                 self.worldArray.sort { Int($0.highScore) > Int($1.highScore) }
@@ -40,7 +43,8 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         else {
             today = true
-            dayButton.setTitle("today", for: .normal)
+            
+            dayButton.setTitle("\(todayLocalized)", for: .normal)
             if(friendHigh.isHidden) {
                 
                 self.worldArray.sort { Int($0.todayScore) > Int($1.todayScore) }
@@ -108,10 +112,10 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.reloadData()
         
         if today == true {
-            dayButton.setTitle("today", for: .normal)
+            dayButton.setTitle("\(todayLocalized)", for: .normal)
         }
         else {
-            dayButton.setTitle("all time", for: .normal)
+            dayButton.setTitle("\(alltimeLocalized)", for: .normal)
         }
     }
     
@@ -128,11 +132,11 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.reloadData()
         
         if today == true {
-            dayButton.setTitle("today", for: .normal)
+            dayButton.setTitle("\(todayLocalized)", for: .normal)
             self.worldArray.sort { Int($0.todayScore) > Int($1.todayScore) }
         }
         else {
-            dayButton.setTitle("all time", for: .normal)
+            dayButton.setTitle("\(alltimeLocalized)", for: .normal)
             self.worldArray.sort { Int($0.highScore) > Int($1.highScore) }
         }
         tableView.reloadData()
@@ -200,7 +204,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var todaysHighScore: String = ""
         var imageString: String = ""
         var scoreDate: String = ""
-        
         
         if today == false {
             self.ref?.child("players").child(fb_user).observeSingleEvent(of: .value, with: { (snapshot) in

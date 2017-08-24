@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "5000"; ObjectID = "FbA-pU-bLA"; */
+"FbA-pU-bLA.text" = "5000";
+
+/* Class = "UILabel"; text = "multiplier"; ObjectID = "Ha7-tc-dOm"; */
+"Ha7-tc-dOm.text" = "moltiplicatore di monete";
+
+/* Class = "UILabel"; text = "title"; ObjectID = "J1r-pY-zWV"; */
+"J1r-pY-zWV.text" = "titolo";
+
+/* Class = "UIButton"; normalTitle = "buy"; ObjectID = "Lzz-Nx-tLw"; */
+"Lzz-Nx-tLw.normalTitle" = "compra";
+
+/* Class = "UILabel"; text = "poos coin"; ObjectID = "P44-gr-4hj"; */
+"P44-gr-4hj.text" = "monete poos";
+
+/* Class = "UIButton"; normalTitle = "use"; ObjectID = "VIk-NQ-2LA"; */
+"VIk-NQ-2LA.normalTitle" = "usa";

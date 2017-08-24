@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  KittyJump
+
+  Created by Olivia Brown on 8/24/17.
+  Copyright © 2017 Olivia Brown. All rights reserved.
+*/
+"Best" = "Primo";
+"today" = "oggi";
+"all time" = "sempre";
+"coin multiplier" = "moltiplicatore di monete";
+"use" = "usa";
+"in use" = "in uso";
+"of" = "di";
+"unlocked" = "sbloccati";

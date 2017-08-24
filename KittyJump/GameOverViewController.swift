@@ -342,7 +342,8 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         swipeDown.direction = UISwipeGestureRecognizerDirection.down
         self.view.addGestureRecognizer(swipeDown)
         
-        highScoreLabel.text = "Best: \(highScore)"
+        let firstWord: String = NSLocalizedString("Best", comment: "best score")
+        highScoreLabel.text = "\(firstWord): \(highScore)"
         mostRecentScore.text = "\(SharingManager.sharedInstance.currentScore)"
         // Setting text of labels to stored value
     }
