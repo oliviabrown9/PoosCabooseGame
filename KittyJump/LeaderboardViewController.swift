@@ -97,6 +97,9 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             loginButton.isHidden = true
             loginArrow.isHidden = true
             logoutButton.isHidden = false
+            if(FBSDKAccessToken.current() != nil){
+                facebookId = FBSDKAccessToken.current().userID;
+            }
             getFriendsScore()
             getWorldScore()
         }else{
@@ -143,9 +146,9 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func getWorldScore(){
-        let ref = Database.database().reference()
-        ref.child("players").queryOrdered(byChild: facebookId)
-            .observeSingleEvent(of: .value, with: { (snapshot) in
+        self.ref = Database.database().reference()
+        print(facebookId)
+        self.ref?.child("players").queryOrdered(byChild: facebookId).observeSingleEvent(of: .value, with: { (snapshot) in
                 if snapshot.exists() {
                     
                     let snapDict = snapshot.value as? [String:AnyObject]
@@ -353,6 +356,11 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             guard let accessToken = FBSDKAccessToken.current() else {
                 return
             }
+            
+            if(FBSDKAccessToken.current() != nil){
+                self.facebookId = FBSDKAccessToken.current().userID;
+            }
+            print(self.facebookId)
             self.getFBUserData()
             self.getFriendsScore()
             self.getWorldScore()
