@@ -289,14 +289,15 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             removeUserDefaults()
         }
         
+        ref = Database.database().reference()
         itemStates = SharingManager.sharedInstance.itemStates
         
         if(FBSDKAccessToken.current() != nil) {
         facebookId = FBSDKAccessToken.current().userID;
+        updateCoins()
         }
         interstitial = createAndLoadInterstitial()
         
-        ref = Database.database().reference()
         if(self.facebookId != "" ){
         self.ref?.child("players").child(self.facebookId).updateChildValues(["highScore": self.highScore])
         self.ref?.child("players").child(facebookId).child("TodayshighScore").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -423,4 +424,23 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         }
             SharingManager.sharedInstance.removedDefaults = true
         }
+    
+    func updateCoins(){
+        if(facebookId != ""){
+            ref?.child("players").child(facebookId).child("poosesOwned").observeSingleEvent(of: .value, with: { (snapshot) in
+                //read the user data from the snapshot and do whatever with it
+                if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                    for child in result {
+                        let index = Int(child.key)
+                        let val = child.value as! String
+                        itemStates[index!] = val
+                    }
+                    
+                    print(itemStates)
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+    }
 }

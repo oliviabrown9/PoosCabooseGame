@@ -105,7 +105,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     
     func updateCoins(){
-        
         if(facebookId != ""){
             ref?.child("players").child(facebookId).child("poosesOwned").observeSingleEvent(of: .value, with: { (snapshot) in
                 //read the user data from the snapshot and do whatever with it
@@ -138,7 +137,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         super.viewDidLoad()
         if(FBSDKAccessToken.current() != nil){
         facebookId = FBSDKAccessToken.current().userID;
-        
         }
         ref = Database.database().reference()
         updateCoins();
@@ -658,10 +656,11 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             if(facebookId != ""){
             ref?.child("players").child(facebookId).child("poosesOwned").updateChildValues(["\(pageIndex)": "inCloset"])
                 updateCoins();
-            }else{
-                SharingManager.sharedInstance.itemStates[pageIndex] = "inCloset";
-                updateCoins();
             }
+//            else{
+//                SharingManager.sharedInstance.itemStates[pageIndex] = "inCloset";
+//                updateCoins();
+//            }
             if #available(iOS 10.3, *) {
                 SKStoreReviewController.requestReview()
             }
