@@ -1,5 +1,4 @@
 //
-//  Lippi
 //  MessageComposer.swift
 //
 //  obrown917@gmail.com

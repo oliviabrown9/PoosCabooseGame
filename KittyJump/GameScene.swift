@@ -35,9 +35,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var soundButton:SKSpriteNode!
     var showBagAtEvery:Int = Int(arc4random_uniform(10)) + 15;
     
-    //    let trainAlpha = 1;
-    //    let trackAlpha = 0.4;
-    //    let grassAlpha = 0.7;
     var bonusPoint = 100;
     
     // Label for current score
@@ -565,17 +562,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for i in 0...5 {
             let grass = Grass()
             if i == 5 {
-                //                grass.alpha = 1
             }
             
             
             let nodeName = "Grass" + String(i)
             grass.name = nodeName;
             
-            
             grass.position = getGrassPosition(row: i)
             grass.zPosition = 1
-            //            grass.alpha = CGFloat(grassAlpha)
             self.addChild(grass)
             grassArray.append(grass)
         }
@@ -801,7 +795,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 coin.zPosition = 2
                 child.addChild(coin);
             }
-            //            showBagAtEvery = Int(arc4random_uniform(10)) + 15
         } else{
             
             ilTrain.userData = NSMutableDictionary();
@@ -889,11 +882,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Contact delegate functions
     var needItme:Bool = true;
     func didBegin(_ contact: SKPhysicsContact) {
-        //        if(needItme){
-        //            moveRightWagon2()
-        //            moveLeftTrain2()
-        //            needItme = false;
-        //        }
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
         
@@ -1160,8 +1148,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.removeAllActions()
         self.isPaused = true
         // Segue to gameOverVC
-        
-        ////        App.gViewController = se;
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             

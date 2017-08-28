@@ -6,15 +6,6 @@
 //  Copyright © 2017 Olivia Brown. All rights reserved.
 //
 
-
-//pepe le poos
-//winnie the poos
-//le pous
-//elvis poosley
-//poos fieri
-//poos fieri
-//poosyoncé
-
 import UIKit
 import Contacts
 import MessageUI
@@ -116,22 +107,9 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     func updateCoins(){
         
         if(facebookId != ""){
-            
-            if(itemStates.count != 13) {
-                
-//                self.removeUserDefaults()
-            }
             ref?.child("players").child(facebookId).child("poosesOwned").observeSingleEvent(of: .value, with: { (snapshot) in
                 //read the user data from the snapshot and do whatever with it
                 if let result = snapshot.children.allObjects as? [DataSnapshot] {
-                    
-                    if(result.isEmpty){
-//                        self.removeUserDefaults()
-                        
-                    }
-                    else if result.count != 13 {
-//                        self.removeUserDefaults()
-                    }
                     for child in result {
                         let index = Int(child.key)
                         let val = child.value as! String
@@ -161,8 +139,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         if(FBSDKAccessToken.current() != nil){
         facebookId = FBSDKAccessToken.current().userID;
         
-        } else {
-//            removeUserDefaults();
         }
         ref = Database.database().reference()
         updateCoins();
@@ -744,7 +720,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             let spaces = floor((maxSize.width - widthText) / widthSpace)
             // add the spaces
             let newText = text + ((Array(repeating: " ", count: Int(spaces)).joined(separator: "")))
-            // apply the new text if nescessary
             if newText != text {
                 return newText
             }
