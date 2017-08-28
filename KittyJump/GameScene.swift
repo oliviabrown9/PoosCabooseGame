@@ -110,11 +110,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    let bestLocalized = NSLocalizedString("Best", comment: "Best")
+    
     let pastHighScore: Int = SharingManager.sharedInstance.highScore
     // Starting high score set to zero & changes as high score updates
     var highScore: Int = 0 {
         didSet {
-            Label.highScoreLabel.text = "Best: \(pastHighScore)"
+            Label.highScoreLabel.text = "\(bestLocalized): \(pastHighScore)"
         }
     }
     
@@ -310,7 +312,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         SharingManager.sharedInstance.lifetimeScore = roundCoins
         if score > pastHighScore {
-            Label.highScoreLabel.text = "Best: \(score)"
+            Label.highScoreLabel.text = "\(bestLocalized): \(score)"
         }
         
         if(score >= 5 && score < 10){

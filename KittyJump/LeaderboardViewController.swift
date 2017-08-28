@@ -122,7 +122,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    
     var friendArray: [Friend] = []
     var worldArray: [World] = []
     

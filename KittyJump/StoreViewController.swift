@@ -99,29 +99,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         _ = tapGestureRecognizer.view as! UIImageView
     }
     
-    func removeUserDefaults() {
-        
-        itemStates = SharingManager.sharedInstance.itemStates
-        if(facebookId != ""){
-            var newItemStates = ["inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore"]
-            newItemStates[0] = itemStates[0]
-            newItemStates[1] = itemStates[1]
-            newItemStates[2] = itemStates[2]
-            newItemStates[3] = itemStates[3]
-            newItemStates[4] = "inStore"
-            newItemStates[5] = itemStates[4]
-            newItemStates[6] = "inStore"
-            newItemStates[7] = itemStates[5]
-            newItemStates[8] = "inStore"
-            newItemStates[9] = "inStore"
-            newItemStates[10] = itemStates[6]
-            newItemStates[11] = "inStore"
-            newItemStates[12] = itemStates[7]
-            ref?.child("players").child(facebookId).updateChildValues(["poosesOwned": itemStates])
-        }
-        SharingManager.sharedInstance.removedDefaults = true
-        
-    }
+
     
     @IBAction func moveViewLeftRight(sender: UIPageControl) {
         // Move to Right
@@ -141,18 +119,18 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             
             if(itemStates.count != 13) {
                 
-                self.removeUserDefaults()
+//                self.removeUserDefaults()
             }
             ref?.child("players").child(facebookId).child("poosesOwned").observeSingleEvent(of: .value, with: { (snapshot) in
                 //read the user data from the snapshot and do whatever with it
                 if let result = snapshot.children.allObjects as? [DataSnapshot] {
                     
                     if(result.isEmpty){
-                        self.removeUserDefaults()
+//                        self.removeUserDefaults()
                         
                     }
                     else if result.count != 13 {
-                        self.removeUserDefaults()
+//                        self.removeUserDefaults()
                     }
                     for child in result {
                         let index = Int(child.key)
@@ -174,12 +152,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if(facebookId != ""){
-            if(itemStates.count != 13) {
-                
-                self.removeUserDefaults()
-            }
-    }
+        itemStates = SharingManager.sharedInstance.itemStates
     }
     @IBOutlet weak var buttonView: UIButton!
     @IBOutlet weak var arrowImage: UIImageView!
@@ -189,7 +162,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         facebookId = FBSDKAccessToken.current().userID;
         
         } else {
-            removeUserDefaults();
+//            removeUserDefaults();
         }
         ref = Database.database().reference()
         updateCoins();
@@ -313,7 +286,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         var x = 0
         for i in slideArray {
-            
             if itemStates[x] == "inCloset" {
                 setupInCloset(slide: i, x: x)
             }

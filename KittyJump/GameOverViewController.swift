@@ -285,6 +285,12 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             }
         }
         
+        if SharingManager.sharedInstance.itemStates.count != 13 {
+            removeUserDefaults()
+        }
+        
+        itemStates = SharingManager.sharedInstance.itemStates
+        
         if(FBSDKAccessToken.current() != nil) {
         facebookId = FBSDKAccessToken.current().userID;
         }
@@ -389,4 +395,33 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    func removeUserDefaults() {
+        
+        itemStates = SharingManager.sharedInstance.itemStates
+            var newItemStates = ["inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore"]
+            newItemStates[0] = itemStates[0]
+            newItemStates[1] = itemStates[1]
+            newItemStates[2] = itemStates[2]
+            newItemStates[3] = itemStates[3]
+            newItemStates[4] = "inStore"
+            newItemStates[5] = itemStates[4]
+            newItemStates[6] = "inStore"
+            newItemStates[7] = itemStates[5]
+            newItemStates[8] = "inStore"
+            newItemStates[9] = "inStore"
+            newItemStates[10] = itemStates[6]
+            newItemStates[11] = "inStore"
+            newItemStates[12] = itemStates[7]
+        
+        if facebookId != "" {
+            ref?.child("players").child(facebookId).updateChildValues(["poosesOwned": itemStates])
+            
+        }
+        else {
+            SharingManager.sharedInstance.itemStates = newItemStates
+            print(SharingManager.sharedInstance.itemStates)
+        }
+            SharingManager.sharedInstance.removedDefaults = true
+        }
 }
