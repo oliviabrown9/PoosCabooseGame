@@ -139,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate {
             
             FBSDKGraphRequest(graphPath: "me",
                               
-                              parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email , gender"]).start(
+                              parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email, gender"]).start(
                                 
                                 completionHandler: { (connection, result, error) -> Void in
                                     self.ref?.child("players").child(self.facebookId).child("profile").updateChildValues(result as! [AnyHashable : Any])

@@ -146,7 +146,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func getWorldScore(){
         self.ref = Database.database().reference()
-        print(facebookId)
         self.ref?.child("players").queryOrdered(byChild: facebookId).observeSingleEvent(of: .value, with: { (snapshot) in
                 if snapshot.exists() {
                     
@@ -263,7 +262,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 if self.personExist == true {
                 let foundFriend = Friend(name: name, highScore: score, todayScore: todaysHighScore, imageURL: imageString)
                 self.friendArray.append(foundFriend)
-                print(foundFriend.highScore)
                 self.friendArray.sort { Int($0.todayScore)! > Int($1.todayScore)! }
                 self.tableView.reloadData()
                 }
@@ -359,7 +357,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if(FBSDKAccessToken.current() != nil){
                 self.facebookId = FBSDKAccessToken.current().userID;
             }
-            print(self.facebookId)
             self.getFBUserData()
             self.getFriendsScore()
             self.getWorldScore()

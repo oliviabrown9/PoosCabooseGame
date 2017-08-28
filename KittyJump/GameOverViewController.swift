@@ -323,11 +323,11 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             print(error.localizedDescription)
         }
     }
-//        if playCount % 3 != 0{
-//            if #available(iOS 10.3, *) {
-//                SKStoreReviewController.requestReview()
-//            }
-//        }
+        if playCount % 3 != 0{
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            }
+        }
         
         if(SKPaymentQueue.canMakePayments()) {
             let productID: NSSet = NSSet(object: "org.pooscaboose.noads")
@@ -420,7 +420,6 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         }
         else {
             SharingManager.sharedInstance.itemStates = newItemStates
-            print(SharingManager.sharedInstance.itemStates)
         }
             SharingManager.sharedInstance.removedDefaults = true
         }
