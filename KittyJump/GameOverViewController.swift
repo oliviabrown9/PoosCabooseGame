@@ -435,8 +435,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
                         let val = child.value as! String
                         itemStates[index!] = val
                     }
-                    
-                    print(itemStates)
+                    SharingManager.sharedInstance.itemStates = itemStates
                 }
             }) { (error) in
                 print(error.localizedDescription)

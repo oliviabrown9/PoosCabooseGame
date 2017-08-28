@@ -116,6 +116,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                     }
                     self.updateUnlocked()
                     self.itemAlreadyPurchased()
+                    SharingManager.sharedInstance.itemStates = itemStates
                     
                 }
             }) { (error) in
