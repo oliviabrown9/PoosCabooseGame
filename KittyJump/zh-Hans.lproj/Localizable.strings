@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  KittyJump
+
+  Created by Olivia Brown on 8/24/17.
+  Copyright © 2017 Olivia Brown. All rights reserved.
+*/
+"Best" = "最好的";
+"today" = "今天";
+"all time" = "有史以来";
+"coin multiplier" = "游戏币翻倍";
+"use" = "使用";
+"in use" = "使用中";
+"of" = "的";
+"unlocked" = "开启";
+"Pick your poos coin \n package" = "选择您的硬币包";

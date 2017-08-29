@@ -1,0 +1,126 @@
+
+/* Class = "UILabel"; text = "1,000"; ObjectID = "0IJ-YU-G9y"; */
+"0IJ-YU-G9y.text" = "1,000";
+
+/* Class = "UILabel"; text = "250"; ObjectID = "4AA-5P-0wS"; */
+"4AA-5P-0wS.text" = "250";
+
+/* Class = "UIButton"; normalTitle = "login with facebook"; ObjectID = "77x-G1-sna"; */
+"77x-G1-sna.normalTitle" = "使用Facebook登陆";
+
+/* Class = "UIButton"; normalTitle = "log out"; ObjectID = "7zU-Hu-K5p"; */
+"7zU-Hu-K5p.normalTitle" = "退出登录";
+
+/* Class = "UIButton"; normalTitle = "Yas."; ObjectID = "873-Xu-xdu"; */
+"873-Xu-xdu.normalTitle" = "是";
+
+/* Class = "UILabel"; text = "Pooses"; ObjectID = "8XH-BJ-ZYs"; */
+"8XH-BJ-ZYs.text" = "角色";
+
+/* Class = "UILabel"; text = "World"; ObjectID = "ARS-5B-6Og"; */
+"ARS-5B-6Og.text" = "世界";
+
+/* Class = "UILabel"; text = "Preferences"; ObjectID = "ELi-dX-P6R"; */
+"ELi-dX-P6R.text" = "优先";
+
+/* Class = "UILabel"; text = "Best: 123"; ObjectID = "EPO-0P-T3r"; */
+"EPO-0P-T3r.text" = "最好的: 123";
+
+/* Class = "UILabel"; text = "contacts"; ObjectID = "FNs-Hk-bKg"; */
+"FNs-Hk-bKg.text" = "联系人列表";
+
+/* Class = "UIButton"; normalTitle = "Restore Purchases"; ObjectID = "Fff-AA-23A"; */
+"Fff-AA-23A.normalTitle" = "恢复购买";
+
+/* Class = "UILabel"; text = "Get your squad aboard the Poos Caboose to receive"; ObjectID = "Ga1-B2-5EV"; */
+"Ga1-B2-5EV.text" = "邀请你的朋友收到";
+
+/* Class = "UILabel"; text = "5,000"; ObjectID = "Hbq-wU-xi9"; */
+"Hbq-wU-xi9.text" = "5,000";
+
+/* Class = "UILabel"; text = "Recent Score"; ObjectID = "I1j-K6-rVR"; */
+"I1j-K6-rVR.text" = "目前得分";
+
+/* Class = "UILabel"; text = "Leaderboard"; ObjectID = "L7U-NR-ysb"; */
+"L7U-NR-ysb.text" = "积分榜";
+
+/* Class = "UILabel"; text = "4215"; ObjectID = "LnZ-fa-JB8"; */
+"LnZ-fa-JB8.text" = "4215";
+
+/* Class = "UILabel"; text = "$2.99"; ObjectID = "PNc-8e-OqB"; */
+"PNc-8e-OqB.text" = "¥18";
+
+/* Class = "UILabel"; text = "poos coin"; ObjectID = "Qap-29-twg"; */
+"Qap-29-twg.text" = "poos硬币";
+
+/* Class = "UIButton"; normalTitle = "Remove Ads"; ObjectID = "Xoe-9X-EGq"; */
+"Xoe-9X-EGq.normalTitle" = "移除广告";
+
+/* Class = "UILabel"; text = "1/8 Unlocked"; ObjectID = "XrY-i5-Asb"; */
+"XrY-i5-Asb.text" = "1/8 开启";
+
+/* Class = "UILabel"; text = "12,345"; ObjectID = "Zen-qP-XiF"; */
+"Zen-qP-XiF.text" = "12,345";
+
+/* Class = "UILabel"; text = "Game Over"; ObjectID = "aPX-hV-qxj"; */
+"aPX-hV-qxj.text" = "游戏结束";
+
+/* Class = "UILabel"; text = "Friends"; ObjectID = "aQa-ZP-Uoa"; */
+"aQa-ZP-Uoa.text" = "朋友";
+
+/* Class = "UILabel"; text = "250"; ObjectID = "bFE-v3-Hdm"; */
+"bFE-v3-Hdm.text" = "250";
+
+/* Class = "UISearchBar"; placeholder = "search"; ObjectID = "br7-bf-q9P"; */
+"br7-bf-q9P.placeholder" = "搜索";
+
+/* Class = "UIButton"; normalTitle = " today "; ObjectID = "c2i-Fp-EA4"; */
+"c2i-Fp-EA4.normalTitle" = " 今天 ";
+
+/* Class = "UILabel"; text = "$4.99"; ObjectID = "cMy-jn-Hbb"; */
+"cMy-jn-Hbb.text" = "¥30";
+
+/* Class = "UILabel"; text = "100,000"; ObjectID = "d1i-9j-5sV"; */
+"d1i-9j-5sV.text" = "100,000";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "dzl-ob-8to"; */
+"dzl-ob-8to.text" = "Label";
+
+/* Class = "UILabel"; text = "10,000"; ObjectID = "iIC-cd-bsg"; */
+"iIC-cd-bsg.text" = "10,000";
+
+/* Class = "UIButton"; normalTitle = "Start"; ObjectID = "jCz-KS-ByN"; */
+"jCz-KS-ByN.normalTitle" = "开始";
+
+/* Class = "UILabel"; text = "poos coin"; ObjectID = "kvS-AW-G8Y"; */
+"kvS-AW-G8Y.text" = "poos硬币";
+
+/* Class = "UILabel"; text = "olivia brown"; ObjectID = "ns3-2Q-9BT"; */
+"ns3-2Q-9BT.text" = "olivia brown";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "oSg-PF-7P8"; */
+"oSg-PF-7P8.text" = "Label";
+
+/* Class = "UILabel"; text = "Top Pooses"; ObjectID = "oyu-hh-CgS"; */
+"oyu-hh-CgS.text" = "顶级玩家";
+
+/* Class = "UILabel"; text = "$9.99"; ObjectID = "pjm-3X-QKx"; */
+"pjm-3X-QKx.text" = "¥68";
+
+/* Class = "UILabel"; text = "75"; ObjectID = "rAM-9b-1Uj"; */
+"rAM-9b-1Uj.text" = "75";
+
+/* Class = "UILabel"; text = "free - ask friends"; ObjectID = "tHO-fp-Ca8"; */
+"tHO-fp-Ca8.text" = "无偿地";
+
+/* Class = "UILabel"; text = "invite"; ObjectID = "tbP-Wc-ri2"; */
+"tbP-Wc-ri2.text" = "邀请";
+
+/* Class = "UILabel"; text = "Poos Caboose"; ObjectID = "wPL-dS-eOZ"; */
+"wPL-dS-eOZ.text" = "Poos Caboose";
+
+/* Class = "UILabel"; text = "$.99"; ObjectID = "yN9-HO-gry"; */
+"yN9-HO-gry.text" = "¥6";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "zsK-sI-XVz"; */
+"zsK-sI-XVz.text" = "name";

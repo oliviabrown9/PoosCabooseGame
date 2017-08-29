@@ -1,11 +1,11 @@
 /* Class = "UILabel"; text = "multiplier"; ObjectID = "Ha7-tc-dOm"; */
-"Ha7-tc-dOm.text" = "moltiplicatore di monete";
+"Ha7-tc-dOm.text" = "游戏币翻倍";
 
 /* Class = "UIButton"; normalTitle = "buy"; ObjectID = "Lzz-Nx-tLw"; */
-"Lzz-Nx-tLw.normalTitle" = "compra";
+"Lzz-Nx-tLw.normalTitle" = "购买";
 
 /* Class = "UILabel"; text = "poos coin"; ObjectID = "P44-gr-4hj"; */
-"P44-gr-4hj.text" = "monete poos";
+"P44-gr-4hj.text" = "poos硬币";
 
 /* Class = "UIButton"; normalTitle = "use"; ObjectID = "VIk-NQ-2LA"; */
-"VIk-NQ-2LA.normalTitle" = "usa";
+"VIk-NQ-2LA.normalTitle" = "使用";

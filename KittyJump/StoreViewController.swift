@@ -671,7 +671,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
     }
     
-    let coinlabelLocalized = NSLocalizedString("Pick your poos coin /n package", comment: "pick your")
+    let coinlabelLocalized = NSLocalizedString("Pick your poos coin \n package", comment: "pick your")
     
     func showAddCoinsView(){
         view.layoutIfNeeded()
@@ -679,7 +679,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         darkenedView.isHidden = false
         modalView.isHidden = true
         addCoinsView.layer.cornerRadius = 28
-        addCoinsLabel.text = "Pick your poos coin \n package"
+        addCoinsLabel.text = coinlabelLocalized
         peek.isHidden = false
         addCoinsView.isHidden = false
         addCoinsGestures()
@@ -687,7 +687,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     func animateAddCoinsView() {
         addCoinsView.layer.cornerRadius = 28
-        addCoinsLabel.text = "Pick your poos coin \n package"
+        addCoinsLabel.text = coinlabelLocalized
         
         darkenedView.isHidden = false
         

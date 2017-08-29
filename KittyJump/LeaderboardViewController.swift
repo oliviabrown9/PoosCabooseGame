@@ -373,7 +373,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(okayAction)
                     self.present(alertController, animated: true, completion: nil)
-                    
                     return
                 }
             })
@@ -435,7 +434,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
 }
-
 
 extension UIImageView {
     func downloadedFromURL(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {

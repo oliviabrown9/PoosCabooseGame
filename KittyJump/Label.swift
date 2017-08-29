@@ -28,11 +28,12 @@ class Label: SKLabelNode {
         
     }
     
+    static var bestLocalized = NSLocalizedString("Best", comment: "Best")
     // High score text & number label
     static func createHighScore() {
         highScoreLabel = SKLabelNode(fontNamed: "Avenir-Heavy")
         highScoreLabel.zPosition = 4
-        highScoreLabel.text = "Best: \(SharingManager.sharedInstance.highScore)"
+        highScoreLabel.text = "\(bestLocalized): \(SharingManager.sharedInstance.highScore)"
         highScoreLabel.fontSize = 40
         highScoreLabel.fontColor = UIColor.white
         highScoreLabel.horizontalAlignmentMode = .center
