@@ -27,13 +27,13 @@
 "EPO-0P-T3r.text" = "Mejor: 123";
 
 /* Class = "UILabel"; text = "contacts"; ObjectID = "FNs-Hk-bKg"; */
-"FNs-Hk-bKg.text" = "contacts";
+"FNs-Hk-bKg.text" = "contactos";
 
 /* Class = "UIButton"; normalTitle = "Restore Purchases"; ObjectID = "Fff-AA-23A"; */
-"Fff-AA-23A.normalTitle" = "Restore Purchases";
+"Fff-AA-23A.normalTitle" = "Restaurar Las Compras";
 
 /* Class = "UILabel"; text = "Get your squad aboard the Poos Caboose to receive"; ObjectID = "Ga1-B2-5EV"; */
-"Ga1-B2-5EV.text" = "Get your squad aboard the Poos Caboose to receive";
+"Ga1-B2-5EV.text" = "invita a tus amigos para recibir 250";
 
 /* Class = "UILabel"; text = "5,000"; ObjectID = "Hbq-wU-xi9"; */
 "Hbq-wU-xi9.text" = "5,000";
@@ -54,7 +54,7 @@
 "Qap-29-twg.text" = "monedas de poos";
 
 /* Class = "UIButton"; normalTitle = "Remove Ads"; ObjectID = "Xoe-9X-EGq"; */
-"Xoe-9X-EGq.normalTitle" = "Remove Ads";
+"Xoe-9X-EGq.normalTitle" = "Eliminar Anuncios";
 
 /* Class = "UILabel"; text = "1/8 Unlocked"; ObjectID = "XrY-i5-Asb"; */
 "XrY-i5-Asb.text" = "1 de 13 desbloqueados";
@@ -72,7 +72,7 @@
 "bFE-v3-Hdm.text" = "250";
 
 /* Class = "UISearchBar"; placeholder = "search"; ObjectID = "br7-bf-q9P"; */
-"br7-bf-q9P.placeholder" = "search";
+"br7-bf-q9P.placeholder" = "busca";
 
 /* Class = "UIButton"; normalTitle = " today "; ObjectID = "c2i-Fp-EA4"; */
 "c2i-Fp-EA4.normalTitle" = " hoy ";
@@ -111,10 +111,10 @@
 "rAM-9b-1Uj.text" = "75";
 
 /* Class = "UILabel"; text = "free - ask friends"; ObjectID = "tHO-fp-Ca8"; */
-"tHO-fp-Ca8.text" = "free - ask friends";
+"tHO-fp-Ca8.text" = "libre - pregunte a tus amigos";
 
 /* Class = "UILabel"; text = "invite"; ObjectID = "tbP-Wc-ri2"; */
-"tbP-Wc-ri2.text" = "invite";
+"tbP-Wc-ri2.text" = "invita";
 
 /* Class = "UILabel"; text = "Poos Caboose"; ObjectID = "wPL-dS-eOZ"; */
 "wPL-dS-eOZ.text" = "Poos Caboose";
