@@ -658,10 +658,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             ref?.child("players").child(facebookId).child("poosesOwned").updateChildValues(["\(pageIndex)": "inCloset"])
                 updateCoins();
             }
-//            else{
-//                SharingManager.sharedInstance.itemStates[pageIndex] = "inCloset";
-//                updateCoins();
-//            }
+            else{
+                SharingManager.sharedInstance.itemStates[pageIndex] = "inCloset";
+                updateCoins();
+            }
             if #available(iOS 10.3, *) {
                 SKStoreReviewController.requestReview()
             }
