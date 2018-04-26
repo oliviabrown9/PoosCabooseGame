@@ -10,3 +10,5 @@ of the world.
 You can download it on the [App Store](https://itunes.apple.com/us/app/poos-caboose-the-worlds-cutest-jumping-game/id1263697839?ls=1&mt=8) or check it out on [Product Hunt](https://www.producthunt.com/posts/poos-caboose).
 
 Here's a [video demo](https://www.youtube.com/watch?v=WbRBwiLnNGU) of version 1.0. 
+
+<img src="ReadMeImages/hopCabooses.jpg" width="200px"> <img src="ReadMeImages/unlockPooses.jpg" width="200px">
