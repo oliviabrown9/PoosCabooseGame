@@ -82,7 +82,7 @@
 		75C95BD11F47C84900F7CBBD /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 		75D392A31F42184900FE34F5 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
 		75D392A51F421CF300FE34F5 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
-		75D73E251F3D0740000BD7E7 /* SegueFromLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueFromLeft.swift; path = ../SegueFromLeft.swift; sourceTree = "<group>"; };
+		75D73E251F3D0740000BD7E7 /* SegueFromLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueFromLeft.swift; sourceTree = "<group>"; };
 		75D73E271F3D0C33000BD7E7 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		75D93C1C1F3010E40020E067 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		75D93C1E1F30EE930020E067 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -124,6 +124,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18CE0FD72092982D00C62F67 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				75D93C1C1F3010E40020E067 /* LeaderboardViewController.swift */,
+				75149F281F25B2B800B70B59 /* StoreViewController.swift */,
+				D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */,
+				75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		18CE0FD82092985000C62F67 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				75D392A51F421CF300FE34F5 /* Friend.swift */,
+				D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */,
+				75D73E271F3D0C33000BD7E7 /* GameScene.swift */,
+				75D73E251F3D0740000BD7E7 /* SegueFromLeft.swift */,
+				75149F2A1F25B2CB00B70B59 /* MessageComposer.swift */,
+				75F3FE3F1F1EA5AA001E0C0D /* GameSettings.swift */,
+				1CFE5A8D1F4749FB00C39FF5 /* World.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		18CE0FD9209298B400C62F67 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				75B5B1701F2140F6008D8584 /* ContactsTableViewCell.swift */,
+				75D392A31F42184900FE34F5 /* LeaderboardTableViewCell.swift */,
+				756C47AA1F197A3100B034C0 /* Slide.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		755820F11F0413D400A68A88 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,33 +212,22 @@
 		D7C5EAB21EEB5C21007DA71A /* KittyJump */ = {
 			isa = PBXGroup;
 			children = (
+				18CE0FD9209298B400C62F67 /* Views */,
 				D7C5EABD1EEB5C21007DA71A /* Main.storyboard */,
+				D7C5EAC21EEB5C21007DA71A /* LaunchScreen.storyboard */,
 				7592C78A1F4F7A45006432F4 /* Slide.xib */,
 				75E334861F4F7F5A00C0BDEA /* Localizable.strings */,
-				756C47AA1F197A3100B034C0 /* Slide.swift */,
 				D7C5EAB31EEB5C21007DA71A /* AppDelegate.swift */,
-				75B5B1701F2140F6008D8584 /* ContactsTableViewCell.swift */,
-				75D93C1C1F3010E40020E067 /* LeaderboardViewController.swift */,
-				75D392A31F42184900FE34F5 /* LeaderboardTableViewCell.swift */,
-				75D392A51F421CF300FE34F5 /* Friend.swift */,
-				1CFE5A8D1F4749FB00C39FF5 /* World.swift */,
-				D7C5EAF51EEF3ACC007DA71A /* SessionManager.swift */,
-				D7C5EABB1EEB5C21007DA71A /* GameViewController.swift */,
-				75F3FE3F1F1EA5AA001E0C0D /* GameSettings.swift */,
-				75D73E271F3D0C33000BD7E7 /* GameScene.swift */,
-				75BB97881EFEE91A00DB3BF3 /* GameOverViewController.swift */,
-				75149F2A1F25B2CB00B70B59 /* MessageComposer.swift */,
-				75149F281F25B2B800B70B59 /* StoreViewController.swift */,
+				18CE0FD82092985000C62F67 /* Models */,
+				18CE0FD72092982D00C62F67 /* View Controllers */,
 				D7C5EAB51EEB5C21007DA71A /* GameScene.sks */,
 				D7C5EAB71EEB5C21007DA71A /* Actions.sks */,
 				75C5A2CB1F26679B002DD5DB /* splash.gif */,
 				75C5A2CD1F266815002DD5DB /* coin.gif */,
-				75D73E251F3D0740000BD7E7 /* SegueFromLeft.swift */,
 				D7C5EAE41EEC058C007DA71A /* Sprites */,
 				755820F11F0413D400A68A88 /* Audio */,
 				D7C5EAFB1EF0FA9E007DA71A /* SceneHelper */,
 				D7C5EAC01EEB5C21007DA71A /* Assets.xcassets */,
-				D7C5EAC21EEB5C21007DA71A /* LaunchScreen.storyboard */,
 				D7C5EAC51EEB5C21007DA71A /* Info.plist */,
 				75D93C1E1F30EE930020E067 /* GoogleService-Info.plist */,
 			);
