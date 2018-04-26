@@ -148,7 +148,7 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
 }
 extension GameViewController: SwiftyGifDelegate {
     
-    func gifDidLoop() {
+    @objc func gifDidLoop() {
         gifImageView.isHidden = true
         animationEndImage.isHidden = false
         animationEndImage.fadeOut()
