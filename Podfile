@@ -6,12 +6,11 @@ target 'KittyJump' do
 
   # Pods for KittyJump
 pod 'SwiftyGif'
-pod ‘SpriteKitEasingSwift’
+pod 'SpriteKitEasingSwift'
 pod 'Google-Mobile-Ads-SDK'
 pod 'FacebookCore'
 pod 'FacebookLogin'
-pod ‘Firebase/Core'
+pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
 end
- 

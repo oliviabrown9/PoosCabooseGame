@@ -4,6 +4,7 @@
 
 import ImageIO
 import UIKit
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
     case let (l?, r?):
@@ -24,7 +25,6 @@ fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     }
 }
 
-
 let _imageSourceKey = malloc(4)
 let _displayRefreshFactorKey = malloc(4)
 let _imageCountKey = malloc(4)
@@ -32,54 +32,35 @@ let _displayOrderKey = malloc(4)
 let _imageSizeKey = malloc(4)
 let _imageDataKey = malloc(4)
 
-let defaultLevelOfIntegrity: Float = 0.8
-
+public let defaultLevelOfIntegrity: Float = 0.8
 
 fileprivate enum GifParseError:Error {
+    case noImages
     case noProperties
     case noGifDictionary
     case noTimingInfo
 }
 
-
-public extension UIImage{
+public extension UIImage {
     
     // MARK: Inits
-    
-    /**
-     Convenience initializer. Creates a gif with its backing data. Defaulted level of integrity.
-     - Parameter gifData: The actual gif data
-     */
-    public convenience init(gifData:Data) {
-        self.init()
-        setGifFromData(gifData,levelOfIntegrity: defaultLevelOfIntegrity)
-    }
     
     /**
      Convenience initializer. Creates a gif with its backing data.
      - Parameter gifData: The actual gif data
      - Parameter levelOfIntegrity: 0 to 1, 1 meaning no frame skipping
      */
-    public convenience init(gifData:Data, levelOfIntegrity:Float) {
+    public convenience init(gifData:Data, levelOfIntegrity:Float = defaultLevelOfIntegrity) {
         self.init()
         setGifFromData(gifData,levelOfIntegrity: levelOfIntegrity)
     }
     
     /**
-     Convenience initializer. Creates a gif with its backing data. Defaulted level of integrity.
-     - Parameter gifName: Filename
-     */
-    public convenience init(gifName: String) {
-        self.init()
-        setGif(gifName, levelOfIntegrity: defaultLevelOfIntegrity)
-    }
-    
-    /**
      Convenience initializer. Creates a gif with its backing data.
      - Parameter gifName: Filename
      - Parameter levelOfIntegrity: 0 to 1, 1 meaning no frame skipping
      */
-    public convenience init(gifName: String, levelOfIntegrity: Float) {
+    public convenience init(gifName: String, levelOfIntegrity: Float = defaultLevelOfIntegrity) {
         self.init()
         setGif(gifName, levelOfIntegrity: levelOfIntegrity)
     }
@@ -140,6 +121,15 @@ public extension UIImage{
         }
     }
     
+    public func clear() {
+        imageData = nil
+        imageSource = nil
+        displayOrder = nil
+        imageCount = nil
+        imageSize = nil
+        displayRefreshFactor = nil
+    }
+    
     // MARK: Logic
 
     fileprivate func convertToDelay(_ pointer:UnsafeRawPointer?) -> Float? {
@@ -158,6 +148,9 @@ public extension UIImage{
     fileprivate func delayTimes(_ imageSource:CGImageSource) throws ->[Float] {
         
         let imageCount = CGImageSourceGetCount(imageSource)
+        guard imageCount > 0 else {
+            throw GifParseError.noImages
+        }
         var imageProperties = [CFDictionary]()
         for i in 0..<imageCount{
             if let dict = CGImageSourceCopyPropertiesAtIndex(imageSource, i, nil) {
@@ -207,46 +200,47 @@ public extension UIImage{
         let displayRefreshFactors = [60,30,20,15,12,10,6,5,4,3,2,1]
         
         //maxFramePerSecond,default is 60
-        let maxFramePerSecond = displayRefreshFactors.first
+        let maxFramePerSecond = displayRefreshFactors[0]
         
         //frame numbers per second
-        let displayRefreshRates = displayRefreshFactors.map{maxFramePerSecond!/$0}
+        let displayRefreshRates = displayRefreshFactors.map{ maxFramePerSecond/$0 }
         
         //time interval per frame
-        let displayRefreshDelayTime = displayRefreshRates.map{1.0/Float($0)}
+        let displayRefreshDelayTime = displayRefreshRates.map{ 1.0/Float($0) }
         
         //caclulate the time when each frame should be displayed at(start at 0)
-        for i in 1..<delays.count{ delays[i] += delays[i-1] }
+        for i in delays.indices.dropFirst() { delays[i] += delays[i-1] }
         
         //find the appropriate Factors then BREAK
-        for i in 0..<displayRefreshDelayTime.count{
+        for (i, delayTime) in displayRefreshDelayTime.enumerated() {
             
-            let displayPosition = delays.map{Int($0/displayRefreshDelayTime[i])}
+            let displayPosition = delays.map { Int($0/delayTime) }
             
             var framelosecount: Float = 0
-            for j in 1..<displayPosition.count{
+            for j in displayPosition.indices.dropFirst() {
                 if displayPosition[j] == displayPosition[j-1] {
                     framelosecount += 1
                 }
             }
             
-            if(displayPosition[0] == 0){
+            if displayPosition.first == 0 {
                 framelosecount += 1
             }
             
-            if framelosecount <= Float(displayPosition.count) * (1.0 - levelOfIntegrity) ||
-                i == displayRefreshDelayTime.count-1 {
+            if framelosecount <= Float(displayPosition.count) * (1.0 - levelOfIntegrity)
+                || i == displayRefreshDelayTime.count-1 {
                 
-                self.imageCount = displayPosition.last!
-                self.displayRefreshFactor = displayRefreshFactors[i]
-                self.displayOrder = [Int]()
+                imageCount = displayPosition.last
+                displayRefreshFactor = displayRefreshFactors[i]
+                displayOrder = []
                 var indexOfold = 0
                 var indexOfnew = 1
-                while indexOfnew <= imageCount {
+                while indexOfnew <= imageCount
+                    && indexOfold < displayPosition.count {
                     if indexOfnew <= displayPosition[indexOfold] {
-                        self.displayOrder!.append(indexOfold)
+                        displayOrder?.append(indexOfold)
                         indexOfnew += 1
-                    }else{
+                    } else {
                         indexOfold += 1
                     }
                 }
@@ -269,7 +263,7 @@ public extension UIImage{
             return
         }
         let image = UIImage(cgImage:cgImage)
-        self.imageSize = Int(image.size.height*image.size.width*4)*imageCount/1000000
+        imageSize = Int(image.size.height * image.size.width * 4) * imageCount / 1000000
     }
     
     // MARK: get / set associated values
@@ -329,7 +323,7 @@ public extension UIImage{
             if result == nil {
                 return nil
             }
-            return (result as! Data)
+            return (result as? Data)
         }
         set {
             objc_setAssociatedObject(self, _imageDataKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
