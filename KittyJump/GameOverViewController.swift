@@ -153,7 +153,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         }
     }
     
-    func hidePreferencesView() {
+    @objc func hidePreferencesView() {
         darkenedView.isHidden = true
         UIView.animate(withDuration: 0.5, animations: {
             self.preferencesTopConstraint.constant += self.view.bounds.height
@@ -253,15 +253,15 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         setCornerImage()
     }
     
-    func moveToStore() {
+    @objc func moveToStore() {
         performSegue(withIdentifier: "toStore", sender: self)
     }
     
-    func swipeToLeaderboard() {
+    @objc func swipeToLeaderboard() {
         performSegue(withIdentifier: "toLeaderboard", sender: self)
     }
 
-    func swipeDownToPlay() {
+    @objc func swipeDownToPlay() {
         performSegue(withIdentifier: "unwindToHomeView", sender: self)
     }
     
@@ -367,7 +367,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         interstitial = createAndLoadInterstitial()
     }
     
-    func swiped(_ gesture: UIGestureRecognizer) {
+    @objc func swiped(_ gesture: UIGestureRecognizer) {
         performSegue(withIdentifier: "toStore", sender: self)
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -375,7 +375,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
     }
     
     // Unwind segue back to gameView
-    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         performSegue(withIdentifier: "unwindToHomeView", sender: self)
     }

@@ -22,7 +22,7 @@ class Label: SKLabelNode {
         scoreLabelHelper.zPosition = 4
         scoreLabelHelper.text = "Current Score"
         scoreLabelHelper.fontSize = 35
-        scoreLabelHelper.fontColor = UIColor(colorLiteralRed: 1, green: 1, blue: 1, alpha: 0.75)
+        scoreLabelHelper.fontColor = #colorLiteral(red: 0.7952535152, green: 0.7952535152, blue: 0.7952535152, alpha: 1)
         scoreLabelHelper.horizontalAlignmentMode = .center
         scoreLabelHelper.verticalAlignmentMode = .center
         

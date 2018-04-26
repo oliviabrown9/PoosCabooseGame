@@ -190,19 +190,19 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             }
         }
         let unlockedString: String = "\(unlocked) \(ofLocalized) 13 \(unlockedLocalized)"
-        let attributedText = NSMutableAttributedString(string: unlockedString, attributes: [NSFontAttributeName:UIFont(name: "Avenir-Medium", size: 18.0)!])
+        let attributedText = NSMutableAttributedString(string: unlockedString, attributes: [NSAttributedStringKey.font:UIFont(name: "Avenir-Medium", size: 18.0)!])
         if unlocked < 10 {
-        attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:0,length:1))
-        attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:6,length:1))
+        attributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:0,length:1))
+        attributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:6,length:1))
         }
         else {
-            attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:0,length:2))
-            attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:6,length:2))
+            attributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:0,length:2))
+            attributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Avenir-Black",size: 18.0)!, range: NSRange(location:6,length:2))
         }
         unlockedLabel.attributedText = attributedText
     }
     
-    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if pageIndex == 0 {
             performSegue(withIdentifier: "unwindToGameOver", sender: self)
         }
@@ -455,7 +455,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
     }
     
-    func updateUsing() {
+    @objc func updateUsing() {
         
         if pageIndex == 0 {
             SharingManager.sharedInstance.using = 0
@@ -526,7 +526,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     
     // Try to buy something
-    func purchaseItem() {
+    @objc func purchaseItem() {
         
         let failureGenerator = UINotificationFeedbackGenerator()
         failureGenerator.prepare()
@@ -615,7 +615,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         })
     }
     
-    func handleTap() {
+    @objc func handleTap() {
         confirm = false
         hideModal()
         hideAddCoinsModal()
@@ -685,7 +685,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         addCoinsGestures()
     }
     
-    func animateAddCoinsView() {
+    @objc func animateAddCoinsView() {
         addCoinsView.layer.cornerRadius = 28
         addCoinsLabel.text = coinlabelLocalized
         
@@ -705,11 +705,9 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         addCoinsGestures()
     }
     
-    func setPlaceHolder(placeholder: String)-> String
-    {
-        
-        var text = placeholder
-        if text.characters.last! != " " {
+    func setPlaceHolder(placeholder: String)-> String {
+        let text = placeholder
+        if text.last! != " " {
             
             // define a max size
             let maxSize = CGSize(width: UIScreen.main.bounds.size.width - 104, height: 40)
@@ -723,17 +721,15 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             if newText != text {
                 return newText
             }
-            
         }
-        
         return placeholder;
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    func inviteFriends() {
+    @objc func inviteFriends() {
         checkAuthorization()
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -742,7 +738,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideSearchBar?.textColor = UIColor.black
         textFieldInsideSearchBar?.font = UIFont(name: "Avenir-Medium", size: 18)
-        textFieldInsideSearchBar?.attributedPlaceholder = NSAttributedString(string: self.setPlaceHolder(placeholder: "search"), attributes: [NSForegroundColorAttributeName: UIColor.black])
+        textFieldInsideSearchBar?.attributedPlaceholder = NSAttributedString(string: self.setPlaceHolder(placeholder: "search"), attributes: [NSAttributedStringKey.foregroundColor: UIColor.black])
         let button = textFieldInsideSearchBar?.value(forKey: "clearButton") as! UIButton
         if let image = button.imageView?.image {
             button.setImage(image.transform(withNewColor: UIColor.black), for: .normal)
@@ -809,7 +805,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         hideAddCoinsModal()
     }
     
-    func buyCoins(_ recognizer: UITapGestureRecognizer) {
+    @objc func buyCoins(_ recognizer: UITapGestureRecognizer) {
         
         let viewTapped = recognizer.view
         viewTapped?.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
@@ -1056,8 +1052,8 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             
             let tempNumString = "0123456789"
             
-            for c in number.stringValue.characters {
-                if tempNumString.characters.contains(c) {
+            for c in number.stringValue {
+                if tempNumString.contains(c) {
                     selectedPhoneNumber.append(c)
                 }
             }
@@ -1133,7 +1129,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
 extension String {
     
     subscript (i: Int) -> Character {
-        return self[self.characters.index(self.startIndex, offsetBy: i)]
+        return self[self.index(self.startIndex, offsetBy: i)]
     }
     
     subscript (i: Int) -> String {
@@ -1141,9 +1137,9 @@ extension String {
     }
     
     subscript (r: Range<Int>) -> String {
-        let start = characters.index(startIndex, offsetBy: r.lowerBound)
-        let end = characters.index(start, offsetBy: r.upperBound - r.lowerBound)
-        return self[Range(start ..< end)]
+        let start = self.index(startIndex, offsetBy: r.lowerBound)
+        let end = self.index(start, offsetBy: r.upperBound - r.lowerBound)
+        return String(self[Range(start ..< end)])
     }
 }
 extension StoreViewController: SwiftyGifDelegate {

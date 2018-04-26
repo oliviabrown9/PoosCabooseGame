@@ -143,7 +143,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         beforeColorIndex = [0, 1, 2].randomItem()
         
-        
         stepSpeed = 0
         stepPos = 0
         createHud()

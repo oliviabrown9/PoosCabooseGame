@@ -69,6 +69,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
+        
         worldTab.isUserInteractionEnabled = true
         let friend = UITapGestureRecognizer(target: self, action: #selector(self.frindTabClicked))
         friendTab.isUserInteractionEnabled = true
@@ -107,7 +108,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func frindTabClicked(sender:UITapGestureRecognizer) {
+    @objc func frindTabClicked(sender:UITapGestureRecognizer) {
         friendHigh.isHidden = false
         friendTab.font = UIFont(name: "Avenir-Black", size: 18.0)
         worldHigh.isHidden = true
@@ -126,7 +127,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var worldArray: [World] = []
     
     
-    func worldTabClicked(sender:UITapGestureRecognizer) {
+    @objc func worldTabClicked(sender:UITapGestureRecognizer) {
         friendHigh.isHidden = true
         friendTab.font = UIFont(name: "Avenir-Medium", size: 18.0)
         worldHigh.isHidden = false
@@ -291,7 +292,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func swipeToGameOver() {
+    @objc func swipeToGameOver() {
         performSegue(withIdentifier: "leaderboardToGameOver", sender: self)
     }
     
