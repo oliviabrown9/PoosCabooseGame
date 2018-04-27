@@ -14,5 +14,4 @@ class LeaderboardTableViewCell: UITableViewCell {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
 
-
 }

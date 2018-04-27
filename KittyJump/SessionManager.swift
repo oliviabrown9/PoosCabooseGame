@@ -57,12 +57,6 @@ class SharingManager {
         }
     }
     
-    var onboardingFinished: Bool = false {
-        didSet {
-            userDefaults.set(onboardingFinished, forKey: "OnboardingFinished")
-        }
-    }
-    
     var soundState: Bool = false {
         didSet {
             userDefaults.set(soundState, forKey: "SoundState")
@@ -128,9 +122,6 @@ class SharingManager {
         let storedUsing = userDefaults.integer(forKey: "Using")
         using = storedUsing
         
-        let storedOnboardingFinished = userDefaults.bool(forKey: "OnboardingFinished")
-        onboardingFinished = storedOnboardingFinished
-        
         let storedSoundState = userDefaults.bool(forKey: "SoundState")
         soundState = storedSoundState
         
@@ -144,7 +135,6 @@ class SharingManager {
         if storedSharedContacts != nil {
             sharedContacts = storedSharedContacts as! [String]
         }
-
     }
     
     func changeLastScores(score: Int) {

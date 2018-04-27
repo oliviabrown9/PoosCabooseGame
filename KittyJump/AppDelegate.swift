@@ -36,8 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var initialViewController: UIViewController? = nil
-            initialViewController = storyboard.instantiateViewController(withIdentifier: "GameViewController")
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "GameViewController")
         self.window?.rootViewController = initialViewController
         self.gViewController = initialViewController;
         self.window?.makeKeyAndVisible()

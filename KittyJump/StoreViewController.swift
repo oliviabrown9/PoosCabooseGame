@@ -934,7 +934,10 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     var contacts = [CNContact]()
     var authStatus: CNAuthorizationStatus = .denied {
         didSet {
-            searchBar.isUserInteractionEnabled = authStatus == .authorized
+            DispatchQueue.main.sync {
+                searchBar.isUserInteractionEnabled = authStatus == .authorized
+            }
+            
             if authStatus == .authorized { // all search
                 contacts = fetchContacts("")
                 DispatchQueue.main.async() {
@@ -963,7 +966,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kCellID, for: indexPath) as! ContactsTableViewCell
         
-        cell.viewController = self
         let contact = contacts[indexPath.row]
         
         // get the full name
@@ -995,7 +997,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             })
             showAlert(
                 title: "Permission Denied",
-                message: "You have not permission to access contacts. Please allow the access the Settings screen.",
+                message: "You can change your settings to allow access to contacts.",
                 actions: [okAction, settingsAction])
         case .authorized:
             print("Authorized")
@@ -1018,16 +1020,17 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     }
     
     
-    // fetch the contact of matching names
-    fileprivate func fetchContacts(_ name: String) -> [CNContact] {
+    // get the contacts of matching names
+    fileprivate func fetchContacts(_ searchName: String?) -> [CNContact] {
         let store = CNContactStore()
         
         do {
             let request = CNContactFetchRequest(keysToFetch: [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor])
-            if name.isEmpty { // all search
-                request.predicate = nil
-            } else {
+            if let name = searchName {
                 request.predicate = CNContact.predicateForContacts(matchingName: name)
+            }
+            else {
+                request.predicate = nil
             }
             
             var contacts = [CNContact]()
