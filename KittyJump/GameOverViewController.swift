@@ -285,10 +285,6 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
             }
         }
         
-        if SharingManager.sharedInstance.itemStates.count != 13 {
-            removeUserDefaults()
-        }
-        
         ref = Database.database().reference()
         itemStates = SharingManager.sharedInstance.itemStates
         
@@ -397,34 +393,6 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         return true
     }
     
-    func removeUserDefaults() {
-        
-        itemStates = SharingManager.sharedInstance.itemStates
-            var newItemStates = ["inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore", "inStore"]
-            newItemStates[0] = itemStates[0]
-            newItemStates[1] = itemStates[1]
-            newItemStates[2] = itemStates[2]
-            newItemStates[3] = itemStates[3]
-            newItemStates[4] = "inStore"
-            newItemStates[5] = itemStates[4]
-            newItemStates[6] = "inStore"
-            newItemStates[7] = itemStates[5]
-            newItemStates[8] = "inStore"
-            newItemStates[9] = "inStore"
-            newItemStates[10] = itemStates[6]
-            newItemStates[11] = "inStore"
-            newItemStates[12] = itemStates[7]
-        
-        if facebookId != "" {
-            ref?.child("players").child(facebookId).updateChildValues(["poosesOwned": itemStates])
-            
-        }
-        else {
-            SharingManager.sharedInstance.itemStates = newItemStates
-        }
-            SharingManager.sharedInstance.removedDefaults = true
-        }
-    
     func updateCoins(){
         if(facebookId != ""){
             ref?.child("players").child(facebookId).child("poosesOwned").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -433,7 +401,12 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
                     for child in result {
                         let index = Int(child.key)
                         let val = child.value as! String
-                        itemStates[index!] = val
+                        if val == "inStore" {
+                            itemStates[index!] = false
+                        }
+                        else if val == "inCloset" {
+                            itemStates[index!] = true
+                        }
                     }
                     SharingManager.sharedInstance.itemStates = itemStates
                 }

@@ -19,7 +19,7 @@ import FacebookCore
 
 var using: Int = 0
 var selectedPhoneNumber: String = ""
-var itemStates: [String] = []
+var itemStates = [Bool]()
 var facebookId = "";
 
 
@@ -112,7 +112,12 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                     for child in result {
                         let index = Int(child.key)
                         let val = child.value as! String
-                        itemStates[index!] = val
+                        if val == "inStore" {
+                            itemStates[index!] = false
+                        }
+                        else if val == "inCloset" {
+                            itemStates[index!] = true
+                        }
                     }
                     self.updateUnlocked()
                     self.itemAlreadyPurchased()
@@ -185,7 +190,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     func updateUnlocked() {
         var unlocked: Int = 0
         for i in itemStates {
-            if i == "inCloset" {
+            if i {
                 unlocked += 1
             }
         }
@@ -261,7 +266,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         
         var x = 0
         for i in slideArray {
-            if itemStates[x] == "inCloset" {
+            if itemStates[x] {
                 setupInCloset(slide: i, x: x)
             }
             else {
@@ -350,7 +355,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             slide12.imageHeight.constant = 216
             slide12.costLabel.text = "100,000"
         }
-        else if itemStates[12] == "inCloset" {
+        else if itemStates[12] {
             slide12.image.image = #imageLiteral(resourceName: "trumpStore")
             slide12.titleLabel.text = "trumpoos"
             slide12.imageHeight.constant = 216
@@ -443,7 +448,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                 buttonInUse(button: i.useButton)
             }
             else {
-                if itemStates[x] == "inCloset" {
+                if itemStates[x] {
                     buttonNotInUse(button: i.useButton)
                 }
                 else {
@@ -654,12 +659,12 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
             
             updateCoinsLabel()
             SharingManager.sharedInstance.lifetimeScore = coins
-            if(facebookId != ""){
+            if (facebookId != "") {
             ref?.child("players").child(facebookId).child("poosesOwned").updateChildValues(["\(pageIndex)": "inCloset"])
                 updateCoins();
             }
-            else{
-                SharingManager.sharedInstance.itemStates[pageIndex] = "inCloset";
+            else {
+                SharingManager.sharedInstance.itemStates[pageIndex] = true;
                 updateCoins();
             }
             if #available(iOS 10.3, *) {

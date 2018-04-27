@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate {
     var ref: DatabaseReference?
     let date = Date()
     var facebookId = "";
-    var gViewController: UIViewController?
-    var mInterstitial: GADInterstitial!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -34,13 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         GADMobileAds.configure(withApplicationID: "ca-app-pub-1224845211182149~2532664151")
         
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "GameViewController")
-        self.window?.rootViewController = initialViewController
-        self.gViewController = initialViewController;
-        self.window?.makeKeyAndVisible()
-        if(FBSDKAccessToken.current() != nil){
+        if(FBSDKAccessToken.current() != nil) {
             facebookId = FBSDKAccessToken.current().userID;
             syncFireBaseDb()
             getFBUserData()
@@ -123,7 +115,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate {
                 if let result = snapshot.children.allObjects as? [DataSnapshot] {
                     for child in result {
                         let val = child.value as! String
-                        itemStates.append(val);
+                        if val == "inStore" {
+                            itemStates.append(false)
+                        }
+                        else if val == "inCloset" {
+                            itemStates.append(true)
+                        }
                     }
                 }
             }) { (error) in

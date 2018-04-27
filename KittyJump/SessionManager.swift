@@ -28,24 +28,14 @@ class SharingManager {
             userDefaults.set((lifetimeScore), forKey: "LifetimeScore")
         }
     }
-     
-    var itemStates: [String] = ["inCloset",
-                                "inCloset",
-                                "inCloset",
-                                "inCloset",
-                                "inStore",
-                                "inCloset",
-                                "inStore",
-                                "inCloset",
-                                "inStore",
-                                "inStore",
-                                "inCloset",
-                                "inStore",
-                                "inStore"] {
+    
+    // better to create various Character objects and then append each of their purchase state values to this
+    var itemStates = [Bool]() {
         didSet {
             userDefaults.set(itemStates, forKey: "itemStates")
         }
     }
+    
     var catImageString: String = "poos.png" {
         didSet {
             userDefaults.set(catImageString, forKey: "CatImageString")
@@ -104,7 +94,7 @@ class SharingManager {
         }
         let storedItemStates = userDefaults.array(forKey: "itemStates")
         if storedItemStates != nil {
-            itemStates = storedItemStates as! [String]
+            itemStates = storedItemStates as! [Bool]
         }
         else {
             userDefaults.set(itemStates, forKey: "itemStates")
