@@ -30,7 +30,7 @@ class SharingManager {
     }
     
     // better to create various Character objects and then append each of their purchase state values to this
-    var itemStates = [Bool]() {
+    var itemStates = [true, false, false, false, false, false, false, false, false, false, false, false, false] {
         didSet {
             userDefaults.set(itemStates, forKey: "itemStates")
         }

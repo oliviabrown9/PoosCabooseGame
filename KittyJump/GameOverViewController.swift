@@ -286,6 +286,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
         }
         
         ref = Database.database().reference()
+        print(SharingManager.sharedInstance.itemStates.count)
         itemStates = SharingManager.sharedInstance.itemStates
         
         if(FBSDKAccessToken.current() != nil) {
@@ -408,6 +409,7 @@ class GameOverViewController: UIViewController, SKProductsRequestDelegate, SKPay
                             itemStates[index!] = true
                         }
                     }
+                    print(SharingManager.sharedInstance.itemStates.count)
                     SharingManager.sharedInstance.itemStates = itemStates
                 }
             }) { (error) in

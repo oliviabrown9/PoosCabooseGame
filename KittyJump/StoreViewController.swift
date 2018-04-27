@@ -17,13 +17,13 @@ import FBSDKLoginKit
 import FacebookLogin
 import FacebookCore
 
-var using: Int = 0
-var selectedPhoneNumber: String = ""
-var itemStates = [Bool]()
+var using = 0
+var itemStates = SharingManager.sharedInstance.itemStates
 var facebookId = "";
 
-
 class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, MFMessageComposeViewControllerDelegate {
+    
+    var selectedPhoneNumber = ""
     
     var ref: DatabaseReference?
     var handle: DatabaseHandle?
@@ -61,14 +61,14 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     let slide12 = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
     
     @IBOutlet weak var scrollView: UIScrollView!
-    var confirm: Bool = false
+    var confirm = false
     var coins = SharingManager.sharedInstance.lifetimeScore
-    var cost: Int = 0
+    var cost = 0
     var buyButton: UIButton? = nil
     var coin: UIImageView? = nil
-    var itemTitle: String = ""
-    var use: Bool = false
-    var pageIndex: Int = 0
+    var itemTitle = ""
+    var use = false
+    var pageIndex = 0
     
     // Connections for add coins popup
     @IBOutlet weak var addCoinsView: UIView!
@@ -89,8 +89,6 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     {
         _ = tapGestureRecognizer.view as! UIImageView
     }
-    
-
     
     @IBAction func moveViewLeftRight(sender: UIPageControl) {
         // Move to Right
@@ -122,7 +120,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
                     self.updateUnlocked()
                     self.itemAlreadyPurchased()
                     SharingManager.sharedInstance.itemStates = itemStates
-                    
+                    print("yoo")
                 }
             }) { (error) in
                 print(error.localizedDescription)
@@ -189,6 +187,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
     
     func updateUnlocked() {
         var unlocked: Int = 0
+        itemStates = SharingManager.sharedInstance.itemStates
         for i in itemStates {
             if i {
                 unlocked += 1
@@ -265,6 +264,9 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         let slideArray = [slide0, slide1, slide2, slide3, slide4, slide5, slide6, slide7, slide8, slide9, slide10, slide11, slide12]
         
         var x = 0
+        itemStates = SharingManager.sharedInstance.itemStates
+        print(slideArray.count)
+        print(itemStates.count)
         for i in slideArray {
             if itemStates[x] {
                 setupInCloset(slide: i, x: x)
@@ -1069,16 +1071,7 @@ class StoreViewController: UIViewController, UIScrollViewDelegate, UIGestureReco
         }
         
         let messageComposer = MessageComposer()
-        
-        let textMessageRecipients = ["\(selectedPhoneNumber)"]
-        if (messageComposer.canSendText()) {
-            let messageVC = MFMessageComposeViewController()
-            
-            messageVC.body = "Yo hop on the Caboose, Poos! http://pooscaboose.com/download";
-            messageVC.recipients = textMessageRecipients
-            messageVC.messageComposeDelegate = self;
-            
-            self.present(messageVC, animated: false, completion: nil)
+        if (messageComposer.canSendText()) { self.present(messageComposer.configuredMessageComposeViewController(), animated: false, completion: nil)
             tableView.deselectRow(at: indexPath, animated: true)
             
         } else {

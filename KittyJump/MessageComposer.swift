@@ -8,22 +8,23 @@
 import Foundation
 import MessageUI
 
-var sent = false
-
-let textMessageRecipients = ["\(selectedPhoneNumber)"]
-
 class MessageComposer: NSObject, MFMessageComposeViewControllerDelegate {
+    
+    var phoneNumber: String?
     
     // Checks if a text message can be sent from the user's device
     func canSendText() -> Bool {
         return MFMessageComposeViewController.canSendText()
     }
+    
     // Configures and returns a MFMessageComposeViewController instance
     func configuredMessageComposeViewController() -> MFMessageComposeViewController {
         let messageComposeVC = MFMessageComposeViewController()
         messageComposeVC.messageComposeDelegate = self
-        messageComposeVC.recipients = textMessageRecipients
-        messageComposeVC.body = "Download this app."
+         messageComposeVC.body = "Yo hop on the Caboose, Poos! http://pooscaboose.com/download"
+        if let recipientPhoneNumber = phoneNumber {
+            messageComposeVC.recipients = [recipientPhoneNumber]
+        }
         return messageComposeVC
     }
     // Dismisses the view controller when the user is finished with it
@@ -36,7 +37,7 @@ class MessageComposer: NSObject, MFMessageComposeViewControllerDelegate {
             controller.dismiss(animated: true, completion: nil)
         case MessageComposeResult.sent.rawValue:
             controller.dismiss(animated: true, completion: nil)
-            
+
         default:
             break;
         }
