@@ -17,7 +17,6 @@ import FBSDKLoginKit
 import FacebookLogin
 import FacebookCore
 
-var using = 0
 var itemStates = SharingManager.sharedInstance.itemStates
 var facebookId = "";
 
